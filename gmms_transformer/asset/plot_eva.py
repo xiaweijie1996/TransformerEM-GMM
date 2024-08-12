@@ -1,7 +1,6 @@
 import torch
 import matplotlib.pyplot as plt
 import asset.em_pytorch as ep_module
-import asset.random_sampler as rs
 from scipy.stats import kendalltau, energy_distance
 import numpy as np
 from sklearn.metrics import mean_squared_error
@@ -10,6 +9,22 @@ from sklearn.metrics.pairwise import rbf_kernel
 from scipy.stats import entropy
 from sklearn.neighbors import KernelDensity
 
+def plot_results(t_samples,_val_data, sampled_samples):
+    # plot the generated samples
+    fig, axs = plt.subplots(3, 1, figsize=(10, 10))
+    # plot the generated samples
+    axs[0].plot(t_samples.T, c='b', alpha=0.1)
+    axs[0].set_title('Generated Samples by our method')
+
+    # plot the real samples
+    axs[1].plot(_val_data[0][:,:-1].T, c='r', alpha=0.1)
+    axs[1].set_title('Real Samples (complete data)')
+
+    # plot the real samples
+    axs[2].plot(sampled_samples.T, c='r', alpha=0.1)
+    axs[2].set_title('Sampled Real Samples')
+
+    plt.show()
 def sample_from_gmm(n_components, _new_para, _num=0, _num_samples=300):
     _dim=  int(_new_para.shape[-1]/n_components/2)
      
