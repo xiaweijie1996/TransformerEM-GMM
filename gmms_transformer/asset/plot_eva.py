@@ -17,7 +17,7 @@ def plot_results(t_samples,_val_data, sampled_samples):
     axs[0].set_title('Generated Samples by our method')
 
     # plot the real samples
-    axs[1].plot(_val_data[0][:,:-1].T, c='r', alpha=0.1)
+    axs[1].plot(_val_data.T, c='r', alpha=0.1)
     axs[1].set_title('Real Samples (complete data)')
 
     # plot the real samples

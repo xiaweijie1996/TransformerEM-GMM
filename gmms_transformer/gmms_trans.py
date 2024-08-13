@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 from mpl_toolkits.axes_grid1 import make_axes_locatable
 from mpl_toolkits.axes_grid1.inset_locator import inset_axes, mark_inset
 from huggingface_hub import hf_hub_download
-
+    
 import model.gmm_transformer as gmm_model
 import asset.dataloader as dl
 import asset.em_pytorch as ep
@@ -90,6 +90,7 @@ class GMMsTransPipline:
         _val_min,_ = _val_data[:,:, :-1].min(axis=1, keepdim=True)
         _val_max,_ = _val_data[:,:, :-1].max(axis=1, keepdim=True)
         _val_data[:,:, :-1] = (_val_data[:,:, :-1] - _val_min)/(_val_max-_val_min+1e-15)
+        
         _val_sample_part = rs.random_sample(_val_data, 'random', sample_num)
         _val_sample_part[:, :, -1] = _val_sample_part[:, :, -1]/365 # simple date embedding
         
@@ -142,7 +143,39 @@ class GMMsTransPipline:
 if __name__ == '__main__':
     pipline = GMMsTransPipline()
     encoder, para_emb, token_emb = pipline.from_pretrained()
+    
+    # -----------------------------Inference use real ECP data--------------------------------
+    # load the validation data for inference
+    num_of_shot = 5
     dataloader = load_valdata_example()
     _val_data = dataloader.load_vali_data(size=1)
-    gmm_parameters, t_samples, _ = pipline.inference(encoder, para_emb, token_emb, _val_data, 2) # 2 is the number of samples
-    pe.plot_results(t_samples, _val_data, _)
+    gmm_parameters, t_samples, _ = pipline.inference(encoder, para_emb, token_emb, _val_data, num_of_shot) # 2 is the number of samples
+    pe.plot_results(t_samples, _val_data[0][:,:-1], _)
+    # -----------------------------Inference use real ECP data--------------------------------
+    
+    
+    # -----------------------------Inference use toy data--------------------------------
+    # we want to test the inference result if we randomly creaste a toy data    
+    # feel free to adjust the window_size, num_of_shot to test the Zero-shot time series modeling
+    num_of_shot = 5
+    window_size = 15
+    
+    _x = torch.randn(250, 25)
+    _y = torch.sin(_x)+1 # the model's output range is [0, +inf], need to scale the data to this range
+    
+    # a smoothing function to smooth the data, otherwise the y data is random noise
+    def smooth(y, window_size=window_size):
+        conv_filter = torch.ones(window_size) / window_size
+        smooth_y = torch.nn.functional.conv1d(y.unsqueeze(1), conv_filter.unsqueeze(0).unsqueeze(0), padding=window_size//2)
+        return torch.exp(smooth_y.squeeze(1)) 
+
+    _y_smooth = smooth(_y.T).T
+    toy_samples = _y_smooth.unsqueeze(0)
+    
+    toy_samples = torch.tensor(toy_samples[0], dtype=torch.float64).unsqueeze(0)
+    gmm_parameters_toy, t_samples_toy, _toy = pipline.inference(encoder, para_emb, token_emb, toy_samples, num_of_shot) # 2 is the number of samples
+    
+    # plot the toy samples
+    pe.plot_results(t_samples_toy, toy_samples[0][:,:-1], _toy)
+    # -----------------------------Inference use toy data--------------------------------
+    
