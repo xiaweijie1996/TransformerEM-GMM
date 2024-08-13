@@ -56,7 +56,7 @@ def load_valdata_example():
     dataloader = dl.Dataloader_nolabel(val_data_path, batch_size, split_ratio)
     return dataloader
 
-class GMMsTransPipline:
+class GMMsTransPipeline:
     def from_pretrained(self,
         n_components: int = 6,
         resolution: int = 24):
@@ -141,15 +141,15 @@ class GMMsTransPipline:
 
 
 if __name__ == '__main__':
-    pipline = GMMsTransPipline()
-    encoder, para_emb, token_emb = pipline.from_pretrained()
+    pipeline = GMMsTransPipeline()
+    encoder, para_emb, token_emb = pipeline.from_pretrained()
     
     # -----------------------------Inference use real ECP data--------------------------------
     # load the validation data for inference
     num_of_shot = 5
     dataloader = load_valdata_example()
     _val_data = dataloader.load_vali_data(size=1)
-    gmm_parameters, t_samples, _ = pipline.inference(encoder, para_emb, token_emb, _val_data, num_of_shot) # 2 is the number of samples
+    gmm_parameters, t_samples, _ = pipeline.inference(encoder, para_emb, token_emb, _val_data, num_of_shot) # 2 is the number of samples
     pe.plot_results(t_samples, _val_data[0][:,:-1], _)
     # -----------------------------Inference use real ECP data--------------------------------
     
@@ -173,7 +173,7 @@ if __name__ == '__main__':
     toy_samples = _y_smooth.unsqueeze(0)
     
     toy_samples = torch.tensor(toy_samples[0], dtype=torch.float64).unsqueeze(0)
-    gmm_parameters_toy, t_samples_toy, _toy = pipline.inference(encoder, para_emb, token_emb, toy_samples, num_of_shot) # 2 is the number of samples
+    gmm_parameters_toy, t_samples_toy, _toy = pipeline.inference(encoder, para_emb, token_emb, toy_samples, num_of_shot) # 2 is the number of samples
     
     # plot the toy samples
     pe.plot_results(t_samples_toy, toy_samples[0][:,:-1], _toy)

@@ -33,18 +33,15 @@ pip install git+https://github.com/xiaweijie1996/TransformerEM-GMM.git
 
 ```bash
 from gmm_trans_package import plot_eva as pe
-from gmm_trans_package import GMMsTransPipline, load_valdata_example
+from gmm_trans_package import GMMsTransPipeline, load_valdata_example
 import torch
 ```
 
 #### Create the Pipeline
 ```bash
-# create the pipline
-pipline = GMMsTransPipline(
-    n_components = 6,
-    resolution = 24
-)
-encoder, para_emb, token_emb = pipline.from_pretrained(n_components=6, resolution=24)
+# create the pipeline
+pipeline = GMMsTransPipeline()
+encoder, para_emb, token_emb = pipeline.from_pretrained(n_components=6, resolution=24)
 ```
 
 #### Inference with Real Electricity Consumption Profile (ECP) Data
