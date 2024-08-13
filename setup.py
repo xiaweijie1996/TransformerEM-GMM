@@ -16,6 +16,7 @@ setup(
         'matplotlib',
         'scikit-learn',
         'scipy',
+        'huggingface-hub',
         # Add other dependencies here
     ],
     classifiers=[
