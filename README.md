@@ -10,6 +10,7 @@ This is the official repository for the paper *An Efficient and Explainable Tran
 - A Technical Appendix as a complementary resource for the main paper is available [here](materials/Technical_Appendix.pdf).
 - You can use our pre-trained model for inference on time series data by following the instructions below or in [example](example.py).
 - The code for training will be available soon.
+- The complete dataset will be avaliable soon.
 
 ## How to Use the Pre-Trained Model for Inference
 
