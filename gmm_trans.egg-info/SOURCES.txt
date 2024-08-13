@@ -1,9 +1,0 @@
-LICENSE
-README.md
-pyproject.toml
-setup.py
-gmm_trans.egg-info/PKG-INFO
-gmm_trans.egg-info/SOURCES.txt
-gmm_trans.egg-info/dependency_links.txt
-gmm_trans.egg-info/requires.txt
-gmm_trans.egg-info/top_level.txt
