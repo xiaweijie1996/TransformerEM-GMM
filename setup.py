@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 
 setup(
-    name='gmm_trans',  # Replace with your package name
+    name='TransformerEM-GMM',  # Replace with your package name
     version='0.1.0',  # Initial version
     author='Weijie Xia',
     author_email='xiaweijie1996@gmail.com',
