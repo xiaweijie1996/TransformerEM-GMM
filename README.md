@@ -1,8 +1,78 @@
 # An Efficient and Explainable Transformer-Based Few-Shot Learning for Modeling Electricity Consumption Profiles Across Thousands of Domains
-Using Transformers for Few-Shot Learning in Electricity Consumption Patterns Modeling with GMMs
 
+![Top Bar](materials/bar_top.png)
 
+This is the official repository for the paper "An Efficient and Explainable Transformer-Based Few-Shot Learning for Modeling Electricity Consumption Profiles Across Thousands of Domains".
+
+- A Technical Appendix as a complementary resource for the main paper is available [here](#).
+- You can use our pre-trained model for inference on time series data by following the instructions below.
+- The code for training will be available soon.
+
+## How to Use the Pre-Trained Model for Inference
+
+#### Installation
+
+First, install our package by running the following command:
+
+```bash
+pip install git+https://github.com/xiaweijie1996/TransformerEM-GMM.git
+
+```
+#### Import Necessary Packages
+
+```bash
+from gmm_trans_package import plot_eva as pe
+from gmm_trans_package import GMMsTransPipline, load_valdata_example
+import torch
+```
+
+#### Create the Pipeline
+```bash
+pipeline = GMMsTransPipline()
+encoder, para_emb, token_emb = pipeline.from_pretrained()
+```
+
+#### Inference with Real Electricity Consumption Profile (ECP) Data
+Part of the validation dataset is provided for inference.
+```bash
+num_of_shot = 5
+dataloader = load_valdata_example()
+_val_data = dataloader.load_vali_data(size=1)
+gmm_parameters, t_samples, _ = pipeline.inference(encoder, para_emb, token_emb, _val_data, num_of_shot)
+pe.plot_results(t_samples, _val_data[0][:,:-1], _)
+```
+
+#### The results are shown below
+
+![Result_gen_ral](materials/real_gen_gif.gif)
+
+#### Inference with Toy Data
+We have also created a function to randomly generate time series data to test the model's ability in extreme cases. Below is an example:
+
+```bash
+num_of_shot = 5
+window_size = 15
+
+_x = torch.randn(250, 25)
+_y = torch.sin(_x) + 1  # The model's output range is [0, +inf], need to scale the data to this range
+
+# A smoothing function to smooth the data, otherwise the y data is random noise
+def smooth(y, window_size=window_size):
+    conv_filter = torch.ones(window_size) / window_size
+    smooth_y = torch.nn.functional.conv1d(y.unsqueeze(1), conv_filter.unsqueeze(0).unsqueeze(0), padding=window_size//2)
+    return torch.exp(smooth_y.squeeze(1)) 
+
+_y_smooth = smooth(_y.T).T
+toy_samples = _y_smooth.unsqueeze(0)
+toy_samples = torch.tensor(toy_samples[0], dtype=torch.float64).unsqueeze(0)
+
+# Inference and plot
+gmm_parameters_toy, t_samples_toy, _toy = pipeline.inference(encoder, para_emb, token_emb, toy_samples, num_of_shot)
+pe.plot_results(t_samples_toy, toy_samples[0][:,:-1], _toy)
+```
+
+The results are shown below
+![Result_gen_toy](materials/toy_gen_gif.gif)
 
 ## License
-
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
