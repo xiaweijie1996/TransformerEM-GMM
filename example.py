@@ -1,17 +1,15 @@
+from gmm_trans_package import plot_eva as pe
+from gmm_trans_package import GMMsTransPipline, load_valdata_example
 import torch
 
-import gmm_trans_package.asset.plot_eva as pe
-import gmm_trans_package.gmm_trans as gmmt
-
-
 # create the pipline
-pipline = gmmt.GMMsTransPipline()
+pipline = GMMsTransPipline()
 encoder, para_emb, token_emb = pipline.from_pretrained()
 
 # -----------------------------Inference use real ECP data--------------------------------
-# load the validation data for inference
+# load the part of validation data for inference
 num_of_shot = 5
-dataloader = gmmt.load_valdata_example()
+dataloader = load_valdata_example()
 _val_data = dataloader.load_vali_data(size=1)
 gmm_parameters, t_samples, _ = pipline.inference(encoder, para_emb, token_emb, _val_data, num_of_shot) # 2 is the number of samples
 pe.plot_results(t_samples, _val_data[0][:,:-1], _)
@@ -42,4 +40,3 @@ gmm_parameters_toy, t_samples_toy, _toy = pipline.inference(encoder, para_emb, t
 # plot the toy samples
 pe.plot_results(t_samples_toy, toy_samples[0][:,:-1], _toy)
     # -----------------------------Inference use toy data--------------------------------
-    
