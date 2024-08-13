@@ -1,6 +1,6 @@
 import torch
 import matplotlib.pyplot as plt
-import asset.em_pytorch as ep_module
+import gmm_trans_package.asset.em_pytorch as ep_module
 from scipy.stats import kendalltau, energy_distance
 import numpy as np
 from sklearn.metrics import mean_squared_error

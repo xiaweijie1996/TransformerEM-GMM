@@ -6,12 +6,12 @@ from mpl_toolkits.axes_grid1 import make_axes_locatable
 from mpl_toolkits.axes_grid1.inset_locator import inset_axes, mark_inset
 from huggingface_hub import hf_hub_download
     
-import model.gmm_transformer as gmm_model
-import asset.dataloader as dl
-import asset.em_pytorch as ep
-import asset.random_sampler as rs
-import asset.gmm_train_tool as gtt
-import asset.plot_eva as pe
+import gmm_trans_package.model.gmm_transformer as gmm_model
+import gmm_trans_package.asset.dataloader as dl
+import gmm_trans_package.asset.em_pytorch as ep
+import gmm_trans_package.asset.random_sampler as rs
+import gmm_trans_package.asset.gmm_train_tool as gtt
+import gmm_trans_package.asset.plot_eva as pe
 
 def load_model(
     n_components = 6,
