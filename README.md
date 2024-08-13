@@ -1,11 +1,14 @@
 # An Efficient and Explainable Transformer-Based Few-Shot Learning for Modeling Electricity Consumption Profiles Across Thousands of Domains
 
-![Top Bar](materials/bar_top.png)
+<p align="center">
+  <img src="materials/bar_top.png" alt="Top Bar">
+</p>
 
-This is the official repository for the paper "An Efficient and Explainable Transformer-Based Few-Shot Learning for Modeling Electricity Consumption Profiles Across Thousands of Domains".
 
-- A Technical Appendix as a complementary resource for the main paper is available [here](#).
-- You can use our pre-trained model for inference on time series data by following the instructions below.
+This is the official repository for the paper *An Efficient and Explainable Transformer-Based Few-Shot Learning for Modeling Electricity Consumption Profiles Across Thousands of Domains*.
+
+- A Technical Appendix as a complementary resource for the main paper is available [here](materials\Technical_Appendix.pdf).
+- You can use our pre-trained model for inference on time series data by following the instructions below or in [example](example.py).
 - The code for training will be available soon.
 
 ## How to Use the Pre-Trained Model for Inference
@@ -28,8 +31,12 @@ import torch
 
 #### Create the Pipeline
 ```bash
-pipeline = GMMsTransPipline()
-encoder, para_emb, token_emb = pipeline.from_pretrained()
+# create the pipline
+pipline = GMMsTransPipline(
+    n_components = 6,
+    resolution = 24
+)
+encoder, para_emb, token_emb = pipline.from_pretrained(n_components=6, resolution=24)
 ```
 
 #### Inference with Real Electricity Consumption Profile (ECP) Data
@@ -42,7 +49,7 @@ gmm_parameters, t_samples, _ = pipeline.inference(encoder, para_emb, token_emb, 
 pe.plot_results(t_samples, _val_data[0][:,:-1], _)
 ```
 
-#### The results are shown below
+#### The Results are Shown Below
 
 ![Result_gen_ral](materials/real_gen_gif.gif)
 

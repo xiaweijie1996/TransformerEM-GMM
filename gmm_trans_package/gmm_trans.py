@@ -57,14 +57,14 @@ def load_valdata_example():
     return dataloader
 
 class GMMsTransPipline:
-    def from_pretrained(
+    def from_pretrained(self,
         n_components: int = 6,
         resolution: int = 24):
         
         # check the model type
         if resolution == 24:
             model, para_emb, token_emb = load_model(
-                n_components = 6,
+                n_components = n_components,
                 hidden_d = 24 * 4,
                 out_d = 24,
                 n_heads = 4,

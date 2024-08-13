@@ -3,8 +3,11 @@ from gmm_trans_package import GMMsTransPipline, load_valdata_example
 import torch
 
 # create the pipline
-pipline = GMMsTransPipline()
-encoder, para_emb, token_emb = pipline.from_pretrained()
+pipline = GMMsTransPipline(
+    n_components = 6,
+    resolution = 24
+)
+encoder, para_emb, token_emb = pipline.from_pretrained(n_components =6, resolution=24)
 
 # -----------------------------Inference use real ECP data--------------------------------
 # load the part of validation data for inference
