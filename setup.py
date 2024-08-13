@@ -11,12 +11,12 @@ setup(
     url='https://github.com/xiaweijie1996/TransformerEM-GMM.git',  # URL of your project's repository
     packages=find_packages(),  # Automatically find packages in the project
     install_requires=[
-        'numpy',
-        'torch',
-        'matplotlib',
-        'scikit-learn',
-        'scipy',
-        'huggingface-hub',
+        'torch==2.1.2',
+        'numpy==1.23.5',
+        'matplotlib==3.7.0',
+        'scikit-learn==1.2.2',
+        'scipy==1.10.1',
+        'huggingface-hub==0.23.0',
         # Add other dependencies here
     ],
     classifiers=[
