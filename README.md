@@ -57,7 +57,7 @@ pe.plot_results(t_samples, _val_data[0][:,:-1], _)
 We have also created a function to randomly generate time series data to test the model's ability in extreme cases. Below is an example:
 
 ```bash
-# feel free to adjust the window_size, num_of_shot to test the Zero-shot time series modeling
+# feel free to adjust the window_size, num_of_shot to test the time series modeling
 num_of_shot = 5
 window_size = 15
 
