@@ -14,9 +14,16 @@ This is the official repository for the paper *An Efficient and Explainable Tran
 
 ## How to Use the Pre-Trained Model for Inference
 
-#### Installation
+#### Creating Environment
 
-First, install our package by running the following command:
+First, creating a virtual environment and activate:
+```bash
+conda create --name gmm_trans python=3.9.19
+conda activate gmm_trans
+```
+
+#### Installing Package
+Installing our package by running the following command:
 
 ```bash
 pip install git+https://github.com/xiaweijie1996/TransformerEM-GMM.git
