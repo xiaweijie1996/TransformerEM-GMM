@@ -1,7 +1,7 @@
 import torch
 
-import gmms_transformer.asset.plot_eva as pe
-import gmms_transformer.gmms_trans as gmmt
+import gmm_trans.asset.plot_eva as pe
+import gmm_trans.gmms_trans as gmmt
 
 
 # create the pipline
