@@ -56,8 +56,9 @@ pe.plot_results(t_samples, _val_data[0][:,:-1], _)
 
 #### The Results are Shown Below
 
-![Result_gen_ral](materials/real_gen_gif.gif)
-
+<p align="center">
+  <img src="materials/real_gen_gif.gif" alt="Result_gen_real" width="400">
+</p>
 #### Inference with Toy Data
 We have also created a function to randomly generate time series data to test the model's ability in extreme cases. Below is an example:
 
@@ -85,7 +86,10 @@ pe.plot_results(t_samples_toy, toy_samples[0][:,:-1], _toy)
 ```
 
 The results are shown below
-![Result_gen_toy](materials/toy_gen_gif.gif)
+<p align="center">
+  <img src="materials/toy_gen_gif.gif" alt="Result_gen_toy" width="400">
+</p>
+
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
