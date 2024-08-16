@@ -7,8 +7,8 @@
 
 This is the official repository for the paper *An Efficient and Explainable Transformer-Based Few-Shot Learning for Modeling Electricity Consumption Profiles Across Thousands of Domains*.
 
-- A Technical Appendix as a complementary resource for the main paper is available [here](materials/Technical_Appendix.pdf).
-- You can use our pre-trained model for inference on time series data by following the instructions below or in [example](example.py).
+- A **Technical Appendix** as a complementary resource for the main paper is available [Appendix](materials/Technical_Appendix.pdf).
+- You can use our pre-trained model for inference on time series data by following the instructions below or in [Example](example.py).
 - The code for training will be available soon.
 - The complete dataset will be avaliable soon.
 
@@ -47,6 +47,8 @@ encoder, para_emb, token_emb = pipeline.from_pretrained(n_components=6, resoluti
 #### Inference with Real Electricity Consumption Profile (ECP) Data
 Part of the validation dataset is provided for inference.
 ```bash
+
+# feel free to adjust the num_of_shot to test the time series modeling
 num_of_shot = 5
 dataloader = load_valdata_example()
 _val_data = dataloader.load_vali_data(size=1)
@@ -59,6 +61,7 @@ pe.plot_results(t_samples, _val_data[0][:,:-1], _)
 <p align="center">
   <img src="materials/real_gen_gif.gif" alt="Result_gen_real" width="400">
 </p>
+
 #### Inference with Toy Data
 We have also created a function to randomly generate time series data to test the model's ability in extreme cases. Below is an example:
 
