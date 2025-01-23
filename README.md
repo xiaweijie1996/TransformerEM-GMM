@@ -1,4 +1,4 @@
-# An Efficient and Explainable Transformer-Based Few-Shot Learning for Modeling Electricity Consumption Profiles Across Thousands of Domains
+# Transformer-Based Few-Shot Learning for Modeling Electricity Consumption Profiles with Minimal Data Across Thousands of Domains
 
 <p align="center">
   <img src="materials/bar_top.png" alt="Top Bar">
