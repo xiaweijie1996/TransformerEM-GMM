@@ -7,6 +7,7 @@ sys.path.append(_parent_path)
 import wandb
 import torch
 import torch.optim as optim
+from torch.cuda.amp import autocast, GradScaler
 
 import model.gmm_transformer as gmm_model
 import asset.gmm_train_tool as gmm_train_tool
@@ -16,9 +17,9 @@ from asset.dataloader import Dataloader_nolabel
 torch.set_default_dtype(torch.float64)
 
 # load data
-batch_size =  24
+batch_size =  12
 split_ratio = (0.8,0.1,0.1)
-data_path =  sys.argv[1]  #'exp/data_process_for_data_collection_all/new_data_15minute_grid_nomerge.pkl' ## 
+data_path =  'exp/data_process_for_data_collection_all/new_data_15minute_grid_nomerge.pkl' ## 
 dataset = Dataloader_nolabel(data_path,  batch_size=batch_size
                     , split_ratio=split_ratio)
 print('lenthg of train data: ', dataset.__len__()*split_ratio[0])
@@ -43,9 +44,9 @@ chw = (1, random_sample_num,  97)
 para_dim = n_components*2
 hidden_d = 96*4
 out_d = 96
-n_heads = 3
-mlp_ratio = 4
-n_blocks = 4
+n_heads = 2
+mlp_ratio = 2
+n_blocks = 3
 encoder = gmm_model.ViT_encodernopara(chw, hidden_d, out_d, n_heads, mlp_ratio, n_blocks).to(device)
 _model_scale = sum(p.numel() for p in encoder.parameters() if p.requires_grad)
 print('number of parameters: ', _model_scale)
@@ -65,20 +66,22 @@ wandb.log({'num_parameters_encoder': _model_scale})
 # train the model2
 mid_loss = 100000
 
+mixer = GradScaler()
 for epoch in range(num_epochs):
     torch.cuda.empty_cache()
 
     for j in range(sub_epoch):
         # train.model
         encoder.train()
-        
-        # _loss, _new_para, _param, train_sample[:, :, :-1], _train_sample_part[:, n_components*2:, :-1], var, (_train_min, _train_max) 
-        _loss, _random_num, _new_para, _param, r_samples, r_samples_part, _mm = gmm_train_tool.get_loss_le(dataset, encoder,
-                                                                              random_sample_num, min_random_sample_num, n_components, 
-                                                                              embedding_para, emb_empty_token, 'True', device)
         optimizer.zero_grad()
-        _loss.backward()
-        optimizer.step()
+        with autocast():
+        # _loss, _new_para, _param, train_sample[:, :, :-1], _train_sample_part[:, n_components*2:, :-1], var, (_train_min, _train_max) 
+            _loss, _random_num, _new_para, _param, r_samples, r_samples_part, _mm = gmm_train_tool.get_loss_le(dataset, encoder,
+                                                                                random_sample_num, min_random_sample_num, n_components, 
+                                                                                embedding_para, emb_empty_token, 'True', device)
+        mixer.scale(_loss).backward()
+        mixer.step(optimizer)
+        mixer.update()
         scheduler.step()
         
     if epoch % 1 == 0:
