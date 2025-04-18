@@ -20,3 +20,5 @@ exp/wandb
 
 # Any wandb files
 wandb/
+
+.venv
