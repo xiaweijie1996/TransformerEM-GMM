@@ -83,6 +83,9 @@ def plot_samples(save_path, batch_size, n_components, _mm, _new_para, r_samples,
     plt.tight_layout()
     plt.savefig(save_path)
     plt.close()
+    
+    # Save using wandb
+    wandb.log({"generated_samples": [wandb.Image(save_path)]})
 
 # n_components, _new_para, r_samples, r_samples_part
 def evaluation(n_components, _new_para, r_samples, r_samples_part, _num=0, _num_samples=300):

@@ -44,8 +44,8 @@ para_dim = n_components*2
 hidden_d = 96*4
 out_d = 96
 n_heads = 4
-mlp_ratio = 4
-n_blocks = 6
+mlp_ratio = 2
+n_blocks = 3
 encoder = gmm_model.ViT_encodernopara(chw, hidden_d, out_d, n_heads, mlp_ratio, n_blocks).to(device)
 _model_scale = sum(p.numel() for p in encoder.parameters() if p.requires_grad)
 print('number of parameters: ', _model_scale)
