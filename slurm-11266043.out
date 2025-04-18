@@ -1,0 +1,289 @@
+============================================================================================== 
+Warning! Mixing Conda and module environments may lead to corruption of the
+user environment. 
+We do not recommend users mixing those two environments unless absolutely
+necessary. Note that 
+SURF does not provide any support for Conda environment.
+For more information, please refer to our software policy page:
+https://servicedesk.surf.nl/wiki/display/WIKI/Software+policy+Snellius#SoftwarepolicySnellius-UseofAnacondaandMinicondaenvironmentsonSnellius 
+
+Remember that many packages have already been installed on the system and can
+be loaded using 
+the 'module load <package__name>' command. If you are uncertain if a package is
+already available 
+on the system, please use 'module avail' or 'module spider' to search for it.
+============================================================================================== 
+wandb: Using wandb-core as the SDK backend.  Please refer to https://wandb.me/wandb-core for more information.
+wandb: W&B API key is configured. Use `wandb login --relogin` to force relogin
+wandb: Tracking run with wandb version 0.19.9
+wandb: Run data is saved locally in /gpfs/home4/wxia/TransformerEM-GMM/wandb/run-20250418_195649-klu2r8qv
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run olive-galaxy-12
+wandb: ⭐️ View project at https://wandb.ai/xiaweijie1996/load_usa_96_train_merge
+wandb: 🚀 View run at https://wandb.ai/xiaweijie1996/load_usa_96_train_merge/runs/klu2r8qv
+/home/wxia/TransformerEM-GMM/exp/exp_second_round/usa_load_15minutes/train_merge.py:69: FutureWarning: `torch.cuda.amp.GradScaler(args...)` is deprecated. Please use `torch.amp.GradScaler('cuda', args...)` instead.
+  mixer = GradScaler()
+/home/wxia/TransformerEM-GMM/exp/exp_second_round/usa_load_15minutes/train_merge.py:77: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast():
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/exp_second_round/usa_load_15minutes/train_merge.py:77: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast():
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/exp_second_round/usa_load_15minutes/train_merge.py:77: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast():
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/exp_second_round/usa_load_15minutes/train_merge.py:77: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast():
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/exp_second_round/usa_load_15minutes/train_merge.py:77: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast():
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/exp_second_round/usa_load_15minutes/train_merge.py:77: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast():
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/exp_second_round/usa_load_15minutes/train_merge.py:77: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast():
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/exp_second_round/usa_load_15minutes/train_merge.py:77: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast():
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/exp_second_round/usa_load_15minutes/train_merge.py:77: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast():
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/exp_second_round/usa_load_15minutes/train_merge.py:77: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast():
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/exp_second_round/usa_load_15minutes/train_merge.py:77: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast():
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/exp_second_round/usa_load_15minutes/train_merge.py:77: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast():
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/exp_second_round/usa_load_15minutes/train_merge.py:77: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast():
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/exp_second_round/usa_load_15minutes/train_merge.py:77: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast():
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/exp_second_round/usa_load_15minutes/train_merge.py:77: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast():
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/exp_second_round/usa_load_15minutes/train_merge.py:77: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast():
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/exp_second_round/usa_load_15minutes/train_merge.py:77: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast():
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/exp_second_round/usa_load_15minutes/train_merge.py:77: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast():
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/exp_second_round/usa_load_15minutes/train_merge.py:77: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast():
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/exp_second_round/usa_load_15minutes/train_merge.py:77: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast():
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/exp_second_round/usa_load_15minutes/train_merge.py:77: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast():
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/exp_second_round/usa_load_15minutes/train_merge.py:77: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast():
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/exp_second_round/usa_load_15minutes/train_merge.py:77: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast():
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/exp_second_round/usa_load_15minutes/train_merge.py:77: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast():
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/exp_second_round/usa_load_15minutes/train_merge.py:77: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast():
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/exp_second_round/usa_load_15minutes/train_merge.py:77: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast():
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/exp_second_round/usa_load_15minutes/train_merge.py:77: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast():
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/exp_second_round/usa_load_15minutes/train_merge.py:77: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast():
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/exp_second_round/usa_load_15minutes/train_merge.py:77: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast():
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/exp_second_round/usa_load_15minutes/train_merge.py:77: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast():
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/exp_second_round/usa_load_15minutes/train_merge.py:77: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast():
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/exp_second_round/usa_load_15minutes/train_merge.py:77: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast():
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/exp_second_round/usa_load_15minutes/train_merge.py:77: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast():
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/exp_second_round/usa_load_15minutes/train_merge.py:77: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast():
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/exp_second_round/usa_load_15minutes/train_merge.py:77: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast():
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/exp_second_round/usa_load_15minutes/train_merge.py:77: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast():
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/exp_second_round/usa_load_15minutes/train_merge.py:77: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast():
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+shape of data:  (73, 250, 97)
+shape of data:  (73, 250, 97)
+lenthg of train data:  58.400000000000006
+shape of data:  (73, 250, 97)
+lenthg of test data:  7.300000000000001
+cuda
+shape of data:  (73, 250, 97)
+number of parameters:  2293358
+Traceback (most recent call last):
+  File "/home/wxia/TransformerEM-GMM/exp/exp_second_round/usa_load_15minutes/train_merge.py", line 114, in <module>
+    llk_e = pae.plot_samples(save_path, batch_size, n_components, _mm, _new_para, r_samples, r_samples_part, _param, figsize=(10, 15))
+  File "/home/wxia/TransformerEM-GMM/exp/asset/plot_eva.py", line 39, in plot_samples
+    _samples, _gmm = sample_from_gmm(n_components, _new_para)
+  File "/home/wxia/TransformerEM-GMM/exp/asset/plot_eva.py", line 20, in sample_from_gmm
+    _samples = gmm.sample(_num_samples)
+  File "/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py", line 78, in sample
+    mvn = MultivariateNormal(self.means[component], cov_matrix)
+  File "/gpfs/home4/wxia/TransformerEM-GMM/.venv/lib64/python3.9/site-packages/torch/distributions/multivariate_normal.py", line 180, in __init__
+    super().__init__(batch_shape, event_shape, validate_args=validate_args)
+  File "/gpfs/home4/wxia/TransformerEM-GMM/.venv/lib64/python3.9/site-packages/torch/distributions/distribution.py", line 71, in __init__
+    raise ValueError(
+ValueError: Expected parameter loc (Tensor of shape (96,)) of distribution MultivariateNormal(loc: torch.Size([96]), covariance_matrix: torch.Size([96, 96])) to satisfy the constraint IndependentConstraint(Real(), 1), but found invalid values:
+tensor([nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan,
+        nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan,
+        nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan,
+        nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan])
+[1;34mwandb[0m: 
+[1;34mwandb[0m: 🚀 View run [33molive-galaxy-12[0m at: [34mhttps://wandb.ai/xiaweijie1996/load_usa_96_train_merge/runs/klu2r8qv[0m
+[1;34mwandb[0m: Find logs at: [1;35mwandb/run-20250418_195649-klu2r8qv/logs[0m
+
+JOB STATISTICS
+==============
+Job ID: 11266043
+Cluster: snellius
+User/Group: wxia/wxia
+State: RUNNING
+Nodes: 1
+Cores per node: 18
+CPU Utilized: 00:00:00
+CPU Efficiency: 0.00% of 07:30:36 core-walltime
+Job Wall-clock time: 00:25:02
+Memory Utilized: 0.00 MB
+Memory Efficiency: 0.00% of 120.00 GB (120.00 GB/node)
+WARNING: Efficiency statistics can only be obtained after the job has ended as seff tool is based on the accounting database data.
