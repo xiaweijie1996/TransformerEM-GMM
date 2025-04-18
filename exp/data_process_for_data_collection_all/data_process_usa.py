@@ -80,7 +80,7 @@ print('The number of dataid in pivot_df is: ', len(dataid_list_pivot))
 
 # Enrich the data by random sampling 10 data points for each dataid
 dataid_list = pivot_df['dataid'].unique()
-num_samples = 5
+num_samples = 10
 new_data = []
 for _ in tqdm(range(num_samples)):
     
@@ -119,6 +119,18 @@ print('new_data shape: ', new_data[0, :, :])
 print('new_data shape: ', new_data.shape)
 
 # Plot the one dataid
+# plt.figure(figsize=(20, 10))
+# plt.plot(new_data[0, :, :-1].T, color='blue', alpha=0.5, label='pure_load')
+# plt.savefig('exp/data_process_for_data_collection_all/15minute_data.png')
+
+# Plot 10 samples  in one figure
 plt.figure(figsize=(20, 10))
-plt.plot(new_data[0, :, :-1].T, color='blue', alpha=0.5, label='pure_load')
+for i in range(10):
+    plt.subplot(5, 2, i+1)
+    plt.plot(new_data[i, :, :-1].T, color='blue', alpha=0.5, label='pure_load')
+    plt.title(f'Sample {i+1}')
+    plt.xlabel('Time')
+    plt.ylabel('Value')
+    plt.legend()
+plt.tight_layout()
 plt.savefig('exp/data_process_for_data_collection_all/15minute_data.png')
