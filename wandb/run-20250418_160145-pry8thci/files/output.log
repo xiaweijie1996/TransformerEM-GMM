@@ -1,0 +1,38 @@
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+Traceback (most recent call last):
+  File "/home/wxia/TransformerEM-GMM/exp/exp_second_round/usa_load_15minutes/train.py", line 109, in <module>
+    llk_e = pae.plot_samples(save_path, batch_size, n_components, _mm, _new_para, r_samples, r_samples_part, _param, figsize=(10, 15))
+  File "/home/wxia/TransformerEM-GMM/exp/asset/plot_eva.py", line 38, in plot_samples
+    _samples, _gmm = sample_from_gmm(n_components, _new_para)
+  File "/home/wxia/TransformerEM-GMM/exp/asset/plot_eva.py", line 19, in sample_from_gmm
+    _samples = gmm.sample(_num_samples)
+  File "/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py", line 78, in sample
+    mvn = MultivariateNormal(self.means[component], cov_matrix)
+  File "/home/wxia/.local/lib/python3.10/site-packages/torch/distributions/multivariate_normal.py", line 180, in __init__
+    super().__init__(batch_shape, event_shape, validate_args=validate_args)
+  File "/home/wxia/.local/lib/python3.10/site-packages/torch/distributions/distribution.py", line 71, in __init__
+    raise ValueError(
+ValueError: Expected parameter loc (Tensor of shape (96,)) of distribution MultivariateNormal(loc: torch.Size([96]), covariance_matrix: torch.Size([96, 96])) to satisfy the constraint IndependentConstraint(Real(), 1), but found invalid values:
+tensor([nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan,
+        nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan,
+        nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan,
+        nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan])
+Traceback (most recent call last):
+  File "/home/wxia/TransformerEM-GMM/exp/exp_second_round/usa_load_15minutes/train.py", line 109, in <module>
+    llk_e = pae.plot_samples(save_path, batch_size, n_components, _mm, _new_para, r_samples, r_samples_part, _param, figsize=(10, 15))
+  File "/home/wxia/TransformerEM-GMM/exp/asset/plot_eva.py", line 38, in plot_samples
+    _samples, _gmm = sample_from_gmm(n_components, _new_para)
+  File "/home/wxia/TransformerEM-GMM/exp/asset/plot_eva.py", line 19, in sample_from_gmm
+    _samples = gmm.sample(_num_samples)
+  File "/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py", line 78, in sample
+    mvn = MultivariateNormal(self.means[component], cov_matrix)
+  File "/home/wxia/.local/lib/python3.10/site-packages/torch/distributions/multivariate_normal.py", line 180, in __init__
+    super().__init__(batch_shape, event_shape, validate_args=validate_args)
+  File "/home/wxia/.local/lib/python3.10/site-packages/torch/distributions/distribution.py", line 71, in __init__
+    raise ValueError(
+ValueError: Expected parameter loc (Tensor of shape (96,)) of distribution MultivariateNormal(loc: torch.Size([96]), covariance_matrix: torch.Size([96, 96])) to satisfy the constraint IndependentConstraint(Real(), 1), but found invalid values:
+tensor([nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan,
+        nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan,
+        nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan,
+        nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan])
