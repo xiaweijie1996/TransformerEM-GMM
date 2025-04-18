@@ -18,7 +18,7 @@ torch.set_default_dtype(torch.float64)
 # load data
 batch_size = 64*2
 split_ratio = (0.8,0.1,0.1)
-data_path = 'exp/data_process_for_data_collection_all/new_data_15minute.pkl'
+data_path = 'exp/data_process_for_data_collection_all/new_data_15minute_grid.pkl'
 dataset = Dataloader_nolabel(data_path,  batch_size=batch_size
                     , split_ratio=split_ratio)
 print('lenthg of train data: ', dataset.__len__()*split_ratio[0])
@@ -29,8 +29,8 @@ device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 print(device)
 
 # define the hyperparameters
-random_sample_num = 25
-num_epochs = int(500000)
+random_sample_num = 96
+num_epochs = int(50000)
 sub_epoch = int(dataset.__len__()*split_ratio[0]/batch_size)
 save_model = 'exp/exp_second_round/usa_load_15minutes/model/'
 save_image = 'exp/exp_second_round/usa_load_15minutes/gen_img/'
@@ -43,9 +43,9 @@ chw = (1, random_sample_num,  97)
 para_dim = n_components*2
 hidden_d = 96*4
 out_d = 96
-n_heads = 4
-mlp_ratio = 2
-n_blocks = 4
+n_heads = 2
+mlp_ratio = 1
+n_blocks = 2
 encoder = gmm_model.ViT_encodernopara(chw, hidden_d, out_d, n_heads, mlp_ratio, n_blocks).to(device)
 _model_scale = sum(p.numel() for p in encoder.parameters() if p.requires_grad)
 print('number of parameters: ', _model_scale)

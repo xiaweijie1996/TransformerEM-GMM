@@ -17,3 +17,6 @@ exp/wandb
 # Data Files
 *.csv
 *.pkl
+
+# Any wandb files
+wandb/
