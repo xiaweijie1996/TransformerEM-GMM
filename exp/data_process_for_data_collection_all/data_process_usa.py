@@ -85,7 +85,7 @@ new_data = []
 for _ in tqdm(range(num_samples)):
     
     # Randomly select a dataid
-    random_dataid = np.random.choice(dataid_list, size=25, replace=False)
+    random_dataid = np.random.choice(dataid_list, size=10, replace=False)
     
     # Randomly select a row from the pivot_df for the selected dataid
     random_row = pivot_df[pivot_df['dataid'].isin(random_dataid)]
@@ -120,5 +120,5 @@ print('new_data shape: ', new_data.shape)
 
 # Plot the one dataid
 plt.figure(figsize=(20, 10))
-plt.plot(new_data[0, :, :-1], color='blue', alpha=0.5, label='pure_load')
+plt.plot(new_data[0, :, :-1].T, color='blue', alpha=0.5, label='pure_load')
 plt.savefig('exp/data_process_for_data_collection_all/15minute_data.png')
