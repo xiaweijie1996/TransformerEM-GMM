@@ -1,0 +1,194 @@
+{
+    "os": "Linux-4.18.0-513.24.1.el8_9.x86_64-x86_64-with-glibc2.28",
+    "python": "3.11.7",
+    "heartbeatAt": "2024-08-12T18:37:53.572165",
+    "startedAt": "2024-08-12T18:37:52.734066",
+    "docker": null,
+    "cuda": null,
+    "args": [],
+    "state": "running",
+    "program": "/home/weijiexia/paper3/times_net_30mr_mmd/timesnet_model_30mr.py",
+    "codePathLocal": "timesnet_model_30mr.py",
+    "codePath": "timesnet_model_30mr.py",
+    "host": "login02",
+    "username": "weijiexia",
+    "executable": "/home/weijiexia/anaconda3/bin/python",
+    "cpu_count": 32,
+    "cpu_count_logical": 32,
+    "cpu_freq": {
+        "current": 3.861218750000002,
+        "min": 1200.0,
+        "max": 3900.0
+    },
+    "cpu_freq_per_core": [
+        {
+            "current": 2.957,
+            "min": 1200.0,
+            "max": 3900.0
+        },
+        {
+            "current": 3.9,
+            "min": 1200.0,
+            "max": 3900.0
+        },
+        {
+            "current": 3.9,
+            "min": 1200.0,
+            "max": 3900.0
+        },
+        {
+            "current": 3.9,
+            "min": 1200.0,
+            "max": 3900.0
+        },
+        {
+            "current": 3.9,
+            "min": 1200.0,
+            "max": 3900.0
+        },
+        {
+            "current": 3.9,
+            "min": 1200.0,
+            "max": 3900.0
+        },
+        {
+            "current": 3.9,
+            "min": 1200.0,
+            "max": 3900.0
+        },
+        {
+            "current": 3.9,
+            "min": 1200.0,
+            "max": 3900.0
+        },
+        {
+            "current": 3.9,
+            "min": 1200.0,
+            "max": 3900.0
+        },
+        {
+            "current": 3.9,
+            "min": 1200.0,
+            "max": 3900.0
+        },
+        {
+            "current": 3.9,
+            "min": 1200.0,
+            "max": 3900.0
+        },
+        {
+            "current": 3.9,
+            "min": 1200.0,
+            "max": 3900.0
+        },
+        {
+            "current": 3.9,
+            "min": 1200.0,
+            "max": 3900.0
+        },
+        {
+            "current": 3.9,
+            "min": 1200.0,
+            "max": 3900.0
+        },
+        {
+            "current": 3.9,
+            "min": 1200.0,
+            "max": 3900.0
+        },
+        {
+            "current": 3.9,
+            "min": 1200.0,
+            "max": 3900.0
+        },
+        {
+            "current": 3.9,
+            "min": 1200.0,
+            "max": 3900.0
+        },
+        {
+            "current": 3.9,
+            "min": 1200.0,
+            "max": 3900.0
+        },
+        {
+            "current": 3.9,
+            "min": 1200.0,
+            "max": 3900.0
+        },
+        {
+            "current": 3.9,
+            "min": 1200.0,
+            "max": 3900.0
+        },
+        {
+            "current": 3.9,
+            "min": 1200.0,
+            "max": 3900.0
+        },
+        {
+            "current": 3.9,
+            "min": 1200.0,
+            "max": 3900.0
+        },
+        {
+            "current": 3.9,
+            "min": 1200.0,
+            "max": 3900.0
+        },
+        {
+            "current": 3.9,
+            "min": 1200.0,
+            "max": 3900.0
+        },
+        {
+            "current": 3.9,
+            "min": 1200.0,
+            "max": 3900.0
+        },
+        {
+            "current": 3.9,
+            "min": 1200.0,
+            "max": 3900.0
+        },
+        {
+            "current": 3.9,
+            "min": 1200.0,
+            "max": 3900.0
+        },
+        {
+            "current": 3.9,
+            "min": 1200.0,
+            "max": 3900.0
+        },
+        {
+            "current": 3.9,
+            "min": 1200.0,
+            "max": 3900.0
+        },
+        {
+            "current": 3.9,
+            "min": 1200.0,
+            "max": 3900.0
+        },
+        {
+            "current": 3.9,
+            "min": 1200.0,
+            "max": 3900.0
+        },
+        {
+            "current": 3.393,
+            "min": 1200.0,
+            "max": 3900.0
+        }
+    ],
+    "disk": {
+        "/": {
+            "total": 31.201126098632812,
+            "used": 10.137435913085938
+        }
+    },
+    "memory": {
+        "total": 376.4814682006836
+    }
+}

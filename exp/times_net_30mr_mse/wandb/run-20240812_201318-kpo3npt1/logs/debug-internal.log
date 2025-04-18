@@ -1,0 +1,373 @@
+2024-08-12 20:13:18,116 INFO    StreamThr :3501854 [internal.py:wandb_internal():86] W&B internal server running at pid: 3501854, started at: 2024-08-12 20:13:18.115833
+2024-08-12 20:13:18,117 DEBUG   HandlerThread:3501854 [handler.py:handle_request():146] handle_request: status
+2024-08-12 20:13:18,145 INFO    WriterThread:3501854 [datastore.py:open_for_write():87] open: /home/weijiexia/paper3/times_net_30mr/wandb/run-20240812_201318-kpo3npt1/run-kpo3npt1.wandb
+2024-08-12 20:13:18,151 DEBUG   SenderThread:3501854 [sender.py:send():379] send: header
+2024-08-12 20:13:18,151 DEBUG   SenderThread:3501854 [sender.py:send():379] send: run
+2024-08-12 20:13:18,663 INFO    SenderThread:3501854 [dir_watcher.py:__init__():211] watching files in: /home/weijiexia/paper3/times_net_30mr/wandb/run-20240812_201318-kpo3npt1/files
+2024-08-12 20:13:18,664 INFO    SenderThread:3501854 [sender.py:_start_run_threads():1124] run started: kpo3npt1 with start time 1723486398.138658
+2024-08-12 20:13:18,684 DEBUG   HandlerThread:3501854 [handler.py:handle_request():146] handle_request: check_version
+2024-08-12 20:13:18,684 DEBUG   SenderThread:3501854 [sender.py:send_request():406] send_request: check_version
+2024-08-12 20:13:18,862 DEBUG   HandlerThread:3501854 [handler.py:handle_request():146] handle_request: run_start
+2024-08-12 20:13:18,868 DEBUG   HandlerThread:3501854 [system_info.py:__init__():26] System info init
+2024-08-12 20:13:18,869 DEBUG   HandlerThread:3501854 [system_info.py:__init__():41] System info init done
+2024-08-12 20:13:18,869 INFO    HandlerThread:3501854 [system_monitor.py:start():194] Starting system monitor
+2024-08-12 20:13:18,869 INFO    SystemMonitor:3501854 [system_monitor.py:_start():158] Starting system asset monitoring threads
+2024-08-12 20:13:18,869 INFO    HandlerThread:3501854 [system_monitor.py:probe():214] Collecting system info
+2024-08-12 20:13:18,869 INFO    SystemMonitor:3501854 [interfaces.py:start():190] Started cpu monitoring
+2024-08-12 20:13:18,870 INFO    SystemMonitor:3501854 [interfaces.py:start():190] Started disk monitoring
+2024-08-12 20:13:18,870 INFO    SystemMonitor:3501854 [interfaces.py:start():190] Started memory monitoring
+2024-08-12 20:13:18,871 INFO    SystemMonitor:3501854 [interfaces.py:start():190] Started network monitoring
+2024-08-12 20:13:18,889 DEBUG   HandlerThread:3501854 [system_info.py:probe():150] Probing system
+2024-08-12 20:13:18,964 DEBUG   HandlerThread:3501854 [gitlib.py:_init_repo():56] git repository is invalid
+2024-08-12 20:13:18,965 DEBUG   HandlerThread:3501854 [system_info.py:probe():198] Probing system done
+2024-08-12 20:13:18,965 DEBUG   HandlerThread:3501854 [system_monitor.py:probe():223] {'os': 'Linux-4.18.0-513.24.1.el8_9.x86_64-x86_64-with-glibc2.28', 'python': '3.11.7', 'heartbeatAt': '2024-08-12T18:13:18.890105', 'startedAt': '2024-08-12T18:13:18.027327', 'docker': None, 'cuda': None, 'args': (), 'state': 'running', 'program': '/home/weijiexia/paper3/times_net_30mr/timesnet_model.py', 'codePathLocal': 'timesnet_model.py', 'codePath': 'timesnet_model.py', 'host': 'login02', 'username': 'weijiexia', 'executable': '/home/weijiexia/anaconda3/bin/python', 'cpu_count': 32, 'cpu_count_logical': 32, 'cpu_freq': {'current': 3.8585625000000023, 'min': 1200.0, 'max': 3900.0}, 'cpu_freq_per_core': [{'current': 3.9, 'min': 1200.0, 'max': 3900.0}, {'current': 3.9, 'min': 1200.0, 'max': 3900.0}, {'current': 3.9, 'min': 1200.0, 'max': 3900.0}, {'current': 3.9, 'min': 1200.0, 'max': 3900.0}, {'current': 3.9, 'min': 1200.0, 'max': 3900.0}, {'current': 3.9, 'min': 1200.0, 'max': 3900.0}, {'current': 3.9, 'min': 1200.0, 'max': 3900.0}, {'current': 3.9, 'min': 1200.0, 'max': 3900.0}, {'current': 3.9, 'min': 1200.0, 'max': 3900.0}, {'current': 3.9, 'min': 1200.0, 'max': 3900.0}, {'current': 3.9, 'min': 1200.0, 'max': 3900.0}, {'current': 3.9, 'min': 1200.0, 'max': 3900.0}, {'current': 3.9, 'min': 1200.0, 'max': 3900.0}, {'current': 3.9, 'min': 1200.0, 'max': 3900.0}, {'current': 2.921, 'min': 1200.0, 'max': 3900.0}, {'current': 3.553, 'min': 1200.0, 'max': 3900.0}, {'current': 3.9, 'min': 1200.0, 'max': 3900.0}, {'current': 3.9, 'min': 1200.0, 'max': 3900.0}, {'current': 3.9, 'min': 1200.0, 'max': 3900.0}, {'current': 3.9, 'min': 1200.0, 'max': 3900.0}, {'current': 3.9, 'min': 1200.0, 'max': 3900.0}, {'current': 3.9, 'min': 1200.0, 'max': 3900.0}, {'current': 3.9, 'min': 1200.0, 'max': 3900.0}, {'current': 3.9, 'min': 1200.0, 'max': 3900.0}, {'current': 3.9, 'min': 1200.0, 'max': 3900.0}, {'current': 3.9, 'min': 1200.0, 'max': 3900.0}, {'current': 3.9, 'min': 1200.0, 'max': 3900.0}, {'current': 3.9, 'min': 1200.0, 'max': 3900.0}, {'current': 3.9, 'min': 1200.0, 'max': 3900.0}, {'current': 3.9, 'min': 1200.0, 'max': 3900.0}, {'current': 3.9, 'min': 1200.0, 'max': 3900.0}, {'current': 3.9, 'min': 1200.0, 'max': 3900.0}], 'disk': {'/': {'total': 31.201126098632812, 'used': 10.137439727783203}}, 'memory': {'total': 376.4814682006836}}
+2024-08-12 20:13:18,965 INFO    HandlerThread:3501854 [system_monitor.py:probe():224] Finished collecting system info
+2024-08-12 20:13:18,965 INFO    HandlerThread:3501854 [system_monitor.py:probe():227] Publishing system info
+2024-08-12 20:13:18,966 DEBUG   HandlerThread:3501854 [system_info.py:_save_conda():207] Saving list of conda packages installed into the current environment
+2024-08-12 20:13:19,670 INFO    Thread-12 :3501854 [dir_watcher.py:_on_file_created():271] file/dir created: /home/weijiexia/paper3/times_net_30mr/wandb/run-20240812_201318-kpo3npt1/files/conda-environment.yaml
+2024-08-12 20:13:28,411 DEBUG   HandlerThread:3501854 [system_info.py:_save_conda():222] Saving conda packages done
+2024-08-12 20:13:28,422 INFO    HandlerThread:3501854 [system_monitor.py:probe():229] Finished publishing system info
+2024-08-12 20:13:28,454 DEBUG   HandlerThread:3501854 [handler.py:handle_request():146] handle_request: status_report
+2024-08-12 20:13:28,454 DEBUG   HandlerThread:3501854 [handler.py:handle_request():146] handle_request: keepalive
+2024-08-12 20:13:28,454 DEBUG   SenderThread:3501854 [sender.py:send():379] send: files
+2024-08-12 20:13:28,454 INFO    SenderThread:3501854 [sender.py:_save_file():1390] saving file wandb-metadata.json with policy now
+2024-08-12 20:13:28,746 INFO    Thread-12 :3501854 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/weijiexia/paper3/times_net_30mr/wandb/run-20240812_201318-kpo3npt1/files/conda-environment.yaml
+2024-08-12 20:13:28,747 INFO    Thread-12 :3501854 [dir_watcher.py:_on_file_created():271] file/dir created: /home/weijiexia/paper3/times_net_30mr/wandb/run-20240812_201318-kpo3npt1/files/wandb-metadata.json
+2024-08-12 20:13:28,964 INFO    wandb-upload_0:3501854 [upload_job.py:push():131] Uploaded file /tmp/tmpc8_dj8a0wandb/i0wl2fxy-wandb-metadata.json
+2024-08-12 20:13:29,459 DEBUG   HandlerThread:3501854 [handler.py:handle_request():146] handle_request: status_report
+2024-08-12 20:13:29,591 DEBUG   HandlerThread:3501854 [handler.py:handle_request():146] handle_request: python_packages
+2024-08-12 20:13:29,592 DEBUG   SenderThread:3501854 [sender.py:send_request():406] send_request: python_packages
+2024-08-12 20:13:29,592 DEBUG   HandlerThread:3501854 [handler.py:handle_request():146] handle_request: stop_status
+2024-08-12 20:13:29,593 DEBUG   HandlerThread:3501854 [handler.py:handle_request():146] handle_request: internal_messages
+2024-08-12 20:13:29,599 DEBUG   SenderThread:3501854 [sender.py:send_request():406] send_request: stop_status
+2024-08-12 20:13:29,761 DEBUG   HandlerThread:3501854 [handler.py:handle_request():146] handle_request: partial_history
+2024-08-12 20:13:29,764 INFO    Thread-12 :3501854 [dir_watcher.py:_on_file_created():271] file/dir created: /home/weijiexia/paper3/times_net_30mr/wandb/run-20240812_201318-kpo3npt1/files/requirements.txt
+2024-08-12 20:13:29,832 DEBUG   SenderThread:3501854 [sender.py:send():379] send: telemetry
+2024-08-12 20:13:29,833 DEBUG   SenderThread:3501854 [sender.py:send():379] send: history
+2024-08-12 20:13:29,833 DEBUG   SenderThread:3501854 [sender.py:send_request():406] send_request: summary_record
+2024-08-12 20:13:29,840 INFO    SenderThread:3501854 [sender.py:_save_file():1390] saving file wandb-summary.json with policy end
+2024-08-12 20:13:30,773 INFO    Thread-12 :3501854 [dir_watcher.py:_on_file_created():271] file/dir created: /home/weijiexia/paper3/times_net_30mr/wandb/run-20240812_201318-kpo3npt1/files/wandb-summary.json
+2024-08-12 20:13:32,416 DEBUG   HandlerThread:3501854 [handler.py:handle_request():146] handle_request: partial_history
+2024-08-12 20:13:32,417 DEBUG   SenderThread:3501854 [sender.py:send():379] send: history
+2024-08-12 20:13:32,418 DEBUG   SenderThread:3501854 [sender.py:send_request():406] send_request: summary_record
+2024-08-12 20:13:32,426 INFO    SenderThread:3501854 [sender.py:_save_file():1390] saving file wandb-summary.json with policy end
+2024-08-12 20:13:32,799 INFO    Thread-12 :3501854 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/weijiexia/paper3/times_net_30mr/wandb/run-20240812_201318-kpo3npt1/files/wandb-summary.json
+2024-08-12 20:13:32,802 INFO    Thread-12 :3501854 [dir_watcher.py:_on_file_created():271] file/dir created: /home/weijiexia/paper3/times_net_30mr/wandb/run-20240812_201318-kpo3npt1/files/output.log
+2024-08-12 20:13:34,824 INFO    Thread-12 :3501854 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/weijiexia/paper3/times_net_30mr/wandb/run-20240812_201318-kpo3npt1/files/output.log
+2024-08-12 20:13:35,435 DEBUG   HandlerThread:3501854 [handler.py:handle_request():146] handle_request: status_report
+2024-08-12 20:13:40,260 DEBUG   HandlerThread:3501854 [handler.py:handle_request():146] handle_request: partial_history
+2024-08-12 20:13:40,260 DEBUG   SenderThread:3501854 [sender.py:send():379] send: history
+2024-08-12 20:13:40,261 DEBUG   SenderThread:3501854 [sender.py:send_request():406] send_request: summary_record
+2024-08-12 20:13:40,269 INFO    SenderThread:3501854 [sender.py:_save_file():1390] saving file wandb-summary.json with policy end
+2024-08-12 20:13:40,899 INFO    Thread-12 :3501854 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/weijiexia/paper3/times_net_30mr/wandb/run-20240812_201318-kpo3npt1/files/wandb-summary.json
+2024-08-12 20:13:41,271 DEBUG   HandlerThread:3501854 [handler.py:handle_request():146] handle_request: status_report
+2024-08-12 20:13:42,989 DEBUG   HandlerThread:3501854 [handler.py:handle_request():146] handle_request: partial_history
+2024-08-12 20:13:42,990 DEBUG   SenderThread:3501854 [sender.py:send():379] send: history
+2024-08-12 20:13:42,990 DEBUG   SenderThread:3501854 [sender.py:send_request():406] send_request: summary_record
+2024-08-12 20:13:42,998 INFO    SenderThread:3501854 [sender.py:_save_file():1390] saving file wandb-summary.json with policy end
+2024-08-12 20:13:43,935 INFO    Thread-12 :3501854 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/weijiexia/paper3/times_net_30mr/wandb/run-20240812_201318-kpo3npt1/files/wandb-summary.json
+2024-08-12 20:13:44,594 DEBUG   HandlerThread:3501854 [handler.py:handle_request():146] handle_request: stop_status
+2024-08-12 20:13:44,595 DEBUG   HandlerThread:3501854 [handler.py:handle_request():146] handle_request: internal_messages
+2024-08-12 20:13:44,595 DEBUG   SenderThread:3501854 [sender.py:send_request():406] send_request: stop_status
+2024-08-12 20:13:44,947 INFO    Thread-12 :3501854 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/weijiexia/paper3/times_net_30mr/wandb/run-20240812_201318-kpo3npt1/files/output.log
+2024-08-12 20:13:46,737 DEBUG   HandlerThread:3501854 [handler.py:handle_request():146] handle_request: status_report
+2024-08-12 20:13:51,211 DEBUG   HandlerThread:3501854 [handler.py:handle_request():146] handle_request: partial_history
+2024-08-12 20:13:51,211 DEBUG   SenderThread:3501854 [sender.py:send():379] send: history
+2024-08-12 20:13:51,212 DEBUG   SenderThread:3501854 [sender.py:send_request():406] send_request: summary_record
+2024-08-12 20:13:51,220 INFO    SenderThread:3501854 [sender.py:_save_file():1390] saving file wandb-summary.json with policy end
+2024-08-12 20:13:52,030 INFO    Thread-12 :3501854 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/weijiexia/paper3/times_net_30mr/wandb/run-20240812_201318-kpo3npt1/files/wandb-summary.json
+2024-08-12 20:13:52,224 DEBUG   HandlerThread:3501854 [handler.py:handle_request():146] handle_request: status_report
+2024-08-12 20:13:52,641 DEBUG   HandlerThread:3501854 [handler.py:handle_request():146] handle_request: partial_history
+2024-08-12 20:13:52,642 DEBUG   SenderThread:3501854 [sender.py:send():379] send: history
+2024-08-12 20:13:52,642 DEBUG   SenderThread:3501854 [sender.py:send_request():406] send_request: summary_record
+2024-08-12 20:13:52,649 INFO    SenderThread:3501854 [sender.py:_save_file():1390] saving file wandb-summary.json with policy end
+2024-08-12 20:13:53,043 INFO    Thread-12 :3501854 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/weijiexia/paper3/times_net_30mr/wandb/run-20240812_201318-kpo3npt1/files/config.yaml
+2024-08-12 20:13:53,044 INFO    Thread-12 :3501854 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/weijiexia/paper3/times_net_30mr/wandb/run-20240812_201318-kpo3npt1/files/wandb-summary.json
+2024-08-12 20:13:55,068 INFO    Thread-12 :3501854 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/weijiexia/paper3/times_net_30mr/wandb/run-20240812_201318-kpo3npt1/files/output.log
+2024-08-12 20:13:57,652 DEBUG   HandlerThread:3501854 [handler.py:handle_request():146] handle_request: status_report
+2024-08-12 20:13:59,594 DEBUG   HandlerThread:3501854 [handler.py:handle_request():146] handle_request: stop_status
+2024-08-12 20:13:59,595 DEBUG   HandlerThread:3501854 [handler.py:handle_request():146] handle_request: internal_messages
+2024-08-12 20:13:59,595 DEBUG   SenderThread:3501854 [sender.py:send_request():406] send_request: stop_status
+2024-08-12 20:14:00,359 DEBUG   HandlerThread:3501854 [handler.py:handle_request():146] handle_request: partial_history
+2024-08-12 20:14:00,360 DEBUG   SenderThread:3501854 [sender.py:send():379] send: history
+2024-08-12 20:14:00,360 DEBUG   SenderThread:3501854 [sender.py:send_request():406] send_request: summary_record
+2024-08-12 20:14:00,370 INFO    SenderThread:3501854 [sender.py:_save_file():1390] saving file wandb-summary.json with policy end
+2024-08-12 20:14:01,144 INFO    Thread-12 :3501854 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/weijiexia/paper3/times_net_30mr/wandb/run-20240812_201318-kpo3npt1/files/wandb-summary.json
+2024-08-12 20:14:02,115 DEBUG   HandlerThread:3501854 [handler.py:handle_request():146] handle_request: partial_history
+2024-08-12 20:14:02,115 DEBUG   SenderThread:3501854 [sender.py:send():379] send: history
+2024-08-12 20:14:02,116 DEBUG   SenderThread:3501854 [sender.py:send_request():406] send_request: summary_record
+2024-08-12 20:14:02,123 INFO    SenderThread:3501854 [sender.py:_save_file():1390] saving file wandb-summary.json with policy end
+2024-08-12 20:14:02,156 INFO    Thread-12 :3501854 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/weijiexia/paper3/times_net_30mr/wandb/run-20240812_201318-kpo3npt1/files/wandb-summary.json
+2024-08-12 20:14:03,125 DEBUG   HandlerThread:3501854 [handler.py:handle_request():146] handle_request: status_report
+2024-08-12 20:14:05,197 INFO    Thread-12 :3501854 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/weijiexia/paper3/times_net_30mr/wandb/run-20240812_201318-kpo3npt1/files/output.log
+2024-08-12 20:14:08,126 DEBUG   HandlerThread:3501854 [handler.py:handle_request():146] handle_request: status_report
+2024-08-12 20:14:10,698 DEBUG   HandlerThread:3501854 [handler.py:handle_request():146] handle_request: partial_history
+2024-08-12 20:14:10,699 DEBUG   SenderThread:3501854 [sender.py:send():379] send: history
+2024-08-12 20:14:10,699 DEBUG   SenderThread:3501854 [sender.py:send_request():406] send_request: summary_record
+2024-08-12 20:14:10,707 INFO    SenderThread:3501854 [sender.py:_save_file():1390] saving file wandb-summary.json with policy end
+2024-08-12 20:14:11,270 INFO    Thread-12 :3501854 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/weijiexia/paper3/times_net_30mr/wandb/run-20240812_201318-kpo3npt1/files/wandb-summary.json
+2024-08-12 20:14:12,180 DEBUG   HandlerThread:3501854 [handler.py:handle_request():146] handle_request: partial_history
+2024-08-12 20:14:12,180 DEBUG   SenderThread:3501854 [sender.py:send():379] send: history
+2024-08-12 20:14:12,181 DEBUG   SenderThread:3501854 [sender.py:send_request():406] send_request: summary_record
+2024-08-12 20:14:12,188 INFO    SenderThread:3501854 [sender.py:_save_file():1390] saving file wandb-summary.json with policy end
+2024-08-12 20:14:12,282 INFO    Thread-12 :3501854 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/weijiexia/paper3/times_net_30mr/wandb/run-20240812_201318-kpo3npt1/files/wandb-summary.json
+2024-08-12 20:14:13,190 DEBUG   HandlerThread:3501854 [handler.py:handle_request():146] handle_request: status_report
+2024-08-12 20:14:14,594 DEBUG   HandlerThread:3501854 [handler.py:handle_request():146] handle_request: stop_status
+2024-08-12 20:14:14,595 DEBUG   SenderThread:3501854 [sender.py:send_request():406] send_request: stop_status
+2024-08-12 20:14:14,595 DEBUG   HandlerThread:3501854 [handler.py:handle_request():146] handle_request: internal_messages
+2024-08-12 20:14:15,318 INFO    Thread-12 :3501854 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/weijiexia/paper3/times_net_30mr/wandb/run-20240812_201318-kpo3npt1/files/output.log
+2024-08-12 20:14:18,753 DEBUG   HandlerThread:3501854 [handler.py:handle_request():146] handle_request: status_report
+2024-08-12 20:14:18,871 DEBUG   SystemMonitor:3501854 [system_monitor.py:_start():172] Starting system metrics aggregation loop
+2024-08-12 20:14:18,873 DEBUG   SenderThread:3501854 [sender.py:send():379] send: stats
+2024-08-12 20:14:19,899 DEBUG   HandlerThread:3501854 [handler.py:handle_request():146] handle_request: partial_history
+2024-08-12 20:14:19,900 DEBUG   SenderThread:3501854 [sender.py:send():379] send: history
+2024-08-12 20:14:19,900 DEBUG   SenderThread:3501854 [sender.py:send_request():406] send_request: summary_record
+2024-08-12 20:14:19,907 INFO    SenderThread:3501854 [sender.py:_save_file():1390] saving file wandb-summary.json with policy end
+2024-08-12 20:14:20,380 INFO    Thread-12 :3501854 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/weijiexia/paper3/times_net_30mr/wandb/run-20240812_201318-kpo3npt1/files/wandb-summary.json
+2024-08-12 20:14:21,335 DEBUG   HandlerThread:3501854 [handler.py:handle_request():146] handle_request: partial_history
+2024-08-12 20:14:21,335 DEBUG   SenderThread:3501854 [sender.py:send():379] send: history
+2024-08-12 20:14:21,336 DEBUG   SenderThread:3501854 [sender.py:send_request():406] send_request: summary_record
+2024-08-12 20:14:21,343 INFO    SenderThread:3501854 [sender.py:_save_file():1390] saving file wandb-summary.json with policy end
+2024-08-12 20:14:21,394 INFO    Thread-12 :3501854 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/weijiexia/paper3/times_net_30mr/wandb/run-20240812_201318-kpo3npt1/files/wandb-summary.json
+2024-08-12 20:14:23,421 INFO    Thread-12 :3501854 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/weijiexia/paper3/times_net_30mr/wandb/run-20240812_201318-kpo3npt1/files/output.log
+2024-08-12 20:14:24,346 DEBUG   HandlerThread:3501854 [handler.py:handle_request():146] handle_request: status_report
+2024-08-12 20:14:29,347 DEBUG   HandlerThread:3501854 [handler.py:handle_request():146] handle_request: status_report
+2024-08-12 20:14:29,594 DEBUG   HandlerThread:3501854 [handler.py:handle_request():146] handle_request: stop_status
+2024-08-12 20:14:29,594 DEBUG   SenderThread:3501854 [sender.py:send_request():406] send_request: stop_status
+2024-08-12 20:14:29,594 DEBUG   HandlerThread:3501854 [handler.py:handle_request():146] handle_request: internal_messages
+2024-08-12 20:14:31,559 DEBUG   HandlerThread:3501854 [handler.py:handle_request():146] handle_request: pause
+2024-08-12 20:14:31,560 INFO    HandlerThread:3501854 [handler.py:handle_request_pause():708] stopping system metrics thread
+2024-08-12 20:14:31,560 INFO    HandlerThread:3501854 [system_monitor.py:finish():203] Stopping system monitor
+2024-08-12 20:14:31,560 DEBUG   SystemMonitor:3501854 [system_monitor.py:_start():179] Finished system metrics aggregation loop
+2024-08-12 20:14:31,561 DEBUG   SystemMonitor:3501854 [system_monitor.py:_start():183] Publishing last batch of metrics
+2024-08-12 20:14:31,561 INFO    HandlerThread:3501854 [interfaces.py:finish():202] Joined cpu monitor
+2024-08-12 20:14:31,561 INFO    HandlerThread:3501854 [interfaces.py:finish():202] Joined disk monitor
+2024-08-12 20:14:31,562 INFO    HandlerThread:3501854 [interfaces.py:finish():202] Joined memory monitor
+2024-08-12 20:14:31,562 INFO    HandlerThread:3501854 [interfaces.py:finish():202] Joined network monitor
+2024-08-12 20:14:31,562 DEBUG   SenderThread:3501854 [sender.py:send():379] send: stats
+2024-08-12 20:14:31,784 DEBUG   HandlerThread:3501854 [handler.py:handle_request():146] handle_request: resume
+2024-08-12 20:14:31,784 INFO    HandlerThread:3501854 [handler.py:handle_request_resume():699] starting system metrics thread
+2024-08-12 20:14:31,784 INFO    HandlerThread:3501854 [system_monitor.py:start():194] Starting system monitor
+2024-08-12 20:14:31,784 INFO    SystemMonitor:3501854 [system_monitor.py:_start():158] Starting system asset monitoring threads
+2024-08-12 20:14:31,785 INFO    SystemMonitor:3501854 [interfaces.py:start():190] Started cpu monitoring
+2024-08-12 20:14:31,785 INFO    SystemMonitor:3501854 [interfaces.py:start():190] Started disk monitoring
+2024-08-12 20:14:31,785 INFO    SystemMonitor:3501854 [interfaces.py:start():190] Started memory monitoring
+2024-08-12 20:14:31,786 INFO    SystemMonitor:3501854 [interfaces.py:start():190] Started network monitoring
+2024-08-12 20:14:31,790 DEBUG   HandlerThread:3501854 [handler.py:handle_request():146] handle_request: pause
+2024-08-12 20:14:31,790 INFO    HandlerThread:3501854 [handler.py:handle_request_pause():708] stopping system metrics thread
+2024-08-12 20:14:31,790 INFO    HandlerThread:3501854 [system_monitor.py:finish():203] Stopping system monitor
+2024-08-12 20:14:31,790 DEBUG   SystemMonitor:3501854 [system_monitor.py:_start():172] Starting system metrics aggregation loop
+2024-08-12 20:14:31,791 INFO    HandlerThread:3501854 [interfaces.py:finish():202] Joined cpu monitor
+2024-08-12 20:14:31,791 DEBUG   SystemMonitor:3501854 [system_monitor.py:_start():179] Finished system metrics aggregation loop
+2024-08-12 20:14:31,791 INFO    HandlerThread:3501854 [interfaces.py:finish():202] Joined disk monitor
+2024-08-12 20:14:31,791 DEBUG   SystemMonitor:3501854 [system_monitor.py:_start():183] Publishing last batch of metrics
+2024-08-12 20:14:31,791 INFO    HandlerThread:3501854 [interfaces.py:finish():202] Joined memory monitor
+2024-08-12 20:14:31,792 INFO    HandlerThread:3501854 [interfaces.py:finish():202] Joined network monitor
+2024-08-12 20:14:31,792 DEBUG   SenderThread:3501854 [sender.py:send():379] send: stats
+2024-08-12 20:14:31,815 DEBUG   HandlerThread:3501854 [handler.py:handle_request():146] handle_request: resume
+2024-08-12 20:14:31,815 INFO    HandlerThread:3501854 [handler.py:handle_request_resume():699] starting system metrics thread
+2024-08-12 20:14:31,815 INFO    HandlerThread:3501854 [system_monitor.py:start():194] Starting system monitor
+2024-08-12 20:14:31,815 INFO    SystemMonitor:3501854 [system_monitor.py:_start():158] Starting system asset monitoring threads
+2024-08-12 20:14:31,816 INFO    SystemMonitor:3501854 [interfaces.py:start():190] Started cpu monitoring
+2024-08-12 20:14:31,816 INFO    SystemMonitor:3501854 [interfaces.py:start():190] Started disk monitoring
+2024-08-12 20:14:31,816 INFO    SystemMonitor:3501854 [interfaces.py:start():190] Started memory monitoring
+2024-08-12 20:14:31,817 INFO    SystemMonitor:3501854 [interfaces.py:start():190] Started network monitoring
+2024-08-12 20:14:31,821 DEBUG   HandlerThread:3501854 [handler.py:handle_request():146] handle_request: pause
+2024-08-12 20:14:31,821 INFO    HandlerThread:3501854 [handler.py:handle_request_pause():708] stopping system metrics thread
+2024-08-12 20:14:31,821 INFO    HandlerThread:3501854 [system_monitor.py:finish():203] Stopping system monitor
+2024-08-12 20:14:31,821 DEBUG   SystemMonitor:3501854 [system_monitor.py:_start():172] Starting system metrics aggregation loop
+2024-08-12 20:14:31,821 INFO    HandlerThread:3501854 [interfaces.py:finish():202] Joined cpu monitor
+2024-08-12 20:14:31,821 DEBUG   SystemMonitor:3501854 [system_monitor.py:_start():179] Finished system metrics aggregation loop
+2024-08-12 20:14:31,822 INFO    HandlerThread:3501854 [interfaces.py:finish():202] Joined disk monitor
+2024-08-12 20:14:31,822 DEBUG   SystemMonitor:3501854 [system_monitor.py:_start():183] Publishing last batch of metrics
+2024-08-12 20:14:31,822 INFO    HandlerThread:3501854 [interfaces.py:finish():202] Joined memory monitor
+2024-08-12 20:14:31,823 INFO    HandlerThread:3501854 [interfaces.py:finish():202] Joined network monitor
+2024-08-12 20:14:31,823 DEBUG   SenderThread:3501854 [sender.py:send():379] send: stats
+2024-08-12 20:14:31,846 DEBUG   HandlerThread:3501854 [handler.py:handle_request():146] handle_request: resume
+2024-08-12 20:14:31,846 INFO    HandlerThread:3501854 [handler.py:handle_request_resume():699] starting system metrics thread
+2024-08-12 20:14:31,846 INFO    HandlerThread:3501854 [system_monitor.py:start():194] Starting system monitor
+2024-08-12 20:14:31,846 INFO    SystemMonitor:3501854 [system_monitor.py:_start():158] Starting system asset monitoring threads
+2024-08-12 20:14:31,846 INFO    SystemMonitor:3501854 [interfaces.py:start():190] Started cpu monitoring
+2024-08-12 20:14:31,847 INFO    SystemMonitor:3501854 [interfaces.py:start():190] Started disk monitoring
+2024-08-12 20:14:31,847 INFO    SystemMonitor:3501854 [interfaces.py:start():190] Started memory monitoring
+2024-08-12 20:14:31,847 INFO    SystemMonitor:3501854 [interfaces.py:start():190] Started network monitoring
+2024-08-12 20:14:31,851 DEBUG   HandlerThread:3501854 [handler.py:handle_request():146] handle_request: pause
+2024-08-12 20:14:31,852 INFO    HandlerThread:3501854 [handler.py:handle_request_pause():708] stopping system metrics thread
+2024-08-12 20:14:31,852 INFO    HandlerThread:3501854 [system_monitor.py:finish():203] Stopping system monitor
+2024-08-12 20:14:31,852 DEBUG   SystemMonitor:3501854 [system_monitor.py:_start():172] Starting system metrics aggregation loop
+2024-08-12 20:14:31,852 INFO    HandlerThread:3501854 [interfaces.py:finish():202] Joined cpu monitor
+2024-08-12 20:14:31,852 DEBUG   SystemMonitor:3501854 [system_monitor.py:_start():179] Finished system metrics aggregation loop
+2024-08-12 20:14:31,852 INFO    HandlerThread:3501854 [interfaces.py:finish():202] Joined disk monitor
+2024-08-12 20:14:31,852 DEBUG   SystemMonitor:3501854 [system_monitor.py:_start():183] Publishing last batch of metrics
+2024-08-12 20:14:31,853 INFO    HandlerThread:3501854 [interfaces.py:finish():202] Joined memory monitor
+2024-08-12 20:14:31,853 INFO    HandlerThread:3501854 [interfaces.py:finish():202] Joined network monitor
+2024-08-12 20:14:31,853 DEBUG   SenderThread:3501854 [sender.py:send():379] send: stats
+2024-08-12 20:14:31,876 DEBUG   HandlerThread:3501854 [handler.py:handle_request():146] handle_request: resume
+2024-08-12 20:14:31,876 INFO    HandlerThread:3501854 [handler.py:handle_request_resume():699] starting system metrics thread
+2024-08-12 20:14:31,876 INFO    HandlerThread:3501854 [system_monitor.py:start():194] Starting system monitor
+2024-08-12 20:14:31,877 INFO    SystemMonitor:3501854 [system_monitor.py:_start():158] Starting system asset monitoring threads
+2024-08-12 20:14:31,877 INFO    SystemMonitor:3501854 [interfaces.py:start():190] Started cpu monitoring
+2024-08-12 20:14:31,877 INFO    SystemMonitor:3501854 [interfaces.py:start():190] Started disk monitoring
+2024-08-12 20:14:31,877 INFO    SystemMonitor:3501854 [interfaces.py:start():190] Started memory monitoring
+2024-08-12 20:14:31,878 INFO    SystemMonitor:3501854 [interfaces.py:start():190] Started network monitoring
+2024-08-12 20:14:31,882 DEBUG   HandlerThread:3501854 [handler.py:handle_request():146] handle_request: pause
+2024-08-12 20:14:31,882 INFO    HandlerThread:3501854 [handler.py:handle_request_pause():708] stopping system metrics thread
+2024-08-12 20:14:31,882 INFO    HandlerThread:3501854 [system_monitor.py:finish():203] Stopping system monitor
+2024-08-12 20:14:31,882 DEBUG   SystemMonitor:3501854 [system_monitor.py:_start():172] Starting system metrics aggregation loop
+2024-08-12 20:14:31,883 INFO    HandlerThread:3501854 [interfaces.py:finish():202] Joined cpu monitor
+2024-08-12 20:14:31,883 DEBUG   SystemMonitor:3501854 [system_monitor.py:_start():179] Finished system metrics aggregation loop
+2024-08-12 20:14:31,883 INFO    HandlerThread:3501854 [interfaces.py:finish():202] Joined disk monitor
+2024-08-12 20:14:31,883 DEBUG   SystemMonitor:3501854 [system_monitor.py:_start():183] Publishing last batch of metrics
+2024-08-12 20:14:31,883 INFO    HandlerThread:3501854 [interfaces.py:finish():202] Joined memory monitor
+2024-08-12 20:14:31,884 INFO    HandlerThread:3501854 [interfaces.py:finish():202] Joined network monitor
+2024-08-12 20:14:31,884 DEBUG   SenderThread:3501854 [sender.py:send():379] send: stats
+2024-08-12 20:14:32,549 INFO    Thread-12 :3501854 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/weijiexia/paper3/times_net_30mr/wandb/run-20240812_201318-kpo3npt1/files/output.log
+2024-08-12 20:14:34,885 DEBUG   HandlerThread:3501854 [handler.py:handle_request():146] handle_request: status_report
+2024-08-12 20:14:39,886 DEBUG   HandlerThread:3501854 [handler.py:handle_request():146] handle_request: status_report
+2024-08-12 20:14:40,852 DEBUG   HandlerThread:3501854 [handler.py:handle_request():146] handle_request: resume
+2024-08-12 20:14:40,852 INFO    HandlerThread:3501854 [handler.py:handle_request_resume():699] starting system metrics thread
+2024-08-12 20:14:40,852 INFO    HandlerThread:3501854 [system_monitor.py:start():194] Starting system monitor
+2024-08-12 20:14:40,852 INFO    SystemMonitor:3501854 [system_monitor.py:_start():158] Starting system asset monitoring threads
+2024-08-12 20:14:40,853 INFO    SystemMonitor:3501854 [interfaces.py:start():190] Started cpu monitoring
+2024-08-12 20:14:40,853 INFO    SystemMonitor:3501854 [interfaces.py:start():190] Started disk monitoring
+2024-08-12 20:14:40,853 INFO    SystemMonitor:3501854 [interfaces.py:start():190] Started memory monitoring
+2024-08-12 20:14:40,854 INFO    SystemMonitor:3501854 [interfaces.py:start():190] Started network monitoring
+2024-08-12 20:14:42,687 INFO    Thread-12 :3501854 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/weijiexia/paper3/times_net_30mr/wandb/run-20240812_201318-kpo3npt1/files/output.log
+2024-08-12 20:14:44,594 DEBUG   HandlerThread:3501854 [handler.py:handle_request():146] handle_request: stop_status
+2024-08-12 20:14:44,594 DEBUG   SenderThread:3501854 [sender.py:send_request():406] send_request: stop_status
+2024-08-12 20:14:44,596 DEBUG   HandlerThread:3501854 [handler.py:handle_request():146] handle_request: internal_messages
+2024-08-12 20:14:44,766 DEBUG   SenderThread:3501854 [sender.py:send():379] send: telemetry
+2024-08-12 20:14:44,767 DEBUG   SenderThread:3501854 [sender.py:send():379] send: exit
+2024-08-12 20:14:44,767 INFO    SenderThread:3501854 [sender.py:send_exit():586] handling exit code: 0
+2024-08-12 20:14:44,768 INFO    SenderThread:3501854 [sender.py:send_exit():588] handling runtime: 76
+2024-08-12 20:14:44,773 INFO    SenderThread:3501854 [sender.py:_save_file():1390] saving file wandb-summary.json with policy end
+2024-08-12 20:14:44,774 INFO    SenderThread:3501854 [sender.py:send_exit():594] send defer
+2024-08-12 20:14:44,774 DEBUG   HandlerThread:3501854 [handler.py:handle_request():146] handle_request: defer
+2024-08-12 20:14:44,775 INFO    HandlerThread:3501854 [handler.py:handle_request_defer():172] handle defer: 0
+2024-08-12 20:14:44,775 DEBUG   SenderThread:3501854 [sender.py:send_request():406] send_request: defer
+2024-08-12 20:14:44,775 INFO    SenderThread:3501854 [sender.py:send_request_defer():610] handle sender defer: 0
+2024-08-12 20:14:44,775 INFO    SenderThread:3501854 [sender.py:transition_state():614] send defer: 1
+2024-08-12 20:14:44,775 DEBUG   HandlerThread:3501854 [handler.py:handle_request():146] handle_request: defer
+2024-08-12 20:14:44,775 INFO    HandlerThread:3501854 [handler.py:handle_request_defer():172] handle defer: 1
+2024-08-12 20:14:44,775 DEBUG   SenderThread:3501854 [sender.py:send_request():406] send_request: defer
+2024-08-12 20:14:44,776 INFO    SenderThread:3501854 [sender.py:send_request_defer():610] handle sender defer: 1
+2024-08-12 20:14:44,776 INFO    SenderThread:3501854 [sender.py:transition_state():614] send defer: 2
+2024-08-12 20:14:44,776 DEBUG   HandlerThread:3501854 [handler.py:handle_request():146] handle_request: defer
+2024-08-12 20:14:44,776 INFO    HandlerThread:3501854 [handler.py:handle_request_defer():172] handle defer: 2
+2024-08-12 20:14:44,776 INFO    HandlerThread:3501854 [system_monitor.py:finish():203] Stopping system monitor
+2024-08-12 20:14:44,776 DEBUG   SystemMonitor:3501854 [system_monitor.py:_start():172] Starting system metrics aggregation loop
+2024-08-12 20:14:44,777 INFO    HandlerThread:3501854 [interfaces.py:finish():202] Joined cpu monitor
+2024-08-12 20:14:44,777 DEBUG   SystemMonitor:3501854 [system_monitor.py:_start():179] Finished system metrics aggregation loop
+2024-08-12 20:14:44,777 INFO    HandlerThread:3501854 [interfaces.py:finish():202] Joined disk monitor
+2024-08-12 20:14:44,777 DEBUG   SystemMonitor:3501854 [system_monitor.py:_start():183] Publishing last batch of metrics
+2024-08-12 20:14:44,777 INFO    HandlerThread:3501854 [interfaces.py:finish():202] Joined memory monitor
+2024-08-12 20:14:44,778 INFO    HandlerThread:3501854 [interfaces.py:finish():202] Joined network monitor
+2024-08-12 20:14:44,778 DEBUG   SenderThread:3501854 [sender.py:send_request():406] send_request: defer
+2024-08-12 20:14:44,778 INFO    SenderThread:3501854 [sender.py:send_request_defer():610] handle sender defer: 2
+2024-08-12 20:14:44,778 INFO    SenderThread:3501854 [sender.py:transition_state():614] send defer: 3
+2024-08-12 20:14:44,779 DEBUG   SenderThread:3501854 [sender.py:send():379] send: stats
+2024-08-12 20:14:44,779 DEBUG   HandlerThread:3501854 [handler.py:handle_request():146] handle_request: defer
+2024-08-12 20:14:44,779 INFO    HandlerThread:3501854 [handler.py:handle_request_defer():172] handle defer: 3
+2024-08-12 20:14:44,779 DEBUG   SenderThread:3501854 [sender.py:send_request():406] send_request: defer
+2024-08-12 20:14:44,779 INFO    SenderThread:3501854 [sender.py:send_request_defer():610] handle sender defer: 3
+2024-08-12 20:14:44,780 INFO    SenderThread:3501854 [sender.py:transition_state():614] send defer: 4
+2024-08-12 20:14:44,780 DEBUG   HandlerThread:3501854 [handler.py:handle_request():146] handle_request: defer
+2024-08-12 20:14:44,780 INFO    HandlerThread:3501854 [handler.py:handle_request_defer():172] handle defer: 4
+2024-08-12 20:14:44,780 DEBUG   SenderThread:3501854 [sender.py:send_request():406] send_request: defer
+2024-08-12 20:14:44,780 INFO    SenderThread:3501854 [sender.py:send_request_defer():610] handle sender defer: 4
+2024-08-12 20:14:44,780 INFO    SenderThread:3501854 [sender.py:transition_state():614] send defer: 5
+2024-08-12 20:14:44,780 DEBUG   HandlerThread:3501854 [handler.py:handle_request():146] handle_request: defer
+2024-08-12 20:14:44,780 INFO    HandlerThread:3501854 [handler.py:handle_request_defer():172] handle defer: 5
+2024-08-12 20:14:44,781 DEBUG   SenderThread:3501854 [sender.py:send():379] send: summary
+2024-08-12 20:14:44,788 INFO    SenderThread:3501854 [sender.py:_save_file():1390] saving file wandb-summary.json with policy end
+2024-08-12 20:14:44,789 DEBUG   SenderThread:3501854 [sender.py:send_request():406] send_request: defer
+2024-08-12 20:14:44,789 INFO    SenderThread:3501854 [sender.py:send_request_defer():610] handle sender defer: 5
+2024-08-12 20:14:44,789 INFO    SenderThread:3501854 [sender.py:transition_state():614] send defer: 6
+2024-08-12 20:14:44,789 DEBUG   HandlerThread:3501854 [handler.py:handle_request():146] handle_request: defer
+2024-08-12 20:14:44,790 INFO    HandlerThread:3501854 [handler.py:handle_request_defer():172] handle defer: 6
+2024-08-12 20:14:44,790 DEBUG   SenderThread:3501854 [sender.py:send_request():406] send_request: defer
+2024-08-12 20:14:44,790 INFO    SenderThread:3501854 [sender.py:send_request_defer():610] handle sender defer: 6
+2024-08-12 20:14:44,792 DEBUG   HandlerThread:3501854 [handler.py:handle_request():146] handle_request: status_report
+2024-08-12 20:14:44,970 INFO    SenderThread:3501854 [sender.py:transition_state():614] send defer: 7
+2024-08-12 20:14:44,970 DEBUG   HandlerThread:3501854 [handler.py:handle_request():146] handle_request: defer
+2024-08-12 20:14:44,970 INFO    HandlerThread:3501854 [handler.py:handle_request_defer():172] handle defer: 7
+2024-08-12 20:14:44,970 DEBUG   SenderThread:3501854 [sender.py:send_request():406] send_request: defer
+2024-08-12 20:14:44,971 INFO    SenderThread:3501854 [sender.py:send_request_defer():610] handle sender defer: 7
+2024-08-12 20:14:45,724 INFO    Thread-12 :3501854 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/weijiexia/paper3/times_net_30mr/wandb/run-20240812_201318-kpo3npt1/files/config.yaml
+2024-08-12 20:14:45,725 INFO    Thread-12 :3501854 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/weijiexia/paper3/times_net_30mr/wandb/run-20240812_201318-kpo3npt1/files/wandb-summary.json
+2024-08-12 20:14:45,736 DEBUG   HandlerThread:3501854 [handler.py:handle_request():146] handle_request: poll_exit
+2024-08-12 20:14:46,476 INFO    SenderThread:3501854 [sender.py:transition_state():614] send defer: 8
+2024-08-12 20:14:46,476 DEBUG   SenderThread:3501854 [sender.py:send_request():406] send_request: poll_exit
+2024-08-12 20:14:46,476 DEBUG   HandlerThread:3501854 [handler.py:handle_request():146] handle_request: defer
+2024-08-12 20:14:46,477 INFO    HandlerThread:3501854 [handler.py:handle_request_defer():172] handle defer: 8
+2024-08-12 20:14:46,477 DEBUG   SenderThread:3501854 [sender.py:send_request():406] send_request: defer
+2024-08-12 20:14:46,477 INFO    SenderThread:3501854 [sender.py:send_request_defer():610] handle sender defer: 8
+2024-08-12 20:14:46,477 INFO    SenderThread:3501854 [job_builder.py:build():318] Attempting to build job artifact
+2024-08-12 20:14:46,483 INFO    SenderThread:3501854 [job_builder.py:_get_source_type():466] no source found
+2024-08-12 20:14:46,483 INFO    SenderThread:3501854 [sender.py:transition_state():614] send defer: 9
+2024-08-12 20:14:46,483 DEBUG   HandlerThread:3501854 [handler.py:handle_request():146] handle_request: defer
+2024-08-12 20:14:46,483 INFO    HandlerThread:3501854 [handler.py:handle_request_defer():172] handle defer: 9
+2024-08-12 20:14:46,484 DEBUG   SenderThread:3501854 [sender.py:send_request():406] send_request: defer
+2024-08-12 20:14:46,484 INFO    SenderThread:3501854 [sender.py:send_request_defer():610] handle sender defer: 9
+2024-08-12 20:14:46,484 INFO    SenderThread:3501854 [dir_watcher.py:finish():358] shutting down directory watcher
+2024-08-12 20:14:46,737 DEBUG   HandlerThread:3501854 [handler.py:handle_request():146] handle_request: poll_exit
+2024-08-12 20:14:46,739 INFO    SenderThread:3501854 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/weijiexia/paper3/times_net_30mr/wandb/run-20240812_201318-kpo3npt1/files/output.log
+2024-08-12 20:14:46,740 INFO    SenderThread:3501854 [dir_watcher.py:finish():388] scan: /home/weijiexia/paper3/times_net_30mr/wandb/run-20240812_201318-kpo3npt1/files
+2024-08-12 20:14:46,741 INFO    SenderThread:3501854 [dir_watcher.py:finish():402] scan save: /home/weijiexia/paper3/times_net_30mr/wandb/run-20240812_201318-kpo3npt1/files/wandb-summary.json wandb-summary.json
+2024-08-12 20:14:46,745 INFO    SenderThread:3501854 [dir_watcher.py:finish():402] scan save: /home/weijiexia/paper3/times_net_30mr/wandb/run-20240812_201318-kpo3npt1/files/requirements.txt requirements.txt
+2024-08-12 20:14:46,749 INFO    SenderThread:3501854 [dir_watcher.py:finish():402] scan save: /home/weijiexia/paper3/times_net_30mr/wandb/run-20240812_201318-kpo3npt1/files/wandb-metadata.json wandb-metadata.json
+2024-08-12 20:14:46,749 INFO    SenderThread:3501854 [dir_watcher.py:finish():402] scan save: /home/weijiexia/paper3/times_net_30mr/wandb/run-20240812_201318-kpo3npt1/files/conda-environment.yaml conda-environment.yaml
+2024-08-12 20:14:46,754 INFO    SenderThread:3501854 [dir_watcher.py:finish():402] scan save: /home/weijiexia/paper3/times_net_30mr/wandb/run-20240812_201318-kpo3npt1/files/output.log output.log
+2024-08-12 20:14:46,760 INFO    SenderThread:3501854 [dir_watcher.py:finish():402] scan save: /home/weijiexia/paper3/times_net_30mr/wandb/run-20240812_201318-kpo3npt1/files/config.yaml config.yaml
+2024-08-12 20:14:46,770 INFO    SenderThread:3501854 [sender.py:transition_state():614] send defer: 10
+2024-08-12 20:14:46,771 DEBUG   SenderThread:3501854 [sender.py:send_request():406] send_request: poll_exit
+2024-08-12 20:14:46,771 DEBUG   HandlerThread:3501854 [handler.py:handle_request():146] handle_request: defer
+2024-08-12 20:14:46,771 INFO    HandlerThread:3501854 [handler.py:handle_request_defer():172] handle defer: 10
+2024-08-12 20:14:46,771 DEBUG   SenderThread:3501854 [sender.py:send_request():406] send_request: defer
+2024-08-12 20:14:46,771 INFO    SenderThread:3501854 [sender.py:send_request_defer():610] handle sender defer: 10
+2024-08-12 20:14:46,773 INFO    SenderThread:3501854 [file_pusher.py:finish():172] shutting down file pusher
+2024-08-12 20:14:47,102 INFO    wandb-upload_0:3501854 [upload_job.py:push():131] Uploaded file /home/weijiexia/paper3/times_net_30mr/wandb/run-20240812_201318-kpo3npt1/files/wandb-summary.json
+2024-08-12 20:14:47,224 INFO    wandb-upload_1:3501854 [upload_job.py:push():131] Uploaded file /home/weijiexia/paper3/times_net_30mr/wandb/run-20240812_201318-kpo3npt1/files/requirements.txt
+2024-08-12 20:14:47,318 INFO    wandb-upload_4:3501854 [upload_job.py:push():131] Uploaded file /home/weijiexia/paper3/times_net_30mr/wandb/run-20240812_201318-kpo3npt1/files/config.yaml
+2024-08-12 20:14:47,343 INFO    wandb-upload_3:3501854 [upload_job.py:push():131] Uploaded file /home/weijiexia/paper3/times_net_30mr/wandb/run-20240812_201318-kpo3npt1/files/output.log
+2024-08-12 20:14:47,376 INFO    wandb-upload_2:3501854 [upload_job.py:push():131] Uploaded file /home/weijiexia/paper3/times_net_30mr/wandb/run-20240812_201318-kpo3npt1/files/conda-environment.yaml
+2024-08-12 20:14:47,577 INFO    Thread-11 (_thread_body):3501854 [sender.py:transition_state():614] send defer: 11
+2024-08-12 20:14:47,577 DEBUG   HandlerThread:3501854 [handler.py:handle_request():146] handle_request: defer
+2024-08-12 20:14:47,578 INFO    HandlerThread:3501854 [handler.py:handle_request_defer():172] handle defer: 11
+2024-08-12 20:14:47,578 DEBUG   SenderThread:3501854 [sender.py:send_request():406] send_request: defer
+2024-08-12 20:14:47,578 INFO    SenderThread:3501854 [sender.py:send_request_defer():610] handle sender defer: 11
+2024-08-12 20:14:47,578 INFO    SenderThread:3501854 [file_pusher.py:join():178] waiting for file pusher
+2024-08-12 20:14:47,578 INFO    SenderThread:3501854 [sender.py:transition_state():614] send defer: 12
+2024-08-12 20:14:47,579 DEBUG   HandlerThread:3501854 [handler.py:handle_request():146] handle_request: defer
+2024-08-12 20:14:47,579 INFO    HandlerThread:3501854 [handler.py:handle_request_defer():172] handle defer: 12
+2024-08-12 20:14:47,579 DEBUG   SenderThread:3501854 [sender.py:send_request():406] send_request: defer
+2024-08-12 20:14:47,579 INFO    SenderThread:3501854 [sender.py:send_request_defer():610] handle sender defer: 12
+2024-08-12 20:14:47,579 INFO    SenderThread:3501854 [file_stream.py:finish():614] file stream finish called
+2024-08-12 20:14:47,738 DEBUG   HandlerThread:3501854 [handler.py:handle_request():146] handle_request: poll_exit
+2024-08-12 20:14:48,015 INFO    SenderThread:3501854 [file_stream.py:finish():618] file stream finish is done
+2024-08-12 20:14:48,015 INFO    SenderThread:3501854 [sender.py:transition_state():614] send defer: 13
+2024-08-12 20:14:48,015 DEBUG   SenderThread:3501854 [sender.py:send_request():406] send_request: poll_exit
+2024-08-12 20:14:48,015 DEBUG   HandlerThread:3501854 [handler.py:handle_request():146] handle_request: defer
+2024-08-12 20:14:48,016 INFO    HandlerThread:3501854 [handler.py:handle_request_defer():172] handle defer: 13
+2024-08-12 20:14:48,016 DEBUG   SenderThread:3501854 [sender.py:send_request():406] send_request: defer
+2024-08-12 20:14:48,016 INFO    SenderThread:3501854 [sender.py:send_request_defer():610] handle sender defer: 13
+2024-08-12 20:14:48,016 INFO    SenderThread:3501854 [sender.py:transition_state():614] send defer: 14
+2024-08-12 20:14:48,016 DEBUG   SenderThread:3501854 [sender.py:send():379] send: final
+2024-08-12 20:14:48,016 DEBUG   HandlerThread:3501854 [handler.py:handle_request():146] handle_request: defer
+2024-08-12 20:14:48,016 DEBUG   SenderThread:3501854 [sender.py:send():379] send: footer
+2024-08-12 20:14:48,017 INFO    HandlerThread:3501854 [handler.py:handle_request_defer():172] handle defer: 14
+2024-08-12 20:14:48,017 DEBUG   SenderThread:3501854 [sender.py:send_request():406] send_request: defer
+2024-08-12 20:14:48,017 INFO    SenderThread:3501854 [sender.py:send_request_defer():610] handle sender defer: 14
+2024-08-12 20:14:48,018 DEBUG   HandlerThread:3501854 [handler.py:handle_request():146] handle_request: poll_exit
+2024-08-12 20:14:48,018 DEBUG   SenderThread:3501854 [sender.py:send_request():406] send_request: poll_exit
+2024-08-12 20:14:48,019 DEBUG   HandlerThread:3501854 [handler.py:handle_request():146] handle_request: internal_messages
+2024-08-12 20:14:48,019 DEBUG   HandlerThread:3501854 [handler.py:handle_request():146] handle_request: server_info
+2024-08-12 20:14:48,019 DEBUG   SenderThread:3501854 [sender.py:send_request():406] send_request: server_info
+2024-08-12 20:14:48,059 DEBUG   HandlerThread:3501854 [handler.py:handle_request():146] handle_request: get_summary
+2024-08-12 20:14:48,060 DEBUG   HandlerThread:3501854 [handler.py:handle_request():146] handle_request: sampled_history
+2024-08-12 20:14:48,132 DEBUG   HandlerThread:3501854 [handler.py:handle_request():146] handle_request: shutdown
+2024-08-12 20:14:48,133 INFO    HandlerThread:3501854 [handler.py:finish():866] shutting down handler
+2024-08-12 20:14:49,020 INFO    WriterThread:3501854 [datastore.py:close():296] close: /home/weijiexia/paper3/times_net_30mr/wandb/run-20240812_201318-kpo3npt1/run-kpo3npt1.wandb
+2024-08-12 20:14:49,132 INFO    SenderThread:3501854 [sender.py:finish():1546] shutting down sender
+2024-08-12 20:14:49,132 INFO    SenderThread:3501854 [file_pusher.py:finish():172] shutting down file pusher
+2024-08-12 20:14:49,132 INFO    SenderThread:3501854 [file_pusher.py:join():178] waiting for file pusher

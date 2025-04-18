@@ -1,0 +1,52 @@
+2024-08-13 12:32:25,604 INFO    StreamThr :2044326 [internal.py:wandb_internal():86] W&B internal server running at pid: 2044326, started at: 2024-08-13 12:32:25.603533
+2024-08-13 12:32:25,605 DEBUG   HandlerThread:2044326 [handler.py:handle_request():146] handle_request: status
+2024-08-13 12:32:25,617 INFO    WriterThread:2044326 [datastore.py:open_for_write():87] open: /home/weijiexia/paper3/mmd_vit_exp_abl_half/wandb/run-20240813_123225-1rlbcdl2/run-1rlbcdl2.wandb
+2024-08-13 12:32:25,617 DEBUG   SenderThread:2044326 [sender.py:send():379] send: header
+2024-08-13 12:32:25,618 DEBUG   SenderThread:2044326 [sender.py:send():379] send: run
+2024-08-13 12:32:25,987 INFO    SenderThread:2044326 [dir_watcher.py:__init__():211] watching files in: /home/weijiexia/paper3/mmd_vit_exp_abl_half/wandb/run-20240813_123225-1rlbcdl2/files
+2024-08-13 12:32:25,987 INFO    SenderThread:2044326 [sender.py:_start_run_threads():1124] run started: 1rlbcdl2 with start time 1723545145.604872
+2024-08-13 12:32:25,995 DEBUG   HandlerThread:2044326 [handler.py:handle_request():146] handle_request: check_version
+2024-08-13 12:32:25,995 DEBUG   SenderThread:2044326 [sender.py:send_request():406] send_request: check_version
+2024-08-13 12:32:26,058 DEBUG   HandlerThread:2044326 [handler.py:handle_request():146] handle_request: run_start
+2024-08-13 12:32:26,059 DEBUG   HandlerThread:2044326 [system_info.py:__init__():26] System info init
+2024-08-13 12:32:26,060 DEBUG   HandlerThread:2044326 [system_info.py:__init__():41] System info init done
+2024-08-13 12:32:26,060 INFO    HandlerThread:2044326 [system_monitor.py:start():194] Starting system monitor
+2024-08-13 12:32:26,060 INFO    SystemMonitor:2044326 [system_monitor.py:_start():158] Starting system asset monitoring threads
+2024-08-13 12:32:26,060 INFO    HandlerThread:2044326 [system_monitor.py:probe():214] Collecting system info
+2024-08-13 12:32:26,060 INFO    SystemMonitor:2044326 [interfaces.py:start():190] Started cpu monitoring
+2024-08-13 12:32:26,061 INFO    SystemMonitor:2044326 [interfaces.py:start():190] Started disk monitoring
+2024-08-13 12:32:26,062 INFO    SystemMonitor:2044326 [interfaces.py:start():190] Started memory monitoring
+2024-08-13 12:32:26,062 INFO    SystemMonitor:2044326 [interfaces.py:start():190] Started network monitoring
+2024-08-13 12:32:26,080 DEBUG   HandlerThread:2044326 [system_info.py:probe():150] Probing system
+2024-08-13 12:32:26,090 DEBUG   HandlerThread:2044326 [gitlib.py:_init_repo():56] git repository is invalid
+2024-08-13 12:32:26,090 DEBUG   HandlerThread:2044326 [system_info.py:probe():198] Probing system done
+2024-08-13 12:32:26,090 DEBUG   HandlerThread:2044326 [system_monitor.py:probe():223] {'os': 'Linux-4.18.0-513.24.1.el8_9.x86_64-x86_64-with-glibc2.28', 'python': '3.11.7', 'heartbeatAt': '2024-08-13T10:32:26.080860', 'startedAt': '2024-08-13T10:32:25.561822', 'docker': None, 'cuda': None, 'args': (), 'state': 'running', 'program': '/home/weijiexia/paper3/mmd_vit_exp_abl_half/train_within_domain_t.py', 'codePathLocal': 'train_within_domain_t.py', 'codePath': 'train_within_domain_t.py', 'host': 'login03', 'username': 'weijiexia', 'executable': '/home/weijiexia/anaconda3/bin/python', 'cpu_count': 32, 'cpu_count_logical': 32, 'cpu_freq': {'current': 3.864000000000002, 'min': 1200.0, 'max': 3900.0}, 'cpu_freq_per_core': [{'current': 3.9, 'min': 1200.0, 'max': 3900.0}, {'current': 3.9, 'min': 1200.0, 'max': 3900.0}, {'current': 3.9, 'min': 1200.0, 'max': 3900.0}, {'current': 3.9, 'min': 1200.0, 'max': 3900.0}, {'current': 3.9, 'min': 1200.0, 'max': 3900.0}, {'current': 3.9, 'min': 1200.0, 'max': 3900.0}, {'current': 3.9, 'min': 1200.0, 'max': 3900.0}, {'current': 3.9, 'min': 1200.0, 'max': 3900.0}, {'current': 3.9, 'min': 1200.0, 'max': 3900.0}, {'current': 3.9, 'min': 1200.0, 'max': 3900.0}, {'current': 3.9, 'min': 1200.0, 'max': 3900.0}, {'current': 3.9, 'min': 1200.0, 'max': 3900.0}, {'current': 3.9, 'min': 1200.0, 'max': 3900.0}, {'current': 3.637, 'min': 1200.0, 'max': 3900.0}, {'current': 3.9, 'min': 1200.0, 'max': 3900.0}, {'current': 3.9, 'min': 1200.0, 'max': 3900.0}, {'current': 3.9, 'min': 1200.0, 'max': 3900.0}, {'current': 3.9, 'min': 1200.0, 'max': 3900.0}, {'current': 3.9, 'min': 1200.0, 'max': 3900.0}, {'current': 3.9, 'min': 1200.0, 'max': 3900.0}, {'current': 3.9, 'min': 1200.0, 'max': 3900.0}, {'current': 3.9, 'min': 1200.0, 'max': 3900.0}, {'current': 3.9, 'min': 1200.0, 'max': 3900.0}, {'current': 3.9, 'min': 1200.0, 'max': 3900.0}, {'current': 3.9, 'min': 1200.0, 'max': 3900.0}, {'current': 3.9, 'min': 1200.0, 'max': 3900.0}, {'current': 3.9, 'min': 1200.0, 'max': 3900.0}, {'current': 3.9, 'min': 1200.0, 'max': 3900.0}, {'current': 3.9, 'min': 1200.0, 'max': 3900.0}, {'current': 3.011, 'min': 1200.0, 'max': 3900.0}, {'current': 3.9, 'min': 1200.0, 'max': 3900.0}, {'current': 3.9, 'min': 1200.0, 'max': 3900.0}], 'disk': {'/': {'total': 31.201126098632812, 'used': 10.137405395507812}}, 'memory': {'total': 376.48144149780273}}
+2024-08-13 12:32:26,090 INFO    HandlerThread:2044326 [system_monitor.py:probe():224] Finished collecting system info
+2024-08-13 12:32:26,090 INFO    HandlerThread:2044326 [system_monitor.py:probe():227] Publishing system info
+2024-08-13 12:32:26,090 DEBUG   HandlerThread:2044326 [system_info.py:_save_conda():207] Saving list of conda packages installed into the current environment
+2024-08-13 12:32:26,988 INFO    Thread-12 :2044326 [dir_watcher.py:_on_file_created():271] file/dir created: /home/weijiexia/paper3/mmd_vit_exp_abl_half/wandb/run-20240813_123225-1rlbcdl2/files/conda-environment.yaml
+2024-08-13 12:32:30,869 DEBUG   HandlerThread:2044326 [system_info.py:_save_conda():222] Saving conda packages done
+2024-08-13 12:32:30,871 INFO    HandlerThread:2044326 [system_monitor.py:probe():229] Finished publishing system info
+2024-08-13 12:32:30,874 DEBUG   SenderThread:2044326 [sender.py:send():379] send: files
+2024-08-13 12:32:30,875 INFO    SenderThread:2044326 [sender.py:_save_file():1390] saving file wandb-metadata.json with policy now
+2024-08-13 12:32:30,875 DEBUG   HandlerThread:2044326 [handler.py:handle_request():146] handle_request: status_report
+2024-08-13 12:32:30,992 INFO    Thread-12 :2044326 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/weijiexia/paper3/mmd_vit_exp_abl_half/wandb/run-20240813_123225-1rlbcdl2/files/conda-environment.yaml
+2024-08-13 12:32:30,993 INFO    Thread-12 :2044326 [dir_watcher.py:_on_file_created():271] file/dir created: /home/weijiexia/paper3/mmd_vit_exp_abl_half/wandb/run-20240813_123225-1rlbcdl2/files/wandb-metadata.json
+2024-08-13 12:32:31,328 DEBUG   HandlerThread:2044326 [handler.py:handle_request():146] handle_request: python_packages
+2024-08-13 12:32:31,329 DEBUG   HandlerThread:2044326 [handler.py:handle_request():146] handle_request: stop_status
+2024-08-13 12:32:31,329 DEBUG   SenderThread:2044326 [sender.py:send_request():406] send_request: python_packages
+2024-08-13 12:32:31,329 DEBUG   HandlerThread:2044326 [handler.py:handle_request():146] handle_request: internal_messages
+2024-08-13 12:32:31,330 DEBUG   SenderThread:2044326 [sender.py:send_request():406] send_request: stop_status
+2024-08-13 12:32:31,359 INFO    wandb-upload_0:2044326 [upload_job.py:push():131] Uploaded file /tmp/tmp25w0h4puwandb/j6cfo6ih-wandb-metadata.json
+2024-08-13 12:32:31,371 DEBUG   HandlerThread:2044326 [handler.py:handle_request():146] handle_request: partial_history
+2024-08-13 12:32:31,493 DEBUG   SenderThread:2044326 [sender.py:send():379] send: telemetry
+2024-08-13 12:32:31,494 DEBUG   SenderThread:2044326 [sender.py:send():379] send: history
+2024-08-13 12:32:31,494 DEBUG   SenderThread:2044326 [sender.py:send_request():406] send_request: summary_record
+2024-08-13 12:32:31,497 INFO    SenderThread:2044326 [sender.py:_save_file():1390] saving file wandb-summary.json with policy end
+2024-08-13 12:32:31,994 INFO    Thread-12 :2044326 [dir_watcher.py:_on_file_created():271] file/dir created: /home/weijiexia/paper3/mmd_vit_exp_abl_half/wandb/run-20240813_123225-1rlbcdl2/files/wandb-summary.json
+2024-08-13 12:32:31,994 INFO    Thread-12 :2044326 [dir_watcher.py:_on_file_created():271] file/dir created: /home/weijiexia/paper3/mmd_vit_exp_abl_half/wandb/run-20240813_123225-1rlbcdl2/files/output.log
+2024-08-13 12:32:31,995 INFO    Thread-12 :2044326 [dir_watcher.py:_on_file_created():271] file/dir created: /home/weijiexia/paper3/mmd_vit_exp_abl_half/wandb/run-20240813_123225-1rlbcdl2/files/requirements.txt
+2024-08-13 12:32:33,997 INFO    Thread-12 :2044326 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/weijiexia/paper3/mmd_vit_exp_abl_half/wandb/run-20240813_123225-1rlbcdl2/files/output.log
+2024-08-13 12:32:35,999 INFO    Thread-12 :2044326 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/weijiexia/paper3/mmd_vit_exp_abl_half/wandb/run-20240813_123225-1rlbcdl2/files/output.log
+2024-08-13 12:32:36,072 DEBUG   HandlerThread:2044326 [handler.py:handle_request():146] handle_request: status_report
+2024-08-13 12:32:38,002 INFO    Thread-12 :2044326 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/weijiexia/paper3/mmd_vit_exp_abl_half/wandb/run-20240813_123225-1rlbcdl2/files/output.log

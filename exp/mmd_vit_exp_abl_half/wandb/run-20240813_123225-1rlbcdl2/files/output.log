@@ -1,0 +1,7 @@
+torch.Size([128, 34, 49])
+torch.Size([128, 15, 49])
+epoch:  0 loss_train:  -20.525419467601445 random_num:  15
+torch.Size([128, 3, 49])
+torch.Size([128, 46, 49])
+epoch:  0 loss_train:  -21.864164969873634 random_num:  46
+torch.Size([128, 20, 49])

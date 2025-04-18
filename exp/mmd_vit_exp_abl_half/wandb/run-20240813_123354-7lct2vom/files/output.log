@@ -1,0 +1,16 @@
+/home/weijiexia/paper3/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+epoch:  0 sub_epoch:  0 loss_train:  -18.38931709589591 random_num:  18
+epoch:  0 sub_epoch:  1 loss_train:  -19.3966170793923 random_num:  41
+epoch:  0 sub_epoch:  2 loss_train:  -19.687211371686985 random_num:  12
+epoch:  0 sub_epoch:  3 loss_train:  -20.01022455121356 random_num:  23
+epoch:  0 sub_epoch:  4 loss_train:  -20.324554472058843 random_num:  25
+epoch:  0 sub_epoch:  5 loss_train:  -20.65040319084136 random_num:  42
+epoch:  0 sub_epoch:  6 loss_train:  -20.880918051268402 random_num:  22
+epoch:  0 sub_epoch:  7 loss_train:  -21.14137475292868 random_num:  38
+epoch:  0 sub_epoch:  8 loss_train:  -21.45797374346743 random_num:  33
+epoch:  0 sub_epoch:  9 loss_train:  -21.589136442050155 random_num:  30
+epoch:  0 sub_epoch:  10 loss_train:  -21.723842775380344 random_num:  26
+epoch:  0 sub_epoch:  11 loss_train:  -21.82156913679813 random_num:  49
+epoch:  0 sub_epoch:  12 loss_train:  -22.13250004662633 random_num:  49
+epoch:  0 sub_epoch:  13 loss_train:  -22.273853821145465 random_num:  22

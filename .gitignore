@@ -1,0 +1,17 @@
+# Ignore compiled Python files
+*.pyc
+__pycache__/
+
+# Ignore build directories
+build/
+dist/
+
+# Ignore egg-info directory (these are created during packaging)
+*.egg-info
+gmm_trans.egg-info
+
+.vscode/
+
+exp/wandb
+
+*.pkl
