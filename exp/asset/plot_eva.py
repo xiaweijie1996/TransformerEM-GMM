@@ -9,6 +9,7 @@ from sklearn.mixture import GaussianMixture
 from sklearn.metrics.pairwise import rbf_kernel
 from scipy.stats import entropy
 from sklearn.neighbors import KernelDensity
+import wandb
 
 def sample_from_gmm(n_components, _new_para, _num=0, _num_samples=300):
     _dim=  int(_new_para.shape[-1]/n_components/2)

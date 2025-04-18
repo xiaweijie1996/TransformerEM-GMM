@@ -16,9 +16,9 @@ from asset.dataloader import Dataloader_nolabel
 torch.set_default_dtype(torch.float64)
 
 # load data
-batch_size = 64*2
+batch_size =  4
 split_ratio = (0.8,0.1,0.1)
-data_path = sys.argv[1] # 'exp/data_process_for_data_collection_all/new_data_15minute_grid.pkl'
+data_path = 'exp/data_process_for_data_collection_all/new_data_15minute_grid_nomerge.pkl'
 dataset = Dataloader_nolabel(data_path,  batch_size=batch_size
                     , split_ratio=split_ratio)
 print('lenthg of train data: ', dataset.__len__()*split_ratio[0])
@@ -43,9 +43,9 @@ chw = (1, random_sample_num,  97)
 para_dim = n_components*2
 hidden_d = 96*4
 out_d = 96
-n_heads = 4
-mlp_ratio = 2
-n_blocks = 3
+n_heads = 1
+mlp_ratio = 1
+n_blocks = 1
 encoder = gmm_model.ViT_encodernopara(chw, hidden_d, out_d, n_heads, mlp_ratio, n_blocks).to(device)
 _model_scale = sum(p.numel() for p in encoder.parameters() if p.requires_grad)
 print('number of parameters: ', _model_scale)
