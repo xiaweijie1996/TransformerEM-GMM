@@ -24,3 +24,4 @@ dataset = Dataloader_nolabel(data_path,  batch_size=batch_size
                     , split_ratio=split_ratio)
 print('lenthg of train data: ', dataset.__len__()*split_ratio[0])
 print('lenthg of test data: ', dataset.__len__()*split_ratio[1])
+print(dataset.load_test_data()[0])
