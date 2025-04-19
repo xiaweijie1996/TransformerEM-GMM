@@ -10,7 +10,7 @@ df_1 = pd.read_csv('exp/data_process_for_data_collection_all/15minute_data_austi
 df_2 = pd.read_csv('exp/data_process_for_data_collection_all/15minute_data_california.csv')
 df_3 = pd.read_csv('exp/data_process_for_data_collection_all/15minute_data_newyork.csv')
 
-data_type = 'grid'
+data_type = 'solar'
 
 # process df_1
 df_1 = df_1[['dataid', 'local_15min', 'grid', 'solar', 'solar2']]
