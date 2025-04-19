@@ -6,6 +6,7 @@ sys.path.append(_parent_path)
 
 import wandb
 import torch
+import numpy as np
 import torch.optim as optim
 
 import model.gmm_transformer as gmm_model
@@ -21,6 +22,7 @@ split_ratio = (0.8,0.1,0.1)
 data_path =  sys.argv[1]  #'exp/data_process_for_data_collection_all/new_data_15minute_grid_nomerge.pkl' ## 
 dataset = Dataloader_nolabel(data_path,  batch_size=batch_size
                     , split_ratio=split_ratio)
+dataset.images = dataset.images + np.abs(np.random.normal(0, 0.01, dataset.images.shape)) 
 print('lenthg of train data: ', dataset.__len__()*split_ratio[0])
 print('lenthg of test data: ', dataset.__len__()*split_ratio[1])
 
