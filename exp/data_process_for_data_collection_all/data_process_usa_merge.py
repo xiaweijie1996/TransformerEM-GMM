@@ -81,7 +81,7 @@ print('The number of dataid in pivot_df is: ', len(dataid_list_pivot))
 
 # Enrich the data by random sampling 10 data points for each dataid
 dataid_list = pivot_df['dataid'].unique()
-num_samples = 10000
+num_samples = 5000
 new_data = []
 for _ in tqdm(range(num_samples)):
     
