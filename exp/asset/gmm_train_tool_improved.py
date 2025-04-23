@@ -6,6 +6,8 @@ import asset.em_pytorch_improved as ep
 import asset.random_sampler as rs
 import asset.le as le
 
+import wandb
+
 def pad_and_embed(train_sample_part, random_sample_num, random_num, emb_empty_token, device):
     # create an index tensor for the empty token
     embedded_token_idx = torch.tensor([0], dtype=torch.long).to(device)
@@ -67,6 +69,9 @@ def get_loss_le(dataset, encoder, random_sample_num, min_random_sample_num, n_co
 
     # use ep to do one iteration of the EM algorithm
     _ms, _covs = ep.GMM_PyTorch_Batch(n_components, _train_sample_part[:,:, :-1].shape[-1]).fit(_train_sample_part[:,:, :-1], 1) # _ms: (b, n_components, 24), _covs: (b, n_components, 24)
+    
+    # log _ms and _covs
+    wandb.log({'_ms': _ms.mean().item(), '_covs': _covs.mean().item()})
 
     # concatenate the mean and variance to have (b, n_components*2, 25)
     _param_emb, _param = concatenate_and_embed_params(_ms, _covs, n_components, embedding, device)

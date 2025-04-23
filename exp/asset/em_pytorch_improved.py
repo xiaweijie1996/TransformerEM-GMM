@@ -27,7 +27,7 @@ def gaussian_logpdf(x, means, covs, eps=1e-6):
     return exponent + log_norm.unsqueeze(1)  # (b, N, K)
 
 class GMM_PyTorch_Batch:
-    def __init__(self, n_components, n_features, init_var=0.5):
+    def __init__(self, n_components, n_features, init_var=1):
         self.n_components = n_components
         self.n_features = n_features
         self._init_parameters(init_var)
