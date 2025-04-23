@@ -10,7 +10,7 @@ import numpy as np
 import torch.optim as optim
 
 import model.gmm_transformer as gmm_model
-import asset.gmm_train_tool as gmm_train_tool
+import asset.gmm_train_tool_improved as gmm_train_tool
 import asset.em_pytorch as ep
 import asset.plot_eva as pa 
 from asset.dataloader import Dataloader_nolabel
