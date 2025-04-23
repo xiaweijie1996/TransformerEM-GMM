@@ -1,0 +1,23 @@
+/var/spool/slurm/slurmd/job11343064/slurm_script: line 11: mmodule: command not found
+Lmod has detected the following error: These module(s) or extension(s) exist
+but cannot be loaded as requested: "Miniconda3/23.5.2-0"
+   Try: "module spider Miniconda3/23.5.2-0" to see how to load the module(s).
+
+
+
+python: can't open file '/home/wxia/TransformerEM-GMM/exp/exp_second_round/timesnet_mse_usolar_15minutes/timesnet.py': [Errno 2] No such file or directory
+
+JOB STATISTICS
+==============
+Job ID: 11343064
+Cluster: snellius
+User/Group: wxia/wxia
+State: RUNNING
+Nodes: 1
+Cores per node: 18
+CPU Utilized: 00:00:00
+CPU Efficiency: 0.00% of 00:06:00 core-walltime
+Job Wall-clock time: 00:00:20
+Memory Utilized: 0.00 MB
+Memory Efficiency: 0.00% of 120.00 GB (120.00 GB/node)
+WARNING: Efficiency statistics can only be obtained after the job has ended as seff tool is based on the accounting database data.
