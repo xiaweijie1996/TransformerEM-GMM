@@ -16,4 +16,4 @@ source $HOME/TransformerEM-GMM/.venv/bin/activate
 
 cp $HOME/TransformerEM-GMM/exp/data_process_for_data_collection_all/transformer_data_15minutes.pkl "$TMPDIR"
 
-python $HOME/TransformerEM-GMM/exp/exp_second_round/transformer_15minutes/train_transformer_nomerge.py "$TMPDIR/new_data_15minute_solar_nomerge.pkl"
+python $HOME/TransformerEM-GMM/exp/exp_second_round/transformer_15minutes/train_transformer_nomerge.py "$TMPDIR/transformer_data_15minutes.pkl"
