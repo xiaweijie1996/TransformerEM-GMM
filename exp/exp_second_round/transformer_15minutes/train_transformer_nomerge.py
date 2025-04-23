@@ -92,7 +92,7 @@ for epoch in range(num_epochs):
                                                                                 embedding_para, emb_empty_token, 'False', device)
             _loss_collection.append(_loss)
         _loss = torch.stack(_loss_collection).mean()
-        print('epoch: ', epoch, 'loss_test: ', _loss.item(), 'random_num: ', _random_num)
+        # print('epoch: ', epoch, 'loss_test: ', _loss.item(), 'random_num: ', _random_num)
         wandb.log({'loss_test': _loss.item(), 'random_num': _random_num, 'epoch':epoch})
         
         # save the model and embeding

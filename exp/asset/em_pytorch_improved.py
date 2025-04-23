@@ -44,13 +44,14 @@ class GMM_PyTorch_Batch:
         X: tensor of shape (b, N, d)
         Returns: (means, covariances, weights) all shapes with batch dim b
         """
-        X = torch.as_tensor(X, dtype=torch.float64)
+        device = X.device
+        X = torch.as_tensor(X, dtype=torch.float64).to(device)
         b, N, d = X.shape
         K = self.n_components
 
-        weights = self.weights0.unsqueeze(0).repeat(b, 1)      # (b, K)
-        means   = self.means0.unsqueeze(0).repeat(b, 1, 1)      # (b, K, d)
-        covs    = self.covariances0.unsqueeze(0).repeat(b, 1, 1) # (b, K, d)
+        weights = self.weights0.unsqueeze(0).repeat(b, 1).to(device)      # (b, K)
+        means   = self.means0.unsqueeze(0).repeat(b, 1, 1).to(device)      # (b, K, d)
+        covs    = self.covariances0.unsqueeze(0).repeat(b, 1, 1).to(device) # (b, K, d)
 
         for _ in range(n_iter):
             # E-step (log-space)
