@@ -1,0 +1,38 @@
+============================================================================================== 
+Warning! Mixing Conda and module environments may lead to corruption of the
+user environment. 
+We do not recommend users mixing those two environments unless absolutely
+necessary. Note that 
+SURF does not provide any support for Conda environment.
+For more information, please refer to our software policy page:
+https://servicedesk.surf.nl/wiki/display/WIKI/Software+policy+Snellius#SoftwarepolicySnellius-UseofAnacondaandMinicondaenvironmentsonSnellius 
+
+Remember that many packages have already been installed on the system and can
+be loaded using 
+the 'module load <package__name>' command. If you are uncertain if a package is
+already available 
+on the system, please use 'module avail' or 'module spider' to search for it.
+============================================================================================== 
+wandb: Using wandb-core as the SDK backend.  Please refer to https://wandb.me/wandb-core for more information.
+wandb: Currently logged in as: xiaweijie1996 (weijie_xia) to https://api.wandb.ai. Use `wandb login --relogin` to force relogin
+wandb: Tracking run with wandb version 0.19.9
+wandb: Run data is saved locally in /gpfs/home4/wxia/TransformerEM-GMM/wandb/run-20250423_185503-ybqgdmai
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run dauntless-galaxy-13
+wandb: ⭐️ View project at https://wandb.ai/xiaweijie1996/transformer_96_train_nomerge
+wandb: 🚀 View run at https://wandb.ai/xiaweijie1996/transformer_96_train_nomerge/runs/ybqgdmai
+slurmstepd: error: *** JOB 11343254 ON gcn26 CANCELLED AT 2025-04-23T18:59:56 ***
+
+JOB STATISTICS
+==============
+Job ID: 11343254
+Cluster: snellius
+User/Group: wxia/wxia
+State: CANCELLED (exit code 0)
+Nodes: 1
+Cores per node: 18
+CPU Utilized: 00:00:01
+CPU Efficiency: 0.02% of 01:34:30 core-walltime
+Job Wall-clock time: 00:05:15
+Memory Utilized: 1.41 GB
+Memory Efficiency: 1.18% of 120.00 GB (120.00 GB/node)
