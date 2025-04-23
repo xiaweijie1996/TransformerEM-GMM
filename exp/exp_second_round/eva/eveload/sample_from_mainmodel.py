@@ -51,7 +51,7 @@ path_empty = 'exp/exp_second_round/user_load_15minutes/model/loadmerge_emb_empty
 empty_token_vec = torch.load(path_empty, map_location=device,weights_only=False)
 
 # load data
-batch_size =  10
+batch_size =  1000
 split_ratio = (0.8,0.1,0.1)
 data_path =  'exp/data_process_for_data_collection_all/new_data_15minute_grid_merge.pkl' ## 
 dataset = Dataloader_nolabel(data_path,  batch_size=batch_size

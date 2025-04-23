@@ -160,7 +160,7 @@ def evaluation(n_components, _new_para, r_samples, r_samples_part, _num=0, _num_
     
     return (mmd_rt, mmd_r_r, mmd_rg), (c_rt, c_r_r, c_rg)
 
-def compute_kl_divergence(X, Y, bandwidth=1): # 0.1
+def compute_kl_divergence(X, Y, bandwidth= 1 ): # 0.1
     kde_X = KernelDensity(bandwidth=bandwidth).fit(X)
     kde_Y = KernelDensity(bandwidth=bandwidth).fit(Y)
 
