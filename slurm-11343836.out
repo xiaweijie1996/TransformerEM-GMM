@@ -1,0 +1,17 @@
+/var/spool/slurm/slurmd/job11343836/slurm_script: line 11: mmodule: command not found
+Lmod has detected the following error: These module(s) or extension(s) exist
+but cannot be loaded as requested: "Miniconda3/23.5.2-0"
+   Try: "module spider Miniconda3/23.5.2-0" to see how to load the module(s).
+
+
+
+wandb: Using wandb-core as the SDK backend.  Please refer to https://wandb.me/wandb-core for more information.
+wandb: Currently logged in as: xiaweijie1996 (weijie_xia) to https://api.wandb.ai. Use `wandb login --relogin` to force relogin
+wandb: Tracking run with wandb version 0.19.9
+wandb: Run data is saved locally in /gpfs/home4/wxia/TransformerEM-GMM/wandb/run-20250423_200859-8hzp8iqi
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run skilled-gorge-3
+wandb: ⭐️ View project at https://wandb.ai/weijie_xia/timesnet_solar_15minutes
+wandb: 🚀 View run at https://wandb.ai/weijie_xia/timesnet_solar_15minutes/runs/8hzp8iqi
+/home/wxia/TransformerEM-GMM/exp/exp_second_round/timesnet_mse_solar_15minutes/timesnet_train.py:104: RuntimeWarning: invalid value encountered in divide
+  _plot = (_plot - scaler[0][0, 0, :].detach().numpy())/(scaler[1][0, 0, :].cpu().detach().numpy() - scaler[0][0, 0, :].cpu().detach().numpy())

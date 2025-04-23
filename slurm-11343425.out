@@ -1,0 +1,34 @@
+/var/spool/slurm/slurmd/job11343425/slurm_script: line 11: mmodule: command not found
+Lmod has detected the following error: These module(s) or extension(s) exist
+but cannot be loaded as requested: "Miniconda3/23.5.2-0"
+   Try: "module spider Miniconda3/23.5.2-0" to see how to load the module(s).
+
+
+
+wandb: Using wandb-core as the SDK backend.  Please refer to https://wandb.me/wandb-core for more information.
+wandb: Currently logged in as: xiaweijie1996 (weijie_xia) to https://api.wandb.ai. Use `wandb login --relogin` to force relogin
+wandb: Tracking run with wandb version 0.19.9
+wandb: Run data is saved locally in /gpfs/home4/wxia/TransformerEM-GMM/wandb/run-20250423_192416-odvdkryc
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run decent-cloud-2
+wandb: ⭐️ View project at https://wandb.ai/weijie_xia/timesnet_solar_15minutes
+wandb: 🚀 View run at https://wandb.ai/weijie_xia/timesnet_solar_15minutes/runs/odvdkryc
+/home/wxia/TransformerEM-GMM/exp/exp_second_round/timesnet_mse_userload_15minutes/timesnet_train.py:105: RuntimeWarning: divide by zero encountered in divide
+  _plot = (_plot - scaler[0][0, 0, :].detach().numpy())/(scaler[1][0, 0, :].cpu().detach().numpy() - scaler[0][0, 0, :].cpu().detach().numpy())
+/home/wxia/TransformerEM-GMM/exp/exp_second_round/timesnet_mse_userload_15minutes/timesnet_train.py:105: RuntimeWarning: invalid value encountered in divide
+  _plot = (_plot - scaler[0][0, 0, :].detach().numpy())/(scaler[1][0, 0, :].cpu().detach().numpy() - scaler[0][0, 0, :].cpu().detach().numpy())
+slurmstepd: error: *** JOB 11343425 ON gcn26 CANCELLED AT 2025-04-23T20:04:39 ***
+
+JOB STATISTICS
+==============
+Job ID: 11343425
+Cluster: snellius
+User/Group: wxia/wxia
+State: CANCELLED (exit code 0)
+Nodes: 1
+Cores per node: 18
+CPU Utilized: 00:00:02
+CPU Efficiency: 0.00% of 12:14:06 core-walltime
+Job Wall-clock time: 00:40:47
+Memory Utilized: 1.23 GB
+Memory Efficiency: 1.02% of 120.00 GB (120.00 GB/node)
