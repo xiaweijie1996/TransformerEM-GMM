@@ -15,4 +15,4 @@ source $HOME/TransformerEM-GMM/.venv/bin/activate
 
 cp $HOME/TransformerEM-GMM/exp/data_process_for_data_collection_all/new_data_15minute_solar_nomerge.pkl "$TMPDIR"
 
-python $HOME/TransformerEM-GMM/exp/exp_second_round/timesnet_mse_usolar_15minutes/timesnet.py "$TMPDIR/new_data_15minute_solar_nomerge.pkl"
+python $HOME/TransformerEM-GMM/exp/exp_second_round/timesnet_mse_solar_15minutes/timesnet.py "$TMPDIR/new_data_15minute_solar_nomerge.pkl"
