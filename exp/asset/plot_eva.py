@@ -9,9 +9,58 @@ from sklearn.mixture import GaussianMixture
 from sklearn.metrics.pairwise import rbf_kernel
 from scipy.stats import entropy
 from sklearn.neighbors import KernelDensity
+from scipy.stats import ks_2samp
 import wandb
 
-def sample_from_gmm(n_components, _new_para, _num=0, _num_samples=300):
+from scipy.stats import entropy
+
+def kl_divergence(x1: np.ndarray,
+                  x2: np.ndarray,
+                  num_bins: int = 50,
+                  epsilon: float = 1e-10) -> float:
+    """
+    Estimate KL divergence D_{KL}(P || Q) between two 1D samples x1 and x2.
+
+    1. Bin both samples into the same histogram bins.
+    2. Normalize to get discrete PMFs P, Q.
+    3. Add a small epsilon to avoid zeros, renormalize.
+    4. Compute KL(P||Q) via scipy.stats.entropy.
+
+    Parameters
+    ----------
+    x1, x2 : np.ndarray, shape (96,)
+        Input samples.
+    num_bins : int
+        Number of histogram bins to use.
+    epsilon : float
+        Small constant to add to bin counts to avoid division by zero.
+
+    Returns
+    -------
+    float
+        The estimated KL divergence D_{KL}(P || Q).
+    """
+
+    # 1) Compute joint bin edges covering both datasets
+    data_min = min(x1.min(), x2.min())
+    data_max = max(x1.max(), x2.max())
+    bins = np.linspace(data_min, data_max, num_bins + 1)
+
+    # 2) Histogram counts
+    p_counts, _ = np.histogram(x1, bins=bins)
+    q_counts, _ = np.histogram(x2, bins=bins)
+
+    # 3) Add epsilon & normalize → PMFs
+    p = p_counts.astype(float) + epsilon
+    q = q_counts.astype(float) + epsilon
+    p /= p.sum()
+    q /= q.sum()
+
+    # 4) Compute KL divergence
+    #    scipy.stats.entropy(pk, qk) returns sum(pk * log(pk / qk))
+    return entropy(p, q)
+
+def sample_from_gmm(n_components, _new_para, _num=0, _num_samples=250):
     _dim=  int(_new_para.shape[-1]/n_components/2)
      
     gmm = ep_module.GMM_Simplified_PyTorch(n_components, _dim)
@@ -111,7 +160,7 @@ def evaluation(n_components, _new_para, r_samples, r_samples_part, _num=0, _num_
     
     return (mmd_rt, mmd_r_r, mmd_rg), (c_rt, c_r_r, c_rg)
 
-def compute_kl_divergence(X, Y, bandwidth=0.1):
+def compute_kl_divergence(X, Y, bandwidth=1): # 0.1
     kde_X = KernelDensity(bandwidth=bandwidth).fit(X)
     kde_Y = KernelDensity(bandwidth=bandwidth).fit(Y)
 
