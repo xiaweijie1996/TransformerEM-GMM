@@ -55,6 +55,8 @@ for col in station_cols:
     
 # 6. Concatenate all the data to have shape (n, 250, 96)
 station_data = np.concatenate(station_list, axis=0)
+# Check if nan in the data
+print(np.isnan(station_data).sum())
 
 
 print(station_data.shape)

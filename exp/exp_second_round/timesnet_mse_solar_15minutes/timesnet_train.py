@@ -91,7 +91,7 @@ def train_and_evaluate(model, data_loader, optimizer, device, epochs, sub_epochs
                 losses.append(loss.item())
         
         # print(f"Epoch {epoch + 1}, Test Loss: {sum(losses) / len(losses)}")
-        
+        exp/exp_second_round/timesnet_mse_userload_15minutes
         _loss = sum(losses) / len(losses)
         wandb.log({'loss_test': _loss})
         if _loss < current_loss:

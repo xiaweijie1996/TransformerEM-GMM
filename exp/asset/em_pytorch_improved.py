@@ -54,6 +54,10 @@ class GMM_PyTorch_Batch:
         covs    = self.covariances0.unsqueeze(0).repeat(b, 1, 1).to(device) # (b, K, d)
 
         for _ in range(n_iter):
+            # nan handling          
+            _clone_covs  = covs.clone()
+            _clone_means = means.clone()
+            
             # E-step (log-space)
             x_exp = X.unsqueeze(2)    # (b, N, 1, d)
             m_exp = means.unsqueeze(1)   # (b, 1, K, d)
@@ -73,6 +77,13 @@ class GMM_PyTorch_Batch:
 
             diff = X.unsqueeze(2) - means.unsqueeze(1)                    # (b, N, K, d)
             covs = torch.einsum('bnk,bnkd->bkd', resp, diff**2) / (Nk.unsqueeze(-1) + eps)  # (b, K, d)
+            
+            # Check for NaN values in means and covariances
+            # If meam has NaN, set it to the previous value
+            if torch.isnan(means).any():
+                means = _clone_means + torch.randn_like(_clone_means) * eps
+            if torch.isnan(covs).any():
+                covs = _clone_covs + torch.randn_like(_clone_means) * eps
 
         self.weights     = weights.clone()
         self.means       = means.clone()
