@@ -44,10 +44,10 @@ min_random_sample_num = 8
 # define the encoder
 chw = (1, random_sample_num,  97)
 para_dim = n_components*2
-hidden_d = 96*1
+hidden_d = 96*2
 out_d = 96
-n_heads = 1
-mlp_ratio = 1
+n_heads = 2
+mlp_ratio = 2
 n_blocks = 2
 encoder = gmm_model.ViT_encodernopara(chw, hidden_d, out_d, n_heads, mlp_ratio, n_blocks).to(device)
 _model_scale = sum(p.numel() for p in encoder.parameters() if p.requires_grad)
@@ -92,7 +92,7 @@ for epoch in range(num_epochs):
                                                                                 embedding_para, emb_empty_token, 'False', device)
             _loss_collection.append(_loss)
         _loss = torch.stack(_loss_collection).mean()
-        # print('epoch: ', epoch, 'loss_test: ', _loss.item(), 'random_num: ', _random_num)
+        print('epoch: ', epoch, 'loss_test: ', _loss.item(), 'random_num: ', _random_num)
         wandb.log({'loss_test': _loss.item(), 'random_num': _random_num, 'epoch':epoch})
         
         # save the model and embeding

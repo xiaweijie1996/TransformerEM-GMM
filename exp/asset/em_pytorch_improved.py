@@ -67,9 +67,7 @@ class GMM_PyTorch_Batch:
 
             # M-step
             Nk       = resp.sum(dim=1)                                    # (b, K)
-            weights  = Nk / N                                              # (b, K)
-
-            print(resp.shape, Nk.shape, X.shape, means.shape, covs.shape)
+            
             means = torch.einsum('bnk,bnd->bkd', resp, X) / (Nk.unsqueeze(-1) + eps)  # (b, K, d)
 
             diff = X.unsqueeze(2) - means.unsqueeze(1)                    # (b, N, K, d)
@@ -78,7 +76,7 @@ class GMM_PyTorch_Batch:
         self.weights     = weights.clone()
         self.means       = means.clone()
         self.covariances = covs.clone()
-        return means, covs, weights
+        return means, covs
 
     def sample(self, n_samples, order = 2, eps=1e-6):
         """
