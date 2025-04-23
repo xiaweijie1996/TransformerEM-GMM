@@ -9,9 +9,9 @@ import torch.nn as nn
 import torch.nn.functional as F
 
 import asset.timesnet_loader as timesloader
-import exp_second_round.timesnet_mse_transformer_15minutes.timesnet_utils as ut
-from exp_second_round.timesnet_mse_transformer_15minutes.timesnet_config import TimesBlockConfig 
-import exp_second_round.timesnet_mse_transformer_15minutes.timesnet_train as tt
+import exp_second_round.timesnet_mse_userload_15minutes.timesnet_utils as ut
+from exp_second_round.timesnet_mse_userload_15minutes.timesnet_config import TimesBlockConfig 
+import exp_second_round.timesnet_mse_userload_15minutes.timesnet_train as tt
 import wandb
 
 class TimesBlock(nn.Module):
@@ -144,7 +144,7 @@ if __name__ == '__main__':
     num_params = sum(p.numel() for p in model.parameters())
     print(num_params)
 
-    data_path = 'exp/data_process_for_data_collection_all/transformer_data_15minutes.pkl'
+    data_path = sys.argv[1]  # 'exp/data_process_for_data_collection_all/new_data_15minute_grid_nomerge.pkl'
     data_loader = timesloader.TimesNetLoader(data_path, 
                                              batch_size=60, 
                                              split_ration=(0.8, 0.1, 0.1),
@@ -154,6 +154,6 @@ if __name__ == '__main__':
     epoch = 1000000
     max_loss = 10000
     
-    wandb.init(project='timesnet_transformer_15minutes')
+    wandb.init(project='timesnet_userload_15minutes')
     tt.train_and_evaluate(model, data_loader, optimizer, device, epoch, sub_epoch, 10, num_params)
     
