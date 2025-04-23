@@ -31,3 +31,1163 @@ wandb: 🚀 View run at https://wandb.ai/xiaweijie1996/load_usa_96_train_nomerge
   responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
 /home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
   X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:54: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  responsibilities[small_values_indices] = responsibilities[small_values_indices] + torch.tensor(random_additions)
+/home/wxia/TransformerEM-GMM/exp/asset/em_pytorch.py:114: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  X = torch.tensor(X)
