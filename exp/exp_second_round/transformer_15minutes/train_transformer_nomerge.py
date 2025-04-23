@@ -98,9 +98,9 @@ for epoch in range(num_epochs):
         # save the model and embeding
         if _loss.item() < mid_loss:
             mid_loss = _loss.item()
-            torch.save(encoder.state_dict(), save_model + f'solar_encoder_{random_sample_num}_{_model_scale}.pth')
-            torch.save(embedding_para, save_model + f'solar_embedding_{random_sample_num}_{_model_scale}.pth')
-            torch.save(emb_empty_token, save_model + f'solar_emb_empty_token_{random_sample_num}_{_model_scale}.pth')
+            torch.save(encoder.state_dict(), save_model + f'transformer_encoder_{random_sample_num}_{_model_scale}.pth')
+            torch.save(embedding_para, save_model + f'transformer_embedding_{random_sample_num}_{_model_scale}.pth')
+            torch.save(emb_empty_token, save_model + f'transformer_emb_empty_token_{random_sample_num}_{_model_scale}.pth')
 
         # e, c = pae.evaluation(n_components, _new_para, r_samples, r_samples_part)
 
