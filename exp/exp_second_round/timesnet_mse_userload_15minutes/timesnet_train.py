@@ -96,7 +96,7 @@ def train_and_evaluate(model, data_loader, optimizer, device, epochs, sub_epochs
         wandb.log({'loss_test': _loss})
         if _loss < current_loss:
             current_loss = _loss
-            torch.save(model.state_dict(), f'exp/exp_second_round/timesnet_mse_solar_15minutes/30mr_timesnet_{num_params}.pth')
+            torch.save(model.state_dict(), f'exp/exp_second_round/timesnet_mse_userload_15minutes/30mr_timesnet_{num_params}.pth')
         
         if epoch % 10 == 0:
             # print('plot')
