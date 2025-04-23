@@ -4,7 +4,7 @@ sys.path.append(os.path.dirname(os.path.dirname(__file__)))
 import torch
 import asset.em_pytorch_improved as ep
 import asset.random_sampler as rs
-import asset.le as le
+import asset.le_improved as le
 
 import wandb
 
