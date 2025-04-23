@@ -20,5 +20,5 @@ exp/wandb
 
 # Any wandb files
 wandb/
-
+.pth
 .venv
