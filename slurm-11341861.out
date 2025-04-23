@@ -13,3 +13,18 @@ wandb: Run `wandb offline` to turn off syncing.
 wandb: Syncing run dark-bush-2
 wandb: ⭐️ View project at https://wandb.ai/weijie_xia/timesnet_userload_15minutes
 wandb: 🚀 View run at https://wandb.ai/weijie_xia/timesnet_userload_15minutes/runs/804s9re3
+slurmstepd: error: *** JOB 11341861 ON gcn56 CANCELLED AT 2025-04-23T22:20:18 ***
+
+JOB STATISTICS
+==============
+Job ID: 11341861
+Cluster: snellius
+User/Group: wxia/wxia
+State: CANCELLED (exit code 0)
+Nodes: 1
+Cores per node: 18
+CPU Utilized: 00:00:03
+CPU Efficiency: 0.00% of 3-12:20:24 core-walltime
+Job Wall-clock time: 04:41:08
+Memory Utilized: 2.92 GB
+Memory Efficiency: 2.44% of 120.00 GB (120.00 GB/node)

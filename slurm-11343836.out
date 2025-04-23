@@ -15,3 +15,20 @@ wandb: ⭐️ View project at https://wandb.ai/weijie_xia/timesnet_solar_15minut
 wandb: 🚀 View run at https://wandb.ai/weijie_xia/timesnet_solar_15minutes/runs/8hzp8iqi
 /home/wxia/TransformerEM-GMM/exp/exp_second_round/timesnet_mse_solar_15minutes/timesnet_train.py:104: RuntimeWarning: invalid value encountered in divide
   _plot = (_plot - scaler[0][0, 0, :].detach().numpy())/(scaler[1][0, 0, :].cpu().detach().numpy() - scaler[0][0, 0, :].cpu().detach().numpy())
+/home/wxia/TransformerEM-GMM/exp/exp_second_round/timesnet_mse_solar_15minutes/timesnet_train.py:104: RuntimeWarning: divide by zero encountered in divide
+  _plot = (_plot - scaler[0][0, 0, :].detach().numpy())/(scaler[1][0, 0, :].cpu().detach().numpy() - scaler[0][0, 0, :].cpu().detach().numpy())
+slurmstepd: error: *** JOB 11343836 ON gcn26 CANCELLED AT 2025-04-23T22:20:37 ***
+
+JOB STATISTICS
+==============
+Job ID: 11343836
+Cluster: snellius
+User/Group: wxia/wxia
+State: CANCELLED (exit code 0)
+Nodes: 1
+Cores per node: 18
+CPU Utilized: 00:00:02
+CPU Efficiency: 0.00% of 1-15:36:18 core-walltime
+Job Wall-clock time: 02:12:01
+Memory Utilized: 1.24 GB
+Memory Efficiency: 1.03% of 120.00 GB (120.00 GB/node)
