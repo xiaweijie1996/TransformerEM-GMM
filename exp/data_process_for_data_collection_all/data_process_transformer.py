@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 import pickle
 
-path = 'transformer_data.csv'
+path = "exp/data_process_for_data_collection_all/transformer_data.csv"
 
 # 1. Load and parse timestamps
 df = pd.read_csv(path)
@@ -60,5 +60,5 @@ station_data = np.concatenate(station_list, axis=0)
 print(station_data.shape)
 
 # 7. Save the data
-with open('transformer_data_15minutes.pkl', 'wb') as f:
+with open('exp/data_process_for_data_collection_all/transformer_data_15minutes.pkl', 'wb') as f:
     pickle.dump(station_data, f)
