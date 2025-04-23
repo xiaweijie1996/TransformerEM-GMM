@@ -44,7 +44,7 @@ min_random_sample_num = 8
 # define the encoder
 chw = (1, random_sample_num,  97)
 para_dim = n_components*2
-hidden_d = 8
+hidden_d = 96
 out_d = 96
 n_heads = 2
 mlp_ratio = 2
