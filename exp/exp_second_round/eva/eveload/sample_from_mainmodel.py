@@ -27,6 +27,25 @@ torch.set_default_dtype(torch.float64)
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
 #%%
+"Load TimesNet mmd model"
+# check the model
+configs = TimesBlockConfig()
+model_timesnetmmd = timesnet.Model(configs).to(device)
+
+# print number of parameters
+num_params = sum(p.numel() for p in model_timesnetmmd.parameters())
+print(num_params)
+
+data_path = 'exp/data_process_for_data_collection_all/new_data_15minute_grid_nomerge.pkl'
+data_loader = timesloader.TimesNetLoader(data_path, 
+                                            batch_size=60, 
+                                            split_ration=(0.8, 0.1, 0.1),
+                                            full_length=366)
+
+model_path = 'exp/exp_second_round/timesnet_userload_mmd_15minutes/timesnet_MMD_1281536.pth'
+model_timesnetmmd.load_state_dict(torch.load(model_path, map_location=device))
+
+#%%
 "Load TimesNet mse model"
 # check the model
 configs = TimesBlockConfig()
@@ -35,12 +54,6 @@ model_timesnetmse = timesnet.Model(configs).to(device)
 # print number of parameters
 num_params = sum(p.numel() for p in model_timesnetmse.parameters())
 print(num_params)
-
-data_path = 'exp/data_process_for_data_collection_all/new_data_15minute_grid_nomerge.pkl'
-data_loader = timesloader.TimesNetLoader(data_path, 
-                                            batch_size=60, 
-                                            split_ration=(0.8, 0.1, 0.1),
-                                            full_length=366)
 
 model_path = 'exp/exp_second_round/timesnet_mse_userload_15minutes/30mr_timesnet_1281536.pth'
 model_timesnetmse.load_state_dict(torch.load(model_path, map_location=device))
@@ -112,19 +125,32 @@ for _random_num in [4, 8, 16, 32]:
     recover_test_sample_part = _test_sample_part[:, :, :-1].clone() * (max_test_data -min_test_data+1e-15) + min_test_data
     recover_test_sample_part = _test_sample_part[:, :, :-1].clone()
 
-    "TimesNet model"
+    "TimesNetmse model"
     full_series, index_mask = data_loader.load_test_data_times(test_data)
     test_data_timenetmse, random_mask, scaler = tt.normalize_and_mask_fix(full_series, index_mask, device, _random_num)
-    y_hat = model_timesnetmse(test_data_timenetmse.double(), None, random_mask.double())
+    y_hatmse = model_timesnetmse(test_data_timenetmse.double(), None, random_mask.double())
     
     # Scale back to original
-    y_hat = y_hat * (scaler[1] - scaler[0]) + scaler[0]
+    y_hatmse = y_hatmse * (scaler[1] - scaler[0]) + scaler[0]
     
     mask_bt = 1- index_mask.sum(dim=2) 
     mask_bt = mask_bt > 0
-    y_filtered_per_sample = [
-        y_hat[i, mask_bt[i], :]           # Tensor of shape [Z_i, F]
-        for i in range(y_hat.shape[0])
+    ymse_filtered_per_sample = [
+        y_hatmse[i, mask_bt[i], :]           # Tensor of shape [Z_i, F]
+        for i in range(y_hatmse.shape[0])
+    ]
+    
+    "TimesNetmmd model"
+    y_hatmmd = model_timesnetmmd(test_data_timenetmse.double(), None, random_mask.double())
+    
+    # Scale back to original
+    y_hatmmd = y_hatmmd * (scaler[1] - scaler[0]) + scaler[0]
+    
+    mask_bt = 1- index_mask.sum(dim=2) 
+    mask_bt = mask_bt > 0
+    ymmd_filtered_per_sample = [
+        y_hatmmd[i, mask_bt[i], :]           # Tensor of shape [Z_i, F]
+        for i in range(y_hatmmd.shape[0])
     ]
     
     "evaluate the model"
@@ -146,7 +172,12 @@ for _random_num in [4, 8, 16, 32]:
     ws_timesnetmse = 0
     msem_timesnetmse = 0
 
-
+    mmd_timesnetmmd = 0
+    kl_timesnetmmd = 0
+    ks_timesnetmmd = 0
+    ws_timesnetmmd = 0
+    msem_timesnetmmd = 0
+    
     for i in tqdm(range(batch_size)):
         # sample from the GMM
         _num=i
@@ -168,17 +199,26 @@ for _random_num in [4, 8, 16, 32]:
         msem_partreal = plot_eva.calculate_autocorrelation_mse(samples, _part_real)
         
         # TimesNet mse
-        _part_real_timesnetmse = y_filtered_per_sample[_num].cpu().detach().numpy()
+        _part_real_timesnetmse = ymse_filtered_per_sample[_num].cpu().detach().numpy()
         mmd_timesnetmse += plot_eva.compute_mmd(samples, _part_real_timesnetmse)
         kl_timesnetmse += plot_eva.compute_kl_divergence(samples, _part_real_timesnetmse)
         ks_timesnetmse += ks_2samp(samples.flatten(), _part_real_timesnetmse.flatten())[0]
         ws_timesnetmse += wasserstein_distance(samples.flatten(), _part_real_timesnetmse.flatten())
         msem_timesnetmse = plot_eva.calculate_autocorrelation_mse(samples, _part_real_timesnetmse)
+        
+        # timesnetmmd
+        _part_real_timesnetmmd = ymmd_filtered_per_sample[_num].cpu().detach().numpy()
+        mmd_timesnetmmd += plot_eva.compute_mmd(samples, _part_real_timesnetmmd)
+        kl_timesnetmmd += plot_eva.compute_kl_divergence(samples, _part_real_timesnetmmd)
+        ks_timesnetmmd += ks_2samp(samples.flatten(), _part_real_timesnetmmd.flatten())[0]
+        ws_timesnetmmd += wasserstein_distance(samples.flatten(), _part_real_timesnetmmd.flatten())
+        msem_timesnetmmd = plot_eva.calculate_autocorrelation_mse(samples, _part_real_timesnetmmd)
+        
         # print the shape of the samples
         
         # Plot the samples
         plt.figure(figsize=(10, 6))
-        plt.subplot(3, 1, 1)
+        plt.subplot(4, 1, 1)
 
         # plot the samples the colors indicate the sum of the samples
         samples = samples * (max_test_data[_num] -min_test_data[_num]+1e-15) + min_test_data[_num]
@@ -190,7 +230,7 @@ for _random_num in [4, 8, 16, 32]:
         plt.xlabel('Time')
         plt.ylabel('Value')
 
-        plt.subplot(3, 1, 2)
+        plt.subplot(4, 1, 2)
         # plot the real samples
         for i in range(test_data.shape[1]):
             _sum = test_data[_num, i, :-1].sum()
@@ -200,7 +240,7 @@ for _random_num in [4, 8, 16, 32]:
         plt.xlabel('Time')
         plt.ylabel('Value')
         
-        plt.subplot(3, 1, 3)
+        plt.subplot(4, 1, 3)
         # plot the timesnet mse samples
         for i in range(_part_real_timesnetmse.shape[0]):
             _sum = _part_real_timesnetmse[i, :-1].sum()
@@ -211,6 +251,18 @@ for _random_num in [4, 8, 16, 32]:
         plt.ylabel('Value')
         plt.tight_layout()
         
+        plt.subplot(4, 1, 4)
+        # plot the timesnet mmd samples
+        for i in range(_part_real_timesnetmmd.shape[0]):
+            _sum = _part_real_timesnetmmd[i, :-1].sum()
+            color = plt.cm.viridis(_sum / test_data.max())
+            plt.plot(_part_real_timesnetmmd[i, :-1], alpha=0.05, c=color)
+        plt.title('TimesNet mmd')
+        plt.xlabel('Time')
+        plt.ylabel('Value')
+        plt.tight_layout()
+        
+        # save the plot
         plt.savefig(f'exp/exp_second_round/eva/eveload/plot/samples_from_gmm_{_random_num}.png')
         plt.close()
 
