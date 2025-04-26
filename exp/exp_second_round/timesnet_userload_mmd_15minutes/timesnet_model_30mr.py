@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-
 import os 
 import sys
 _parent_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
@@ -8,13 +7,12 @@ sys.path.append(_parent_path)
 import torch 
 import torch.nn as nn
 import torch.nn.functional as F
-import torch.fft
 import matplotlib.pyplot as plt
 
 import asset.timesnet_loader as timesloader
-import exp_second_round.timesnet_solar_mmd_15minutes.timesnet_utils as ut
-from exp_second_round.timesnet_solar_mmd_15minutes.timesnet_config import TimesBlockConfig 
-import exp_second_round.timesnet_solar_mmd_15minutes.timesnet_train_mmd as tt
+import exp_second_round.timesnet_userload_mmd_15minutes.timesnet_utils as ut
+from exp_second_round.timesnet_userload_mmd_15minutes.timesnet_config import TimesBlockConfig 
+import exp_second_round.timesnet_userload_mmd_15minutes.timesnet_train_mmd as tt
 import wandb
 
 class TimesBlock(nn.Module):
