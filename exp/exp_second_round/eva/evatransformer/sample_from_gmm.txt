@@ -174,3 +174,135 @@ ks_partreal of 32-shots: 0.25414322916666665
 ws_partreal of 32-shots: 0.104096132084464
 msem_partreal of 32-shots: 0.16894337964350228
 
+mmd of 4-shots: 0.3051416047944581
+kl of 4-shots: 1.7102673529868466
+ks of 4-shots: 0.5018333333333334
+ws of 4-shots: 0.2102317309647011
+msem of 4-shots: 0.038172695459623464
+mmd_partreal of 4-shots: 0.5211840779375899
+kl_partreal of 4-shots: 0.9966094092327236
+ks_partreal of 4-shots: 0.48225
+ws_partreal of 4-shots: 0.19429213221150513
+msem_partreal of 4-shots: 0.2514504087359015
+
+mmd of 8-shots: 0.23121240422265907
+kl of 8-shots: 1.5284048372926824
+ks of 8-shots: 0.531875
+ws of 8-shots: 0.21494083993770186
+msem of 8-shots: 0.04090049828604855
+mmd_partreal of 8-shots: 0.3478876809728661
+kl_partreal of 8-shots: 1.397082950568099
+ks_partreal of 8-shots: 0.6413958333333334
+ws_partreal of 8-shots: 0.28787123327569747
+msem_partreal of 8-shots: 0.11181446040366787
+
+mmd of 16-shots: 0.2827599096319311
+kl of 16-shots: 2.051332352539325
+ks of 16-shots: 0.6371666666666667
+ws of 16-shots: 0.2517150931863492
+msem of 16-shots: 0.04801816409591237
+mmd_partreal of 16-shots: 0.3513074148924179
+kl_partreal of 16-shots: 1.363503036908663
+ks_partreal of 16-shots: 0.66525
+ws_partreal of 16-shots: 0.25451566996231456
+msem_partreal of 16-shots: 0.07022748161134816
+
+mmd of 32-shots: 0.3083084819052635
+kl of 32-shots: 2.1673971212415055
+ks of 32-shots: 0.640375
+ws of 32-shots: 0.2539386466777288
+msem of 32-shots: 0.03563074924111493
+mmd_partreal of 32-shots: 0.3397554534108205
+kl_partreal of 32-shots: 1.425270274159294
+ks_partreal of 32-shots: 0.6671406249999999
+ws_partreal of 32-shots: 0.2691768695093923
+msem_partreal of 32-shots: 0.04663116759323325
+
+mmd of 4-shots: 0.2610949316909705
+kl of 4-shots: 2.008863447313265
+ks of 4-shots: 0.7125416666666666
+ws of 4-shots: 0.40397430915097443
+msem of 4-shots: 0.14327292308057477
+mmd_partreal of 4-shots: 0.5841700496950532
+kl_partreal of 4-shots: 0.11792393456854618
+ks_partreal of 4-shots: 0.5451666666666666
+ws_partreal of 4-shots: 0.20958201689778533
+msem_partreal of 4-shots: 0.502601805841215
+
+mmd of 8-shots: 0.032203040731477325
+kl of 8-shots: 17.19694682075533
+ks of 8-shots: 0.45716666666666667
+ws of 8-shots: 0.47960103959941097
+msem of 8-shots: 0.1807406681029207
+mmd_partreal of 8-shots: 0.16329663052435356
+kl_partreal of 8-shots: 17.952059260943926
+ks_partreal of 8-shots: 0.47211458333333334
+ws_partreal of 8-shots: 0.49183373029850813
+msem_partreal of 8-shots: 0.3225031521039407
+
+mmd of 16-shots: 0.03207339170458229
+kl of 16-shots: 13.91506757108262
+ks of 16-shots: 0.40912500000000007
+ws of 16-shots: 0.48135981610305417
+msem of 16-shots: 0.17376108728190376
+mmd_partreal of 16-shots: 0.08801020866755095
+kl_partreal of 16-shots: 18.665002562901698
+ks_partreal of 16-shots: 0.4499583333333333
+ws_partreal of 16-shots: 0.5025171410828033
+msem_partreal of 16-shots: 0.17286111197414067
+
+mmd of 32-shots: 0.031754776163164404
+kl of 32-shots: 3.548254553526448
+ks of 32-shots: 0.49820833333333336
+ws of 32-shots: 0.3729241133984161
+msem of 32-shots: 0.1606992876818103
+mmd_partreal of 32-shots: 0.05262697509803305
+kl_partreal of 32-shots: 3.414058228142078
+ks_partreal of 32-shots: 0.4935572916666667
+ws_partreal of 32-shots: 0.37125934808197936
+msem_partreal of 32-shots: 0.1571209312839137
+
+mmd of 4-shots: 0.24900670390142757
+kl of 4-shots: 1.0279123889875597
+ks of 4-shots: 0.2934583333333334
+ws of 4-shots: 0.19155397355008752
+msem of 4-shots: 0.04610468627934978
+mmd_partreal of 4-shots: 0.4874291228739903
+kl_partreal of 4-shots: 0.15659824654494514
+ks_partreal of 4-shots: 0.272375
+ws_partreal of 4-shots: 0.1696338266500555
+msem_partreal of 4-shots: 0.19764869373863395
+
+mmd of 8-shots: 0.2642983130932807
+kl of 8-shots: 1.020135979705505
+ks of 8-shots: 0.308
+ws of 8-shots: 0.16422476470859965
+msem of 8-shots: 0.040978568411641186
+mmd_partreal of 8-shots: 0.3825790213565452
+kl_partreal of 8-shots: 0.1835931440899366
+ks_partreal of 8-shots: 0.31184375
+ws_partreal of 8-shots: 0.1632532067837143
+msem_partreal of 8-shots: 0.09918358819689592
+
+mmd of 16-shots: 0.28227433069297125
+kl of 16-shots: 1.0810014306926081
+ks of 16-shots: 0.31962500000000005
+ws of 16-shots: 0.17082525047321834
+msem of 16-shots: 0.041716732996114746
+mmd_partreal of 16-shots: 0.3445981361735034
+kl_partreal of 16-shots: 0.2737822460368835
+ks_partreal of 16-shots: 0.352875
+ws_partreal of 16-shots: 0.17756497746424021
+msem_partreal of 16-shots: 0.07006332931139776
+
+mmd of 32-shots: 0.2701439831695476
+kl of 32-shots: 1.0898364063886925
+ks of 32-shots: 0.3037083333333333
+ws of 32-shots: 0.17751313438409635
+msem of 32-shots: 0.04934305850813834
+mmd_partreal of 32-shots: 0.29722011844275653
+kl_partreal of 32-shots: 0.4362554453877195
+ks_partreal of 32-shots: 0.3144140625
+ws_partreal of 32-shots: 0.17865912585357852
+msem_partreal of 32-shots: 0.07755509720131872
+
