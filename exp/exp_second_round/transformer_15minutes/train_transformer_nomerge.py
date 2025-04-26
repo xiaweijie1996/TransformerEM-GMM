@@ -38,7 +38,7 @@ sub_epoch = int(dataset.__len__()*split_ratio[0]/batch_size)
 save_model = 'exp/exp_second_round/transformer_15minutes/model/'
 save_image = 'exp/exp_second_round/transformer_15minutes/gen_img/'
 lr = 0.0001
-n_components = 6
+n_components = 3
 min_random_sample_num = 8
 
 # define the encoder
