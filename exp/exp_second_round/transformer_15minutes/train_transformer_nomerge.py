@@ -10,7 +10,7 @@ import numpy as np
 import torch.optim as optim
 
 import model.gmm_transformer as gmm_model
-import asset.gmm_train_tool_improved as gmm_train_tool
+import asset.gmm_train_tool as gmm_train_tool
 import asset.em_pytorch as ep
 import asset.plot_eva as pa 
 from asset.dataloader import Dataloader_nolabel
@@ -36,7 +36,7 @@ random_sample_num = 96
 num_epochs = int(500000)
 sub_epoch = int(dataset.__len__()*split_ratio[0]/batch_size)
 save_model = 'exp/exp_second_round/transformer_15minutes/model/'
-save_image = 'eexp/exp_second_round/transformer_15minutes/gen_img/'
+save_image = 'exp/exp_second_round/transformer_15minutes/gen_img/'
 lr = 0.0001
 n_components = 6
 min_random_sample_num = 8
@@ -47,8 +47,8 @@ para_dim = n_components*2
 hidden_d = 96
 out_d = 96
 n_heads = 2
-mlp_ratio = 2
-n_blocks = 2
+mlp_ratio = 4
+n_blocks = 3
 encoder = gmm_model.ViT_encodernopara(chw, hidden_d, out_d, n_heads, mlp_ratio, n_blocks).to(device)
 _model_scale = sum(p.numel() for p in encoder.parameters() if p.requires_grad)
 print('number of parameters: ', _model_scale)

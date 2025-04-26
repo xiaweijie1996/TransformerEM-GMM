@@ -28,36 +28,37 @@ random_sample_num = 96
 n_components = 6    
 chw = (1, random_sample_num,  97)
 para_dim = n_components*2
-hidden_d = 96*2
+hidden_d = 96*1
 out_d = 96
-n_heads = 1
-mlp_ratio = 1
+n_heads = 2
+mlp_ratio = 2
 n_blocks = 2
 
 # Create the encoder model
 encoder = gmm_model.ViT_encodernopara(chw, hidden_d, out_d, n_heads, mlp_ratio, n_blocks).to(device)
 
 # load state dict of the model
-model_path = 'exp/exp_second_round/user_load_15minutes/model/loadmerge_encoder_96_704366.pth'
+model_path = 'exp/exp_second_round/transformer_15minutes/model/transformer_encoder_96_251246.pth'
 model = torch.load(model_path, map_location=device)
 encoder.load_state_dict(model)
 
 embedding_para = torch.nn.Embedding(n_components*2, 1).to(device)
 emb_empty_token = torch.nn.Embedding(1, chw[2]).to(device)
 
-path_embedding = 'exp/exp_second_round/user_load_15minutes/model/loadmerge_embedding_96_704366.pth'
+path_embedding = 'exp/exp_second_round/transformer_15minutes/model/transformer_embedding_96_251246.pth'
 emb_weight = torch.load(path_embedding, map_location=device, weights_only=False)
-path_empty = 'exp/exp_second_round/user_load_15minutes/model/loadmerge_emb_empty_token_96_704366.pth'
+path_empty = 'exp/exp_second_round/transformer_15minutes/model/transformer_emb_empty_token_96_251246.pth'
 empty_token_vec = torch.load(path_empty, map_location=device,weights_only=False)
 
 # load data
 batch_size =  1
 split_ratio = (0.8,0.1,0.1)
-data_path =  'exp/data_process_for_data_collection_all/new_data_15minute_grid_merge.pkl' ## 
+data_path =  'exp/data_process_for_data_collection_all/transformer_data_15minutes.pkl' ## 
 dataset = Dataloader_nolabel(data_path,  batch_size=batch_size
                     , split_ratio=split_ratio)
 print('lenthg of test data: ', dataset.__len__()*split_ratio[1])
-test_data = dataset.load_test_data(batch_size )
+# test_data = dataset.load_test_data(batch_size )
+test_data = dataset.load_train_data() # batch_size 
 
 # normalize the input data
 min_test_data = test_data[:,:, :-1].min(axis=1).reshape(batch_size , 1, chw[2]-1)
@@ -84,8 +85,10 @@ for _random_num in [4, 8, 16, 32]:
     _new_para = encoder_out[:, :n_components*2, :]
     _new_para = encoder.output_adding_layer(_new_para, _param)
 
-    mean = _new_para[:, :n_components* 96].view(-1, n_components, 96)
+    mean = _new_para[:, :n_components* 96].view(-1, n_components, 96) 
+    mean = mean + torch.randn(mean.shape).to(device) * 0.01
     cov = _new_para[:, n_components* 96:].view(-1, n_components, 96)
+    cov = cov + torch.randn(cov.shape).to(device) * 0.01
 
     # recover the scale
     recovered_test_data = test_data[:, :, :-1].clone() * (max_test_data -min_test_data+1e-15) + min_test_data
@@ -133,8 +136,8 @@ for _random_num in [4, 8, 16, 32]:
         # plot the samples the colors indicate the sum of the samples
         samples = samples * (max_test_data[_num] -min_test_data[_num]+1e-15) + min_test_data[_num]
         for i in range(samples.shape[0]):
-            print('samples shape check: ', samples.shape)
-            _sum = samples[i, :-1].sum()
+            # print('samples shape check: ', samples.shape)
+            _sum = test_data[_num, i, :-1].sum()
             color = plt.cm.viridis(_sum / test_data.max())
             plt.plot(samples[i, :-1], alpha=0.05, c=color)
         plt.title('Samples from GMM')
@@ -150,7 +153,7 @@ for _random_num in [4, 8, 16, 32]:
         plt.title('real')
         plt.xlabel('Time')
         plt.ylabel('Value')
-        plt.savefig(f'exp/exp_second_round/eva/eveload/plot/samples_from_gmm_{_random_num}.png')
+        plt.savefig(f'exp/exp_second_round/eva/evatransformer/plot/samples_from_gmm_{_random_num}.png')
         plt.show()
 
 
@@ -168,19 +171,19 @@ for _random_num in [4, 8, 16, 32]:
         print(f'msem_partreal of {_random_num}-shots: ', msem_partreal/batch_size)
         
         # save the results in a text file
-        # with open('exp/exp_second_round/eva/eveload/sample_from_gmm.txt', 'a') as f:
-        #     f.write(f'mmd of {_random_num}-shots: {mmd/batch_size}\n')
-        #     f.write(f'kl of {_random_num}-shots: {kl/batch_size}\n')
-        #     f.write(f'ks of {_random_num}-shots: {ks/batch_size}\n')
-        #     f.write(f'ws of {_random_num}-shots: {ws/batch_size}\n')
-        #     f.write(f'msem of {_random_num}-shots: {msem/batch_size}\n')
+        with open('exp/exp_second_round/eva/evatransformer/sample_from_gmm.txt', 'a') as f:
+            f.write(f'mmd of {_random_num}-shots: {mmd/batch_size}\n')
+            f.write(f'kl of {_random_num}-shots: {kl/batch_size}\n')
+            f.write(f'ks of {_random_num}-shots: {ks/batch_size}\n')
+            f.write(f'ws of {_random_num}-shots: {ws/batch_size}\n')
+            f.write(f'msem of {_random_num}-shots: {msem/batch_size}\n')
 
-        #     f.write(f'mmd_partreal of {_random_num}-shots: {mmd_partreal/batch_size}\n')
-        #     f.write(f'kl_partreal of {_random_num}-shots: {kl_partreal/batch_size}\n')
-        #     f.write(f'ks_partreal of {_random_num}-shots: {ks_partreal/batch_size}\n')
-        #     f.write(f'ws_partreal of {_random_num}-shots: {ws_partreal/batch_size}\n')
-        #     f.write(f'msem_partreal of {_random_num}-shots: {msem_partreal/batch_size}\n')
-        #     f.write('\n')
+            f.write(f'mmd_partreal of {_random_num}-shots: {mmd_partreal/batch_size}\n')
+            f.write(f'kl_partreal of {_random_num}-shots: {kl_partreal/batch_size}\n')
+            f.write(f'ks_partreal of {_random_num}-shots: {ks_partreal/batch_size}\n')
+            f.write(f'ws_partreal of {_random_num}-shots: {ws_partreal/batch_size}\n')
+            f.write(f'msem_partreal of {_random_num}-shots: {msem_partreal/batch_size}\n')
+            f.write('\n')
 
 
 
