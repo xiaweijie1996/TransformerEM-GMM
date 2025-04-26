@@ -97,7 +97,7 @@ class MMDLoss(nn.Module):
 
 def train_and_evaluate(model, data_loader, optimizer, device, epochs, sub_epochs, test_steps, num_params):
     current_loss =10000
-    mmd_loss = MMDLoss(kernel_type='rbf', bandwidth=1.0)
+    mmd_loss = MMDLoss(kernel_type='rbf', bandwidth=0.3)
     for epoch in range(epochs):
         for sub_epoch in range(sub_epochs):
             # Training
