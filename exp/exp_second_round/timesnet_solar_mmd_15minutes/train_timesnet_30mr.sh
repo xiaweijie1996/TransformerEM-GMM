@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#SBATCH --job-name="15m_solar_merge"
+#SBATCH --job-name="15m_userload_nomerge"
 #SBATCH --partition=gpu_a100
 #SBATCH --time=24:00:00
 #SBATCH -N 1
