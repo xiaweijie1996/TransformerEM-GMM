@@ -11,9 +11,9 @@ import torch.fft
 import matplotlib.pyplot as plt
 
 import asset.timesnet_loader as timesloader
-import timesnet_utils as ut
-from timesnet_config import TimesBlockConfig 
-import timesnet_train as tt
+import times_net_new.timesnet_utils as ut
+# from timesnet_config import TimesBlockConfig 
+import times_net_new.timesnet_train as tt
 import wandb
 
 class TimesBlock(nn.Module):

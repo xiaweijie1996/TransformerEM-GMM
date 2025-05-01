@@ -17,7 +17,7 @@ configs = TimesBlockConfig()
 model = tm.Model(configs).to(device)
 
 # model path
-model_path = '/home/weijiexia/paper3/times_net_new/timesnet.pth'
+model_path = 'exp/times_net_new/timesnet.pth'
 
 # load model
 model.load_state_dict(torch.load(model_path))
