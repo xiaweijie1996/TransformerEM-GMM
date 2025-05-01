@@ -57,7 +57,7 @@ embedding_para = torch.nn.Embedding(n_components*2, 1).to(device)
 emb_empty_token = torch.nn.Embedding(1, chw[2]).to(device)
 
 # define the optimizer and loss function and cyclic learning rate scheduler
-optimizer = optim.Adam(list(encoder.parameters()), lr=lr, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0001, amsgrad=False)
+optimizer = optim.AdamW(list(encoder.parameters()), lr=lr, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0001, amsgrad=False)
 scheduler = optim.lr_scheduler.CyclicLR(optimizer, base_lr=5e-5, max_lr=1e-3, step_size_up=sub_epoch*2, mode='triangular', cycle_momentum=False)
 
 # log number of parameters of encoder and decoder
