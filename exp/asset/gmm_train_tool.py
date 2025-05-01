@@ -55,24 +55,27 @@ def get_loss_le(dataset, vae_model, encoder, random_sample_num, min_random_sampl
     _train_min,_ = train_sample[:,:, :-1].min(axis=1, keepdim=True)
     _train_max,_ = train_sample[:,:, :-1].max(axis=1, keepdim=True)
     train_sample[:,:, :-1] = (train_sample[:,:, :-1] - _train_min)/(_train_max-_train_min+1e-15)
-
-    # reshape the train sample to have shape (b, 96)
     mu, logvar = vae_model.encode(train_sample[:,:, :-1].reshape(-1, 96))
-    hidden_train_sample = vae_model.reparameterize(mu, logvar)
-    hidden_train_sample = hidden_train_sample.view(train_sample.shape[0], train_sample.shape[1], -1)
-    hidden_train_sample = torch.cat((hidden_train_sample, train_sample[:, :, -1:]), dim=2) # hidden_train_sample: (b, 96, 25)
-    
+    hidden_train_sample_all = vae_model.reparameterize(mu, logvar)
+    hidden_train_sample_all = hidden_train_sample_all.view(train_sample.shape[0], train_sample.shape[1], -1)
+
     # random_sample a number between min_random_sample_num and random_sample_num
     _random_num = torch.randint(min_random_sample_num, random_sample_num+1, (1,)).item()
-    _train_sample_part = rs.random_sample(hidden_train_sample, 'random', _random_num)
+    _train_sample_part = rs.random_sample(train_sample, 'random', _random_num)
     _train_sample_part[:, :, -1] = _train_sample_part[:, :, -1]/365 # simple data embedding
     
+    # reshape the train sample to have shape (b, 96)
+    mu, logvar = vae_model.encode( _train_sample_part[:, :, :-1].reshape(-1, 96))
+    hidden_train_sample = vae_model.reparameterize(mu, logvar)
+    hidden_train_sample = hidden_train_sample.view(_train_sample_part.shape[0], _train_sample_part.shape[1], -1)
+    hidden_train_sample = torch.cat((hidden_train_sample, _train_sample_part[:, :, -1:]), dim=2) # hidden_train_sample: (b, 96, 25)
+    
     # padding the empty token to _train_sample_part to have shape (b, random_sample_num, 25)
-    _train_sample_part_emb = pad_and_embed(_train_sample_part, random_sample_num, _random_num,
+    _train_sample_part_emb = pad_and_embed(hidden_train_sample, random_sample_num, _random_num,
                                            emb_empty_token, device)
 
     # use ep to do one iteration of the EM algorithm
-    _ms, _covs = ep.GMM_PyTorch_Batch(n_components, _train_sample_part[:,:, :-1].shape[-1]).fit(_train_sample_part[:,:, :-1], 1) # _ms: (b, n_components, 24), _covs: (b, n_components, 24)
+    _ms, _covs = ep.GMM_PyTorch_Batch(n_components, hidden_train_sample[:,:, :-1].shape[-1]).fit(hidden_train_sample[:,:, :-1], 1) # _ms: (b, n_components, 24), _covs: (b, n_components, 24)
 
     # concatenate the mean and variance to have (b, n_components*2, 25)
     _param_emb, _param = concatenate_and_embed_params(_ms, _covs, n_components, embedding, device)
@@ -83,7 +86,8 @@ def get_loss_le(dataset, vae_model, encoder, random_sample_num, min_random_sampl
     
     _new_para = encoder_out[:, :n_components*2, :]
     _new_para = encoder.output_adding_layer(_new_para, _param)
-    _loss = le.le_loss(hidden_train_sample[:,:, :-1], n_components, _new_para)
+    
+    _loss = le.le_loss(hidden_train_sample_all, n_components, _new_para)
     
     return _loss, _random_num, _new_para, _param, train_sample[:, :, :-1], _train_sample_part[:, :, :-1], (_train_min, _train_max) 
 

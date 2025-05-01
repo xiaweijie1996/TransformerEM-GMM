@@ -33,13 +33,13 @@ device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 print(device)
 
 # define the hyperparameters
-random_sample_num = 96
+random_sample_num = 40
 num_epochs = int(500000)
 sub_epoch = int(dataset.__len__()*split_ratio[0]/batch_size)
 save_model = 'exp/exp_second_round/transformer_15minutes/model/'
 save_image = 'exp/exp_second_round/transformer_15minutes/gen_img/'
 lr = 0.0001
-n_components = 3
+n_components = 6
 min_random_sample_num = 8
 
 # define the encoder
@@ -48,8 +48,8 @@ para_dim = n_components*2
 hidden_d = 24
 out_d = 24
 n_heads = 2
-mlp_ratio = 2
-n_blocks = 2
+mlp_ratio = 6
+n_blocks = 4
 encoder = gmm_model.ViT_encodernopara(chw, hidden_d, out_d, n_heads, mlp_ratio, n_blocks).to(device)
 _model_scale = sum(p.numel() for p in encoder.parameters() if p.requires_grad)
 print('number of parameters: ', _model_scale)
@@ -90,12 +90,13 @@ for epoch in range(num_epochs):
         encoder.eval()
         wandb.log({'loss_train': _loss.item()})
         _loss_collection = []
-        for _ in range(20):
+        for _ in range(10):
             _loss, _random_num, _new_para, _param, r_samples, r_samples_part, _mm = gmm_train_tool.get_loss_le(dataset, vae_model, encoder,
                                                                                 random_sample_num, min_random_sample_num, n_components, 
                                                                                 embedding_para, emb_empty_token, 'False', device)
             _loss_collection.append(_loss)
         _loss = torch.stack(_loss_collection).mean()
+        
         print('epoch: ', epoch, 'loss_test: ', _loss.item(), 'random_num: ', _random_num)
         wandb.log({'loss_test': _loss.item(), 'random_num': _random_num, 'epoch':epoch})
         
@@ -106,12 +107,8 @@ for epoch in range(num_epochs):
             torch.save(embedding_para, save_model + f'transformer_embedding_{random_sample_num}_{_model_scale}.pth')
             torch.save(emb_empty_token, save_model + f'transformer_emb_empty_token_{random_sample_num}_{_model_scale}.pth')
 
-        # e, c = pae.evaluation(n_components, _new_para, r_samples, r_samples_part)
-
-        # wandb.log({'mmd_t':e[0],'mmd_r':e[1], 'mmd_gmm':e[2]})
-        # wandb.log({'c_t':c[0],'c_r':c[1], 'c_gmm':c[2]})
-
     if epoch % 1 == 0:
+        print('plotting...')
         save_path = save_image+f'{_model_scale}.png'
         llk_e = pa.plot_samples(save_path, vae_model, batch_size, n_components, _mm, _new_para, r_samples, r_samples_part, _param, figsize=(10, 15))
         

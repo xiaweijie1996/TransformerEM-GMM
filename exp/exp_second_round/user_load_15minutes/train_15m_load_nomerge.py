@@ -10,7 +10,7 @@ import numpy as np
 import torch.optim as optim
 
 import model.gmm_transformer as gmm_model
-import asset.gmm_train_tool as gmm_train_tool
+import asset.gmm_train_tool_noem as gmm_train_tool
 import asset.em_pytorch as ep
 import asset.plot_eva as pae
 from asset.dataloader import Dataloader_nolabel
@@ -31,7 +31,7 @@ device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 print(device)
 
 # define the hyperparameters
-random_sample_num = 96
+random_sample_num = 40
 num_epochs = int(500000)
 sub_epoch = int(dataset.__len__()*split_ratio[0]/batch_size)
 save_model = 'exp/exp_second_round/user_load_15minutes/model/'
@@ -43,11 +43,11 @@ min_random_sample_num = 8
 # define the encoder
 chw = (1, random_sample_num,  97)
 para_dim = n_components*2
-hidden_d = 96*2
+hidden_d = 96
 out_d = 96
-n_heads = 1
-mlp_ratio = 1
-n_blocks = 2
+n_heads = 4
+mlp_ratio = 12
+n_blocks = 4
 encoder = gmm_model.ViT_encodernopara(chw, hidden_d, out_d, n_heads, mlp_ratio, n_blocks).to(device)
 _model_scale = sum(p.numel() for p in encoder.parameters() if p.requires_grad)
 print('number of parameters: ', _model_scale)
@@ -61,7 +61,7 @@ optimizer = optim.Adam(list(encoder.parameters()), lr=lr, betas=(0.9, 0.999), ep
 scheduler = optim.lr_scheduler.CyclicLR(optimizer, base_lr=5e-5, max_lr=1e-3, step_size_up=sub_epoch*2, mode='triangular', cycle_momentum=False)
 
 # log number of parameters of encoder and decoder
-wandb.init(project=f'load_usa_{random_sample_num}_train_nomerge', entity='xiaweijie1996')
+wandb.init(project=f'load_usa_{random_sample_num}_train_nomerge')
 wandb.log({'num_parameters_encoder': _model_scale})
 
 # train the model2
@@ -81,17 +81,17 @@ for epoch in range(num_epochs):
         optimizer.step()
         scheduler.step()
         
-    if epoch % 1 == 0:
-        encoder.eval()
-        wandb.log({'loss_train': _loss.item()})
-        _loss_collection = []
-        for _ in range(20):
-            _loss, _random_num, _new_para, _param, r_samples, r_samples_part, _mm = gmm_train_tool.get_loss_le(dataset, encoder,
-                                                                                random_sample_num, min_random_sample_num, n_components, 
-                                                                                embedding_para, emb_empty_token, 'False', device)
-            _loss_collection.append(_loss)
-        _loss = torch.stack(_loss_collection).mean()
-        # print('epoch: ', epoch, 'loss_test: ', _loss.item(), 'random_num: ', _random_num)
+    # if epoch % 1 == 0:
+    #     encoder.eval()
+    #     wandb.log({'loss_train': _loss.item()})
+    #     _loss_collection = []
+    #     for _ in range(20):
+    #         _loss, _random_num, _new_para, _param, r_samples, r_samples_part, _mm = gmm_train_tool.get_loss_le(dataset, encoder,
+    #                                                                             random_sample_num, min_random_sample_num, n_components, 
+    #                                                                             embedding_para, emb_empty_token, 'False', device)
+    #         _loss_collection.append(_loss)
+    #     _loss = torch.stack(_loss_collection).mean()
+    #     # print('epoch: ', epoch, 'loss_test: ', _loss.item(), 'random_num: ', _random_num)
         wandb.log({'loss_test': _loss.item(), 'random_num': _random_num, 'epoch':epoch})
         
         # save the model and embeding
@@ -107,10 +107,7 @@ for epoch in range(num_epochs):
         # wandb.log({'c_t':c[0],'c_r':c[1], 'c_gmm':c[2]})
 
     if epoch % 50 == 0:
-      try:
         save_path = save_image+f'_{random_sample_num}_{_model_scale}.png'
         llk_e = pae.plot_samples(save_path, batch_size, n_components, _mm, _new_para, r_samples, r_samples_part, _param, figsize=(10, 15))
-      except:
-        pass
         
         
