@@ -55,7 +55,7 @@ wandb.config = {
     "model_type": '15m',
 }
 
-loss_mid = 1000
+loss_mid = 1000000000000
 for epoch in range(epochs):
     for j in range(sub_epoch):
         vae_model.train()
@@ -93,8 +93,8 @@ for epoch in range(epochs):
         torch.save(vae_model.state_dict(), os.path.join(save_model, 'vae_model.pth'))
 
         # Plot the recon data
-        _plot_sample = test_sample[0,:, :-1]* (_test_max[0]-_test_min[0]+1e-15) + _test_min[0]
-        _plot_recon = recon_data[0, :, :-1] * (_test_max[0]-_test_min[0]+1e-15) + _test_min[0]
+        _plot_sample = test_sample[0]* (_test_max[0]-_test_min[0]+1e-15) + _test_min[0]
+        _plot_recon = recon_data[0] * (_test_max[0]-_test_min[0]+1e-15) + _test_min[0]
         _plot_sample = _plot_sample.cpu().detach().numpy()
         _plot_recon = _plot_recon.cpu().detach().numpy()
         _plot_sample = _plot_sample.reshape(-1, 96)
