@@ -24,43 +24,43 @@ device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
 
 # Define the encoder parameters
-random_sample_num = 96
-n_components = 6    
-chw = (1, random_sample_num,  97)
-para_dim = n_components*2
-hidden_d = 96*1
-out_d = 96
-n_heads = 2
-mlp_ratio = 2
-n_blocks = 2
-
 # random_sample_num = 96
-# n_components = 3   
+# n_components = 6    
 # chw = (1, random_sample_num,  97)
 # para_dim = n_components*2
 # hidden_d = 96*1
 # out_d = 96
 # n_heads = 2
-# mlp_ratio = 4
-# n_blocks = 3
+# mlp_ratio = 2
+# n_blocks = 2
+
+random_sample_num = 96
+n_components = 3   
+chw = (1, random_sample_num,  97)
+para_dim = n_components*2
+hidden_d = 96*1
+out_d = 96
+n_heads = 2
+mlp_ratio = 4
+n_blocks = 3
 
 # Create the encoder model
 encoder = gmm_model.ViT_encodernopara(chw, hidden_d, out_d, n_heads, mlp_ratio, n_blocks).to(device)
 
 # load state dict of the model
-model_path = 'exp/exp_second_round/transformer_15minutes/model/transformer_encoder_96_251246.pth'
-# model_path = 'exp/exp_second_round/transformer_15minutes/model/transformer_encoder_96_783090.pth'
+# model_path = 'exp/exp_second_round/transformer_15minutes/model/transformer_encoder_96_251246.pth'
+model_path = 'exp/exp_second_round/transformer_15minutes/model/transformer_encoder_96_783090.pth'
 model = torch.load(model_path, map_location=device)
 encoder.load_state_dict(model)
 
 embedding_para = torch.nn.Embedding(n_components*2, 1).to(device)
 emb_empty_token = torch.nn.Embedding(1, chw[2]).to(device)
 
-path_embedding = 'exp/exp_second_round/transformer_15minutes/model/transformer_embedding_96_251246.pth'
-# path_embedding = 'exp/exp_second_round/transformer_15minutes/model/transformer_embedding_96_783090.pth'
+# path_embedding = 'exp/exp_second_round/transformer_15minutes/model/transformer_embedding_96_251246.pth'
+path_embedding = 'exp/exp_second_round/transformer_15minutes/model/transformer_embedding_96_783090.pth'
 emb_weight = torch.load(path_embedding, map_location=device, weights_only=False)
-path_empty = 'exp/exp_second_round/transformer_15minutes/model/transformer_emb_empty_token_96_251246.pth'
-# path_empty = 'exp/exp_second_round/transformer_15minutes/model/transformer_emb_empty_token_96_783090.pth'
+# path_empty = 'exp/exp_second_round/transformer_15minutes/model/transformer_emb_empty_token_96_251246.pth'
+path_empty = 'exp/exp_second_round/transformer_15minutes/model/transformer_emb_empty_token_96_783090.pth'
 empty_token_vec = torch.load(path_empty, map_location=device,weights_only=False)
 
 # load data
