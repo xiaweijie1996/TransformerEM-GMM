@@ -16,4 +16,4 @@ source $HOME/TransformerEM-GMM/.venv/bin/activate
 
 cp $HOME/TransformerEM-GMM/exp/data_process_for_data_collection_all/new_data_15minute_grid_nomerge.pkl "$TMPDIR"
 
-python $HOME/TransformerEM-GMM/exp/exp_second_round/usa_load_15minutes/train_load_nomerge.py "$TMPDIR/new_data_15minute_grid_nomerge.pkl"
+python $HOME/TransformerEM-GMM/exp/exp_second_round/user_load_15minutes/train_load_nomerge.py "$TMPDIR/new_data_15minute_grid_nomerge.pkl"
