@@ -1,0 +1,31 @@
+/var/spool/slurm/slurmd/job11398305/slurm_script: line 11: mmodule: command not found
+Lmod has detected the following error: These module(s) or extension(s) exist
+but cannot be loaded as requested: "Miniconda3/23.5.2-0"
+   Try: "module spider Miniconda3/23.5.2-0" to see how to load the module(s).
+
+
+
+wandb: Using wandb-core as the SDK backend.  Please refer to https://wandb.me/wandb-core for more information.
+wandb: Currently logged in as: xiaweijie1996 (weijie_xia) to https://api.wandb.ai. Use `wandb login --relogin` to force relogin
+wandb: Tracking run with wandb version 0.19.9
+wandb: Run data is saved locally in /gpfs/home4/wxia/TransformerEM-GMM/wandb/run-20250426_143747-vsybu17v
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run visionary-wave-8
+wandb: ⭐️ View project at https://wandb.ai/weijie_xia/timesnet_mmd
+wandb: 🚀 View run at https://wandb.ai/weijie_xia/timesnet_mmd/runs/vsybu17v
+slurmstepd: error: *** JOB 11398305 ON gcn51 CANCELLED AT 2025-04-26T19:15:52 ***
+
+JOB STATISTICS
+==============
+Job ID: 11398305
+Cluster: snellius
+User/Group: wxia/wxia
+State: RUNNING
+Nodes: 1
+Cores per node: 18
+CPU Utilized: 00:00:00
+CPU Efficiency: 0.00% of 3-11:33:00 core-walltime
+Job Wall-clock time: 04:38:30
+Memory Utilized: 0.00 MB
+Memory Efficiency: 0.00% of 120.00 GB (120.00 GB/node)
+WARNING: Efficiency statistics can only be obtained after the job has ended as seff tool is based on the accounting database data.

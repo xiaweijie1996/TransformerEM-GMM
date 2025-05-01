@@ -7,6 +7,55 @@ import wandb
 import numpy as np
 import matplotlib.pyplot as plt
 
+
+def normalize_and_mask_fix(data, index_mask, device, num =4):
+    # data = data.view(data.size(0), -1, 1)
+    
+    # normalize the data between 0 and 1 for each sample in the batch
+    _min = data.min(dim=1).values
+    _max = data.max(dim=1).values
+    _min = _min.unsqueeze(1)
+    _max = _max.unsqueeze(1)
+    data = (data - _min) / (_max - _min + 1e-10)
+    
+    data = data.to(device)
+
+    # find rows with at least one '1'
+    tensor = (index_mask.sum(dim=2) >= 24).float()
+    
+    # convert to numpy array
+    np_array = tensor.numpy()
+
+    # number of ones to keep in each row
+    num_ones_to_keep = num
+    # wandb.log({'num_ones_to_keep': num_ones_to_keep})
+
+    # get the indices of ones in the array
+    indices = np.argwhere(np_array == 1)
+
+    # create an array to hold the output
+    output_array = np.zeros_like(np_array)
+
+    # sort indices by row, then shuffle within rows to randomize which ones are kept
+    np.random.shuffle(indices)
+
+    # keep track of how many ones have been placed in each row
+    placed_ones = np.zeros(np_array.shape[0], dtype=int)
+
+    # place ones in the output array
+    for i in range(indices.shape[0]):
+        row, col = indices[i]
+        if placed_ones[row] < num_ones_to_keep:
+            output_array[row, col] = 1
+            placed_ones[row] += 1
+
+    # convert back to tensor
+    modified_tensor = torch.tensor(output_array)
+    random_mask = modified_tensor.unsqueeze(-1).repeat(1, 1, 24*4)
+
+    return data, random_mask.to(device), (_min, _max)
+
+
 def normalize_and_mask(data, index_mask, device, ratio=None):
     # data = data.view(data.size(0), -1, 1)
     
@@ -27,7 +76,7 @@ def normalize_and_mask(data, index_mask, device, ratio=None):
 
     # number of ones to keep in each row
     num_ones_to_keep = np.random.randint(8, 98)
-    wandb.log({'num_ones_to_keep': num_ones_to_keep})
+    # wandb.log({'num_ones_to_keep': num_ones_to_keep})
 
     # get the indices of ones in the array
     indices = np.argwhere(np_array == 1)

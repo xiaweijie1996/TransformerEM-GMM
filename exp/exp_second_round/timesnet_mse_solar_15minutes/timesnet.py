@@ -9,9 +9,9 @@ import torch.nn as nn
 import torch.nn.functional as F
 
 import asset.timesnet_loader as timesloader
-import exp_second_round.timesnet_mse_userload_15minutes.timesnet_utils as ut
-from exp_second_round.timesnet_mse_userload_15minutes.timesnet_config import TimesBlockConfig 
-import exp_second_round.timesnet_mse_userload_15minutes.timesnet_train as tt
+import exp_second_round.timesnet_mse_solar_15minutes.timesnet_utils as ut
+from exp_second_round.timesnet_mse_solar_15minutes.timesnet_config import TimesBlockConfig 
+import exp_second_round.timesnet_mse_solar_15minutes.timesnet_train as tt
 import wandb
 
 class TimesBlock(nn.Module):

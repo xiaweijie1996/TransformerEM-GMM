@@ -91,12 +91,11 @@ def train_and_evaluate(model, data_loader, optimizer, device, epochs, sub_epochs
                 losses.append(loss.item())
         
         # print(f"Epoch {epoch + 1}, Test Loss: {sum(losses) / len(losses)}")
-        exp/exp_second_round/timesnet_mse_userload_15minutes
         _loss = sum(losses) / len(losses)
         wandb.log({'loss_test': _loss})
         if _loss < current_loss:
             current_loss = _loss
-            torch.save(model.state_dict(), f'exp/exp_second_round/timesnet_mse_userload_15minutes/30mr_timesnet_{num_params}.pth')
+            torch.save(model.state_dict(), f'exp/exp_second_round/timesnet_mse_solar_15minutes/30mr_timesnet_{num_params}.pth')
         
         if epoch % 10 == 0:
             # print('plot')
@@ -108,6 +107,6 @@ def train_and_evaluate(model, data_loader, optimizer, device, epochs, sub_epochs
             _pre  = (y_hat[0, :, :].cpu()*index_mask[0, :, :]).detach().numpy()
             plt.plot(_pre[:365,:].reshape(-1), alpha = 0.2)
             plt.legend(['x', 'y_hat'])
-            plt.savefig(f'exp/exp_second_round/timesnet_mse_userload_15minutes/30mr_timesnet_{num_params}.png')
+            plt.savefig(f'exp/exp_second_round/timesnet_mse_solar_15minutes/30mr_timesnet_{num_params}.png')
             plt.close()
             # print('-------------------')

@@ -10,7 +10,7 @@ class TimesNetLoader():
     def __init__(self, 
                  data_path, 
                  batch_size=30, 
-                 split_ration=(0.1, 0.1, 0.1),
+                 split_ration=(0.8, 0.1, 0.1),
                  full_length=366):
         
         # Define the dataloader
@@ -43,8 +43,11 @@ class TimesNetLoader():
         
         return full_series, index_mask # train_data
     
-    def load_test_data_times(self):
-        train_data = self.dl.load_test_data()  # np.array (batch_size, 250, 25)
+    def load_test_data_times(self, train_data_input = None):
+        if train_data_input is None:
+            train_data = self.dl.load_test_data()
+        else:
+            train_data = train_data_input # self.dl.load_test_data()  # np.array (batch_size, 250, 25)
         
         b, l, f = train_data.shape
         
