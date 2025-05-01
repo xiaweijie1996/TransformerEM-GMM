@@ -93,3 +93,18 @@ wandb: 🚀 View run at https://wandb.ai/xiaweijie1996/transformer_96_train_nome
   X = torch.tensor(X)
 /home/wxia/TransformerEM-GMM/exp/asset/plot_eva.py:75: RuntimeWarning: More than 20 figures have been opened. Figures created through the pyplot interface (`matplotlib.pyplot.figure`) are retained until explicitly closed and may consume too much memory. (To control this warning, see the rcParam `figure.max_open_warning`). Consider using `matplotlib.pyplot.close()`.
   fig, axs = plt.subplots(6, 1, figsize=figsize)
+slurmstepd: error: *** JOB 11399003 ON gcn12 CANCELLED AT 2025-04-26T19:15:45 ***
+
+JOB STATISTICS
+==============
+Job ID: 11399003
+Cluster: snellius
+User/Group: wxia/wxia
+State: CANCELLED (exit code 0)
+Nodes: 1
+Cores per node: 18
+CPU Utilized: 00:00:00
+CPU Efficiency: 0.00% of 2-01:32:24 core-walltime
+Job Wall-clock time: 02:45:08
+Memory Utilized: 2.13 GB
+Memory Efficiency: 1.77% of 120.00 GB (120.00 GB/node)
