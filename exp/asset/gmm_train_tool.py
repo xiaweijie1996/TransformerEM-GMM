@@ -43,7 +43,7 @@ def concatenate_and_embed_params(ms, covs, n_components, embedding_layer, device
     
     return param_emb,  param
 
-def get_loss_le(dataset, encoder, random_sample_num, min_random_sample_num, n_components, embedding, emb_empty_token, train='True', device='cpu'):
+def get_loss_le(dataset, vae_model, encoder, random_sample_num, min_random_sample_num, n_components, embedding, emb_empty_token, train='True', device='cpu'):
     if train == 'True':
         train_sample = dataset.load_train_data()
     else:
@@ -55,10 +55,16 @@ def get_loss_le(dataset, encoder, random_sample_num, min_random_sample_num, n_co
     _train_min,_ = train_sample[:,:, :-1].min(axis=1, keepdim=True)
     _train_max,_ = train_sample[:,:, :-1].max(axis=1, keepdim=True)
     train_sample[:,:, :-1] = (train_sample[:,:, :-1] - _train_min)/(_train_max-_train_min+1e-15)
+
+    # reshape the train sample to have shape (b, 96)
+    mu, logvar = vae_model.encode(train_sample[:,:, :-1].reshape(-1, 96))
+    hidden_train_sample = vae_model.reparameterize(mu, logvar)
+    hidden_train_sample = hidden_train_sample.view(train_sample.shape[0], train_sample.shape[1], -1)
+    hidden_train_sample = torch.cat((hidden_train_sample, train_sample[:, :, -1:]), dim=2) # hidden_train_sample: (b, 96, 25)
     
     # random_sample a number between min_random_sample_num and random_sample_num
     _random_num = torch.randint(min_random_sample_num, random_sample_num+1, (1,)).item()
-    _train_sample_part = rs.random_sample(train_sample, 'random', _random_num)
+    _train_sample_part = rs.random_sample(hidden_train_sample, 'random', _random_num)
     _train_sample_part[:, :, -1] = _train_sample_part[:, :, -1]/365 # simple data embedding
     
     # padding the empty token to _train_sample_part to have shape (b, random_sample_num, 25)
@@ -77,7 +83,7 @@ def get_loss_le(dataset, encoder, random_sample_num, min_random_sample_num, n_co
     
     _new_para = encoder_out[:, :n_components*2, :]
     _new_para = encoder.output_adding_layer(_new_para, _param)
-    _loss = le.le_loss(train_sample[:,:, :-1], n_components, _new_para)
+    _loss = le.le_loss(hidden_train_sample[:,:, :-1], n_components, _new_para)
     
     return _loss, _random_num, _new_para, _param, train_sample[:, :, :-1], _train_sample_part[:, :, :-1], (_train_min, _train_max) 
 

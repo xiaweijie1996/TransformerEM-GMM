@@ -85,29 +85,33 @@ for epoch in range(epochs):
     test_sample = (test_sample[:,:, :-1] - _test_min)/(_test_max-_test_min+1e-15)
     reshape_test_sample = test_sample.view(-1, 96)
     recon_data, mu, logvar = vae_model(reshape_test_sample)
-    loss, mse_l, kld_l = loss_function(recon_data, reshape_test_sample, mu, logvar)
-    wandb.log({"loss": loss.item(), "mse_loss": mse_l.item(), "kld_loss": kld_l.item()})
+    loss_test, mse_l, kld_l = loss_function(recon_data, reshape_test_sample, mu, logvar)
+    wandb.log({"loss_test": loss_test.item(), "mse_loss_test": mse_l.item(), "kld_loss_test": kld_l.item()})
 
-    if loss.item() < loss_mid:
-        loss_mid = loss.item()
+    if loss_test.item() < loss_mid:
+        loss_mid = loss_test.item()
         torch.save(vae_model.state_dict(), os.path.join(save_model, 'vae_model.pth'))
 
         # Plot the recon data
         _plot_sample = test_sample[0]* (_test_max[0]-_test_min[0]+1e-15) + _test_min[0]
-        _plot_recon = recon_data[0] * (_test_max[0]-_test_min[0]+1e-15) + _test_min[0]
+        _plot_recon = recon_data[: 250] * (_test_max[0]-_test_min[0]+1e-15) + _test_min[0]
         _plot_sample = _plot_sample.cpu().detach().numpy()
         _plot_recon = _plot_recon.cpu().detach().numpy()
         _plot_sample = _plot_sample.reshape(-1, 96)
         _plot_recon = _plot_recon.reshape(-1, 96)
         
         plt.figure(figsize=(10, 5))
-        plt.plot(_plot_sample[:, 0], label='Original')
-        plt.plot(_plot_recon[:, 0], label='Reconstructed')
-        plt.title('Reconstructed vs Original')
+        plt.subplot(1, 2, 1)
+        plt.plot(_plot_sample.T, label='Original', alpha=0.5, c='blue')
         plt.xlabel('Time')
         plt.ylabel('Value')
-        plt.legend()
-        plt.savefig(os.path.join(save_image, f'recon_epoch_{epoch}.png'))
+        
+        plt.subplot(1, 2, 2)
+        plt.plot(_plot_recon.T, label='Reconstructed', alpha=0.5, c='blue')
+        plt.xlabel('Time')
+        plt.ylabel('Value')
+        
+        plt.savefig(os.path.join(save_image, f'recon_epoch.png'))
         plt.close()
         
-        wandb.log({"recon_epoch": wandb.Image(os.path.join(save_image, f'recon_epoch_{epoch}.png'))})
+        wandb.log({"recon_epoch": wandb.Image(os.path.join(save_image, f'recon_epoch.png'))})

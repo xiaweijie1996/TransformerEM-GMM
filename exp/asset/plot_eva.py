@@ -71,8 +71,11 @@ def sample_from_gmm(n_components, _new_para, _num=0, _num_samples=250):
     return _samples, gmm
 
 # save_path, batch_size, n_components, _mm, _new_para, r_samples, r_samples_part, _param
-def plot_samples(save_path, batch_size, n_components, _mm, _new_para, r_samples, r_samples_part, _param, figsize=(10, 15)):
+def plot_samples(save_path, vae_model, batch_size, n_components, _mm, _new_para, r_samples, r_samples_part, _param, figsize=(10, 15)):
     fig, axs = plt.subplots(6, 1, figsize=figsize)
+    
+    # device
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     
     # Dimension 
     _dim=  int(_new_para.shape[-1]/n_components/2)
@@ -82,13 +85,17 @@ def plot_samples(save_path, batch_size, n_components, _mm, _new_para, r_samples,
     _min = _mm[0][_num].cpu().detach().numpy()
     _max = _mm[1][_num].cpu().detach().numpy()
     r_samples_est = r_samples[_num].clone()
-    r_samples_est = r_samples_est.cpu().detach()
+    r_samples_est  = r_samples_est.cpu().detach()
     
     # Second subplot: Generated Samples
     _samples, _gmm = sample_from_gmm(n_components, _new_para)
+    _samples = torch.tensor(_samples, dtype=torch.float64).to(device)
+    _samples = vae_model.decoder(_samples)  
+    _samples = _samples.cpu().detach()  
+    
     # Scale the samples back to the original scale
     t_samples = _samples * (_max - _min) + _min
-    t_samples[t_samples < 0] = 0
+    # t_samples[t_samples < 0] = 0
     axs[1].plot(t_samples.T, c='b', alpha=0.1)
     axs[1].set_title('Generated Samples by transformer')
     # llk_gmm_t = _gmm.log_likelihood_estimate(r_samples_est)
@@ -99,11 +106,11 @@ def plot_samples(save_path, batch_size, n_components, _mm, _new_para, r_samples,
     axs[2].set_title('Real Samples (data)')
     
     # Fourth subplot: Generated Samples
-    gmm = ep_module.GMM_Simplified_PyTorch(n_components, _dim)
+    gmm = ep_module.GMM_Simplified_PyTorch(n_components, 96)
     gmm.fit(r_samples_est, 300)
     _samples = gmm.sample(300)
     _samples = _samples * (_max - _min) + _min
-    _samples[_samples < 0] = 0
+    # _samples[_samples < 0] = 0
     axs[3].plot(_samples.T, c='b', alpha=0.1)
     axs[3].set_title('Fit GMM to all real sample')
     # llk_gmm_f = gmm.log_likelihood_estimate(r_samples_est)
@@ -116,7 +123,9 @@ def plot_samples(save_path, batch_size, n_components, _mm, _new_para, r_samples,
     axs[0].legend(['Generated', 'gmm', 'gmm_torch'])
     axs[0].set_title('Predicted, GMM_fit, EM_embedding')
     
-    r_samples_part_gmm = r_samples_part[_num].cpu().detach().numpy()
+    r_samples_part_gmm = r_samples_part[_num]
+    r_samples_part_gmm = vae_model.decoder(r_samples_part_gmm)
+    r_samples_part_gmm = r_samples_part_gmm.cpu().detach()
     r_samples_part_gmm_scaled = r_samples_part_gmm * (_max - _min) + _min
     axs[4].plot(r_samples_part_gmm_scaled.T, c='r', alpha=0.1)
     axs[4].set_title('Random sample data')
@@ -124,7 +133,7 @@ def plot_samples(save_path, batch_size, n_components, _mm, _new_para, r_samples,
     # fit and sample from a gaussian mixture
     gmm_sklearn = GaussianMixture(n_components=n_components, random_state=0).fit(r_samples_part_gmm)
     gmm_sample, _ = gmm_sklearn.sample(300)
-    gmm_sample[gmm_sample<0]=0
+    # gmm_sample[gmm_sample<0]=0
     gmm_sample = gmm_sample * (_max - _min) + _min
     axs[5].plot(gmm_sample.T, c='r', alpha=0.1)
     axs[5].set_title('GMM generated random sample data')
