@@ -83,7 +83,7 @@ emb_weight = torch.load(path_embedding, map_location=device, weights_only=False)
 path_empty = 'exp/exp_second_round/user_load_15minutes/model/_emb_empty_token_40_6306166.pth'
 empty_token_vec = torch.load(path_empty, map_location=device,weights_only=False)
 # load data
-batch_size =  2
+batch_size =  10
 split_ratio = (0.8,0.1,0.1)
 data_path =  'exp/data_process_for_data_collection_all/new_data_15minute_grid_nomerge.pkl' ## 
 dataset = Dataloader_nolabel(data_path,  batch_size=batch_size
@@ -215,85 +215,107 @@ for _random_num in [4, 8, 16, 32]:
         ws_timesnetmmd += wasserstein_distance(samples.flatten(), _part_real_timesnetmmd.flatten())
         msem_timesnetmmd = plot_eva.calculate_autocorrelation_mse(samples, _part_real_timesnetmmd)
         
-        # print the shape of the samples
+    # Plot the samples
+    plt.figure(figsize=(10, 6))
+    plt.subplot(4, 1, 1)
+
+    # plot the samples the colors indicate the sum of the samples
+    samples = samples * (max_test_data[_num] -min_test_data[_num]+1e-15) + min_test_data[_num]
+    for i in range(samples.shape[0]):
+        _sum = samples[i, :-1].sum()
+        color = plt.cm.viridis(_sum / test_data.max())
+        plt.plot(samples[i, :-1], alpha=0.05, c=color)
+    plt.title('Samples from GMM')
+    plt.xlabel('Time')
+    plt.ylabel('Value')
+
+    plt.subplot(4, 1, 2)
+    # plot the real samples
+    for i in range(test_data.shape[1]):
+        _sum = test_data[_num, i, :-1].sum()
+        color = plt.cm.viridis(_sum / test_data.max())
+        plt.plot(recovered_test_data[_num, i, :-1].cpu().detach().numpy(), alpha=0.05, c=color)
+    plt.title('real')
+    plt.xlabel('Time')
+    plt.ylabel('Value')
+    
+    plt.subplot(4, 1, 3)
+    # plot the timesnet mse samples
+    for i in range(_part_real_timesnetmse.shape[0]):
+        _sum = _part_real_timesnetmse[i, :-1].sum()
+        color = plt.cm.viridis(_sum / test_data.max())
+        plt.plot(_part_real_timesnetmse[i, :-1], alpha=0.05, c=color)
+    plt.title('TimesNet mse')
+    plt.xlabel('Time')
+    plt.ylabel('Value')
+    plt.tight_layout()
+    
+    plt.subplot(4, 1, 4)
+    # plot the timesnet mmd samples
+    for i in range(_part_real_timesnetmmd.shape[0]):
+        _sum = _part_real_timesnetmmd[i, :-1].sum()
+        color = plt.cm.viridis(_sum / test_data.max())
+        plt.plot(_part_real_timesnetmmd[i, :-1], alpha=0.05, c=color)
+    plt.title('TimesNet mmd')
+    plt.xlabel('Time')
+    plt.ylabel('Value')
+    plt.tight_layout()
+    
+    # save the plot
+    plt.savefig(f'exp/exp_second_round/eva/eveload/plot/samples_from_gmm_{_random_num}.png')
+    plt.close()
+
+    print(f'mmd of {_random_num}-shots: ', mmd/batch_size)
+    print(f'kl of {_random_num}-shots: ', kl/batch_size)
+    print(f'ks of {_random_num}-shots: ', ks/batch_size)
+    print(f'ws of {_random_num}-shots: ', ws/batch_size)
+    print(f'msem of {_random_num}-shots: ', msem/batch_size)
+
+    print(f'mmd_partreal of {_random_num}-shots: ', mmd_partreal/batch_size)
+    print(f'kl_partreal of {_random_num}-shots: ', kl_partreal/batch_size)
+    print(f'ks_partreal of {_random_num}-shots: ', ks_partreal/batch_size)
+    print(f'ws_partreal of {_random_num}-shots: ', ws_partreal/batch_size)
+    print(f'msem_partreal of {_random_num}-shots: ', msem_partreal/batch_size)
+    
+    print(f'mmd_timesnetmse of {_random_num}-shots: ', mmd_timesnetmse/batch_size)
+    print(f'kl_timesnetmse of {_random_num}-shots: ', kl_timesnetmse/batch_size)
+    print(f'ks_timesnetmse of {_random_num}-shots: ', ks_timesnetmse/batch_size)
+    print(f'ws_timesnetmse of {_random_num}-shots: ', ws_timesnetmse/batch_size)
+    print(f'msem_timesnetmse of {_random_num}-shots: ', msem_timesnetmse/batch_size)
+    
+    print(f'mmd_timesnetmmd of {_random_num}-shots: ', mmd_timesnetmmd/batch_size)
+    print(f'kl_timesnetmmd of {_random_num}-shots: ', kl_timesnetmmd/batch_size)
+    print(f'ks_timesnetmmd of {_random_num}-shots: ', ks_timesnetmmd/batch_size)
+    print(f'ws_timesnetmmd of {_random_num}-shots: ', ws_timesnetmmd/batch_size)
+    print(f'msem_timesnetmmd of {_random_num}-shots: ', msem_timesnetmmd/batch_size)
+
+    # save the results in a text file
+    with open('exp/exp_second_round/eva/eveload/sample_from_gmm.txt', 'a') as f:
+        f.write(f'mmd of {_random_num}-shots: {mmd/batch_size}\n')
+        f.write(f'kl of {_random_num}-shots: {kl/batch_size}\n')
+        f.write(f'ks of {_random_num}-shots: {ks/batch_size}\n')
+        f.write(f'ws of {_random_num}-shots: {ws/batch_size}\n')
+        f.write(f'msem of {_random_num}-shots: {msem/batch_size}\n')
+
+        f.write(f'mmd_partreal of {_random_num}-shots: {mmd_partreal/batch_size}\n')
+        f.write(f'kl_partreal of {_random_num}-shots: {kl_partreal/batch_size}\n')
+        f.write(f'ks_partreal of {_random_num}-shots: {ks_partreal/batch_size}\n')
+        f.write(f'ws_partreal of {_random_num}-shots: {ws_partreal/batch_size}\n')
+        f.write(f'msem_partreal of {_random_num}-shots: {msem_partreal/batch_size}\n')
         
-        # Plot the samples
-        plt.figure(figsize=(10, 6))
-        plt.subplot(4, 1, 1)
-
-        # plot the samples the colors indicate the sum of the samples
-        samples = samples * (max_test_data[_num] -min_test_data[_num]+1e-15) + min_test_data[_num]
-        for i in range(samples.shape[0]):
-            _sum = samples[i, :-1].sum()
-            color = plt.cm.viridis(_sum / test_data.max())
-            plt.plot(samples[i, :-1], alpha=0.05, c=color)
-        plt.title('Samples from GMM')
-        plt.xlabel('Time')
-        plt.ylabel('Value')
-
-        plt.subplot(4, 1, 2)
-        # plot the real samples
-        for i in range(test_data.shape[1]):
-            _sum = test_data[_num, i, :-1].sum()
-            color = plt.cm.viridis(_sum / test_data.max())
-            plt.plot(recovered_test_data[_num, i, :-1].cpu().detach().numpy(), alpha=0.05, c=color)
-        plt.title('real')
-        plt.xlabel('Time')
-        plt.ylabel('Value')
+        f.write(f'mmd_timesnetmse of {_random_num}-shots: {mmd_timesnetmse/batch_size}\n')
+        f.write(f'kl_timesnetmse of {_random_num}-shots: {kl_timesnetmse/batch_size}\n')
+        f.write(f'ks_timesnetmse of {_random_num}-shots: {ks_timesnetmse/batch_size}\n')
+        f.write(f'ws_timesnetmse of {_random_num}-shots: {ws_timesnetmse/batch_size}\n')
+        f.write(f'msem_timesnetmse of {_random_num}-shots: {msem_timesnetmse/batch_size}\n')
         
-        plt.subplot(4, 1, 3)
-        # plot the timesnet mse samples
-        for i in range(_part_real_timesnetmse.shape[0]):
-            _sum = _part_real_timesnetmse[i, :-1].sum()
-            color = plt.cm.viridis(_sum / test_data.max())
-            plt.plot(_part_real_timesnetmse[i, :-1], alpha=0.05, c=color)
-        plt.title('TimesNet mse')
-        plt.xlabel('Time')
-        plt.ylabel('Value')
-        plt.tight_layout()
+        f.write(f'mmd_timesnetmmd of {_random_num}-shots: {mmd_timesnetmmd/batch_size}\n')
+        f.write(f'kl_timesnetmmd of {_random_num}-shots: {kl_timesnetmmd/batch_size}\n')
+        f.write(f'ks_timesnetmmd of {_random_num}-shots: {ks_timesnetmmd/batch_size}\n')
+        f.write(f'ws_timesnetmmd of {_random_num}-shots: {ws_timesnetmmd/batch_size}\n')
+        f.write(f'msem_timesnetmmd of {_random_num}-shots: {msem_timesnetmmd/batch_size}\n')
         
-        plt.subplot(4, 1, 4)
-        # plot the timesnet mmd samples
-        for i in range(_part_real_timesnetmmd.shape[0]):
-            _sum = _part_real_timesnetmmd[i, :-1].sum()
-            color = plt.cm.viridis(_sum / test_data.max())
-            plt.plot(_part_real_timesnetmmd[i, :-1], alpha=0.05, c=color)
-        plt.title('TimesNet mmd')
-        plt.xlabel('Time')
-        plt.ylabel('Value')
-        plt.tight_layout()
-        
-        # save the plot
-        plt.savefig(f'exp/exp_second_round/eva/eveload/plot/samples_from_gmm_{_random_num}.png')
-        plt.close()
-
-
-        # print(f'mmd of {_random_num}-shots: ', mmd/batch_size)
-        # print(f'kl of {_random_num}-shots: ', kl/batch_size)
-        # print(f'ks of {_random_num}-shots: ', ks/batch_size)
-        # print(f'ws of {_random_num}-shots: ', ws/batch_size)
-        # print(f'msem of {_random_num}-shots: ', msem/batch_size)
-
-        # print(f'mmd_partreal of {_random_num}-shots: ', mmd_partreal/batch_size)
-        # print(f'kl_partreal of {_random_num}-shots: ', kl_partreal/batch_size)
-        # print(f'ks_partreal of {_random_num}-shots: ', ks_partreal/batch_size)
-        # print(f'ws_partreal of {_random_num}-shots: ', ws_partreal/batch_size)
-        # print(f'msem_partreal of {_random_num}-shots: ', msem_partreal/batch_size)
-        
-        # save the results in a text file
-        # with open('exp/exp_second_round/eva/eveload/sample_from_gmm.txt', 'a') as f:
-        #     f.write(f'mmd of {_random_num}-shots: {mmd/batch_size}\n')
-        #     f.write(f'kl of {_random_num}-shots: {kl/batch_size}\n')
-        #     f.write(f'ks of {_random_num}-shots: {ks/batch_size}\n')
-        #     f.write(f'ws of {_random_num}-shots: {ws/batch_size}\n')
-        #     f.write(f'msem of {_random_num}-shots: {msem/batch_size}\n')
-
-        #     f.write(f'mmd_partreal of {_random_num}-shots: {mmd_partreal/batch_size}\n')
-        #     f.write(f'kl_partreal of {_random_num}-shots: {kl_partreal/batch_size}\n')
-        #     f.write(f'ks_partreal of {_random_num}-shots: {ks_partreal/batch_size}\n')
-        #     f.write(f'ws_partreal of {_random_num}-shots: {ws_partreal/batch_size}\n')
-        #     f.write(f'msem_partreal of {_random_num}-shots: {msem_partreal/batch_size}\n')
-        #     f.write('\n')
+        f.write('\n')
 
 
 
