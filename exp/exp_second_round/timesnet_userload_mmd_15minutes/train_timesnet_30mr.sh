@@ -2,7 +2,7 @@
 
 #SBATCH --job-name="15m_userload_merge"
 #SBATCH --partition=gpu_a100
-#SBATCH --time=24:00:00
+#SBATCH --time=4:00:00
 #SBATCH -N 1
 #SBATCH --gpus=1
 #SBATCH --mail-user=w.xia@tudelft.nl

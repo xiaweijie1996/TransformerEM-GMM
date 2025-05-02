@@ -171,7 +171,7 @@ def train_and_evaluate(model, data_loader, optimizer, device, epochs, sub_epoch,
         _std_train = train_data.std(dim=1)
         _std_y_hat = y_hat.std(dim=1)
         mse_std = ((train_data - y_hat)**2).std(dim=1)
-        loss = mse_std+mse_mean # mmd_loss(train_data, y_hat)
+        loss = mse_std *50 +mse_mean # mmd_loss(train_data, y_hat)
         loss = loss.mean()
         
         wandb.log({'loss_train': loss.item()})
@@ -201,7 +201,7 @@ def train_and_evaluate(model, data_loader, optimizer, device, epochs, sub_epoch,
                 _std_y_hat = y_hat.std(dim=1)
                 mse_std = ((test_data - y_hat)**2).std(dim=1)
                 
-                loss = mse_std+mse_mean # mmd_loss(test_data, y_hat)
+                loss = mse_std  *50 +mse_mean # mmd_loss(test_data, y_hat)
                 loss = loss.mean()
                 losses.append(loss.item())
         
