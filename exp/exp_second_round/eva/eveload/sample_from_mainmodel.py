@@ -24,7 +24,7 @@ import exp_second_round.timesnet_mse_userload_15minutes.timesnet as timesnet
 # Set default dtype to float64
 torch.set_default_dtype(torch.float64)
 # Determine the device to use
-device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+device = torch.device( 'cpu')
 
 #%%
 "Load TimesNet mmd model"
@@ -61,34 +61,35 @@ model_timesnetmse.load_state_dict(torch.load(model_path, map_location=device))
 #%%
 "Load Transformer model"
 # Define the encoder parameters
-random_sample_num = 96
+random_sample_num = 40
 n_components = 6    
 chw = (1, random_sample_num,  97)
 para_dim = n_components*2
-hidden_d = 96*2
+hidden_d = 96
 out_d = 96
-n_heads = 1
-mlp_ratio = 1
-n_blocks = 2
+n_heads = 4
+mlp_ratio = 12
+n_blocks = 4
 # Create the encoder model
 encoder = gmm_model.ViT_encodernopara(chw, hidden_d, out_d, n_heads, mlp_ratio, n_blocks).to(device)
 # load state dict of the model
-model_path = 'exp/exp_second_round/user_load_15minutes/model/loadmerge_encoder_96_704366.pth'
+model_path = 'exp/exp_second_round/user_load_15minutes/model/_encoder_40_6306166.pth'
 model = torch.load(model_path, map_location=device)
 encoder.load_state_dict(model)
 embedding_para = torch.nn.Embedding(n_components*2, 1).to(device)
 emb_empty_token = torch.nn.Embedding(1, chw[2]).to(device)
-path_embedding = 'exp/exp_second_round/user_load_15minutes/model/loadmerge_embedding_96_704366.pth'
+path_embedding = 'exp/exp_second_round/user_load_15minutes/model/_embedding_40_6306166.pth'
 emb_weight = torch.load(path_embedding, map_location=device, weights_only=False)
-path_empty = 'exp/exp_second_round/user_load_15minutes/model/loadmerge_emb_empty_token_96_704366.pth'
+path_empty = 'exp/exp_second_round/user_load_15minutes/model/_emb_empty_token_40_6306166.pth'
 empty_token_vec = torch.load(path_empty, map_location=device,weights_only=False)
 # load data
 batch_size =  10
 split_ratio = (0.8,0.1,0.1)
-data_path =  'exp/data_process_for_data_collection_all/new_data_15minute_grid_merge.pkl' ## 
+data_path =  'exp/data_process_for_data_collection_all/new_data_15minute_grid_nomerge.pkl' ## 
 dataset = Dataloader_nolabel(data_path,  batch_size=batch_size
                     , split_ratio=split_ratio)
 test_data = dataset.load_test_data(batch_size)
+test_data_org = test_data.copy()
 print('test_data shape: ', test_data.shape)
 # normalize the input data
 min_test_data = test_data[:,:, :-1].min(axis=1).reshape(batch_size , 1, chw[2]-1)
@@ -126,7 +127,7 @@ for _random_num in [4, 8, 16, 32]:
     recover_test_sample_part = _test_sample_part[:, :, :-1].clone()
 
     "TimesNetmse model"
-    full_series, index_mask = data_loader.load_test_data_times(test_data)
+    full_series, index_mask = data_loader.load_test_data_times(test_data_org)
     test_data_timenetmse, random_mask, scaler = tt.normalize_and_mask_fix(full_series, index_mask, device, _random_num)
     y_hatmse = model_timesnetmse(test_data_timenetmse.double(), None, random_mask.double())
     
