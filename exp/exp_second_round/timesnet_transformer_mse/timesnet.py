@@ -7,14 +7,12 @@ sys.path.append(_parent_path)
 import torch 
 import torch.nn as nn
 import torch.nn.functional as F
-import matplotlib.pyplot as plt
 
 import asset.timesnet_loader as timesloader
-import exp_second_round.timenet_transformer_mmd.timesnet_utils as ut
-from exp_second_round.timenet_transformer_mmd.timesnet_config import TimesBlockConfig 
-import exp_second_round.timenet_transformer_mmd.timesnet_train_mmd as tt
+import exp_second_round.timesnet_mse_solar_15minutes.timesnet_utils as ut
+from exp_second_round.timesnet_mse_solar_15minutes.timesnet_config import TimesBlockConfig 
+import exp_second_round.timesnet_mse_solar_15minutes.timesnet_train as tt
 import wandb
-
 
 class TimesBlock(nn.Module):
     
@@ -45,8 +43,6 @@ class TimesBlock(nn.Module):
             for i in range(self.k):
                 period = period_list[i]
 
-                # padding : to form a 2D map, we need total length of the sequence, plus the part 
-                # to be predicted, to be divisible by the period, so padding is needed
                 if (self.seq_len + self.pred_len) % period != 0:
                     length = (
                                     ((self.seq_len + self.pred_len) // period) + 1) * period
@@ -56,10 +52,6 @@ class TimesBlock(nn.Module):
                     length = (self.seq_len + self.pred_len)
                     out = x
 
-                # reshape: we need each channel of a single piece of data to be a 2D variable,
-                # Also, in order to implement the 2D conv later on, we need to adjust the 2 dimensions 
-                # to be convolutioned to the last 2 dimensions, by calling the permute() func.
-                # Whereafter, to make the tensor contiguous in memory, call contiguous()
                 out = out.reshape(B, length // period, period,
                                 N).permute(0, 3, 1, 2).contiguous()
                 
@@ -76,7 +68,6 @@ class TimesBlock(nn.Module):
             res = torch.stack(res, dim=-1) #res: 4D [B, length , N, top_k]
 
             # adaptive aggregation
-            #First, use softmax to get the normalized weight from amplitudes --> 2D [B,top_k]
             period_weight = F.softmax(period_weight, dim=1) 
 
             #after two unsqueeze(1),shape -> [B,1,1,top_k],so repeat the weight to fit the shape of res
@@ -133,7 +124,6 @@ class Model(nn.Module):
 
         return dec_out
 
-    
     def forward(self, x_enc, x_mark_enc,  mask=None):
         dec_out = self.imputation(
             x_enc, x_mark_enc, mask)
@@ -148,13 +138,13 @@ if __name__ == '__main__':
     # check the model
     configs = TimesBlockConfig()
     model = Model(configs).to(device)
-    optimizer = torch.optim.Adam(model.parameters(), lr=0.0001)
+    optimizer = torch.optim.AdamW(model.parameters(), lr=0.0001)
     
     # print number of parameters
     num_params = sum(p.numel() for p in model.parameters())
     print(num_params)
 
-    data_path = sys.argv[1] # 'exp/data_process_for_data_collection_all/transformer_data_15minutes.pkl'
+    data_path = sys.argv[1]  # 'exp/data_process_for_data_collection_all/new_data_15minute_grid_nomerge.pkl'
     data_loader = timesloader.TimesNetLoader(data_path, 
                                              batch_size=60, 
                                              split_ration=(0.8, 0.1, 0.1),
@@ -164,6 +154,6 @@ if __name__ == '__main__':
     epoch = 1000000
     max_loss = 10000
     
-    wandb.init(project='timesnet_mmd_transformer_15minutes',)
-    tt.train_and_evaluate(model, data_loader, optimizer, device, epoch, sub_epoch, 1, num_params)
+    wandb.init(project='timesnet_transformer_mse_15minutes')
+    tt.train_and_evaluate(model, data_loader, optimizer, device, epoch, sub_epoch, 10, num_params)
     
