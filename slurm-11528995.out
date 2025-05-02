@@ -1,0 +1,30 @@
+/var/spool/slurm/slurmd/job11528995/slurm_script: line 11: mmodule: command not found
+Lmod has detected the following error: These module(s) or extension(s) exist
+but cannot be loaded as requested: "Miniconda3/23.5.2-0"
+   Try: "module spider Miniconda3/23.5.2-0" to see how to load the module(s).
+
+
+
+wandb: Using wandb-core as the SDK backend.  Please refer to https://wandb.me/wandb-core for more information.
+wandb: Currently logged in as: xiaweijie1996 (weijie_xia) to https://api.wandb.ai. Use `wandb login --relogin` to force relogin
+wandb: Tracking run with wandb version 0.19.9
+wandb: Run data is saved locally in /gpfs/home4/wxia/TransformerEM-GMM/wandb/run-20250502_174139-152h10ok
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run hearty-haze-1
+wandb: ⭐️ View project at https://wandb.ai/weijie_xia/timesnet_mmd_solar_15minutes
+wandb: 🚀 View run at https://wandb.ai/weijie_xia/timesnet_mmd_solar_15minutes/runs/152h10ok
+slurmstepd: error: *** JOB 11528995 ON gcn18 CANCELLED AT 2025-05-02T17:48:44 ***
+
+JOB STATISTICS
+==============
+Job ID: 11528995
+Cluster: snellius
+User/Group: wxia/wxia
+State: CANCELLED (exit code 0)
+Nodes: 1
+Cores per node: 18
+CPU Utilized: 00:00:02
+CPU Efficiency: 0.02% of 02:14:06 core-walltime
+Job Wall-clock time: 00:07:27
+Memory Utilized: 1.35 GB
+Memory Efficiency: 1.12% of 120.00 GB (120.00 GB/node)
