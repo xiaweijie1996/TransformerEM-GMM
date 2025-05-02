@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-
 import os 
 import sys
 _parent_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
@@ -8,7 +7,6 @@ sys.path.append(_parent_path)
 import torch 
 import torch.nn as nn
 import torch.nn.functional as F
-import torch.fft
 import matplotlib.pyplot as plt
 
 import asset.timesnet_loader as timesloader
@@ -149,13 +147,13 @@ if __name__ == '__main__':
     # check the model
     configs = TimesBlockConfig()
     model = Model(configs).to(device)
-    optimizer = torch.optim.AdamW(model.parameters(), lr=0.0001)
+    optimizer = torch.optim.Adam(model.parameters(), lr=0.0001)
     
     # print number of parameters
     num_params = sum(p.numel() for p in model.parameters())
     print(num_params)
 
-    data_path = sys.argv[1] #'exp/data_process_for_data_collection_all/transformer_data_15minutes.pkl'
+    data_path = sys.argv[1] # 'exp/data_process_for_data_collection_all/new_data_15minute_solar_nomerge.pkl'
     data_loader = timesloader.TimesNetLoader(data_path, 
                                              batch_size=60, 
                                              split_ration=(0.8, 0.1, 0.1),
@@ -165,6 +163,6 @@ if __name__ == '__main__':
     epoch = 1000000
     max_loss = 10000
     
-    wandb.init(project='timesnet_mmd')
-    tt.train_and_evaluate(model, data_loader, optimizer, device, epoch, sub_epoch, 10, num_params)
+    wandb.init(project='timesnet_mmd_solar_15minutes',)
+    tt.train_and_evaluate(model, data_loader, optimizer, device, epoch, sub_epoch, 1, num_params)
     
