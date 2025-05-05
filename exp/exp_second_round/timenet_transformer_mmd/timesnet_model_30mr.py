@@ -148,13 +148,13 @@ if __name__ == '__main__':
     # check the model
     configs = TimesBlockConfig()
     model = Model(configs).to(device)
-    optimizer = torch.optim.Adam(model.parameters(), lr=0.0001)
+    optimizer = torch.optim.Adam(model.parameters(), lr=0.005)
     
     # print number of parameters
     num_params = sum(p.numel() for p in model.parameters())
     print(num_params)
 
-    data_path = sys.argv[1] # 'exp/data_process_for_data_collection_all/transformer_data_15minutes.pkl'
+    data_path =  'exp/data_process_for_data_collection_all/transformer_data_15minutes.pkl'
     data_loader = timesloader.TimesNetLoader(data_path, 
                                              batch_size=60, 
                                              split_ration=(0.8, 0.1, 0.1),

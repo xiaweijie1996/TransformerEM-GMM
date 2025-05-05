@@ -54,26 +54,26 @@ def normalize_and_mask(data, index_mask, device, ratio=None):
 
     return data, random_mask.to(device), (_min, _max)
 
-def train_and_evaluate(model, data_loader, optimizer, device, epochs, sub_epochs, test_steps, num_params):
+def train_and_evaluate(model, data_loader, optimizer, device, epochs, sub_epoch, test_steps, num_params):
     current_loss =10000
     for epoch in range(epochs):
-        for sub_epoch in range(sub_epochs):
-            # Training
-            model.train()
-            full_series, index_mask = data_loader.load_train_data_times()
+        
+        # Training
+        model.train()
+        full_series, index_mask = data_loader.load_train_data_times()
 
-            train_data, random_mask, scaler = normalize_and_mask(full_series, index_mask, device)
-            
-            y_hat = model(train_data, None, random_mask.to(device)) # train data will be masked
-            loss = ((y_hat -train_data)**2) * index_mask.to(device)
-            loss = loss.mean()
-            
-            wandb.log({'loss_train': loss.item()})
-            print(f"Epoch {epoch + 1}, Sub-Epoch {sub_epoch + 1}, Loss: {loss.item()}")
-            
-            loss.backward()
-            optimizer.step()
-            optimizer.zero_grad()
+        train_data, random_mask, scaler = normalize_and_mask(full_series, index_mask, device)
+        
+        y_hat = model(train_data, None, random_mask.to(device)) # train data will be masked
+        loss = ((y_hat -train_data)**2) * index_mask.to(device)
+        loss = loss.mean()
+        
+        wandb.log({'loss_train': loss.item()})
+        print(f"Epoch {epoch + 1}, Sub-Epoch {sub_epoch + 1}, Loss: {loss.item()}")
+        
+        loss.backward()
+        optimizer.step()
+        optimizer.zero_grad()
         
         # Testing
         model.eval()
@@ -98,14 +98,18 @@ def train_and_evaluate(model, data_loader, optimizer, device, epochs, sub_epochs
             torch.save(model.state_dict(), f'exp/exp_second_round/timesnet_transformer_mse/30mr_timesnet_{num_params}.pth')
         
         if epoch % 10 == 0:
-            # print('plot')
             _plot = (train_data[0, :, :].cpu()*index_mask[0, :, :]).detach().numpy()
             # scale back to original
-            _plot = (_plot - scaler[0][0, 0, :].detach().numpy())/(scaler[1][0, 0, :].cpu().detach().numpy() - scaler[0][0, 0, :].cpu().detach().numpy())
-            plt.plot(_plot[:365,:].reshape(-1), alpha = 0.2)
+            _plot = _plot* (scaler[1][0, 0, :].cpu().detach().numpy() - scaler[0][0, 0, :].cpu().detach().numpy()) + scaler[0][0, 0, :].detach().numpy()
+            
+            plt.figure(figsize=(20, 5))
+            plt.subplot(2, 1, 1)
+            plt.plot(_plot[:365,:].T, alpha = 0.2)
             
             _pre  = (y_hat[0, :, :].cpu()*index_mask[0, :, :]).detach().numpy()
-            plt.plot(_pre[:365,:].reshape(-1), alpha = 0.2)
+            _pre = _pre* (scaler[1][0, 0, :].cpu().detach().numpy() - scaler[0][0, 0, :].cpu().detach().numpy()) + scaler[0][0, 0, :].detach().numpy()
+            plt.subplot(2, 1, 2)
+            plt.plot(_pre[:365,:].T, alpha = 0.2)
             plt.legend(['x', 'y_hat'])
             plt.savefig(f'exp/exp_second_round/timesnet_transformer_mse/30mr_timesnet_{num_params}.png')
             plt.close()

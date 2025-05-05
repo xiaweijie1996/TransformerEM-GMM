@@ -8,7 +8,7 @@ class TimesBlockConfig:
     # Parameters for can be optimized----------------
     top_k = 10  # Top k frequencies
     d_model = 10  # Hidden dimension
-    d_ff = 44 # Hidden dimension
+    d_ff = 48 # Hidden dimension
     num_kernels = 10 # number of kernels for inception block
     dropout = 0.1 # Dropout rate
     e_layers = 3 # Number of TimesNet block

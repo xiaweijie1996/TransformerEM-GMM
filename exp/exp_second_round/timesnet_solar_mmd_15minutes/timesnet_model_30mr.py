@@ -153,7 +153,7 @@ if __name__ == '__main__':
     num_params = sum(p.numel() for p in model.parameters())
     print(num_params)
 
-    data_path = sys.argv[1] # 'exp/data_process_for_data_collection_all/new_data_15minute_solar_nomerge.pkl'
+    data_path = 'exp/data_process_for_data_collection_all/new_data_15minute_solar_nomerge.pkl'
     data_loader = timesloader.TimesNetLoader(data_path, 
                                              batch_size=60, 
                                              split_ration=(0.8, 0.1, 0.1),
