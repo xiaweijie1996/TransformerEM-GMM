@@ -39,7 +39,7 @@ sub_epoch = int(dataset.__len__()*split_ratio[0]/batch_size)
 save_model =  f'exp/exp_second_round/gaussian_number_exame/{n_components}gaussian/'
 save_image =  f'exp/exp_second_round/gaussian_number_exame/{n_components}gaussian/'
 lr = 0.0005
-min_random_sample_num = 8
+min_random_sample_num = 4
 
 # define the encoder
 chw = (1, random_sample_num,  97)
