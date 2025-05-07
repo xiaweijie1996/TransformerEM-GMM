@@ -32,14 +32,14 @@ device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 print(device)
 
 # define the hyperparameters
-n_components = 8
+n_components = 4
 random_sample_num = 40
 num_epochs = int(400000)
 sub_epoch = int(dataset.__len__()*split_ratio[0]/batch_size)
 save_model =  f'exp/exp_second_round/gaussian_number_exame/{n_components}gaussian/'
 save_image =  f'exp/exp_second_round/gaussian_number_exame/{n_components}gaussian/'
 lr = 0.0005
-min_random_sample_num = 4
+min_random_sample_num = 8
 
 # define the encoder
 chw = (1, random_sample_num,  97)
