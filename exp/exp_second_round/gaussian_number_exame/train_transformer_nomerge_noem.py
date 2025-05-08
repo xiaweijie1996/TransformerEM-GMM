@@ -32,7 +32,7 @@ device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 print(device)
 
 # define the hyperparameters
-n_components = 4
+n_components = 8
 random_sample_num = 40
 num_epochs = int(400000)
 sub_epoch = int(dataset.__len__()*split_ratio[0]/batch_size)
