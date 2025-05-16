@@ -71,7 +71,7 @@ def get_loss_le(dataset, encoder, random_sample_num, min_random_sample_num, n_co
     _ms, _covs = ep.GMM_PyTorch_Batch(n_components, _train_sample_part[:,:, :-1].shape[-1]).fit(_train_sample_part[:,:, :-1], 1) # _ms: (b, n_components, 24), _covs: (b, n_components, 24)
     
     # log _ms and _covs
-    wandb.log({'_ms': _ms.mean().item(), '_covs': _covs.mean().item()})
+    # wandb.log({'_ms': _ms.mean().item(), '_covs': _covs.mean().item()})
 
     # concatenate the mean and variance to have (b, n_components*2, 25)
     _param_emb, _param = concatenate_and_embed_params(_ms, _covs, n_components, embedding, device)

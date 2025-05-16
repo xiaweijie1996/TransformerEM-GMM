@@ -18,7 +18,7 @@ from asset.dataloader import Dataloader_nolabel
 torch.set_default_dtype(torch.float64)
 
 # load data
-batch_size =  54
+batch_size =  120
 split_ratio = (0.8,0.1,0.1)
 data_path =  'exp/data_process_for_data_collection_all/all_data.pkl'
 dataset = Dataloader_nolabel(data_path,  batch_size=batch_size
@@ -38,7 +38,7 @@ sub_epoch = int(dataset.__len__()*split_ratio[0]/batch_size)
 save_model = 'exp/exp_second_round/loglikehoodest/model/'
 save_image = 'exp/exp_second_round/loglikehoodest/gen_img/'
 lr = 0.0001
-n_components = 2
+n_components = 4
 min_random_sample_num = 4
 
 # define the encoder
@@ -48,7 +48,7 @@ hidden_d = 24
 out_d = 24
 n_heads = 4
 mlp_ratio = 12
-n_blocks = 5
+n_blocks = 6
 encoder = gmm_model.ViT_encodernopara(chw, hidden_d, out_d, n_heads, mlp_ratio, n_blocks).to(device)
 _model_scale = sum(p.numel() for p in encoder.parameters() if p.requires_grad)
 print('number of parameters: ', _model_scale)
@@ -82,31 +82,16 @@ for epoch in range(num_epochs):
         optimizer.step()
         scheduler.step()
         
-    # if epoch % 1 == 0:
-    #     encoder.eval()
-    #     wandb.log({'loss_train': _loss.item()})
-    #     _loss_collection = []
-    #     for _ in range(20):
-    #         _loss, _random_num, _new_para, _param, r_samples, r_samples_part, _mm = gmm_train_tool.get_loss_le(dataset, encoder,
-    #                                                                             random_sample_num, min_random_sample_num, n_components, 
-    #                                                                             embedding_para, emb_empty_token, 'False', device)
-    #         _loss_collection.append(_loss)
-    #     _loss = torch.stack(_loss_collection).mean()
-        # print('epoch: ', epoch, 'loss_test: ', _loss.item(), 'random_num: ', _random_num)
-        wandb.log({'loss_test': _loss.item(), 'random_num': _random_num, 'epoch':epoch})
+        wandb.log({'loss_test': _loss.item(), 'random_num': _random_num})
         
-        # save the model and embeding
-        if _loss.item() < mid_loss:
-            mid_loss = _loss.item()
-            torch.save(encoder.state_dict(), save_model + f'solar_encoder_{random_sample_num}_{_model_scale}.pth')
-            torch.save(embedding_para, save_model + f'solar_embedding_{random_sample_num}_{_model_scale}.pth')
-            torch.save(emb_empty_token, save_model + f'solar_emb_empty_token_{random_sample_num}_{_model_scale}.pth')
-
-        # e, c = pae.evaluation(n_components, _new_para, r_samples, r_samples_part)
-
-        # wandb.log({'mmd_t':e[0],'mmd_r':e[1], 'mmd_gmm':e[2]})
-        # wandb.log({'c_t':c[0],'c_r':c[1], 'c_gmm':c[2]})
-
+    wandb.log({'epoch': epoch})
+    # save the model and embeding
+    if _loss.item() < mid_loss:
+        mid_loss = _loss.item()
+        torch.save(encoder.state_dict(), save_model + f'solar_encoder_{random_sample_num}_{_model_scale}.pth')
+        torch.save(embedding_para, save_model + f'solar_embedding_{random_sample_num}_{_model_scale}.pth')
+        torch.save(emb_empty_token, save_model + f'solar_emb_empty_token_{random_sample_num}_{_model_scale}.pth')
+        
     if epoch % 50 == 0:
         save_path = save_image+f'_{random_sample_num}_{_model_scale}.png'
         llk_e = pae.plot_samples(save_path, batch_size, n_components, _mm, _new_para, r_samples, r_samples_part, _param, figsize=(10, 15))
