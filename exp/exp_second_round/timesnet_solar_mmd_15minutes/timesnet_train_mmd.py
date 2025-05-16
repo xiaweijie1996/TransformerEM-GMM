@@ -8,7 +8,7 @@ import torch.nn as nn
 import numpy as np
 import matplotlib.pyplot as plt
 
-def normalize_and_mask(data, index_mask, device, ratio=None):
+def normalize_and_mask(data, index_mask, device, _random_num, ratio=None):
     # data = data.view(data.size(0), -1, 1)
     
     # normalize the data between 0 and 1 for each sample in the batch
@@ -27,8 +27,8 @@ def normalize_and_mask(data, index_mask, device, ratio=None):
     np_array = tensor.numpy()
 
     # number of ones to keep in each row
-    num_ones_to_keep = np.random.randint(8, 98)
-    wandb.log({'num_ones_to_keep': num_ones_to_keep})
+    num_ones_to_keep = _random_num # np.random.randint(8, 98)
+    # wandb.log({'num_ones_to_keep': num_ones_to_keep})
 
     # get the indices of ones in the array
     indices = np.argwhere(np_array == 1)

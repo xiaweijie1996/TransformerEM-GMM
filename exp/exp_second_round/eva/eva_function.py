@@ -236,26 +236,27 @@ def plot_colored_curves(ax, data, title, total_consumption, color_map, norm, y_m
     ax.set_xlim(0, 23)  # Ensure x-axis ranges from 0 to 23
     ax.tick_params(axis='both', which='major', labelsize=tick_fontsize)  # Set tick font size
 
-    hours = [f'{h:02d}:00' for h in range(0, 96, 4)]
-    ax.set_xticks(np.arange(0, 96, 4))
+    # hours = [f'{h:02d}:00' for h in range(0, 96, 16)]
+    hours = [f'{h//4:02d}:{(h%4)*15:02d}' for h in range(0, 96, 16)]
+    ax.set_xticks(np.arange(0, 96, 16))
     ax.set_xticklabels(hours, fontsize=tick_fontsize)
     # Rotate the x-axis labels for better readability
     plt.setp(ax.get_xticklabels(), rotation=45, ha='right', rotation_mode='anchor')
 
-def create_plots(t_samples_list, r_samples_list, r_samples_part_list, timesnet_sample_list, timesnet_sample_mmd_list, label_fontsize=28, tick_fontsize=20):
+def create_plots(t_samples_list, r_samples_list, r_samples_part_list, timesnet_sample_list, timesnet_sample_mmd_list, path, label_fontsize=26, tick_fontsize=20):
     # Determine the number of rows based on the number of sample sets
     num_rows = len(t_samples_list)
 
     # Set up the subplots grid with num_rows and 4 columns
-    fig, axs = plt.subplots(num_rows, 5, figsize=(20, num_rows * 3), sharex=True, sharey=False)
+    fig, axs = plt.subplots(num_rows, 5, figsize=(25, num_rows * 4), sharex=True, sharey=False)
 
     # Iterate over each set of samples
     for row in range(num_rows):
         r_samples = r_samples_list[row]
         r_samples_part = r_samples_part_list[row]
         t_samples = t_samples_list[row]
-        timesnet_sample = timesnet_sample_list[row]
-        timesnet_sample_mmd = timesnet_sample_mmd_list[row]
+        timesnet_sample = timesnet_sample_list[row][:250, :]
+        timesnet_sample_mmd = timesnet_sample_mmd_list[row][:250, :]
 
         # Calculate the total daily consumption for this row
         total_consumption = r_samples.sum(axis=1)
@@ -275,8 +276,8 @@ def create_plots(t_samples_list, r_samples_list, r_samples_part_list, timesnet_s
         plot_colored_curves(axs[row, 0], r_samples, titles[0], total_consumption, color_map, norm, y_min, y_max, 0.2, tick_fontsize, display_title, title_fontsize)
         plot_colored_curves(axs[row, 1], r_samples_part, titles[1], total_consumption, color_map, norm, y_min, y_max, 0.5, tick_fontsize, display_title, title_fontsize)
         plot_colored_curves(axs[row, 2], t_samples, titles[2], total_consumption, color_map, norm, y_min, y_max, 0.2, tick_fontsize, display_title, title_fontsize)
-        plot_colored_curves(axs[row, 3], timesnet_sample[0].detach().numpy(), titles[3], total_consumption, color_map, norm, y_min, y_max, 0.2, tick_fontsize, display_title, title_fontsize)
-        plot_colored_curves(axs[row, 4], timesnet_sample_mmd[0].detach().numpy(), titles[4], total_consumption, color_map, norm, y_min, y_max, 0.2, tick_fontsize, display_title, title_fontsize)
+        plot_colored_curves(axs[row, 3], timesnet_sample, titles[3], total_consumption, color_map, norm, y_min, y_max, 0.2, tick_fontsize, display_title, title_fontsize)
+        plot_colored_curves(axs[row, 4], timesnet_sample_mmd, titles[4], total_consumption, color_map, norm, y_min, y_max, 0.2, tick_fontsize, display_title, title_fontsize)
 
         # Add a color bar next to the last plot in this row
         divider = make_axes_locatable(axs[row, 4])
@@ -287,14 +288,17 @@ def create_plots(t_samples_list, r_samples_list, r_samples_part_list, timesnet_s
         cbar.ax.tick_params(labelsize=tick_fontsize)  # Set the fontsize here
 
     # Add a single x and y label for the whole figure
-    fig.text(0.5, -0.01, 'Hour of Day [-]', ha='center', fontsize=label_fontsize)
-    fig.text(-0.015, 0.5, 'Electricity Consumption [kWh]', va='center', rotation='vertical', fontsize=label_fontsize)
+    # fig.text(0.5, -0.01, 'Hour of Day [-]', ha='center', fontsize=label_fontsize)
+    # fig.text(0, 0.5, 'Electricity Consumption [kWh]', va='center', rotation='vertical', fontsize=label_fontsize)
+
+    fig.text(0.5, 0.01, 'Hour of Day [-]', ha='center', fontsize=label_fontsize)
+    fig.text(0.02, 0.5, 'Electricity Consumption [kWh]', va='center', rotation='vertical', fontsize=label_fontsize)
 
     # Add a single color bar label in the middle of the last column
     fig.text(0.90, 0.5, 'Daily Total Consumption [kWh]', va='center', rotation='vertical', fontsize=label_fontsize)
 
     plt.tight_layout(rect=[0, 0, 0.9, 1])  # Adjust layout to accommodate the color bar
-    plt.show()
+    plt.savefig(path)
 
 def few_shot_eva(encoder, timesnet_model, timesnet_model_mmd, _para, _token, val_data, min_shot=1, max_shot=25, _iter=10):
     # mmd

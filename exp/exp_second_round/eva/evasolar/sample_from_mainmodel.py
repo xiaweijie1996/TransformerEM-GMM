@@ -7,6 +7,7 @@ import torch
 import matplotlib.pyplot as plt
 from tqdm import tqdm
 from scipy.stats import ks_2samp, wasserstein_distance
+import numpy as np  
 
 import model.gmm_transformer as gmm_model
 from asset.dataloader import Dataloader_nolabel
@@ -14,10 +15,13 @@ import asset.random_sampler as rs
 import asset.gmm_train_tool as gmm_train_tool
 import asset.em_pytorch as ep
 import asset.plot_eva as plot_eva
+import exp_second_round.eva.eva_function as eva_function
 
 import asset.timesnet_loader as timesloader
 import exp_second_round.timesnet_mse_userload_15minutes.timesnet_utils as ut
 from exp_second_round.timesnet_mse_userload_15minutes.timesnet_config import TimesBlockConfig 
+from exp_second_round.timesnet_solar_mmd_15minutes.timesnet_config import TimesBlockConfig as TimesBlockConfig_mmd
+import exp_second_round.timesnet_solar_mmd_15minutes.timesnet_train_mmd as tt_mmd
 import exp_second_round.timesnet_mse_userload_15minutes.timesnet_train as tt
 import exp_second_round.timesnet_mse_userload_15minutes.timesnet as timesnet
 
@@ -29,7 +33,7 @@ device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 #%%
 "Load TimesNet mmd model"
 # check the model
-configs = TimesBlockConfig()
+configs =  TimesBlockConfig_mmd()
 model_timesnetmmd = timesnet.Model(configs).to(device)
 
 # print number of parameters
@@ -42,7 +46,7 @@ data_loader = timesloader.TimesNetLoader(data_path,
                                             split_ration=(0.8, 0.1, 0.1),
                                             full_length=366)
 
-model_path = 'exp/exp_second_round/timesnet_solar_mmd_15minutes/timesnet_MMD_1281536.pth'
+model_path = 'exp/exp_second_round/timesnet_solar_mmd_15minutes/timesnet_MMD_3836096.pth'
 model_timesnetmmd.load_state_dict(torch.load(model_path, map_location=device))
 
 #%%
@@ -82,22 +86,36 @@ path_embedding = 'exp/exp_second_round/solar_15minutes/model/solar_embedding_40_
 emb_weight = torch.load(path_embedding, map_location=device, weights_only=False)
 path_empty = 'exp/exp_second_round/solar_15minutes/model/solar_emb_empty_token_40_6306166.pth'
 empty_token_vec = torch.load(path_empty, map_location=device,weights_only=False)
+
+#%%
+"Load data"
 # load data
-batch_size =  1
+batch_size = 2
 split_ratio = (0.8,0.1,0.1)
 data_path = 'exp/data_process_for_data_collection_all/new_data_15minute_solar_nomerge.pkl'
 dataset = Dataloader_nolabel(data_path,  batch_size=batch_size
                     , split_ratio=split_ratio)
+# batch_size = dataset.__len__() * split_ratio[1]
+# batch_size = int(batch_size)
+
 test_data = dataset.load_test_data(batch_size)
+copy_test_data = test_data.copy()
+copy_test_data = torch.tensor(copy_test_data, dtype=torch.float64).to(device)
+
+_mean = test_data.mean(axis=(1, 2))
+# only use sampe with _mean >1 
+print('mean: ', _mean)
+test_data = test_data[_mean > 1]
+batch_size = test_data.shape[0]
+print('test data shape: ', test_data.shape)
 
 # normalize the input data
 min_test_data = test_data[:,:, :-1].min(axis=1).reshape(batch_size , 1, chw[2]-1)
 max_test_data = test_data[:,:, :-1].max(axis=1).reshape(batch_size , 1, chw[2]-1)
 test_data[:,:, :-1] = (test_data[:,:, :-1]  - min_test_data)/(max_test_data -min_test_data+1e-15)
 test_data = torch.tensor(test_data, dtype=torch.float64).to(device)
-
-# Compte the parameters
-# _random_num = 32 # torch.randint(1, random_sample_num+1, (1,)).item() # Number of the shots
+# replace nan with 0
+test_data = torch.nan_to_num(test_data, nan=0.0, posinf=0.0, neginf=0.0)
 
 for _random_num in [4, 8, 16, 32]:
     
@@ -109,6 +127,9 @@ for _random_num in [4, 8, 16, 32]:
                                             emb_empty_token, device)
     _ms, _covs = ep.GMM_PyTorch_Batch(n_components, _test_sample_part[:,:, :-1].shape[-1]).fit(_test_sample_part[:,:, :-1], 1) # _ms: (b, n_components, 24), _covs: (b, n_components, 24)
 
+    _ms = torch.zeros(_ms.shape[0], n_components, 96).to(device)
+    _covs = torch.ones(_covs.shape[0], n_components, 96).to(device)
+    
     # concatenate the mean and variance to have (b, n_components*2, 25)
     _param_emb, _param = gmm_train_tool.concatenate_and_embed_params(_ms, _covs, n_components, embedding_para, device)
 
@@ -120,18 +141,20 @@ for _random_num in [4, 8, 16, 32]:
 
     mean = _new_para[:, :n_components* 96].view(-1, n_components, 96)
     cov = _new_para[:, n_components* 96:].view(-1, n_components, 96)
-    # recover the scale
+    
+    "recover the scale"
     recovered_test_data = test_data[:, :, :-1].clone() * (max_test_data -min_test_data+1e-15) + min_test_data
     recover_test_sample_part = _test_sample_part[:, :, :-1].clone() * (max_test_data -min_test_data+1e-15) + min_test_data
-    recover_test_sample_part = _test_sample_part[:, :, :-1].clone()
+    # recover_test_sample_part = _test_sample_part[:, :, :-1].clone()
 
     "TimesNetmse model"
-    full_series, index_mask = data_loader.load_test_data_times(test_data)
+    full_series, index_mask = data_loader.load_test_data_times(copy_test_data)
     test_data_timenetmse, random_mask, scaler = tt.normalize_and_mask_fix(full_series, index_mask, device, _random_num)
+    model_timesnetmse.eval()
     y_hatmse = model_timesnetmse(test_data_timenetmse.double(), None, random_mask.double())
-    
     # Scale back to original
     y_hatmse = y_hatmse * (scaler[1] - scaler[0]) + scaler[0]
+    ymse_filtered_per_sample = y_hatmse
     
     mask_bt = 1- index_mask.sum(dim=2) 
     mask_bt = mask_bt > 0
@@ -141,10 +164,13 @@ for _random_num in [4, 8, 16, 32]:
     ]
     
     "TimesNetmmd model"
-    y_hatmmd = model_timesnetmmd(test_data_timenetmse.double(), None, random_mask.double())
-    
+    model_timesnetmmd.eval()
+    test_data_timenetmmd, random_mask, scaler = tt_mmd.normalize_and_mask(full_series, index_mask, device, _random_num)
+    y_hatmmd = model_timesnetmmd(test_data_timenetmmd.double(), None, random_mask.double())
+
     # Scale back to original
     y_hatmmd = y_hatmmd * (scaler[1] - scaler[0]) + scaler[0]
+    ymmd_filtered_per_sample = y_hatmmd
     
     mask_bt = 1- index_mask.sum(dim=2) 
     mask_bt = mask_bt > 0
@@ -178,53 +204,83 @@ for _random_num in [4, 8, 16, 32]:
     ws_timesnetmmd = 0
     msem_timesnetmmd = 0
     
+    t_samples_list = []
+    r_samples_list = []
+    r_samples_part_list = []
+    timesnet_sample_list = []
+    timesnet_sample_mmd_list = []
     for i in tqdm(range(batch_size)):
         # sample from the GMM
         _num=i
         # Sample from the GMM
-        samples, gmm = plot_eva.sample_from_gmm(n_components, _new_para, _num)
+        samples_gmm, gmm = plot_eva.sample_from_gmm(n_components, _new_para, _num)
+        samples_gmm = samples_gmm * (max_test_data[_num] -min_test_data[_num]) + min_test_data[_num]
         
-        # samples = samples * (max_test_data[_num] -min_test_data[_num]+1e-15) + min_test_data[_num]
-        mmd += plot_eva.compute_mmd(samples, test_data[_num, :, :-1].cpu().detach().numpy())
-        kl += plot_eva.compute_kl_divergence(samples, test_data[_num, :, :-1].cpu().detach().numpy())
-        ks += ks_2samp(samples.flatten(), test_data[_num, :, :-1].cpu().detach().numpy().flatten())[0]
-        ws += wasserstein_distance(samples.flatten(), test_data[_num, :, :-1].cpu().detach().numpy().flatten())
-        msem = plot_eva.calculate_autocorrelation_mse(samples, test_data[_num, :, :-1].cpu().detach().numpy())
+        noise = torch.rand(test_data[_num, :, :-1].shape).to(device) * 0.01
+        samples = test_data[_num, :, :-1] + noise # prevent the nan
+        # noise = noise.cpu().detach().numpy()
+        # # replace the nan with 0
+  
+        samples = samples * (max_test_data[_num] -min_test_data[_num]+1e-15) + min_test_data[_num]
+        # mmd += plot_eva.compute_mmd(samples_gmm, test_data[_num, :, :-1].cpu().detach().numpy())
+        # kl += plot_eva.compute_kl_divergence(samples_gmm, test_data[_num, :, :-1].cpu().detach().numpy())
+        # ks += ks_2samp(samples_gmm.flatten(), test_data[_num, :, :-1].cpu().detach().numpy().flatten())[0]
+        # ws += wasserstein_distance(samples_gmm.flatten(), test_data[_num, :, :-1].cpu().detach().numpy().flatten())
         
-        # Partial real data
-        _part_real = recover_test_sample_part[_num, :, :].cpu().detach().numpy()
-        mmd_partreal += plot_eva.compute_mmd(samples, _part_real)
-        kl_partreal += plot_eva.compute_kl_divergence(samples, _part_real)
-        ks_partreal += ks_2samp(samples.flatten(), _part_real.flatten())[0]
-        ws_partreal += wasserstein_distance(samples.flatten(), _part_real.flatten())
-        msem_partreal = plot_eva.calculate_autocorrelation_mse(samples, _part_real)
+        # samples = samples.cpu().detach().numpy()
+        # print(samples.shape)
+        # print(noise.shape)
+        # samples_gmm = samples_gmm + noise # prevent the nan
+        # msem = plot_eva.calculate_autocorrelation_mse(samples,  samples_gmm)
         
-        # TimesNet mse
+        # # Partial real data
+        _part_real = recover_test_sample_part[_num, :, :]
+        # _part_real = _part_real + torch.rand(_part_real.shape).to(device) * 0.01
+        # _part_real = _part_real.cpu().detach().numpy()
+        # mmd_partreal += plot_eva.compute_mmd(samples, _part_real)
+        # kl_partreal += plot_eva.compute_kl_divergence(samples, _part_real)
+        # ks_partreal += ks_2samp(samples.flatten(), _part_real.flatten())[0]
+        # ws_partreal += wasserstein_distance(samples.flatten(), _part_real.flatten())
+        # msem_partreal = plot_eva.calculate_autocorrelation_mse(samples, _part_real)
+        
+        # # TimesNet mse
         _part_real_timesnetmse = ymse_filtered_per_sample[_num].cpu().detach().numpy()
-        mmd_timesnetmse += plot_eva.compute_mmd(samples, _part_real_timesnetmse)
-        kl_timesnetmse += plot_eva.compute_kl_divergence(samples, _part_real_timesnetmse)
-        ks_timesnetmse += ks_2samp(samples.flatten(), _part_real_timesnetmse.flatten())[0]
-        ws_timesnetmse += wasserstein_distance(samples.flatten(), _part_real_timesnetmse.flatten())
-        msem_timesnetmse = plot_eva.calculate_autocorrelation_mse(samples, _part_real_timesnetmse)
+        # mmd_timesnetmse += plot_eva.compute_mmd(samples, _part_real_timesnetmse)
+        # kl_timesnetmse += plot_eva.compute_kl_divergence(samples, _part_real_timesnetmse)
+        # ks_timesnetmse += ks_2samp(samples.flatten(), _part_real_timesnetmse.flatten())[0]
+        # ws_timesnetmse += wasserstein_distance(samples.flatten(), _part_real_timesnetmse.flatten())
+        # _part_real_timesnetmse = _part_real_timesnetmse + np.random.rand(_part_real_timesnetmse.shape[0], _part_real_timesnetmse.shape[1]) * 0.01 # prevent the nan
+        # msem_timesnetmse = plot_eva.calculate_autocorrelation_mse(samples, _part_real_timesnetmse)
         
-        # timesnetmmd
+        # # timesnetmmd
         _part_real_timesnetmmd = ymmd_filtered_per_sample[_num].cpu().detach().numpy()
-        mmd_timesnetmmd += plot_eva.compute_mmd(samples, _part_real_timesnetmmd)
-        kl_timesnetmmd += plot_eva.compute_kl_divergence(samples, _part_real_timesnetmmd)
-        ks_timesnetmmd += ks_2samp(samples.flatten(), _part_real_timesnetmmd.flatten())[0]
-        ws_timesnetmmd += wasserstein_distance(samples.flatten(), _part_real_timesnetmmd.flatten())
-        msem_timesnetmmd = plot_eva.calculate_autocorrelation_mse(samples, _part_real_timesnetmmd)
+        # mmd_timesnetmmd += plot_eva.compute_mmd(samples, _part_real_timesnetmmd)
+        # kl_timesnetmmd += plot_eva.compute_kl_divergence(samples, _part_real_timesnetmmd)
+        # ks_timesnetmmd += ks_2samp(samples.flatten(), _part_real_timesnetmmd.flatten())[0]
+        # ws_timesnetmmd += wasserstein_distance(samples.flatten(), _part_real_timesnetmmd.flatten())
+        # _part_real_timesnetmmd = _part_real_timesnetmmd + np.random.rand(_part_real_timesnetmmd.shape[0], _part_real_timesnetmmd.shape[1]) * 0.01 # prevent the nan
+        # msem_timesnetmmd = plot_eva.calculate_autocorrelation_mse(samples, _part_real_timesnetmmd)
         
+        r_samples_list.append(recovered_test_data[_num, :, :-1].cpu().detach().numpy())
+        t_samples_list.append(samples_gmm)
+        r_samples_part_list.append(_part_real)
+        timesnet_sample_list.append(_part_real_timesnetmse)
+        timesnet_sample_mmd_list.append(_part_real_timesnetmmd)
+    # - ------add plot
+    save_path = f'exp/exp_second_round/eva/evasolar/plot/aggplot_{_random_num}.png'
+    eva_function.create_plots(t_samples_list, r_samples_list, r_samples_part_list, timesnet_sample_list, timesnet_sample_mmd_list, save_path)
+        
+    # - ------add plot
     # Plot the samples
     plt.figure(figsize=(10, 6))
     plt.subplot(4, 1, 1)
 
     # plot the samples the colors indicate the sum of the samples
-    samples = samples * (max_test_data[_num] -min_test_data[_num]+1e-15) + min_test_data[_num]
+    samples_gmm = samples_gmm 
     for i in range(samples.shape[0]):
-        _sum = samples[i, :-1].sum()
+        _sum = samples_gmm[i, :-1].sum()
         color = plt.cm.viridis(_sum / test_data.max())
-        plt.plot(samples[i, :-1], alpha=0.05, c=color)
+        plt.plot( samples_gmm[i, :-1], alpha=0.05, c=color)
     plt.title('Samples from GMM')
     plt.xlabel('Time')
     plt.ylabel('Value')
@@ -265,57 +321,58 @@ for _random_num in [4, 8, 16, 32]:
     plt.savefig(f'exp/exp_second_round/eva/evasolar/plot/samples_from_gmm_{_random_num}.png')
     plt.close()
 
-    print(f'mmd of {_random_num}-shots: ', mmd/batch_size)
-    print(f'kl of {_random_num}-shots: ', kl/batch_size)
-    print(f'ks of {_random_num}-shots: ', ks/batch_size)
-    print(f'ws of {_random_num}-shots: ', ws/batch_size)
-    print(f'msem of {_random_num}-shots: ', msem/batch_size)
+    break
+    # print(f'mmd of {_random_num}-shots: ', mmd/batch_size)
+    # print(f'kl of {_random_num}-shots: ', kl/batch_size)
+    # print(f'ks of {_random_num}-shots: ', ks/batch_size)
+    # print(f'ws of {_random_num}-shots: ', ws/batch_size)
+    # print(f'msem of {_random_num}-shots: ', msem/batch_size)
 
-    print(f'mmd_partreal of {_random_num}-shots: ', mmd_partreal/batch_size)
-    print(f'kl_partreal of {_random_num}-shots: ', kl_partreal/batch_size)
-    print(f'ks_partreal of {_random_num}-shots: ', ks_partreal/batch_size)
-    print(f'ws_partreal of {_random_num}-shots: ', ws_partreal/batch_size)
-    print(f'msem_partreal of {_random_num}-shots: ', msem_partreal/batch_size)
+    # print(f'mmd_partreal of {_random_num}-shots: ', mmd_partreal/batch_size)
+    # print(f'kl_partreal of {_random_num}-shots: ', kl_partreal/batch_size)
+    # print(f'ks_partreal of {_random_num}-shots: ', ks_partreal/batch_size)
+    # print(f'ws_partreal of {_random_num}-shots: ', ws_partreal/batch_size)
+    # print(f'msem_partreal of {_random_num}-shots: ', msem_partreal/batch_size)
     
-    print(f'mmd_timesnetmse of {_random_num}-shots: ', mmd_timesnetmse/batch_size)
-    print(f'kl_timesnetmse of {_random_num}-shots: ', kl_timesnetmse/batch_size)
-    print(f'ks_timesnetmse of {_random_num}-shots: ', ks_timesnetmse/batch_size)
-    print(f'ws_timesnetmse of {_random_num}-shots: ', ws_timesnetmse/batch_size)
-    print(f'msem_timesnetmse of {_random_num}-shots: ', msem_timesnetmse/batch_size)
+    # print(f'mmd_timesnetmse of {_random_num}-shots: ', mmd_timesnetmse/batch_size)
+    # print(f'kl_timesnetmse of {_random_num}-shots: ', kl_timesnetmse/batch_size)
+    # print(f'ks_timesnetmse of {_random_num}-shots: ', ks_timesnetmse/batch_size)
+    # print(f'ws_timesnetmse of {_random_num}-shots: ', ws_timesnetmse/batch_size)
+    # print(f'msem_timesnetmse of {_random_num}-shots: ', msem_timesnetmse/batch_size)
     
-    print(f'mmd_timesnetmmd of {_random_num}-shots: ', mmd_timesnetmmd/batch_size)
-    print(f'kl_timesnetmmd of {_random_num}-shots: ', kl_timesnetmmd/batch_size)
-    print(f'ks_timesnetmmd of {_random_num}-shots: ', ks_timesnetmmd/batch_size)
-    print(f'ws_timesnetmmd of {_random_num}-shots: ', ws_timesnetmmd/batch_size)
-    print(f'msem_timesnetmmd of {_random_num}-shots: ', msem_timesnetmmd/batch_size)
+    # print(f'mmd_timesnetmmd of {_random_num}-shots: ', mmd_timesnetmmd/batch_size)
+    # print(f'kl_timesnetmmd of {_random_num}-shots: ', kl_timesnetmmd/batch_size)
+    # print(f'ks_timesnetmmd of {_random_num}-shots: ', ks_timesnetmmd/batch_size)
+    # print(f'ws_timesnetmmd of {_random_num}-shots: ', ws_timesnetmmd/batch_size)
+    # print(f'msem_timesnetmmd of {_random_num}-shots: ', msem_timesnetmmd/batch_size)
 
-    # save the results in a text file
-    with open('exp/exp_second_round/eva/evasolar/sample_from_gmm.txt', 'a') as f:
-        f.write(f'mmd of {_random_num}-shots: {mmd/batch_size}\n')
-        f.write(f'kl of {_random_num}-shots: {kl/batch_size}\n')
-        f.write(f'ks of {_random_num}-shots: {ks/batch_size}\n')
-        f.write(f'ws of {_random_num}-shots: {ws/batch_size}\n')
-        f.write(f'msem of {_random_num}-shots: {msem/batch_size}\n')
+    # # save the results in a text file
+    # with open('exp/exp_second_round/eva/evasolar/sample_from_gmm.txt', 'a') as f:
+    #     f.write(f'mmd of {_random_num}-shots: {mmd/batch_size}\n')
+    #     f.write(f'kl of {_random_num}-shots: {kl/batch_size}\n')
+    #     f.write(f'ks of {_random_num}-shots: {ks/batch_size}\n')
+    #     f.write(f'ws of {_random_num}-shots: {ws/batch_size}\n')
+    #     f.write(f'msem of {_random_num}-shots: {msem/batch_size}\n')
 
-        f.write(f'mmd_partreal of {_random_num}-shots: {mmd_partreal/batch_size}\n')
-        f.write(f'kl_partreal of {_random_num}-shots: {kl_partreal/batch_size}\n')
-        f.write(f'ks_partreal of {_random_num}-shots: {ks_partreal/batch_size}\n')
-        f.write(f'ws_partreal of {_random_num}-shots: {ws_partreal/batch_size}\n')
-        f.write(f'msem_partreal of {_random_num}-shots: {msem_partreal/batch_size}\n')
+    #     f.write(f'mmd_partreal of {_random_num}-shots: {mmd_partreal/batch_size}\n')
+    #     f.write(f'kl_partreal of {_random_num}-shots: {kl_partreal/batch_size}\n')
+    #     f.write(f'ks_partreal of {_random_num}-shots: {ks_partreal/batch_size}\n')
+    #     f.write(f'ws_partreal of {_random_num}-shots: {ws_partreal/batch_size}\n')
+    #     f.write(f'msem_partreal of {_random_num}-shots: {msem_partreal/batch_size}\n')
         
-        f.write(f'mmd_timesnetmse of {_random_num}-shots: {mmd_timesnetmse/batch_size}\n')
-        f.write(f'kl_timesnetmse of {_random_num}-shots: {kl_timesnetmse/batch_size}\n')
-        f.write(f'ks_timesnetmse of {_random_num}-shots: {ks_timesnetmse/batch_size}\n')
-        f.write(f'ws_timesnetmse of {_random_num}-shots: {ws_timesnetmse/batch_size}\n')
-        f.write(f'msem_timesnetmse of {_random_num}-shots: {msem_timesnetmse/batch_size}\n')
+    #     f.write(f'mmd_timesnetmse of {_random_num}-shots: {mmd_timesnetmse/batch_size}\n')
+    #     f.write(f'kl_timesnetmse of {_random_num}-shots: {kl_timesnetmse/batch_size}\n')
+    #     f.write(f'ks_timesnetmse of {_random_num}-shots: {ks_timesnetmse/batch_size}\n')
+    #     f.write(f'ws_timesnetmse of {_random_num}-shots: {ws_timesnetmse/batch_size}\n')
+    #     f.write(f'msem_timesnetmse of {_random_num}-shots: {msem_timesnetmse/batch_size}\n')
         
-        f.write(f'mmd_timesnetmmd of {_random_num}-shots: {mmd_timesnetmmd/batch_size}\n')
-        f.write(f'kl_timesnetmmd of {_random_num}-shots: {kl_timesnetmmd/batch_size}\n')
-        f.write(f'ks_timesnetmmd of {_random_num}-shots: {ks_timesnetmmd/batch_size}\n')
-        f.write(f'ws_timesnetmmd of {_random_num}-shots: {ws_timesnetmmd/batch_size}\n')
-        f.write(f'msem_timesnetmmd of {_random_num}-shots: {msem_timesnetmmd/batch_size}\n')
+    #     f.write(f'mmd_timesnetmmd of {_random_num}-shots: {mmd_timesnetmmd/batch_size}\n')
+    #     f.write(f'kl_timesnetmmd of {_random_num}-shots: {kl_timesnetmmd/batch_size}\n')
+    #     f.write(f'ks_timesnetmmd of {_random_num}-shots: {ks_timesnetmmd/batch_size}\n')
+    #     f.write(f'ws_timesnetmmd of {_random_num}-shots: {ws_timesnetmmd/batch_size}\n')
+    #     f.write(f'msem_timesnetmmd of {_random_num}-shots: {msem_timesnetmmd/batch_size}\n')
         
-        f.write('\n')
+    #     f.write('\n')
 
 
 

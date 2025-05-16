@@ -228,10 +228,17 @@ def calculate_autocorrelation_mse(dataset1, dataset2):
     """
     dataset1 = np.array(dataset1)
     dataset2 = np.array(dataset2)
+    
     # compute the correlation matrix of data1
     correlation_matrix1 = kendalltau_corr(dataset1)
+    
     # compute the correlation matrix of data2
     correlation_matrix2 = kendalltau_corr(dataset2)
+    
+    #np.corrcoef(dataset2, rowvar=False) 
+    # correlation_matrix1 = np.corrcoef(dataset1, rowvar=False)
+    # correlation_matrix2 = np.corrcoef(dataset2, rowvar=False)
+    
     # compute the mean square error
     mse = mean_squared_error(correlation_matrix1, correlation_matrix2)
     return mse
