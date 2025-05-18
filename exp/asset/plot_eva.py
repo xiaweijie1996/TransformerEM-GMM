@@ -187,7 +187,11 @@ def compute_kl_divergence(X, Y, bandwidth= 1 ): # 0.1
     density_X = np.exp(log_density_X)
     density_Y = np.exp(log_density_Y)
 
-    return entropy(density_X, density_Y)
+    kl = entropy(density_X, density_Y)
+    # compute the KL  is nan or inf
+    if np.isnan(kl) or np.isinf(kl):
+        kl = 10
+    return kl
 
 def compute_mmd(X, Y, kernel='rbf', gamma=1.0):
     if kernel == 'rbf':
@@ -231,9 +235,13 @@ def calculate_autocorrelation_mse(dataset1, dataset2):
     
     # compute the correlation matrix of data1
     correlation_matrix1 = kendalltau_corr(dataset1)
+    # check if nan in the matrix replace with mean
+    correlation_matrix1 = np.nan_to_num(correlation_matrix1, nan=np.nanmean(correlation_matrix1))
     
     # compute the correlation matrix of data2
     correlation_matrix2 = kendalltau_corr(dataset2)
+    # check if nan in the matrix replace with mean
+    correlation_matrix2 = np.nan_to_num(correlation_matrix2, nan=np.nanmean(correlation_matrix2))
     
     #np.corrcoef(dataset2, rowvar=False) 
     # correlation_matrix1 = np.corrcoef(dataset1, rowvar=False)

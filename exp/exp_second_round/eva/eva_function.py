@@ -291,14 +291,21 @@ def create_plots(t_samples_list, r_samples_list, r_samples_part_list, timesnet_s
     # fig.text(0.5, -0.01, 'Hour of Day [-]', ha='center', fontsize=label_fontsize)
     # fig.text(0, 0.5, 'Electricity Consumption [kWh]', va='center', rotation='vertical', fontsize=label_fontsize)
 
-    fig.text(0.5, 0.01, 'Hour of Day [-]', ha='center', fontsize=label_fontsize)
-    fig.text(0.02, 0.5, 'Electricity Consumption [kWh]', va='center', rotation='vertical', fontsize=label_fontsize)
+    fig.text(0.5, -0.01, 'Hour of Day [-]', ha='center', fontsize=label_fontsize)
+    fig.text(0.01, 0.5, 'Electricity Consumption [kWh]', va='center', rotation='vertical', fontsize=label_fontsize)
+    # fig.supxlabel('Hour of Day [–]', fontsize=label_fontsize)
+    # fig.supylabel('Electricity Consumption [kWh]', fontsize=label_fontsize)
+
 
     # Add a single color bar label in the middle of the last column
     fig.text(0.90, 0.5, 'Daily Total Consumption [kWh]', va='center', rotation='vertical', fontsize=label_fontsize)
 
-    plt.tight_layout(rect=[0, 0, 0.9, 1])  # Adjust layout to accommodate the color bar
-    plt.savefig(path)
+    fig.tight_layout(rect=[0, 0, 0.9, 1.0])    # reserve rightmost 10% for the colorbars
+    fig.subplots_adjust(
+    left=0.08,   # move the left edge of the subplots 10% in
+    bottom=0.15  # move the bottom edge of the subplots 10% up
+    )
+    plt.savefig(path, bbox_inches='tight')
 
 def few_shot_eva(encoder, timesnet_model, timesnet_model_mmd, _para, _token, val_data, min_shot=1, max_shot=25, _iter=10):
     # mmd
