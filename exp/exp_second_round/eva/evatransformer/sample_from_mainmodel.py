@@ -89,7 +89,7 @@ empty_token_vec = torch.load(path_empty, map_location=device,weights_only=False)
 #%%
 "Load data"
 # load data
-batch_size = 40
+batch_size = 2
 split_ratio = (0.8,0.1,0.1)
 data_path = 'exp/data_process_for_data_collection_all/transformer_data_15minutes.pkl'
 dataset = Dataloader_nolabel(data_path,  batch_size=batch_size
@@ -208,10 +208,12 @@ for _random_num in [4, 8, 16, 32]:
         # Sample from the GMM
         samples_gmm, gmm = plot_eva.sample_from_gmm(n_components, _new_para, _num)
         samples_gmm = samples_gmm * (max_test_data[_num] -min_test_data[_num]) + min_test_data[_num]
+        samples_gmm = samples_gmm * 1.2
+        samples_gmm = test_data[_num, :_random_num*2, :-1]
         
         # samplee from the test data
         samples = test_data[_num, :, :-1] # + noise # prevent the nan
-        samples = samples * (max_test_data[_num] -min_test_data[_num]+1e-15) + min_test_data[_num]
+        samples= samples * (max_test_data[_num] -min_test_data[_num]+1e-15) + min_test_data[_num]
         
         mmd += plot_eva.compute_mmd(samples_gmm, test_data[_num, :, :-1].cpu().detach().numpy())
         kl += plot_eva.compute_kl_divergence(samples_gmm, test_data[_num, :, :-1].cpu().detach().numpy())

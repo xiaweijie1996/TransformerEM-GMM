@@ -90,7 +90,7 @@ empty_token_vec = torch.load(path_empty, map_location=device,weights_only=False)
 #%%
 "Load data"
 # load data
-batch_size = 70
+batch_size = 2
 split_ratio = (0.8,0.1,0.1)
 data_path = 'exp/data_process_for_data_collection_all/new_data_15minute_solar_nomerge.pkl'
 dataset = Dataloader_nolabel(data_path,  batch_size=batch_size

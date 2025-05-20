@@ -292,13 +292,13 @@ def create_plots(t_samples_list, r_samples_list, r_samples_part_list, timesnet_s
     # fig.text(0, 0.5, 'Electricity Consumption [kWh]', va='center', rotation='vertical', fontsize=label_fontsize)
 
     fig.text(0.5, -0.01, 'Hour of Day [-]', ha='center', fontsize=label_fontsize)
-    fig.text(0.01, 0.5, 'Electricity Consumption [kWh]', va='center', rotation='vertical', fontsize=label_fontsize)
+    fig.text(0.01, 0.5, 'Electricity Output [kWh]', va='center', rotation='vertical', fontsize=label_fontsize)
     # fig.supxlabel('Hour of Day [–]', fontsize=label_fontsize)
     # fig.supylabel('Electricity Consumption [kWh]', fontsize=label_fontsize)
 
 
     # Add a single color bar label in the middle of the last column
-    fig.text(0.90, 0.5, 'Daily Total Consumption [kWh]', va='center', rotation='vertical', fontsize=label_fontsize)
+    fig.text(0.90, 0.5, 'Daily Generation [kWh]', va='center', rotation='vertical', fontsize=label_fontsize)
 
     fig.tight_layout(rect=[0, 0, 0.9, 1.0])    # reserve rightmost 10% for the colorbars
     fig.subplots_adjust(

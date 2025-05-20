@@ -226,7 +226,7 @@ for _random_num in [4, 8, 16, 32]:
         timesnet_sample_list.append(_part_real_timesnetmse)
         timesnet_sample_mmd_list.append(_part_real_timesnetmmd)
     # - ------add plot
-    save_path = f'exp/exp_second_round/eva/evatransformer/plot/aggplot_{_random_num}.png'
+    save_path = f'exp/exp_second_round/eva/evatransformer/plot/case_transformer_{_random_num}.png'
     eva_function.create_plots(t_samples_list, r_samples_list, r_samples_part_list, timesnet_sample_list, timesnet_sample_mmd_list, save_path)
         
     # - ------add plot

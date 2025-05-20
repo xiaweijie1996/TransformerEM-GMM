@@ -184,8 +184,8 @@ def compute_kl_divergence(X, Y, bandwidth= 1 ): # 0.1
     log_density_Y = kde_Y.score_samples(eval_points)
 
     # Convert log densities to probabilities
-    density_X = np.exp(log_density_X)
-    density_Y = np.exp(log_density_Y)
+    density_X = log_density_X
+    density_Y = log_density_Y
 
     kl = entropy(density_X, density_Y)
     # compute the KL  is nan or inf
@@ -193,7 +193,7 @@ def compute_kl_divergence(X, Y, bandwidth= 1 ): # 0.1
         kl = 10
     return kl
 
-def compute_mmd(X, Y, kernel='rbf', gamma=1.0):
+def compute_mmd(X, Y, kernel='rbf', gamma=0.2):
     if kernel == 'rbf':
         XX = rbf_kernel(X, X, gamma=gamma)
         YY = rbf_kernel(Y, Y, gamma=gamma)
