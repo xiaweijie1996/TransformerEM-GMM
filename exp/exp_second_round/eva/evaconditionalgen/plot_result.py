@@ -33,7 +33,7 @@ print('lenthg of test data: ', dataset.__len__()*split_ratio[1])
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
 # define the hyperparameters
-random_sample_num_vae = 4
+random_sample_num_vae = 32
 num_epochs = int(10000)
 input_shape=(250, 96)      # (C, L)
 latent_channels = 16
@@ -46,7 +46,15 @@ vae = vaemodel.ConvPoolVAE1D(input_shape=input_shape, condition_shape=(random_sa
                                     hidden_dims=hidden_dims, cond_dims=cond_dims).to(device)
     
 # load vae 4 shot
-path_vae = f'exp/exp_second_round/conditional_generativemodels/4shot/vae_1336858_{random_sample_num_vae}.pth'
+if random_sample_num_vae == 4:
+    path_vae = f'exp/exp_second_round/conditional_generativemodels/4shot/vae_1336858_{random_sample_num_vae}.pth'
+if random_sample_num_vae == 8:
+    path_vae = 'exp/exp_second_round/conditional_generativemodels/8shot/vae_1337242_8.pth'
+if random_sample_num_vae == 16:
+    path_vae = 'exp/exp_second_round/conditional_generativemodels/16shot/vae_1338010_16.pth'
+if random_sample_num_vae == 32:
+    path_vae = 'exp/exp_second_round/conditional_generativemodels/32shot/vae_1339546_32.pth'
+    
 vae.load_state_dict(torch.load(path_vae, map_location=device))
 
 # load gmm
@@ -102,7 +110,10 @@ encoder.eval()
 _test_sample_part_emb = gmm_train_tool.pad_and_embed(_test_sample_part, random_sample_num, random_sample_num_vae,
                                         emb_empty_token, device)
 _ms, _covs = ep.GMM_PyTorch_Batch(n_components, _test_sample_part[:,:, :-1].shape[-1]).fit(_test_sample_part[:,:, :-1], 1) # _ms: (b, n_components, 24), _covs: (b, n_components, 24)
+_ms = torch.zeros(_ms.shape[0], n_components, 96).to(device)
+_covs = torch.ones(_ms.shape[0], n_components, 96).to(device)
 
+    
 # concatenate the mean and variance to have (b, n_components*2, 25)
 _param_emb, _param = gmm_train_tool.concatenate_and_embed_params(_ms, _covs, n_components, embedding_para, device)
 
