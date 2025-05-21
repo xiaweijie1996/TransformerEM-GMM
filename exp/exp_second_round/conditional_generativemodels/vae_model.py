@@ -63,7 +63,7 @@ class ConvPoolVAE1D(nn.Module):
         self.decoder = nn.Sequential(*dec_layers)
 
     def encode(self, x, cond):
-        _input = torch.cat([x, cond], dim=1) if cond is not None else x
+        # _input = torch.cat([x, cond], dim=1) if cond is not None else x
         f = self.encoder(x)
         mu     = self.conv_mu(f)
         logvar = self.conv_logvar(f)
@@ -91,7 +91,7 @@ if __name__ == "__main__":
     # Example usage
     model = ConvPoolVAE1D(input_shape=(250, 96), condition_shape=(8, 96), latent_channels=16)
     x = torch.randn(4, 250, 96)
-    recon, mu, logvar = model(x)
+    recon, mu, logvar = model(x, x)
     print("recon:", recon.shape)   # should be (4,1,96)
     print("mu   :", mu.shape)      # -> (4,16,12)
     print("logvar:", logvar.shape) # -> (4,16,12)
