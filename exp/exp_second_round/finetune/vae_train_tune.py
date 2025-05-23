@@ -137,7 +137,7 @@ if __name__ == "__main__":
             # plot the original data
             label_fontsize = 15
             tick_fontsize = 15
-            fig, ax = plt.subplots(figsize=(6, 6))
+            fig, ax = plt.subplots(figsize=(4, 4))
             _sum = train_sample[0].sum(axis=1)
             # Setup colormap and normalization
             color_map = plt.cm.coolwarm
@@ -169,7 +169,7 @@ if __name__ == "__main__":
             plt.close()
             
             # plot the generated data
-            fig, ax = plt.subplots(figsize=(6, 6))
+            fig, ax = plt.subplots(figsize=(4, 4))
             _sum = recon.sum(axis=1)
             # Setup colormap and normalization
             color_map = plt.cm.coolwarm
