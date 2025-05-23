@@ -62,7 +62,48 @@ def get_loss_le(train_sample, _train_sample_part, encoder, random_sample_num, mi
                                            emb_empty_token, device)
 
     # use ep to do one iteration of the EM algorithm
-    _ms, _covs = ep.GMM_PyTorch_Batch(n_components, _train_sample_part[:,:, :-1].shape[-1]).fit(_train_sample_part[:,:, :-1], 1)
+    _ms, _covs = ep.GMM_PyTorch_Batch(n_components, _train_sample_part[:,:, :-1].shape[-1]).fit(_train_sample_part[:,:, :-1], 1) # _ms: (b, n_components, 24), _covs: (b, n_components, 24)
+    
+    _ms = torch.zeros(_train_sample_part.shape[0], n_components, 96).to(device)
+    _covs = torch.ones(_train_sample_part.shape[0], n_components, 96).to(device)
+    # log _ms and _covs
+    # wandb.log({'_ms': _ms.mean().item(), '_covs': _covs.mean().item()})
+
+    # concatenate the mean and variance to have (b, n_components*2, 25)
+    _param_emb, _param = concatenate_and_embed_params(_ms, _covs, n_components, embedding, device)
+    
+    # feed into the encoder
+    _train_sample_part_emb = torch.cat((_param_emb, _train_sample_part_emb), dim=1)
+    encoder_out = encoder(_train_sample_part_emb)
+    
+    _new_para = encoder_out[:, :n_components*2, :]
+    _new_para = encoder.output_adding_layer(_new_para, _param)
+    _loss = le.le_loss(train_sample[:,:, :-1], n_components, _new_para)
+    
+    return _loss, _random_num, _new_para, _param, train_sample[:, :, :-1], _train_sample_part[:, :, :-1], (_train_min, _train_max) 
+
+
+def get_loss_lenoem(train_sample, _train_sample_part, encoder, random_sample_num, min_random_sample_num, n_components, embedding, emb_empty_token, train='True', device='cpu'):
+    train_sample = torch.tensor(train_sample, dtype=torch.float64).to(device)
+    
+    # normalize the input data
+    _train_min,_ = train_sample[:,:, :-1].min(axis=1, keepdim=True)
+    _train_max,_ = train_sample[:,:, :-1].max(axis=1, keepdim=True)
+    train_sample[:,:, :-1] = (train_sample[:,:, :-1] - _train_min)/(_train_max-_train_min+1e-15)
+    
+    # random_sample a number between min_random_sample_num and random_sample_num
+    _random_num = _train_sample_part.shape[1]
+    _train_sample_part[:, :, -1] = _train_sample_part[:, :, -1]/365 # simple data embedding
+    
+    # padding the empty token to _train_sample_part to have shape (b, random_sample_num, 25)
+    _train_sample_part_emb = pad_and_embed(_train_sample_part, random_sample_num, _random_num,
+                                           emb_empty_token, device)
+
+    # use ep to do one iteration of the EM algorithm
+    _ms, _covs = ep.GMM_PyTorch_Batch(n_components, _train_sample_part[:,:, :-1].shape[-1]).fit(_train_sample_part[:,:, :-1], 1) # _ms: (b, n_components, 24), _covs: (b, n_components, 24)
+    
+    _ms = torch.zeros_like(_ms).to(device)
+    _covs = torch.zeros_like(_covs).to(device)
     
     # log _ms and _covs
     # wandb.log({'_ms': _ms.mean().item(), '_covs': _covs.mean().item()})
