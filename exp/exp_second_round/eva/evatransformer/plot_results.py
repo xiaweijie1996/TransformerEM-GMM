@@ -27,7 +27,7 @@ import exp_second_round.timesnet_mse_userload_15minutes.timesnet as timesnet
 # Set default dtype to float64
 torch.set_default_dtype(torch.float64)
 # Determine the device to use
-device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+device =  'cpu'
 
 #%%
 "Load TimesNet mmd model"

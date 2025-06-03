@@ -39,7 +39,7 @@ save_model = 'exp/exp_second_round/transformer_15minutes/model2/'
 save_image = 'exp/exp_second_round/transformer_15minutes/gen_img2/'
 lr = 0.001
 n_components = 6
-min_random_sample_num = 4
+min_random_sample_num = 8
 
 # define the encoder
 chw = (1, random_sample_num,  97)
