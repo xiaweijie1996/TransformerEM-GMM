@@ -89,7 +89,7 @@ empty_token_vec = torch.load(path_empty, map_location=device,weights_only=False)
 #%%
 "Load data"
 # load data
-batch_size = 2
+batch_size = 3
 split_ratio = (0.8,0.1,0.1)
 data_path = 'exp/data_process_for_data_collection_all/transformer_data_15minutes.pkl'
 dataset = Dataloader_nolabel(data_path,  batch_size=batch_size
@@ -226,7 +226,7 @@ for _random_num in [4, 8, 16, 32]:
         timesnet_sample_list.append(_part_real_timesnetmse)
         timesnet_sample_mmd_list.append(_part_real_timesnetmmd)
     # - ------add plot
-    save_path = f'exp/exp_second_round/eva/evatransformer/plot/case_transformer_{_random_num}.png'
+    save_path = f'exp/exp_second_round/eva/evatransformer/plot2/case_transformer_{_random_num}.png'
     eva_function.create_plots(t_samples_list, r_samples_list, r_samples_part_list, timesnet_sample_list, timesnet_sample_mmd_list, save_path)
         
     # - ------add plot

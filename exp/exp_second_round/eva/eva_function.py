@@ -296,7 +296,6 @@ def create_plots(t_samples_list, r_samples_list, r_samples_part_list, timesnet_s
     # fig.supxlabel('Hour of Day [–]', fontsize=label_fontsize)
     # fig.supylabel('Electricity Consumption [kWh]', fontsize=label_fontsize)
 
-
     # Add a single color bar label in the middle of the last column
     fig.text(0.90, 0.5, 'Daily Generation [kWh]', va='center', rotation='vertical', fontsize=label_fontsize)
 
