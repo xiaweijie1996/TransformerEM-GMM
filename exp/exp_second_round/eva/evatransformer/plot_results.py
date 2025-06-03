@@ -77,8 +77,8 @@ n_blocks = 4
 encoder = gmm_model.ViT_encodernopara(chw, hidden_d, out_d, n_heads, mlp_ratio, n_blocks).to(device)
 # load state dict of the model
 # model_path = 'exp/exp_second_round/transformer_15minutes/model/transformer_encoder_40_6306166.pth'
-model_path = 'exp/exp_second_round/transformer_15minutes/model2/transformer_emb_empty_token_40_6306166.pth'
-model = torch.load(model_path, map_location=device)
+model_path = 'exp/exp_second_round/transformer_15minutes/model2/transformer_encoder_40_6306166.pth'
+model = torch.load(model_path, map_location=device, weights_only=False)
 encoder.load_state_dict(model)
 embedding_para = torch.nn.Embedding(n_components*2, 1).to(device)
 emb_empty_token = torch.nn.Embedding(1, chw[2]).to(device)
@@ -87,7 +87,7 @@ path_embedding = 'exp/exp_second_round/transformer_15minutes/model2/transformer_
 emb_weight = torch.load(path_embedding, map_location=device, weights_only=False)
 # path_empty = 'exp/exp_second_round/transformer_15minutes/model/transformer_emb_empty_token_40_6306166.pth'
 path_empty = 'exp/exp_second_round/transformer_15minutes/model2/transformer_emb_empty_token_40_6306166.pth'
-empty_token_vec = torch.load(path_empty, map_location=device,weights_only=False)
+empty_token_vec = torch.load(path_empty, map_location=device, weights_only=False)
 
 #%%
 "Load data"
