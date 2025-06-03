@@ -33,13 +33,13 @@ print(device)
 
 # define the hyperparameters
 random_sample_num = 40
-num_epochs = int(500000)
+num_epochs = int(5000000)
 sub_epoch = int(dataset.__len__()*split_ratio[0]/batch_size)
-save_model = 'exp/exp_second_round/transformer_15minutes/model/'
-save_image = 'exp/exp_second_round/transformer_15minutes/gen_img/'
-lr = 0.0005
-n_components = 4
-min_random_sample_num = 8
+save_model = 'exp/exp_second_round/transformer_15minutes/model2/'
+save_image = 'exp/exp_second_round/transformer_15minutes/gen_img2/'
+lr = 0.001
+n_components = 6
+min_random_sample_num = 4
 
 # define the encoder
 chw = (1, random_sample_num,  97)
@@ -69,7 +69,7 @@ wandb.log({'num_parameters_encoder': _model_scale})
 mid_loss = 100000
 
 for epoch in range(num_epochs):
-    for j in range(sub_epoch):
+    for j in range(2):
         # train.model
         encoder.train()
         
@@ -82,16 +82,17 @@ for epoch in range(num_epochs):
         optimizer.step()
         scheduler.step()
         
-    # if epoch % 1 == 0:
-    #     encoder.eval()
-    #     wandb.log({'loss_train': _loss.item()})
-    #     _loss_collection = []
-    #     for _ in range(20):
-    #         _loss, _random_num, _new_para, _param, r_samples, r_samples_part, _mm = gmm_train_tool.get_loss_le(dataset, encoder,
-    #                                                                             random_sample_num, min_random_sample_num, n_components, 
-    #                                                                             embedding_para, emb_empty_token, 'False', device)
-    #         _loss_collection.append(_loss)
-    #     _loss = torch.stack(_loss_collection).mean()
+        # if epoch % 1 == 0:
+        #     encoder.eval()
+        #     wandb.log({'loss_train': _loss.item()})
+        #     _loss_collection = []
+        #     for _ in range(20):
+        #         _loss, _random_num, _new_para, _param, r_samples, r_samples_part, _mm = gmm_train_tool.get_loss_le(dataset, encoder,
+        #                                                                             random_sample_num, min_random_sample_num, n_components, 
+        #                                                                             embedding_para, emb_empty_token, 'False', device)
+        #         _loss_collection.append(_loss)
+        #     _loss = torch.stack(_loss_collection).mean()
+        
         print('epoch: ', epoch, 'loss_test: ', _loss.item(), 'random_num: ', _random_num)
         wandb.log({'loss_test': _loss.item(), 'random_num': _random_num, 'epoch':epoch})
         
@@ -102,7 +103,7 @@ for epoch in range(num_epochs):
             torch.save(embedding_para, save_model + f'transformer_embedding_{random_sample_num}_{_model_scale}.pth')
             torch.save(emb_empty_token, save_model + f'transformer_emb_empty_token_{random_sample_num}_{_model_scale}.pth')
 
-    if epoch % 10 == 0:
+    if epoch % 100 == 0:
         save_path = save_image+f'_{_model_scale}.png'
         llk_e = pa.plot_samples(save_path, batch_size, n_components, _mm, _new_para, r_samples, r_samples_part, _param, figsize=(10, 15))
 
