@@ -106,6 +106,3 @@ for epoch in range(num_epochs):
     if epoch % 100 == 0:
         save_path = save_image+f'_{_model_scale}.png'
         llk_e = pa.plot_samples(save_path, batch_size, n_components, _mm, _new_para, r_samples, r_samples_part, _param, figsize=(10, 15))
-
-        
-        
