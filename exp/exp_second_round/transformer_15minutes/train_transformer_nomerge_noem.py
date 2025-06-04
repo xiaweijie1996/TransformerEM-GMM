@@ -18,7 +18,7 @@ from asset.dataloader import Dataloader_nolabel
 torch.set_default_dtype(torch.float64)
 
 # load data
-batch_size =  32
+batch_size =  128
 split_ratio = (0.8,0.1,0.1)
 data_path =  'exp/data_process_for_data_collection_all/transformer_data_15minutes.pkl' # sys.argv[1]  #'exp/data_process_for_data_collection_all/new_data_15minute_grid_nomerge.pkl' ## 
 dataset = Dataloader_nolabel(data_path,  batch_size=batch_size
@@ -104,6 +104,7 @@ for epoch in range(num_epochs):
     # save the model and embeding
     if _loss.item() < mid_loss:
         mid_loss = _loss.item()
+        print('save model and embedding')
         torch.save(encoder.state_dict(), save_model + f'transformer_encoder_{random_sample_num}_{_model_scale}.pth')
         torch.save(embedding_para, save_model + f'transformer_embedding_{random_sample_num}_{_model_scale}.pth')
         torch.save(emb_empty_token, save_model + f'transformer_emb_empty_token_{random_sample_num}_{_model_scale}.pth')
