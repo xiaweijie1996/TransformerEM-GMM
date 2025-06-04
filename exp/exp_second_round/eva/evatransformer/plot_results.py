@@ -92,7 +92,7 @@ empty_token_vec = torch.load(path_empty, map_location=device, weights_only=False
 #%%
 "Load data"
 # load data
-batch_size = 60
+batch_size = 3
 split_ratio = (0.8,0.1,0.1)
 data_path = 'exp/data_process_for_data_collection_all/transformer_data_15minutes.pkl'
 dataset = Dataloader_nolabel(data_path,  batch_size=batch_size
@@ -101,12 +101,7 @@ dataset = Dataloader_nolabel(data_path,  batch_size=batch_size
 print('length of train data: ', dataset.__len__())
 # batch_size = int(batch_size)
 
-test_data = dataset.load_train_data_fix()
-# take_index = [29, 30, 37, 39] # 15 residential with pv
-take_index = [40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55] # 15 residential without pv
-batch_size = len(take_index)
-test_data = test_data[take_index, :, :]
-# test_data = dataset.load_test_data(batch_size)
+test_data = dataset.load_test_data(batch_size)
 copy_test_data = test_data.copy()
 copy_test_data = torch.tensor(copy_test_data, dtype=torch.float64).to(device)
 

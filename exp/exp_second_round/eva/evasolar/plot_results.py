@@ -99,7 +99,6 @@ dataset = Dataloader_nolabel(data_path,  batch_size=batch_size
 # batch_size = int(batch_size)
 
 test_data = dataset.load_test_data(batch_size)
-# test_data = dataset.load_train_data()
 copy_test_data = test_data.copy()
 copy_test_data = torch.tensor(copy_test_data, dtype=torch.float64).to(device)
 
@@ -229,7 +228,7 @@ for _random_num in [4, 8, 16, 32]:
         # # timesnetmmd
         _part_real_timesnetmmd = ymmd_filtered_per_sample[_num].cpu().detach().numpy()
         r_samples_list.append(recovered_test_data[_num, :, :-1].cpu().detach().numpy())
-        t_samples_list.append(samples_gmm * 0.85)
+        t_samples_list.append(samples_gmm)
         r_samples_part_list.append(_part_real)
         timesnet_sample_list.append(_part_real_timesnetmse)
         timesnet_sample_mmd_list.append(_part_real_timesnetmmd)

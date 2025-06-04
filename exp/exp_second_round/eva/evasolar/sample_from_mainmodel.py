@@ -99,7 +99,7 @@ dataset = Dataloader_nolabel(data_path,  batch_size=batch_size
 # batch_size = int(batch_size)
 
 # test_data = dataset.load_test_data(batch_size)
-test_data = dataset.load_train_data()
+test_data = dataset.load_test_data(batch_size)
 copy_test_data = test_data.copy()
 copy_test_data = torch.tensor(copy_test_data, dtype=torch.float64).to(device)
 

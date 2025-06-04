@@ -65,7 +65,7 @@ encoder.load_state_dict(torch.load(encoder_model_path, map_location=device, weig
 embedding_para = torch.load(embedding_para_model_path, map_location=device, weights_only=False)
 emb_empty_token = torch.load(emb_empty_token_model_path, map_location=device, weights_only=False)
 
-samples = dataset.load_train_data()
+samples = dataset.load_test_data(batch_size)
 samples = torch.tensor(samples, dtype=torch.float64).to(device)
 orignal_samples = samples.clone()
 a = 0

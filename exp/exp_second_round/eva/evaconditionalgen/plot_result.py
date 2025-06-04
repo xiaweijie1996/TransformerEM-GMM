@@ -81,8 +81,7 @@ path_empty = 'exp/exp_second_round/user_load_15minutes/model/_emb_empty_token_40
 empty_token_vec = torch.load(path_empty, map_location=device,weights_only=False)
 
 # load data
-# test_sample = dataset.load_test_data()
-test_sample = dataset.load_train_data()
+test_sample = dataset.load_test_data(batch_size)
 test_sample = torch.tensor(test_sample, dtype=torch.float32).to(device)
 
 # normalize the input data
