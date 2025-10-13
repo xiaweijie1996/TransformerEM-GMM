@@ -127,6 +127,7 @@ if __name__ == "__main__":
     model = FFD_NL(in_channels=N, hidden_channels=64, condition_channels=Cc, t_max=T).to(device)
     opt = torch.optim.AdamW(model.parameters(), lr=5e-5)
 
+    print(" amount of model parameters:", sum(p.numel() for p in model.parameters() if p.requires_grad))
     # Fake data
     x0   = torch.randn(B, N, L, device=device)
     cond = torch.randn(B, Cc, Lc, device=device)
