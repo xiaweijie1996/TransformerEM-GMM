@@ -62,12 +62,12 @@ if __name__ == "__main__":
     optimizer = optim.Adam(vaemodel.parameters(), lr=0.0001)
 
     # initialize wandb
-    wandb.init(project="conditional_generative_models_{}shot".format(random_sample_num))
+    # wandb.init(project="conditional_generative_models_{}shot".format(random_sample_num))
     
     # log amount of parameters
     parameters = sum(p.numel() for p in vaemodel.parameters())
     print('amount of parameters: ', parameters)
-    wandb.log({"amount of parameters": sum(p.numel() for p in vaemodel.parameters())})
+    # wandb.log({"amount of parameters": sum(p.numel() for p in vaemodel.parameters())})
     
     # train the model
     mid_loss = 100000000000
@@ -88,6 +88,11 @@ if __name__ == "__main__":
         # move the data to the device
         _train_sample_part = _train_sample_part.to(device)
         
+        # print the shape of the input data
+        print('train_sample shape: ', train_sample.shape)
+        print('_train_sample_part shape: ', _train_sample_part.shape)
+        
+        break
         # feed into the model
         recon, mu, logvar = vaemodel(train_sample, _train_sample_part)
         
