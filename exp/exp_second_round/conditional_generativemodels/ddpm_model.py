@@ -2,168 +2,147 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
-# -------------------------------
-# Simple Conv1d denoiser for (B, N, L)
-# -------------------------------
 class FFD_NL(nn.Module):
-    def __init__(self, in_channels, hidden_channels=128, condition_channels=4, t_max=1000, out_channels=None):
+    def __init__(self, 
+                 in_channels, 
+                 hidden_channels=128, 
+                 condition_channels=4, 
+                 out_channels=None,
+                 t_max=1000, 
+                 betas=None):
         super().__init__()
+        assert betas is not None, "Provide a length-t_max betas schedule."
+        assert betas.ndim == 1, "betas must be 1-D."
+        assert len(betas) == t_max, "len(betas) must equal t_max."
+
         out_channels = out_channels or in_channels
         self.in_channels = in_channels
         self.condition_channels = condition_channels
-        self.t_max = t_max  # expect t ∈ [0, t_max-1]
+        self.t_max = t_max
 
         self.net = nn.Sequential(
             nn.Conv1d(in_channels + 1 + self.condition_channels, hidden_channels, kernel_size=3, padding=1),
-            nn.GroupNorm(4, hidden_channels), 
-            # nn.LayerNorm(hidden_channels),
+            nn.GroupNorm(4, hidden_channels),
             nn.LeakyReLU(0.2, inplace=True),
             nn.Conv1d(hidden_channels, hidden_channels, kernel_size=3, padding=1),
-            nn.GroupNorm(4, hidden_channels), 
-            # nn.LayerNorm(hidden_channels),
+            nn.GroupNorm(4, hidden_channels),
             nn.LeakyReLU(0.2, inplace=True),
             nn.Conv1d(hidden_channels, hidden_channels, kernel_size=3, padding=1),
-            nn.GroupNorm(4, hidden_channels), 
-            # nn.LayerNorm(hidden_channels),
+            nn.GroupNorm(4, hidden_channels),
             nn.LeakyReLU(0.2, inplace=True),
             nn.Conv1d(hidden_channels, out_channels, kernel_size=3, padding=1),
         )
 
+        # Register buffers so they move with .to(device)
+        self.register_buffer("betas", betas.clone().float())
+        self.register_buffer("alphas", (1.0 - self.betas))
+        self.register_buffer("cumprod_alphas", torch.cumprod(self.alphas, dim=0))
+
     def forward(self, x, t, cond=None):
+        # t expected shape: (B,)
+        if t.ndim != 1:
+            t = t.view(-1)
         B, _, L = x.shape
-        assert cond is not None, "Provide cond of shape (B, C_cond, L)"
-        if cond.shape[-1] != L:
-            # align condition length if needed
-            cond = F.interpolate(cond, size=L, mode="linear", align_corners=False)
-
-        # scale t to [0,1]
-        t_norm = (t.float().view(B, 1, 1) / max(1, (self.t_max - 1))).clamp(0, 1)
-        t_chan = t_norm.expand(B, 1, L)
-        x_in = torch.cat([x, t_chan, cond], dim=1)
-        return self.net(x_in)
-
-
-# -------------------------------
-# Diffusion schedule & q(x_t|x0)
-# -------------------------------
+        # normalize t to [0,1] then broadcast
+        t_norm = (t.float() / (self.t_max - 1)).view(B, 1, 1).expand(B, 1, L)
+        x_emb = torch.cat([x, t_norm], dim=1)
+        if cond is not None:
+            # (optional) sanity checks
+            # assert cond.size(1) == self.condition_channels and cond.size(2) == L
+            x_emb = torch.cat([x_emb, cond], dim=1)
+        return self.net(x_emb)
 
 def linear_beta_schedule(T):
-    return torch.linspace(1e-4, 2e-2, T)
+    # Return exactly T values; simple monotonic schedule (typical)
+    return torch.linspace(1e-4, 0.02, T)
 
-def prepare_buffers(T, device):
-    betas  = linear_beta_schedule(T).to(device)
-    alphas = 1.0 - betas
-    a_bar  = torch.cumprod(alphas, dim=0)
-    a_bar_prev = torch.cat([torch.ones(1, device=device), a_bar[:-1]], dim=0)
-
-    buf = {
-        "betas": betas,
-        "alphas": alphas,
-        "a_bar": a_bar,
-        "a_bar_prev": a_bar_prev,
-        "sqrt_recip_alpha": torch.sqrt(1.0 / alphas),
-        "sqrt_one_minus_a_bar": torch.sqrt(1.0 - a_bar),
-        "posterior_variance": betas * (1.0 - a_bar_prev) / (1.0 - a_bar)  # Ho et al.
-    }
-    return buf
-
-def forward_diffusion_sample(x0, t, sqrt_a_bar, sqrt_one_minus_a_bar):
+def training(model, x0, t, cum_alpha_sqrt, cum_one_minus_alpha_sqrt, cond=None):
+    # t must be (B,)
+    if t.ndim != 1:
+        t = t.view(-1)
+    B = x0.size(0)
     noise = torch.randn_like(x0)
-    x_t = sqrt_a_bar[t].view(-1,1,1) * x0 + sqrt_one_minus_a_bar[t].view(-1,1,1) * noise
-    return x_t, noise
+
+    a_sqrt = cum_alpha_sqrt[t].view(B, 1, 1)
+    one_minus_a_sqrt = cum_one_minus_alpha_sqrt[t].view(B, 1, 1)
+    x_t = a_sqrt * x0 + one_minus_a_sqrt * noise
+
+    noise_pred = model(x_t, t, cond=cond)
+    return F.mse_loss(noise_pred, noise)
 
 @torch.no_grad()
-def p_sample_step(model, x_t, t, cond, buf):
-    betas_t  = buf["betas"][t].view(-1,1,1)
-    sra_t    = buf["sqrt_recip_alpha"][t].view(-1,1,1)
-    sqrt_om  = buf["sqrt_one_minus_a_bar"][t].view(-1,1,1)
-    post_var = buf["posterior_variance"][t].clamp_min(1e-20).view(-1,1,1)
-
-    eps = model(x_t, t, cond)  # predict noise
-    mean = sra_t * (x_t - betas_t / sqrt_om * eps)
-
-    noise = torch.randn_like(x_t)
-    nonzero = (t > 0).float().view(-1,1,1)
-    return mean + nonzero * torch.sqrt(post_var) * noise
-
-@torch.no_grad()
-def sample_from_noise(model, cond, N, L, T=1000, steps=None, device=None, clip=None):
-    device = device or next(model.parameters()).device
-    B = cond.size(0)
-    x = torch.randn(B, N, L, device=device)
-    buf = prepare_buffers(T, device)
-
-    if steps is None or steps >= T:
-        t_schedule = torch.arange(T-1, -1, -1, device=device)
-    else:
-        t_schedule = torch.linspace(T-1, 0, steps, device=device).long()
-
+def sampling(model, cond):
     model.eval()
-    for tt in t_schedule:
-        t_vec = torch.full((B,), int(tt), device=device, dtype=torch.long)
-        x = p_sample_step(model, x, t_vec, cond, buf)
-        if clip is not None:
-            x = x.clamp(*clip)
-    return x
+    device = cond.device
+    B, _, L = cond.shape
+    N = model.in_channels
+    T = model.t_max
 
+    x_t = torch.randn(B, N, L, device=device)
+    for t in reversed(range(T)):
+        t_batch = torch.full((B,), t, device=device, dtype=torch.long)
+        noise_pred = model(x_t, t_batch, cond=cond)
 
-# -------------------------------
-# Minimal training & usage example
-# -------------------------------
+        a_t = model.alphas[t]                  # scalar tensor on device (buffer)
+        beta_t = model.betas[t]
+        cum_a_t = model.cumprod_alphas[t]
+        # DDPM update (epsilon prediction)
+        coeff = (1.0 / torch.sqrt(a_t))
+        mean = coeff * (x_t - (beta_t / torch.sqrt(1.0 - cum_a_t)) * noise_pred)
+
+        if t > 0:
+            # simple choice: sigma = sqrt(beta_t)
+            noise = torch.randn_like(x_t)
+            x_t = mean + torch.sqrt(beta_t) * noise
+        else:
+            x_t = mean
+    return x_t
+
 if __name__ == "__main__":
+    import os
     import matplotlib.pyplot as plt
+
     torch.manual_seed(0)
-    device = "cuda" if torch.cuda.is_available() else "cpu"
 
-    # Shapes
-    B, N, L = 2, 5, 5
-    Cc, Lc  = 1, 5
-    T = 30
+    batch_size = 64
+    x0 = torch.randn(batch_size, 8, 5)
+    cond = torch.randn(batch_size, 4, 5)
+    t_max = 100
 
-    # Schedules
-    buf = prepare_buffers(T, device)
+    betas = linear_beta_schedule(t_max)
+    model = FFD_NL(in_channels=8, condition_channels=4, t_max=t_max, betas=betas, hidden_channels=32)
 
-    # Model
-    model = FFD_NL(in_channels=N, hidden_channels=64, condition_channels=Cc, t_max=T).to(device)
-    opt = torch.optim.AdamW(model.parameters(), lr=5e-5)
+    cum_alpha_sqrt = model.cumprod_alphas.sqrt()
+    cum_one_minus_alpha_sqrt = (1 - model.cumprod_alphas).sqrt()
 
-    print(" amount of model parameters:", sum(p.numel() for p in model.parameters() if p.requires_grad))
-    # Fake data
-    x0   = torch.randn(B, N, L, device=device)
-    cond = torch.randn(B, Cc, Lc, device=device)
+    optimizer = torch.optim.Adam(model.parameters(), lr=1e-3)
+    save_dir = "exp/exp_second_round/conditional_generativemodels"
+    os.makedirs(save_dir, exist_ok=True)
 
-    for it in range(20000):
-        # sample a fresh timestep per sample
-        t = torch.randint(0, T, (B,), device=device)
+    for step in range(10000):
+        model.train()
+        t = torch.randint(0, t_max, (batch_size,), dtype=torch.long)  # (B,)
+        loss = training(model, x0, t, cum_alpha_sqrt, cum_one_minus_alpha_sqrt, cond=cond)
 
-        # forward diffusion for those t
-        x_t, noise = forward_diffusion_sample(x0, t, buf["a_bar"].sqrt(), (1 - buf["a_bar"]).sqrt())
-
-        # predict eps
-        eps_pred = model(x_t, t, cond=cond)
-
-        loss = F.mse_loss(eps_pred, noise)
-        opt.zero_grad(set_to_none=True)
+        optimizer.zero_grad()
         loss.backward()
-        opt.step()
+        optimizer.step()
 
-        if it % 100 == 0:
-            print(f"step {it} | loss {loss.item():.4f}")
-            
-             # sampling demo (few steps for speed)
-            samples = sample_from_noise(model, cond, N, L, T=T, steps=50, device=device, clip=(-3,3))
-            # print("samples:", samples.shape)
+        if step % 50 == 0:
+            model.eval()
+            sampled_data = sampling(model, cond)
+            x0_ave = x0.mean(dim=0, keepdim=True)
+            sampled_data_ave = sampled_data.mean(dim=0, keepdim=True)
 
-            # plot reconstruction
-            plt.figure(figsize=(12,6))
-            i = 0
-            plt.subplot(1,2,i*2+1)
-            plt.imshow(x0[i].cpu(), aspect="auto", origin="lower")
-            plt.title("x0 (orig)")
-            plt.subplot(1,2,i*2+2)
-            plt.imshow(samples[i].cpu().detach(), aspect="auto", origin="lower")
-            plt.title("x0 (synth)")
+            plt.figure(figsize=(12, 6))
+            plt.subplot(2, 1, 1)
+            plt.title("Original Data (Average over Batch)")
+            plt.plot(x0_ave[0].cpu().numpy().T)
+            plt.subplot(2, 1, 2)
+            plt.title("Sampled Data (Average over Batch)")
+            plt.plot(sampled_data_ave[0].cpu().numpy().T)
             plt.tight_layout()
-            plt.savefig("exp/exp_second_round/conditional_generativemodels/ddpm_step_test.png")
-                    
-        
+            plt.savefig(f"{save_dir}/ddpm_step_test.png")
+            plt.close()
+
+            print(f"[{step}] loss={loss.item():.6f} | L1 avg diff={torch.mean(torch.abs(sampled_data - x0)).item():.6f}")
