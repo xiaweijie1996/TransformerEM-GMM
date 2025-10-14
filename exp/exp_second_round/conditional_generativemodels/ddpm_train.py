@@ -34,9 +34,9 @@ def main():
 
     # model/data shapes
     N, L              = 250, 96        # (channels, length)
-    random_sample_num = 32             # condition channels N'
-    T                 = 300         # diffusion steps
-    hidden_channels   = 24             # model hidden channels
+    random_sample_num = 4             # condition channels N'
+    T                 = 100         # diffusion steps
+    hidden_channels   = 240             # model hidden channels
     lr                = 2e-4
     weight_decay      = 1e-4
     max_iters         = 20000
