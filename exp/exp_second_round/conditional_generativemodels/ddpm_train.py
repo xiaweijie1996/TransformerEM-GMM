@@ -34,14 +34,14 @@ def main():
 
     # model/data shapes
     N, L              = 250, 96        # (channels, length)
-    random_sample_num = 4             # condition channels N'
-    T                 = 100         # diffusion steps
-    hidden_channels   = 240             # model hidden channels
+    random_sample_num = 32             # condition channels N'
+    T                 = 300         # diffusion steps
+    hidden_channels   = 24             # model hidden channels
     lr                = 2e-4
     weight_decay      = 1e-4
-    max_iters         = 20000
-    log_every         = 100
-    sample_steps      = 50             # fast sampler preview; for best quality use None
+    max_iters         = 100000
+    log_every         = 200
+    sample_steps      = T             # fast sampler preview; for best quality use None
 
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
     torch.manual_seed(0)
@@ -77,7 +77,7 @@ def main():
     sqrt_one_minus_a_bar = (1.0 - buf["a_bar"]).sqrt()
 
     best_loss = float('inf')
-    ckpt_path = os.path.join(save_dir, f'ddpm_{n_params}_{random_sample_num}shot.pt')
+    ckpt_path = os.path.join(save_dir, f'{random_sample_num}shot/ddpm_{n_params}_{random_sample_num}shot.pt')
 
     # ===== Training loop =====
     it = 0
@@ -133,19 +133,12 @@ def main():
             plt.savefig(fig_path)
             plt.close(fig)
 
-        #     # checkpoint best loss
-        #     if loss.item() < best_loss:
-        #         best_loss = loss.item()
-        #         torch.save({
-        #             "model": model.state_dict(),
-        #             "opt": opt.state_dict(),
-        #             "iter": it,
-        #             "best_loss": best_loss,
-        #             "config": {
-        #                 "N": N, "L": L, "T": T, "random_sample_num": random_sample_num,
-        #                 "lr": lr, "weight_decay": weight_decay
-        #             }
-        #         }, ckpt_path)
+            # checkpoint best loss
+            if loss.item() < best_loss:
+                best_loss = loss.item()
+                # save model
+                torch.save(model.state_dict(), ckpt_path)
+                print("New best model saved.")
 
         it += 1
 
