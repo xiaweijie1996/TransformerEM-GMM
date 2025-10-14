@@ -11,6 +11,7 @@ dist/
 gmm_trans.egg-info
 
 .vscode/
+*.pt
 
 exp/wandb
 
