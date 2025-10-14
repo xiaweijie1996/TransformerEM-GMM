@@ -34,9 +34,9 @@ def main():
 
     # model/data shapes
     N, L              = 250, 96        # (channels, length)
-    random_sample_num = 32             # condition channels N'
+    random_sample_num = 8             # condition channels N'
     T                 = 300            # diffusion steps
-    hidden_channels   = 24             # model hidden channels
+    hidden_channels   = 240             # model hidden channels
     lr                = 2e-4
     weight_decay      = 1e-4
     max_iters         = 100000
@@ -56,7 +56,7 @@ def main():
         split_ratio=split_ratio
     )
     # tiny stabilizer (same as in your VAE script)
-    dataset.images = dataset.images + np.abs(np.random.normal(0, 0.01, dataset.images.shape))
+    dataset.images = dataset.images #+ np.abs(np.random.normal(0, 0.01, dataset.images.shape))
 
     print('length of train data: ', int(len(dataset) * split_ratio[0]))
     print('length of test  data: ', int(len(dataset) * split_ratio[1]))
