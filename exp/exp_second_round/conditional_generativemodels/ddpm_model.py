@@ -22,13 +22,13 @@ class FFD_NL(nn.Module):
 
         self.net = nn.Sequential(
             nn.Conv1d(in_channels + 1 + self.condition_channels, hidden_channels, kernel_size=3, padding=1),
-            nn.GroupNorm(4, hidden_channels),
+            # nn.GroupNorm(4, hidden_channels),
             nn.LeakyReLU(0.2, inplace=True),
             nn.Conv1d(hidden_channels, hidden_channels, kernel_size=3, padding=1),
-            nn.GroupNorm(4, hidden_channels),
+            # nn.GroupNorm(4, hidden_channels),
             nn.LeakyReLU(0.2, inplace=True),
             nn.Conv1d(hidden_channels, hidden_channels, kernel_size=3, padding=1),
-            nn.GroupNorm(4, hidden_channels),
+            # nn.GroupNorm(4, hidden_channels),
             nn.LeakyReLU(0.2, inplace=True),
             nn.Conv1d(hidden_channels, out_channels, kernel_size=3, padding=1),
         )
@@ -104,13 +104,13 @@ if __name__ == "__main__":
 
     torch.manual_seed(0)
 
-    batch_size = 64
-    x0 = torch.randn(batch_size, 8, 5)
-    cond = torch.randn(batch_size, 4, 5)
-    t_max = 100
+    batch_size = 1
+    x0 = torch.randn(batch_size, 10, 24)
+    cond = torch.randn(batch_size, 4, 24)
+    t_max = 30
 
     betas = linear_beta_schedule(t_max)
-    model = FFD_NL(in_channels=8, condition_channels=4, t_max=t_max, betas=betas, hidden_channels=32)
+    model = FFD_NL(in_channels=10, condition_channels=4, t_max=t_max, betas=betas, hidden_channels=32)
 
     cum_alpha_sqrt = model.cumprod_alphas.sqrt()
     cum_one_minus_alpha_sqrt = (1 - model.cumprod_alphas).sqrt()
