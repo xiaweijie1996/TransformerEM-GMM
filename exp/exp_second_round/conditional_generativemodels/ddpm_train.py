@@ -39,7 +39,7 @@ def main():
     hidden_channels   = 240             # model hidden channels
     lr                = 2e-4
     weight_decay      = 1e-4
-    max_iters         = 100000
+    max_iters         = 1000000
     log_every         = 200
 
     # I/O

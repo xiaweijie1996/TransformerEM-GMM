@@ -24,14 +24,14 @@ def main():
     save_dir_root = 'exp/exp_second_round/conditional_generativemodels'
     N, L = 250, 96
     random_sample_num = 4
-    hidden_channels = 2
-    K_blocks = 2
+    hidden_channels = 128
+    K_blocks = 4
     lr = 2e-4
     weight_decay = 1e-4
     max_iters = 100000
     log_every = 2
 
-    subdir = os.path.join(save_dir_root, f'{random_sample_num}shot_flow')
+    subdir = os.path.join(save_dir_root, f'{random_sample_num}shot')
     os.makedirs(subdir, exist_ok=True)
 
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
@@ -50,6 +50,7 @@ def main():
 
     it = 0
     while it < max_iters:
+        it = it + 1
         x = dataset.load_train_data()
         x = torch.tensor(x, dtype=torch.float32, device=device)[:, :, :-1]   # (B,N,L)
 
@@ -72,8 +73,10 @@ def main():
         loss.backward()
         opt.step()
         
+        print(f"iter {it}: loss = {loss.item():.4f}, best = {best:.4f}")
+            
+            
         if it % log_every == 0:
-            print(f"iter {it}: loss = {loss.item():.4f}, best = {best:.4f}")
             
             if loss.item() < best:
                 best = loss.item()
@@ -91,19 +94,19 @@ def main():
                 
                 x_sample, _ = model.inverse(z_sample, cond)   # (B,N,L)
                 
-                # denormalize
-                x_sample = x_sample * (x_max - x_min + 1e-15) + x_min
-                
+               
                 x_sample = x_sample.cpu().numpy()
                 
-                # plot first sample's all channels
+                # plot first sample's all channels and  real data
                 plt.figure(figsize=(12,6))
-                for i in range(N):
-                    plt.plot(x_sample[0,i], alpha=0.1)
-                plt.title(f"iter {it}, loss {loss.item():.4f}")
-                plt.tight_layout()
-                plt.savefig(os.path.join(subdir, f'sample_iter.png'))
+                plt.subplot(2,1,1)
+                plt.plot(x_sample[0], alpha=0.5)
+                plt.subplot(2,2,1)
+                plt.plot(x[0].cpu().numpy(), alpha=0.5)
+                plt.savefig(os.path.join(subdir, f'sample_flow.png'))
                 plt.close()
+                
+                
             model.train()
             
 if __name__ == "__main__":
