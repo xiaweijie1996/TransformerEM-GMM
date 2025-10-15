@@ -16,14 +16,6 @@ import asset.random_sampler as rs
 # your NF model
 import nf_model as nf
 
-@torch.no_grad()
-def sample_from_flow(model, cond, N, L, temperature=1.0):
-    device = cond.device
-    B = cond.size(0)
-    z = torch.randn(B, N, L, device=device) * temperature
-    x, _ = model.inverse(z, cond)
-    return x
-
 def main():
     # config
     batch_size = 32
@@ -32,33 +24,25 @@ def main():
     save_dir_root = 'exp/exp_second_round/conditional_generativemodels'
     N, L = 250, 96
     random_sample_num = 4
-    hidden_channels = 256
-    K_blocks = 8
-    use_1x1 = True
+    hidden_channels = 2
+    K_blocks = 2
     lr = 2e-4
     weight_decay = 1e-4
     max_iters = 100000
-    log_every = 200
-    temperature = 1.0
+    log_every = 2
 
     subdir = os.path.join(save_dir_root, f'{random_sample_num}shot_flow')
     os.makedirs(subdir, exist_ok=True)
 
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-    torch.manual_seed(0)
 
     # data
     dataset = Dataloader_nolabel(data_path, batch_size=batch_size, split_ratio=split_ratio)
 
     # model & opt
-    model = nf.Flow1D(
-        channels=N,
-        cond_channels=random_sample_num,
-        hidden_channels=hidden_channels,
-        K=K_blocks,
-        use_1x1=use_1x1,
-        clamp=2.0,
-    ).to(device)
+    model = nf.CNicemModel(input_c=N, hidden_c=hidden_channels, condition_c=random_sample_num, n_layers=K_blocks).to(device)
+    print(f"Model #params: {sum(p.numel() for p in model.parameters() if p.requires_grad)}")
+    
     opt = optim.AdamW(model.parameters(), lr=lr, weight_decay=weight_decay)
 
     best = float('inf')
@@ -77,37 +61,50 @@ def main():
         # condition: random N' channels
         cond = rs.random_sample(x0, 'random', random_sample_num).to(device)
 
-        nll = model.nll(x0, cond, reduce=True)
-        opt.zero_grad(set_to_none=True)
-        nll.backward()
+        # forward
+        z, log_det = model.forward(x0, cond)
+        loss = 0.5 * (z**2).sum(dim=(1,2)) - log_det
+        
+        loss = loss.mean()
+        
+        # backward
+        opt.zero_grad()
+        loss.backward()
         opt.step()
-
+        
         if it % log_every == 0:
-            print(f"iter {it} | nll {nll.item():.6f}")
-
+            print(f"iter {it}: loss = {loss.item():.4f}, best = {best:.4f}")
+            
+            if loss.item() < best:
+                best = loss.item()
+                torch.save(model.state_dict(), ckpt_path)
+                print(f"  saved best model to {ckpt_path}")
+                
+            # plot generation
             model.eval()
             with torch.no_grad():
-                samples = sample_from_flow(model, cond, N=N, L=L, temperature=temperature)
-
-                # quick preview
-                i = 0
-                plt.figure(figsize=(10,4))
-                plt.subplot(1,2,1); plt.plot(x0[i].detach().cpu().T, alpha=0.05); plt.title("x0 (orig)")
-                plt.subplot(1,2,2); plt.plot(samples[i].detach().cpu().T, alpha=0.05); plt.title("x0 (synth)")
+                # sample from N(0,I)
+                z_sample = torch.randn(batch_size, N, L, device=device) 
+                
+                # random cond
+                cond = rs.random_sample(x0, 'random', random_sample_num).to(device)
+                
+                x_sample, _ = model.inverse(z_sample, cond)   # (B,N,L)
+                
+                # denormalize
+                x_sample = x_sample * (x_max - x_min + 1e-15) + x_min
+                
+                x_sample = x_sample.cpu().numpy()
+                
+                # plot first sample's all channels
+                plt.figure(figsize=(12,6))
+                for i in range(N):
+                    plt.plot(x_sample[0,i], alpha=0.1)
+                plt.title(f"iter {it}, loss {loss.item():.4f}")
                 plt.tight_layout()
-                plt.savefig(os.path.join(subdir, 'preview_iter.png'))
+                plt.savefig(os.path.join(subdir, f'sample_iter.png'))
                 plt.close()
             model.train()
-
-            if nll.item() < best:
-                best = nll.item()
-                torch.save(model.state_dict(), ckpt_path)
-                print("saved best")
-
-        it += 1
-
-    print("done | best nll:", best)
-    print("ckpt:", ckpt_path)
-
+            
 if __name__ == "__main__":
     main()
