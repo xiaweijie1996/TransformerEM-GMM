@@ -23,13 +23,13 @@ def main():
     data_path = 'exp/data_process_for_data_collection_all/new_data_15minute_grid_nomerge.pkl'
     save_dir_root = 'exp/exp_second_round/conditional_generativemodels'
     N, L = 250, 96
-    random_sample_num = 4
+    random_sample_num = 32
     hidden_channels = 128
-    K_blocks = 4
+    K_blocks = 3
     lr = 2e-4
     weight_decay = 1e-4
     max_iters = 100000
-    log_every = 2
+    log_every = 100
 
     subdir = os.path.join(save_dir_root, f'{random_sample_num}shot')
     os.makedirs(subdir, exist_ok=True)
@@ -100,11 +100,15 @@ def main():
                 # plot first sample's all channels and  real data
                 plt.figure(figsize=(12,6))
                 plt.subplot(2,1,1)
-                plt.plot(x_sample[0], alpha=0.5)
-                plt.subplot(2,2,1)
-                plt.plot(x[0].cpu().numpy(), alpha=0.5)
-                plt.savefig(os.path.join(subdir, f'sample_flow.png'))
+                plt.plot(x_sample[0], alpha=0.5, color='C0')
+                plt.title(f"Generated Sample (iter {it})")
+                plt.subplot(2,1,2)
+                plt.plot(x0[0].cpu().numpy(), alpha=0.5, color='C1')
+                plt.title(f"Real Data")
+                plt.tight_layout()
+                plt.savefig(os.path.join(subdir, f'sample_iter.png'))
                 plt.close()
+         
                 
                 
             model.train()
