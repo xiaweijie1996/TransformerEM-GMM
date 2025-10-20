@@ -23,13 +23,13 @@ def main():
     data_path = 'exp/data_process_for_data_collection_all/new_data_15minute_grid_nomerge.pkl'
     save_dir_root = 'exp/exp_second_round/conditional_generativemodels'
     N, L = 250, 96
-    random_sample_num = 32
+    random_sample_num = 4
     hidden_channels = 128
     K_blocks = 3
     lr = 2e-4
     weight_decay = 1e-4
-    max_iters = 100000
-    log_every = 100
+    max_iters = 2000001
+    log_every = 200
 
     subdir = os.path.join(save_dir_root, f'{random_sample_num}shot')
     os.makedirs(subdir, exist_ok=True)
@@ -40,10 +40,16 @@ def main():
     dataset = Dataloader_nolabel(data_path, batch_size=batch_size, split_ratio=split_ratio)
 
     # model & opt
-    model = nf.CNicemModel(input_c=N, hidden_c=hidden_channels, condition_c=random_sample_num, n_layers=K_blocks).to(device)
+    model = nf.CNicemModel(input_c=N, hidden_c=hidden_channels, condition_c=random_sample_num, n_layers=K_blocks, scaler_dim=L).to(device)
+    num_para = sum(p.numel() for p in model.parameters() if p.requires_grad)
     print(f"Model #params: {sum(p.numel() for p in model.parameters() if p.requires_grad)}")
     
-    opt = optim.AdamW(model.parameters(), lr=lr, weight_decay=weight_decay)
+    # load model
+    path = os.path.join(save_dir_root, f'{random_sample_num}shot/flow_{num_para}_{random_sample_num}shot.pt')
+    if os.path.exists(path):
+        model.load_state_dict(torch.load(path, map_location=device))
+    
+    opt = optim.Adam(model.parameters(), lr=lr, weight_decay=weight_decay)
 
     best = float('inf')
     ckpt_path = os.path.join(subdir, f'flow_{sum(p.numel() for p in model.parameters() if p.requires_grad)}_{random_sample_num}shot.pt')
@@ -57,13 +63,14 @@ def main():
         # per-sample, per-channel min-max
         x_min = x.min(dim=1, keepdim=True).values
         x_max = x.max(dim=1, keepdim=True).values
-        x0 = (x - x_min) / (x_max - x_min + 1e-15)
-
+        x0 = (x - x_min) / (x_max - x_min + 1e-15)   # (B,N,L)
+        x0 = x0[:, :, :]
         # condition: random N' channels
         cond = rs.random_sample(x0, 'random', random_sample_num).to(device)
 
         # forward
-        z, log_det = model.forward(x0, cond)
+        fake_con = torch.ones_like(cond)
+        z, log_det = model.forward(x0, fake_con)
         loss = 0.5 * (z**2).sum(dim=(1,2)) - log_det
         
         loss = loss.mean()
@@ -73,7 +80,7 @@ def main():
         loss.backward()
         opt.step()
         
-        print(f"iter {it}: loss = {loss.item():.4f}, best = {best:.4f}")
+        print(f"iter {it}: loss = {loss.item():.4f}, best = {best:.4f}", 'log_det mean: ', log_det.mean().item())
             
             
         if it % log_every == 0:
@@ -87,12 +94,16 @@ def main():
             model.eval()
             with torch.no_grad():
                 # sample from N(0,I)
+                L = x0.shape[2]
                 z_sample = torch.randn(batch_size, N, L, device=device) 
+                print('z_sample mean: ', z_sample.mean().item(), ' std: ', z_sample.std().item())
+                print('x0 mean: ', x0.mean().item(), ' std: ', x0.std().item())
+                print('z', z.mean().item(), ' std: ', z.std().item())   
                 
                 # random cond
                 cond = rs.random_sample(x0, 'random', random_sample_num).to(device)
                 
-                x_sample, _ = model.inverse(z_sample, cond)   # (B,N,L)
+                x_sample, _ = model.inverse(z_sample, fake_con)   # (B,N,L)
                 
                
                 x_sample = x_sample.cpu().numpy()
@@ -100,10 +111,10 @@ def main():
                 # plot first sample's all channels and  real data
                 plt.figure(figsize=(12,6))
                 plt.subplot(2,1,1)
-                plt.plot(x_sample[0], alpha=0.5, color='C0')
+                plt.plot(x_sample[0].T, alpha=0.5, color='C0')
                 plt.title(f"Generated Sample (iter {it})")
                 plt.subplot(2,1,2)
-                plt.plot(x0[0].cpu().numpy(), alpha=0.5, color='C1')
+                plt.plot(x0[0].cpu().numpy().T, alpha=0.5, color='C1')
                 plt.title(f"Real Data")
                 plt.tight_layout()
                 plt.savefig(os.path.join(subdir, f'sample_iter.png'))

@@ -12,11 +12,11 @@ class Conv1DBlock(torch.nn.Module):
         super(Conv1DBlock, self).__init__()
         self.model = nn.Sequential(
             torch.nn.Conv1d(in_channels, hid_channels, kernel_size, stride, padding),
-            # nn.BatchNorm1d(hid_channels),
+            nn.BatchNorm1d(hid_channels),
             torch.nn.ReLU(),
             
             torch.nn.Conv1d(hid_channels, hid_channels, kernel_size, stride, padding),
-            # nn.BatchNorm1d(out_channels),
+            nn.BatchNorm1d(hid_channels),
             torch.nn.ReLU(),
             
             torch.nn.Conv1d(hid_channels, out_channels, kernel_size, stride, padding)
@@ -33,7 +33,7 @@ class CNiceModelBasic(torch.nn.Module):
                  hidden_c: int = 64,
                  condition_c: int = 128,
                  split_ratio: float = 0.5,
-                
+                 scaler_dim: int = 96
                  ):
         
         super(CNiceModelBasic, self).__init__()
@@ -57,6 +57,10 @@ class CNiceModelBasic(torch.nn.Module):
             hid_channels=self.hidden_c,
             out_channels=int(self.input_c * self.split_ratio)
         )
+        
+        # add scaler parameters if needed here with shape (1, 1, dim)
+        scaler = nn.Parameter(torch.ones(1, 1, scaler_dim))
+        self.register_parameter('scaler', scaler)
 
     def forward_direction(self, x, c):
        
@@ -74,12 +78,20 @@ class CNiceModelBasic(torch.nn.Module):
         # Combine the outputs
         x3 = torch.cat([x31, x32], dim=1)
         
-        return x3, 1 
+        # scaler operation
+        x3 = x3 * torch.exp(self.scaler)
+        
+        log_det_jacobian = torch.sum(self.scaler) * x.size(0)
+        return x3, log_det_jacobian
     
     def inverse_direction(self, x3, c):
 
+        # inverse scaler operation
+        x3 = x3 * torch.exp(-self.scaler)
+        log_det_jacobian = -torch.sum(self.scaler) * x3.size(0)
+        
         # Split the input tensor
-        x31, x32 = x3[:, :self.split_dim2], x3[:, self.split_dim2:]
+        x31, x32 = x3[:, :self.split_dim1], x3[:, self.split_dim1:]
         
         # x2
         x22 = x32
@@ -92,7 +104,7 @@ class CNiceModelBasic(torch.nn.Module):
         # Combine the outputs
         x1 = torch.cat([x11, x12], dim=1)
 
-        return x1, 1
+        return x1, log_det_jacobian
     
 class CNicemModel(torch.nn.Module):
     def __init__(self, 
@@ -101,7 +113,7 @@ class CNicemModel(torch.nn.Module):
                     condition_c: int = 128,
                     n_layers: int = 1,
                     split_ratio: float = 0.5,
-                    
+                    scaler_dim: int = 96
                     ):
             
             super(CNicemModel, self).__init__()
@@ -118,7 +130,8 @@ class CNicemModel(torch.nn.Module):
                         input_c=self.input_c,
                         hidden_c=self.hidden_c,
                         condition_c=self.condition_c,
-                        split_ratio=self.split_ratio
+                        split_ratio=self.split_ratio,
+                        scaler_dim=scaler_dim
                     )
                 )
             
@@ -126,14 +139,14 @@ class CNicemModel(torch.nn.Module):
         log_det_jacobian = 0
         for layer in self.model:
             x, det = layer.forward_direction(x, c)
-            log_det_jacobian += 0
+            log_det_jacobian += det
         return x, log_det_jacobian
 
     def inverse(self, x, c):
         log_det_jacobian = 0
         for layer in reversed(self.model):
             x, det = layer.inverse_direction(x, c)
-            log_det_jacobian += 0
+            log_det_jacobian += det
         return x, log_det_jacobian
     
 
@@ -142,7 +155,7 @@ if __name__ == "__main__":
     C_N = 5
     x = torch.randn(B, N, L)
     c = torch.randn(B, C_N, L)
-    model = CNicemModel(input_c=N, condition_c=C_N, n_layers=4)
+    model = CNicemModel(input_c=N, condition_c=C_N, n_layers=4, scaler_dim=L)
     y, log_det = model.forward(x, c)
     x_recon, log_det_inv = model.inverse(y, c)
     print("Input shape:", x.shape)

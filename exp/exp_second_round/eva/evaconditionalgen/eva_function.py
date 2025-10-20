@@ -243,8 +243,8 @@ def plot_colored_curves(num, ax, data, title, total_consumption, color_map, norm
     # Rotate the x-axis labels for better readability
     plt.setp(ax.get_xticklabels(), rotation=45, ha='right', rotation_mode='anchor')
     # add a small text box to indicate the num
-    text = "Sample Index: {}".format(num)
-    ax.text(0.02, 0.95, text, transform=ax.transAxes, fontsize=tick_fontsize, verticalalignment='top', bbox=dict(boxstyle='round', facecolor='white', alpha=0.5))
+    # text = "Sample Index: {}".format(num)
+    # ax.text(0.02, 0.95, text, transform=ax.transAxes, fontsize=tick_fontsize, verticalalignment='top', bbox=dict(boxstyle='round', facecolor='white', alpha=0.5))
     
 
 def create_plots(t_samples_list, r_samples_list, r_samples_part_list, timesnet_sample_list, path, label_fontsize=26, tick_fontsize=20):

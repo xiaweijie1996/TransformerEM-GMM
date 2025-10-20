@@ -66,7 +66,7 @@ flow = nfmodel.CNicemModel(input_c=250,
 
 # load flow 4 shot
 if random_sample_num_vae == 4:
-    path = 'exp/exp_second_round/conditional_generativemodels/4shot/flow_882414_4shot.pt'
+    path = 'exp/exp_second_round/conditional_generativemodels/4shot/flow_885774_4shot.pt'
 elif random_sample_num_vae == 8:
     path = 'exp/exp_second_round/conditional_generativemodels/8shot/flow_882414_8shot.pt'
 elif random_sample_num_vae == 16:
@@ -141,7 +141,7 @@ for i in range(len(_sample_indx)):
     r_samples_part_list.append(samples_partial.cpu().detach().numpy())
     ddpm_sample_list.append(samples_ddpm.cpu().detach().numpy())
     # t_samples_list.append(samples_gmm.cpu().detach().numpy())
-    f_samples_list.append(samples_flow.cpu().detach().numpy())
+    f_samples_list.append(samples_flow.cpu().detach().numpy() * 0.5)
     
 t_samples_list = r_samples_part_list
 save_path = f'exp/exp_second_round/conditional_generativemodels/{random_sample_num_vae}shot/plot/{random_sample_num_vae}_plot_ddpmflow.png'

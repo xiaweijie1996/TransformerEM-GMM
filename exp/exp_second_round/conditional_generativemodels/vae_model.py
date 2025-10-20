@@ -91,7 +91,13 @@ if __name__ == "__main__":
     # Example usage
     model = ConvPoolVAE1D(input_shape=(250, 96), condition_shape=(8, 96), latent_channels=16)
     x = torch.randn(4, 250, 96)
-    recon, mu, logvar = model(x, x)
+    cond = torch.randn(4, 8, 96)
+    mu, logvar = model.encode(x, cond=cond)
+    print("Encoded mu shape:", mu.shape)         # should be (4, 16, 96)
+    print("Encoded logvar shape:", logvar.shape) # should be (4,
+    print("Input shape:", x.shape)               # should be (4, 250, 96)
+    # print("Encoded feature shape:", x_encoder.shape)  # should be (4, hidden
+    recon, mu, logvar = model(x, cond=cond)
     print("recon:", recon.shape)   # should be (4,1,96)
     print("mu   :", mu.shape)      # -> (4,16,12)
     print("logvar:", logvar.shape) # -> (4,16,12)
