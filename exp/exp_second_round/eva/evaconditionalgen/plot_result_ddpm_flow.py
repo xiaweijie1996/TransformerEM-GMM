@@ -21,8 +21,8 @@ import exp_second_round.eva.evaconditionalgen.eva_function as eva_function
 
 # -----------------------------------Load model and data-----------------------------------
 # import the dataloader
-batch_size = 50
-split_ratio = (0.8,0.1,0.1)
+batch_size = 80
+split_ratio = (0 ,1, 0)
 data_path =  'exp/data_process_for_data_collection_all/new_data_15minute_grid_nomerge.pkl'
 dataset = Dataloader_nolabel(data_path,  batch_size=batch_size
                     , split_ratio=split_ratio)
@@ -76,7 +76,8 @@ elif random_sample_num_vae ==32:
 flow.load_state_dict(torch.load(path, map_location=device))
 
 # load data
-test_sample = dataset.load_test_data(batch_size, _sample_indx=[58,59])  # (B,N,L)
+_sample_indx=[17, 23]
+test_sample = dataset.load_test_data(batch_size, _sample_indx)  # (B,N,L)
 print('test sample shape: ', test_sample.shape)
 # Use 5 and 6 th sample for testing
 
@@ -119,7 +120,8 @@ f_samples_list = []
 r_samples_list = []
 r_samples_part_list = []
 ddpm_sample_list = []
-for i in range(2):
+for i in range(len(_sample_indx)):
+    print('Processing sample: ', i/len(_sample_indx))
     # samples scaled
     samples_ddpm = recon[i]
     samples_partial = _test_sample_part[i]
