@@ -306,6 +306,72 @@ def create_plots(t_samples_list, r_samples_list, r_samples_part_list, timesnet_s
     )
     plt.savefig(path, bbox_inches='tight')
 
+
+
+def create_plots2(t_samples_list, r_samples_list, r_samples_part_list, timesnet_sample_list, path, label_fontsize=26, tick_fontsize=20):
+    # Determine the number of rows based on the number of sample sets
+    num_rows = len(t_samples_list)
+
+    # Set up the subplots grid with num_rows and 4 columns
+    fig, axs = plt.subplots(num_rows, 4, figsize=(25, num_rows * 4), sharex=True, sharey=False)
+
+    # Iterate over each set of samples
+    for row in range(num_rows):
+        r_samples = r_samples_list[row]
+        r_samples_part = r_samples_part_list[row]
+        t_samples = t_samples_list[row]
+        timesnet_sample = timesnet_sample_list[row][:250, :]
+
+        # Calculate the total daily consumption for this row
+        total_consumption = r_samples.sum(axis=1)
+        color_map = plt.cm.coolwarm  # Choose a color map that transitions from red to blue
+        norm = plt.Normalize(total_consumption.min(), total_consumption.max())
+
+        # Get the y-axis limits for this row based on the Complete ECP Data
+        y_min, y_max = r_samples.min(), r_samples.max()
+
+        # Only the first row has titles for each plot with increased font size
+        display_title = row == 0
+        title_fontsize = label_fontsize if display_title else 0  # Increase font size for the first row titles
+
+        # Define titles only for the first row
+        titles = ['Complete ECP Data', 'Sampled Data', 'Conditional Flow', 'Conditional DDPM']
+
+        plot_colored_curves(axs[row, 0], r_samples, titles[0], total_consumption, color_map, norm, y_min, y_max, 0.2, tick_fontsize, display_title, title_fontsize)
+        plot_colored_curves(axs[row, 1], r_samples_part, titles[1], total_consumption, color_map, norm, y_min, y_max, 0.5, tick_fontsize, display_title, title_fontsize)
+        plot_colored_curves(axs[row, 2], t_samples, titles[2], total_consumption, color_map, norm, y_min, y_max, 0.2, tick_fontsize, display_title, title_fontsize)
+        plot_colored_curves(axs[row, 3], timesnet_sample, titles[3], total_consumption, color_map, norm, y_min, y_max, 0.2, tick_fontsize, display_title, title_fontsize)
+
+        # Add a color bar next to the last plot in this row
+        divider = make_axes_locatable(axs[row, 3])
+        cax = divider.append_axes("right", size="5%", pad=0.15)
+        sm = plt.cm.ScalarMappable(cmap=color_map, norm=norm)
+        sm.set_array([])
+        cbar = plt.colorbar(sm, cax=cax)
+        cbar.ax.tick_params(labelsize=tick_fontsize)  # Set the fontsize here
+
+    # Add a single x and y label for the whole figure
+    # fig.text(0.5, -0.01, 'Hour of Day [-]', ha='center', fontsize=label_fontsize)
+    # fig.text(0, 0.5, 'Electricity Consumption [kWh]', va='center', rotation='vertical', fontsize=label_fontsize)
+
+    fig.text(0.5, -0.01, 'Hour of Day [-]', ha='center', fontsize=label_fontsize)
+    fig.text(0.01, 0.5, 'Electricity Consumption [kWh]', va='center', rotation='vertical', fontsize=label_fontsize)
+    # fig.supxlabel('Hour of Day [–]', fontsize=label_fontsize)
+    # fig.supylabel('Electricity Consumption [kWh]', fontsize=label_fontsize)
+
+
+    # Add a single color bar label in the middle of the last column
+    # fig.text(0.90, 0.5, 'Daily Generation [kWh]', va='center', rotation='vertical', fontsize=label_fontsize)
+    fig.text(0.90, 0.5, 'Daily Consmption [kWh]', va='center', rotation='vertical', fontsize=label_fontsize)
+    
+    fig.tight_layout(rect=[0, 0, 0.9, 1.0])    # reserve rightmost 10% for the colorbars
+    fig.subplots_adjust(
+    left=0.08,   # move the left edge of the subplots 10% in
+    bottom=0.15  # move the bottom edge of the subplots 10% up
+    )
+    plt.savefig(path, bbox_inches='tight')
+
+
 def few_shot_eva(encoder, timesnet_model, timesnet_model_mmd, _para, _token, val_data, min_shot=1, max_shot=25, _iter=10):
     # mmd
     mmd_rr_part_collection = []

@@ -34,7 +34,7 @@ def main():
 
     # model/data shapes
     N, L              = 250, 96        # (channels, length)
-    random_sample_num = 8             # condition channels N'
+    random_sample_num = 4             # condition channels N'
     T                 = 300            # diffusion steps
     hidden_channels   = 240             # model hidden channels
     lr                = 2e-4
@@ -71,6 +71,12 @@ def main():
         betas=betas
     ).to(device)
 
+    path = 'exp/exp_second_round/conditional_generativemodels/{random_sample_num}shot/ddpm_711610_4shot.pt'
+    # load model if exists
+    if os.path.exists(path):
+        model.load_state_dict(torch.load(path))
+        print(f"Loaded model from {path}")
+    
     opt = optim.AdamW(model.parameters(), lr=lr, weight_decay=weight_decay)
 
     n_params = sum(p.numel() for p in model.parameters() if p.requires_grad)
@@ -123,7 +129,7 @@ def main():
             with torch.no_grad():
                 # sampling() from ddpm module (starts from noise, uses model+cond)
                 samples = ddpm.sampling(model, cond)  # (B, N, L)
-
+                print("Sampled data shape:", samples.shape, "cond shape:", cond.shape)
             # plot the first sample (many lines; faint alpha)
             fig = plt.figure(figsize=(10, 4))
             i = 0

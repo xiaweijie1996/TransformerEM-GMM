@@ -38,8 +38,10 @@ class Dataloader_nolabel():
         _train_data = self.images[:self.batch_size]
         return _train_data.astype(np.float64)
     
-    def load_test_data(self, size=64):
-        _sample_indx = np.random.choice(self._test_idx, size)
+    def load_test_data(self, size=64, _sample_indx=None):
+        print(self._test_idx)
+        if _sample_indx is None:
+            _sample_indx = np.random.choice(self._test_idx, size)
         _test_data = self.images[_sample_indx]
         return _test_data.astype(np.float64)
     

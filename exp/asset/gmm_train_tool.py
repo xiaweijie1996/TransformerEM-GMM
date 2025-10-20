@@ -6,7 +6,7 @@ import asset.em_pytorch as ep
 import asset.random_sampler as rs
 import asset.le_improved as le
 
-import wandb
+# import wandb
 
 def pad_and_embed(train_sample_part, random_sample_num, random_num, emb_empty_token, device):
     # create an index tensor for the empty token
