@@ -317,7 +317,7 @@ def create_plots2(t_samples_list, r_samples_list, r_samples_part_list, timesnet_
     num_rows = len(t_samples_list)
 
     # Set up the subplots grid with num_rows and 4 columns
-    fig, axs = plt.subplots(num_rows, 4, figsize=(25, num_rows * 4), sharex=True, sharey=False)
+    fig, axs = plt.subplots(num_rows, 2, figsize=(12.5, num_rows * 4), sharex=True, sharey=False)
 
     # Iterate over each set of samples
     for row in range(num_rows):
@@ -339,15 +339,15 @@ def create_plots2(t_samples_list, r_samples_list, r_samples_part_list, timesnet_
         title_fontsize = label_fontsize if display_title else 0  # Increase font size for the first row titles
 
         # Define titles only for the first row
-        titles = ['Complete ECP Data', 'Sampled Data', 'Conditional Flow', 'Conditional DDPM']
+        titles = ['Conditional Flow', 'Conditional DDPM'] # 'Complete ECP Data', 'Sampled Data', 
 
-        plot_colored_curves(row, axs[row, 0], r_samples, titles[0], total_consumption, color_map, norm, y_min, y_max, 0.2, tick_fontsize, display_title, title_fontsize)
-        plot_colored_curves(row, axs[row, 1], r_samples_part, titles[1], total_consumption, color_map, norm, y_min, y_max, 0.5, tick_fontsize, display_title, title_fontsize)
-        plot_colored_curves(row, axs[row, 2], t_samples, titles[2], total_consumption, color_map, norm, y_min, y_max, 0.2, tick_fontsize, display_title, title_fontsize)
-        plot_colored_curves(row, axs[row, 3], timesnet_sample, titles[3], total_consumption, color_map, norm, y_min, y_max, 0.2, tick_fontsize, display_title, title_fontsize)
+        # plot_colored_curves(row, axs[row, 0], r_samples, titles[0], total_consumption, color_map, norm, y_min, y_max, 0.2, tick_fontsize, display_title, title_fontsize)
+        # plot_colored_curves(row, axs[row, 1], r_samples_part, titles[1], total_consumption, color_map, norm, y_min, y_max, 0.5, tick_fontsize, display_title, title_fontsize)
+        plot_colored_curves(row, axs[row, 0], t_samples, titles[0], total_consumption, color_map, norm, y_min, y_max, 0.2, tick_fontsize, display_title, title_fontsize)
+        plot_colored_curves(row, axs[row, 1], timesnet_sample, titles[1], total_consumption, color_map, norm, y_min, y_max, 0.2, tick_fontsize, display_title, title_fontsize)
 
         # Add a color bar next to the last plot in this row
-        divider = make_axes_locatable(axs[row, 3])
+        divider = make_axes_locatable(axs[row, 1])
         cax = divider.append_axes("right", size="5%", pad=0.15)
         sm = plt.cm.ScalarMappable(cmap=color_map, norm=norm)
         sm.set_array([])
