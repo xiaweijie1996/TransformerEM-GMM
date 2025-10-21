@@ -22,7 +22,7 @@ def main():
     split_ratio = (0.8, 0.1, 0.1)
     data_path = 'exp/data_process_for_data_collection_all/new_data_15minute_grid_nomerge.pkl'
     save_dir_root = 'exp/exp_second_round/conditional_generativemodels'
-    N, L = 250, 96
+    N, L = 1, 96
     random_sample_num = 4
     hidden_channels = 128
     K_blocks = 3
@@ -70,10 +70,10 @@ def main():
         # forward
         # fake_con = torch.ones_like(cond)
         # reshape x0 (B, N, L) → (B*N,1 , L)
-        # x0 = x0.reshape(-1, 2, L)
+        x0 = x0.reshape(-1, 2, L)
         # expland cond (B, N', L) → (B*N, N', L)
-        # cond = cond.unsqueeze(1).expand(-1, 125, -1, -1).reshape(-1, random_sample_num, L)
-        # print('x0 shape: ', x0.shape, ' cond shape: ', cond.shape)
+        cond = cond.unsqueeze(1).expand(-1, 125, -1, -1).reshape(-1, random_sample_num, L)
+        print('x0 shape: ', x0.shape, ' cond shape: ', cond.shape)
         z, log_det = model.forward(x0, cond)
         loss = 0.5 * (z**2).sum(dim=(1,2)) - log_det
         

@@ -42,20 +42,17 @@ class CNiceModelBasic(torch.nn.Module):
         self.condition_c = condition_c
         self.split_ratio = split_ratio
         
-        self.split_dim1 = int(self.input_c * self.split_ratio)
-        self.split_dim2 = self.input_c - self.split_dim1
-        
         # Define the layers using BasicFFN
         self.fc1 = Conv1DBlock(
-            in_channels=int(self.input_c * self.split_ratio) + self.condition_c,
+            in_channels=self.input_c + self.condition_c,
             hid_channels=self.hidden_c,
-            out_channels=int(self.input_c * (1 - self.split_ratio))
+            out_channels=self.input_c
         )
         
         self.fc2 = Conv1DBlock(
-            in_channels=int(self.input_c * (1 - self.split_ratio)) + self.condition_c,
+            in_channels=self.input_c + self.condition_c,
             hid_channels=self.hidden_c,
-            out_channels=int(self.input_c * self.split_ratio)
+            out_channels=self.input_c
         )
         
         # add scaler parameters if needed here with shape (1, 1, dim)
@@ -65,19 +62,21 @@ class CNiceModelBasic(torch.nn.Module):
     def forward_direction(self, x, c):
        
         # Split the input tensor
-        x11, x12 = x[:, :self.split_dim1], x[:, self.split_dim1:]
+        half_dim = x.size(-1) // 2
+        x11, x12 = x[:, :, :half_dim], x[:, :, half_dim:]
         
         # x2
         x21 = x11
-        # print('x21 shape: ', x21.shape, ' c shape: ', c.shape)
+        # print('x21 shape: ', x21.shape, ' c shape: ', c.shape, 'x', x.shape)
         x22 = x12 + self.fc1(torch.cat([x11, c], dim=1))
+        # print('x21 shape: ', x21.shape, ' c shape: ', c.shape, 'x', x.shape)
         
         # x3
         x32 = x22
         x31 = x21 + self.fc2(torch.cat([x22, c], dim=1))
         
         # Combine the outputs
-        x3 = torch.cat([x31, x32], dim=1)
+        x3 = torch.cat([x31, x32], dim=-1)
         
         # scaler operation
         x3 = x3 * torch.exp(self.scaler)
@@ -86,13 +85,15 @@ class CNiceModelBasic(torch.nn.Module):
         return x3, log_det_jacobian
     
     def inverse_direction(self, x3, c):
-
+        half_dim = x3.size(-1) // 2
+        
+        
         # inverse scaler operation
         x3 = x3 * torch.exp(-self.scaler)
         log_det_jacobian = -torch.sum(self.scaler) * x3.size(0)
         
         # Split the input tensor
-        x31, x32 = x3[:, :self.split_dim1], x3[:, self.split_dim1:]
+        x31, x32 = x3[:, :, :half_dim ], x3[:, :, half_dim :]
         
         # x2
         x22 = x32
@@ -103,7 +104,7 @@ class CNiceModelBasic(torch.nn.Module):
         x12 = x22 - self.fc1(torch.cat([x21, c], dim=1))
         
         # Combine the outputs
-        x1 = torch.cat([x11, x12], dim=1)
+        x1 = torch.cat([x11, x12], dim=-1)
 
         return x1, log_det_jacobian
     
@@ -152,10 +153,10 @@ class CNicemModel(torch.nn.Module):
     
 
 if __name__ == "__main__":
-    B, N, L = 4, 2, 20
+    B, N, L = 4, 1, 20
     C_N = 5
     x = torch.randn(B, N, L)
-    c = torch.randn(B, C_N, L)
+    c = torch.randn(B, C_N, L//2)
     model = CNicemModel(input_c=N, condition_c=C_N, n_layers=4, scaler_dim=L)
     y, log_det = model.forward(x, c)
     x_recon, log_det_inv = model.inverse(y, c)
