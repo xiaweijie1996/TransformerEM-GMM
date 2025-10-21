@@ -83,6 +83,7 @@ def sampling(model, cond):
 
     x_t = torch.randn(B, N, L, device=device)
     for t in reversed(range(T)):
+        print(f"Sampling timestep {t}/{T-1}")
         t_batch = torch.full((B,), t, device=device, dtype=torch.long)
         noise_pred = model(x_t, t_batch, cond=cond)
 
