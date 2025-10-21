@@ -1,0 +1,195 @@
+import os
+import sys
+_parent_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..', '..'))
+sys.path.append(_parent_path)
+
+import torch
+import matplotlib.pyplot as plt
+from tqdm import tqdm
+import numpy as np  
+from scipy.stats import ks_2samp, wasserstein_distance
+from tqdm import tqdm
+
+import exp_second_round.conditional_generativemodels.vae_model as vaemodel
+from asset.dataloader import Dataloader_nolabel
+import asset.random_sampler as rs
+
+import exp_second_round.conditional_generativemodels.ddpm_model as ddpmmodel
+import exp_second_round.conditional_generativemodels.nf_model_lin as nfmodel
+
+import asset.em_pytorch as ep
+import asset.plot_eva as plot_eva
+import exp_second_round.eva.evaconditionalgen.eva_function as eva_function
+
+
+
+# -----------------------------------Load model and data-----------------------------------
+# import the dataloader
+batch_size = 32
+split_ratio = (0 ,1, 0)
+data_path =  'exp/data_process_for_data_collection_all/new_data_15minute_grid_nomerge.pkl'
+dataset = Dataloader_nolabel(data_path,  batch_size=batch_size
+                    , split_ratio=split_ratio)
+dataset.images = dataset.images + np.abs(np.random.normal(0, 0.01, dataset.images.shape)) 
+print('lenthg of test data: ', dataset.__len__()*split_ratio[0])
+print('lenthg of test data: ', dataset.__len__()*split_ratio[1])
+
+# device
+device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+
+# define the hyperparameters
+random_sample_num = 4
+num_epochs = int(10000)
+input_shape=(250, 96)      # (C, L)
+hidden_dims= [32, 128, 256, 568]
+cond_dims = [32, 128, 256]
+
+# define the model ddpm
+ddpm = ddpmmodel.FFD_NL(in_channels=1, 
+                        hidden_channels=340,
+                        condition_channels=random_sample_num,
+                        t_max=50,
+                        betas=ddpmmodel.linear_beta_schedule(50)).to(device)
+# load vae 4 shot
+if random_sample_num == 4:
+    path = 'exp/exp_second_round/conditional_generativemodels/4shot/ddpm_703801_4shot.pt'
+elif random_sample_num == 8:
+    path = 'exp/exp_second_round/conditional_generativemodels/8shot/ddpm_720250_16shot.pt'
+elif random_sample_num == 16:
+    path = 'exp/exp_second_round/conditional_generativemodels/16shot/ddpm_720250_16shot.pt'
+elif random_sample_num ==32:
+    path = 'exp/exp_second_round/conditional_generativemodels/32shot/ddpm_720250_16shot.pt'
+    
+ddpm.load_state_dict(torch.load(path, map_location=device))
+
+# define the model flow
+flow = nfmodel.CNicemModel(input_c=1, 
+                            hidden_c=198, 
+                            condition_c=random_sample_num*2,
+                            n_layers=3,
+                            scaler_dim=96).to(device)
+
+# load flow 4 shot
+if random_sample_num == 4:
+    path = 'exp/exp_second_round/conditional_generativemodels/4shot/flow_748734_4shot.pt'
+elif random_sample_num == 8:
+    path = 'exp/exp_second_round/conditional_generativemodels/8shot/flow_882414_8shot.pt'
+elif random_sample_num == 16:
+    path = 'exp/exp_second_round/conditional_generativemodels/16shot/flow_882414_16shot.pt'
+elif random_sample_num ==32:
+    path = 'exp/exp_second_round/conditional_generativemodels/32shot/flow_882414_32shot.pt'
+flow.load_state_dict(torch.load(path, map_location=device))
+
+# load data
+_sample_indx=[17, 23]
+test_sample = dataset.load_test_data(batch_size, _sample_indx)  # (B,N,L)
+print('test sample shape: ', test_sample.shape)
+# Use 5 and 6 th sample for testing
+
+test_sample = torch.tensor(test_sample, dtype=torch.float32).to(device)
+
+# normalize the input data
+_test_min,_ = test_sample.min(axis=1, keepdim=True)
+_test_max,_ = test_sample.max(axis=1, keepdim=True)
+test_sample = (test_sample - _test_min)/(_test_max-_test_min+1e-15)
+
+# random_sample a number between min_random_sample_num and random_sample_num
+_test_sample_part = rs.random_sample(test_sample , 'random', random_sample_num)
+
+# move the data to the device
+_test_sample_part = _test_sample_part.to(device)
+
+# feed into the model
+_test_sample_part = _test_sample_part.double()
+test_sample = test_sample.double()
+
+# reshape
+test_sample = test_sample[:, : ,:96].reshape(test_sample.shape[0]*250, 1, 96)
+_test_sample_part = _test_sample_part[:, : ,:96].unsqueeze(1).expand(-1, 250, -1, -1).reshape(-1, random_sample_num, 96)
+
+# -----------------------------------Plot the result-----------------------------------
+# ddpm eval
+ddpm.eval()
+
+recon = ddpmmodel.sampling(ddpm, _test_sample_part)
+recon = recon.float()
+
+print(recon.shape, test_sample.shape, _test_sample_part.shape)
+
+# flow eval
+flow.eval()
+z = torch.randn(recon.shape, device=device)
+_test_sample_part_flow =  _test_sample_part.reshape(_test_sample_part.shape[0], -1, 96//2)
+recon_flow, _ = flow.inverse(z, _test_sample_part_flow )
+
+mmd = 0
+kl = 0
+ks = 0
+ws = 0
+msem = 0
+
+mmd_flow = 0
+kl_flow = 0
+ks_flow = 0
+ws_flow = 0
+msem_flow = 0
+for i in tqdm(range(len(_sample_indx))):
+    # samples scaled
+    samples_ddpm = recon[250*i:250*(i+1),0, :]
+    samples_partial = _test_sample_part[250*i,:,:]
+    samples_real = test_sample[250*i:250*(i+1),0, :]
+    samples_flow = recon_flow[250*i:250*(i+1), 0, :]
+    
+    # recover the samples
+    _max = _test_max[i][:,:-1]
+    _min = _test_min[i][:,:-1]
+    
+    samples_ddpm = samples_ddpm *  (_max - _min) + _min
+    samples_flow = samples_flow *  (_max - _min) + _min
+    samples_partial = samples_partial *  (_max - _min) + _min
+    samples_real = samples_real *  (_max - _min) + _min
+    
+    # mmd += plot_eva.compute_mmd(samples_real.cpu().detach().numpy(), samples_vae.cpu().detach().numpy())
+    # kl += plot_eva.compute_kl_divergence(samples_real.cpu().detach().numpy(), samples_vae.cpu().detach().numpy())
+    # ks += ks_2samp(samples_real.flatten().cpu().detach().numpy(), samples_vae.flatten().cpu().detach().numpy())[0]
+    # ws += wasserstein_distance(samples_real.flatten().cpu().detach().numpy(), samples_vae.flatten().cpu().detach().numpy())
+    # msem += plot_eva.calculate_autocorrelation_mse(samples_real.cpu().detach().numpy(), samples_vae.cpu().detach().numpy())
+    mmd += plot_eva.compute_mmd(samples_real.cpu().detach().numpy(), samples_ddpm.cpu().detach().numpy())
+    kl += 0 #plot_eva.compute_kl_divergence(samples_real.cpu().detach().numpy(), samples_ddpm.cpu().detach().numpy())
+    ks += ks_2samp(samples_real.flatten().cpu().detach().numpy(), samples_ddpm.flatten().cpu().detach().numpy())[0]
+    ws += wasserstein_distance(samples_real.flatten().cpu().detach().numpy(), samples_ddpm.flatten().cpu().detach().numpy())
+    msem += plot_eva.calculate_autocorrelation_mse(samples_real.cpu().detach().numpy(), samples_ddpm.cpu().detach().numpy())
+   
+    mmd_flow += plot_eva.compute_mmd(samples_real.cpu().detach().numpy(), samples_flow.cpu().detach().numpy())
+    kl_flow += 0 # plot_eva.compute_kl_divergence(samples_real.detach().numpy, samples_flow.cpu().detach().numpy())
+    ks_flow += ks_2samp(samples_real.flatten().cpu().detach().numpy(), samples_flow.flatten().cpu().detach().numpy())[0]
+    ws_flow += wasserstein_distance(samples_real.flatten().cpu().detach().numpy(), samples_flow.flatten().cpu().detach().numpy())
+    msem_flow += plot_eva.calculate_autocorrelation_mse(samples_real.cpu().detach().numpy(), samples_flow.cpu().detach().numpy())
+    
+    
+print(f'mmd of {random_sample_num}-shots: ', mmd/batch_size)
+print(f'kl of {random_sample_num}-shots: ', kl/batch_size)
+print(f'ks of {random_sample_num}-shots: ', ks/batch_size)
+print(f'ws of {random_sample_num}-shots: ', ws/batch_size)
+print(f'msem of {random_sample_num}-shots: ', msem/batch_size)
+
+print(f'mmd_flow of {random_sample_num}-shots: ', mmd_flow/batch_size)
+print(f'kl_flow of {random_sample_num}-shots: ', kl_flow/batch_size)
+print(f'ks_flow of {random_sample_num}-shots: ', ks_flow/batch_size)
+print(f'ws_flow of {random_sample_num}-shots: ', ws_flow/batch_size)
+print(f'msem_flow of {random_sample_num}-shots: ', msem_flow/batch_size)
+
+# save the results in a text file
+with open('exp/exp_second_round/eva/evaconditionalgen/sample_from_ddpmflow.txt', 'a') as f:
+    f.write(f'mmd of {random_sample_num}-shots: {mmd/batch_size}\n')
+    f.write(f'kl of {random_sample_num}-shots: {kl/batch_size}\n')
+    f.write(f'ks of {random_sample_num}-shots: {ks/batch_size}\n')
+    f.write(f'ws of {random_sample_num}-shots: {ws/batch_size}\n')
+    f.write(f'msem of {random_sample_num}-shots: {msem/batch_size}\n')
+    f.write('\n')
+    
+    f.write(f'mmd_flow of {random_sample_num}-shots: {mmd_flow/batch_size}\n')
+    f.write(f'kl_flow of {random_sample_num}-shots: {kl_flow/batch_size}\n')
+    f.write(f'ks_flow of {random_sample_num}-shots: {ks_flow/batch_size}\n')
+    f.write(f'ws_flow of {random_sample_num}-shots: {ws_flow/batch_size}\n')
+    f.write(f'msem_flow of {random_sample_num}-shots: {msem_flow/batch_size}\n')
