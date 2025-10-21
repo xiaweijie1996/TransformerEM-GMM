@@ -83,8 +83,8 @@ class Vit_block(nn.Module):
         self.hidden_d = hidden_d
         self.n_heads = n_heads
         self.msa = MSA(hidden_d, n_heads)
-        self.norm1 = RMSNorm() #nn.LayerNorm([length, hidden_d]) # RMSNorm(hidden_d )
-        self.norm2 = RMSNorm()  #nn.LayerNorm([length, hidden_d]) # RMSNorm(hidden_d) 
+        self.norm1 = RMSNorm() # nn.LayerNorm([length, hidden_d]) # RMSNorm(hidden_d )
+        self.norm2 = RMSNorm()  # nn.LayerNorm([length, hidden_d]) # RMSNorm(hidden_d) 
         self.mlp = nn.Sequential(
             nn.Linear(hidden_d, int(hidden_d * mlp_ratio)),
             RMSNorm(),
@@ -92,8 +92,7 @@ class Vit_block(nn.Module):
             nn.Linear(int(hidden_d * mlp_ratio), int(hidden_d * mlp_ratio)),
             RMSNorm(),
             nn.GELU(),
-            nn.Linear(int(hidden_d * mlp_ratio), hidden_d),
-            
+            nn.Linear(int(hidden_d * mlp_ratio), hidden_d),   
         )
 
     def forward(self, x):

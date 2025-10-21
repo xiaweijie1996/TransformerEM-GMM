@@ -23,7 +23,7 @@ def main():
     data_path = 'exp/data_process_for_data_collection_all/new_data_15minute_grid_nomerge.pkl'
     save_dir_root = 'exp/exp_second_round/conditional_generativemodels'
     N, L = 250, 96
-    random_sample_num = 8
+    random_sample_num = 32
     hidden_channels = 198
     K_blocks = 3
     lr = 2e-4
