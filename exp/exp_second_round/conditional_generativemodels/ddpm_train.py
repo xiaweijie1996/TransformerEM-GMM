@@ -27,7 +27,7 @@ import ddpm_model as ddpm
 
 def main():
     # ===== Config =====
-    batch_size        = 32
+    batch_size        = 16
     split_ratio       = (0.8, 0.1, 0.1)
     data_path         = 'exp/data_process_for_data_collection_all/new_data_15minute_grid_nomerge.pkl'
     save_dir_root     = 'exp/exp_second_round/conditional_generativemodels'
@@ -36,10 +36,10 @@ def main():
     N, L              = 250, 96        # (channels, length)
     random_sample_num = 4             # condition channels N'
     T                 = 300            # diffusion steps
-    hidden_channels   = 240             # model hidden channels
+    hidden_channels   = 340            # model hidden channels
     lr                = 2e-4
     weight_decay      = 1e-4
-    max_iters         = 1000000
+    max_iters         = 100001
     log_every         = 200
 
     # I/O
@@ -64,7 +64,7 @@ def main():
     # ===== Model & Opt =====
     betas = ddpm.linear_beta_schedule(T)  # length-T schedule
     model = ddpm.FFD_NL(
-        in_channels=N,
+        in_channels=1,
         hidden_channels=hidden_channels,
         condition_channels=random_sample_num,
         t_max=T,
@@ -108,12 +108,16 @@ def main():
         # 3) Build condition: randomly sample N' channels (and same L)
         cond = rs.random_sample(x0, 'random', random_sample_num).to(device)  # (B, N', L)
         assert cond.shape[1] == random_sample_num and cond.shape[2] == L
-
         B = x0.size(0)
-
+        # Reshap x0 (B, N, L) and cond (B*N, 1, L) if needed by your model
+        x0 = x0.reshape(B*N, -1, L)
+        # Expand cond (B, N', L) → (B*N, N', L)
+        cond = cond.unsqueeze(1).expand(-1, N, -1, -1).reshape(-1, random_sample_num, L)
+        
         # 4) One optimization step on randomly sampled timesteps
-        t = torch.randint(0, T, (B,), device=device, dtype=torch.long)       # (B,)
+        t = torch.randint(0, T, (x0.shape[0],), device=device, dtype=torch.long)       # (B,)
         # use training() from the ddpm module (computes eps, forward-noise, MSE)
+        # print(x0.shape, cond.shape, t.shape)
         loss = ddpm.training(model, x0, t, cum_alpha_sqrt, cum_one_minus_alpha_sqrt, cond=cond)
 
         opt.zero_grad(set_to_none=True)
@@ -122,22 +126,23 @@ def main():
         torch.nn.utils.clip_grad_norm_(model.parameters(), max_norm=1.0)
         opt.step()
 
+        print(f"iter {it} | loss {loss.item():.6f}")
         # 5) Logs, sampling preview, checkpointing
         if it % log_every == 0:
             print(f"iter {it} | loss {loss.item():.6f}")
 
             with torch.no_grad():
                 # sampling() from ddpm module (starts from noise, uses model+cond)
-                samples = ddpm.sampling(model, cond)  # (B, N, L)
-                print("Sampled data shape:", samples.shape, "cond shape:", cond.shape)
+                samples = ddpm.sampling(model, cond[:250])  # (B, N, L)
+                # print("Sampled data shape:", samples.shape, "cond shape:", cond.shape)
             # plot the first sample (many lines; faint alpha)
             fig = plt.figure(figsize=(10, 4))
             i = 0
             plt.subplot(1, 2, 1)
-            plt.plot(x0[i].detach().cpu().T, alpha=0.05)
+            plt.plot(x0[:250, 0, :].detach().cpu().T, alpha=0.05)
             plt.title("x0 (orig)")
             plt.subplot(1, 2, 2)
-            plt.plot(samples[i].detach().cpu().T, alpha=0.05)
+            plt.plot(samples[:,0,:].detach().cpu().T, alpha=0.05)
             plt.title("x0 (synth)")
             plt.tight_layout()
             fig_path = os.path.join(subdir, 'preview_iter.png')

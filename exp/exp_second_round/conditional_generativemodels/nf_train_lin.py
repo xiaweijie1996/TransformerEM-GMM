@@ -24,12 +24,12 @@ def main():
     save_dir_root = 'exp/exp_second_round/conditional_generativemodels'
     N, L = 250, 96
     random_sample_num = 4
-    hidden_channels = 128
+    hidden_channels = 198
     K_blocks = 3
     lr = 2e-4
     weight_decay = 1e-4
     max_iters = 10001
-    log_every = 1
+    log_every = 100
 
     subdir = os.path.join(save_dir_root, f'{random_sample_num}shot')
     os.makedirs(subdir, exist_ok=True)
@@ -68,13 +68,11 @@ def main():
         cond = rs.random_sample(x0, 'random', random_sample_num).to(device)
 
         # forward
-        # fake_con = torch.ones_like(cond)
         # reshape x0 (B, N, L) → (B*N,1 , L)
         x0 = x0.reshape(-1, 1, L)
         # expland cond (B, N', L) → (B*N, N', L)
         cond = cond.unsqueeze(1).expand(-1, 250, -1, -1).reshape(-1, random_sample_num, L)
         cond = cond.reshape(cond.shape[0], -1, L//2)
-        # print('x0 shape: ', x0.shape, ' cond shape: ', cond.shape)
         z, log_det = model.forward(x0, cond)
         loss = 0.5 * (z**2).sum(dim=(1,2)) - log_det
         
