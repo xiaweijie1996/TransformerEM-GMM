@@ -36,8 +36,8 @@ n_components = 4
 random_sample_num = 40
 num_epochs = int(400000)
 sub_epoch = int(dataset.__len__()*split_ratio[0]/batch_size)
-save_model =  f'exp/exp_second_round/gaussian_weight_exame/fixedweights_same/'
-save_image =  f'exp/exp_second_round/gaussian_weight_exame/fixedweights_same/'
+save_model =  f'exp/exp_second_round/gaussian_weight_exame/fixedweights_randome1/'
+save_image =  f'exp/exp_second_round/gaussian_weight_exame/fixedweights_randome1/'
 lr = 0.0005
 min_random_sample_num = 8
 
@@ -65,8 +65,12 @@ scheduler = optim.lr_scheduler.CyclicLR(optimizer, base_lr=5e-5, max_lr=1e-3, st
 wandb.init(project=f'transformer_{n_components}_nomerge_weights')
 wandb.log({'num_parameters_encoder': _model_scale})
 
-
+weights = torch.random((1, n_components)).to(device)
+_weights = weights / weights.sum()
 # save this weights for sampling evaluation as text
+with open(save_image + f'fixedweights_{n_components}_weights.txt', 'w') as f:
+    for w in _weights[0]:
+        f.write(f'{w.item()}\n')
 
 # train the model2
 mid_loss = 100000
@@ -76,9 +80,9 @@ for epoch in range(num_epochs):
     encoder.train()
     
     # _loss, _new_para, _param, train_sample[:, :, :-1], _train_sample_part[:, n_components*2:, :-1], var, (_train_min, _train_max) 
-    _loss, _random_num, _new_para, _param, r_samples, r_samples_part, _mm = gmm_train_tool.get_loss_le(dataset, encoder,
+    _loss, _random_num, _new_para, _param, r_samples, r_samples_part, _mm = gmm_train_tool.get_loss_parametertuning(dataset, encoder,
                                                                             random_sample_num, min_random_sample_num, n_components, 
-                                                                            embedding_para, emb_empty_token, 'True', device)
+                                                                            embedding_para, emb_empty_token, 'True', device, weights=_weights)
     optimizer.zero_grad()
     _loss.backward()
     optimizer.step()
