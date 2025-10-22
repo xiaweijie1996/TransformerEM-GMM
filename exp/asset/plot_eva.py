@@ -71,7 +71,7 @@ def sample_from_gmm(n_components, _new_para, _num=0, _num_samples=250):
     return _samples, gmm
 
 # save_path, batch_size, n_components, _mm, _new_para, r_samples, r_samples_part, _param
-def plot_samples(save_path, batch_size, n_components, _mm, _new_para, r_samples, r_samples_part, _param, figsize=(10, 15)):
+def plot_samples(save_path, batch_size, n_components, _mm, _new_para, r_samples, r_samples_part, _param, figsize=(10, 15), _weights=None):
     fig, axs = plt.subplots(6, 1, figsize=figsize)
     
     # device
@@ -88,10 +88,14 @@ def plot_samples(save_path, batch_size, n_components, _mm, _new_para, r_samples,
     r_samples_est  = r_samples_est.cpu().detach()
     
     # Second subplot: Generated Samples
-    _samples, _gmm = sample_from_gmm(n_components, _new_para)
-    # _samples = torch.tensor(_samples, dtype=torch.float64).to(device)
-    # _samples = vae_model.decoder(_samples)  
-    # _samples = _samples.cpu().detach()  
+    if _weights is None:
+        _samples, _gmm = sample_from_gmm(n_components, _new_para)
+    else:
+        gmm = ep_module.GMM_Simplified_PyTorch(n_components, _dim)
+        gmm.means = _new_para[_num, :n_components*_dim].view(n_components, _dim).cpu().detach()
+        gmm.covariances = _new_para[_num, n_components*_dim:].view(n_components, _dim).cpu().detach()
+        gmm.weights = _weights[_num].cpu().detach()
+        _samples = gmm.sample(300)
     
     # Scale the samples back to the original scale
     t_samples = _samples * (_max - _min) + _min

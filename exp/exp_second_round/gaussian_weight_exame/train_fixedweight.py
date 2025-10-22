@@ -36,8 +36,8 @@ n_components = 4
 random_sample_num = 40
 num_epochs = int(400000)
 sub_epoch = int(dataset.__len__()*split_ratio[0]/batch_size)
-save_model =  f'exp/exp_second_round/gaussian_weight_exame/flexibleweights/'
-save_image =  f'exp/exp_second_round/gaussian_weight_exame/flexibleweights/'
+save_model =  f'exp/exp_second_round/gaussian_weight_exame/fixedweights_same/'
+save_image =  f'exp/exp_second_round/gaussian_weight_exame/fixedweights_same/'
 lr = 0.0005
 min_random_sample_num = 8
 
@@ -73,7 +73,7 @@ for epoch in range(num_epochs):
     encoder.train()
     
     # _loss, _new_para, _param, train_sample[:, :, :-1], _train_sample_part[:, n_components*2:, :-1], var, (_train_min, _train_max) 
-    _loss, _random_num, _new_para, _weights,_param, r_samples, r_samples_part, _mm = gmm_train_tool.get_loss_parametertuning(dataset, encoder,
+    _loss, _random_num, _new_para, _param, r_samples, r_samples_part, _mm = gmm_train_tool.get_loss_le(dataset, encoder,
                                                                             random_sample_num, min_random_sample_num, n_components, 
                                                                             embedding_para, emb_empty_token, 'True', device)
     optimizer.zero_grad()
@@ -93,7 +93,7 @@ for epoch in range(num_epochs):
 
     if epoch % 500 == 0:
         save_path = save_image+f'_{_model_scale}.png'
-        llk_e = pa.plot_samples(save_path, batch_size, n_components, _mm, _new_para, r_samples, r_samples_part, _param, figsize=(10, 15), _weights=_weights)
+        llk_e = pa.plot_samples(save_path, batch_size, n_components, _mm, _new_para, r_samples, r_samples_part, _param, figsize=(10, 15))
 
         
         

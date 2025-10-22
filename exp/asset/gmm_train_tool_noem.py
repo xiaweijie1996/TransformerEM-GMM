@@ -138,7 +138,8 @@ def get_loss_parametertuning(dataset, encoder, random_sample_num, min_random_sam
     # print('encoder out', encoder_out.shape, _new_para.shape, _weights.shape)
     
     _new_para = encoder.output_adding_layer(_new_para, _param)
-    _loss = le.le_loss_flexibleweights(train_sample[:,:, :-1], n_components, _new_para, _weights)
+    # _loss = le.le_loss_flexibleweights(train_sample[:,:, :-1], n_components, _new_para, _weights)
+    _loss = le.le_loss(train_sample[:,:, :-1], n_components, _new_para)
     
-    return _loss, _random_num, _new_para, _param, train_sample[:, :, :-1], _train_sample_part[:, :, :-1], (_train_min, _train_max) 
+    return _loss, _random_num, _new_para, _weights,  _param, train_sample[:, :, :-1], _train_sample_part[:, :, :-1], (_train_min, _train_max) 
 
