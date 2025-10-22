@@ -34,7 +34,7 @@ def main():
 
     # model/data shapes
     N, L              = 250, 96        # (channels, length)
-    random_sample_num = 4             # condition channels N'
+    random_sample_num = 4            # condition channels N'
     T                 = 50           # diffusion steps
     hidden_channels   = 340            # model hidden channels
     lr                = 2e-4
