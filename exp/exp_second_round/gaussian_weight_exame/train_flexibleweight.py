@@ -61,6 +61,14 @@ emb_empty_token = torch.nn.Embedding(1, chw[2]).to(device)
 optimizer = optim.AdamW(list(encoder.parameters()), lr=lr, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0001, amsgrad=False)
 scheduler = optim.lr_scheduler.CyclicLR(optimizer, base_lr=5e-5, max_lr=1e-3, step_size_up=sub_epoch*2, mode='triangular', cycle_momentum=False)
 
+# load trained model and embeding
+path_transformer = f'exp/exp_second_round/gaussian_weight_exame/flexibleweights/transformer_encoder_{random_sample_num}_{_model_scale}.pth'
+path_embedding = f'exp/exp_second_round/gaussian_weight_exame/flexibleweights/transformer_embedding_{random_sample_num}_{_model_scale}.pth'
+path_emb_empty = f'exp/exp_second_round/gaussian_weight_exame/flexibleweights/transformer_emb_empty_token_{random_sample_num}_{_model_scale}.pth'
+encoder.load_state_dict(torch.load(path_transformer, map_location=device))
+embedding_para = torch.load(path_embedding, map_location=device, weights_only=False)
+emb_empty_token = torch.load(path_emb_empty, map_location=device, weights_only=False)
+
 # # log number of parameters of encoder and decoder
 wandb.init(project=f'transformer_{n_components}_nomerge_weights')
 wandb.log({'num_parameters_encoder': _model_scale})
@@ -73,7 +81,7 @@ for epoch in range(num_epochs):
     encoder.train()
     
     # _loss, _new_para, _param, train_sample[:, :, :-1], _train_sample_part[:, n_components*2:, :-1], var, (_train_min, _train_max) 
-    _loss, _random_num, _new_para, _weights,_param, r_samples, r_samples_part, _mm = gmm_train_tool.get_loss_parametertuning(dataset, encoder,
+    _loss, _random_num, _new_para, _weights, _param, r_samples, r_samples_part, _mm = gmm_train_tool.get_loss_parametertuning(dataset, encoder,
                                                                             random_sample_num, min_random_sample_num, n_components, 
                                                                             embedding_para, emb_empty_token, 'True', device)
     optimizer.zero_grad()

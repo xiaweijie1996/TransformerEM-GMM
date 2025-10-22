@@ -63,66 +63,44 @@ def le_loss(X: torch.Tensor,
     return -ll.mean()
   
 
-def le_loss_flexibleweights(X: torch.Tensor,
-            n_components: int,
-            _para: torch.Tensor,
-            weights: torch.Tensor,
-            eps: float = 1e-6) -> torch.Tensor:
-    """
-    Compute the average negative log-likelihood of a diagonal-covariance GMM.
-
-    Args:
-      X           (b, N, d)        data
-      n_components                number of mixture components K
-      _para       (b, K*d*2)       concatenated [means, raw_vars]
-      weights     (b, K)          mixture weights from the encoder
-      eps                          numerical stability
-
-    Returns:
-      scalar loss = -mean_{batch, samples} log p(x)
-    """
+def le_loss_flexibleweights(
+    X: torch.Tensor,               # (b, N, d)
+    n_components: int,             # K
+    _para: torch.Tensor,           # (b, K*d*2) -> [means, raw_vars]
+    weights: torch.Tensor,         # (b, K)     (unnormalized ok)
+    eps: float = 1e-6
+) -> torch.Tensor:
     b, N, d = X.shape
     K = n_components
     device = X.device
 
     # Unpack parameters
-    # means:       (b, K, d)
-    # raw_vars:    (b, K, d)  (we'll turn this into positive variances)
-    # weithts:     (b, K)
-    means, raw_vars = _para.split(K * d, dim=1)
-    means   = means.view(b, K, d)
-    raw_vars = raw_vars.view(b, K, d)
+    means, raw_vars = _para.split(K * d, dim=1)  # both (b, K*d)
+    means    = means.view(b, K, d)               # (b, K, d)
+    raw_vars = raw_vars.view(b, K, d)            # (b, K, d)
 
-    # Ensure variances > 0
-    # Option A: clamp (you can also do `vars = torch.exp(raw_vars)`)
-    # vars = torch.clamp(raw_vars, min=eps)
-    vars = torch.exp(raw_vars)
-    
-    # Mixture weights (you can also learn these)
-    # here we just use uniform / linear weights as in your original
-    # w = torch.linspace(1/K, 1.0, K, device=device)
-    # log_w = torch.log(w / w.sum()).unsqueeze(0).unsqueeze(1)  # (1,1,K) → broadcast
-    log_w = torch.log(weights.unsqueeze(1) + eps)  # (b,1,K)
+    # Ensure positive, not-too-small variances (σ^2)
+    # vars = torch.exp(raw_vars).clamp_min(eps)    # (b, K, d)
+    vars = torch.clamp(raw_vars, min=eps)        # (b, K, d)
+    # Normalize weights to a simplex and take log
+    # weights = torch.softmax(weights, dim=-1)     # (b, K)
+    log_w = torch.log(weights.unsqueeze(1).clamp_min(eps))  # (b, 1, K)
 
-    # Compute Gaussian log-pdf for all b, N, K in one go
+    # Compute Gaussian log-pdf terms for all b, N, K
     # diff: (b, N, K, d)
     diff = X.unsqueeze(2) - means.unsqueeze(1)
-    inv_vars = 1.0 / vars.unsqueeze(1)  # (b,1,K,d)
+    inv_vars = 1.0 / vars.unsqueeze(1)                 # (b, 1, K, d)
     mahal = torch.sum(diff * diff * inv_vars, dim=-1)  # (b, N, K)
 
-    # log normalizer: -½[d log(2π) + ∑_i log σ_i]
-    log_det = 0.5 * torch.sum(torch.log(vars + eps), dim=-1)  # (b, K)
-    const  = -0.5 * d * math.log(2 * math.pi)
-    log_norm = const - log_det                                # (b, K)
-    log_norm = log_norm.unsqueeze(1)                          # → (b,1,K)
+    # log normalizer: -½ [ d log(2π) + log |Σ| ] with diag Σ
+    # log|Σ| = sum_i log(σ_i^2)
+    const = -0.5 * d * math.log(2.0 * math.pi)
+    log_det_half = 0.5 * torch.sum(torch.log(vars), dim=-1)  # (b, K)
+    log_norm = (const - log_det_half).unsqueeze(1)            # (b, 1, K)
 
-    # print('log_norm shape:', log_norm.shape, mahal.shape, log_w.shape)
-    # component log-likelihoods: (b, N, K)
-    log_comp = log_norm - 0.5 * mahal + log_w
+    # Component log-likelihoods and mixture
+    log_comp = log_norm - 0.5 * mahal + log_w                 # (b, N, K)
+    ll = torch.logsumexp(log_comp, dim=2)                     # (b, N)
 
-    # log-sum-exp over components → (b, N)
-    ll = torch.logsumexp(log_comp, dim=2)
-
-    # return mean negative log-likelihood
+    # Mean negative log-likelihood over batch & samples
     return -ll.mean()
-  

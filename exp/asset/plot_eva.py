@@ -91,6 +91,8 @@ def plot_samples(save_path, batch_size, n_components, _mm, _new_para, r_samples,
     if _weights is None:
         _samples, _gmm = sample_from_gmm(n_components, _new_para)
     else:
+        print('Using flexible weights for sampling')
+        print(_weights[_num])
         gmm = ep_module.GMM_Simplified_PyTorch(n_components, _dim)
         gmm.means = _new_para[_num, :n_components*_dim].view(n_components, _dim).cpu().detach()
         gmm.covariances = _new_para[_num, n_components*_dim:].view(n_components, _dim).cpu().detach()
