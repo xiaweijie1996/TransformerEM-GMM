@@ -20,7 +20,7 @@ torch.set_default_dtype(torch.float64)
 # load data
 batch_size =  32
 split_ratio = (0.8,0.1,0.1)
-data_path =  'exp/data_process_for_data_collection_all/transformer_data_15minutes.pkl' 
+data_path =  'exp/data_process_for_data_collection_all/new_data_15minute_grid_nomerge.pkl' 
 dataset = Dataloader_nolabel(data_path,  batch_size=batch_size
                     , split_ratio=split_ratio)
 dataset.images = dataset.images # + np.abs(np.random.normal(0, 0.01, dataset.images.shape)) 
@@ -36,33 +36,33 @@ n_components = 4
 random_sample_num = 40
 num_epochs = int(400000)
 sub_epoch = int(dataset.__len__()*split_ratio[0]/batch_size)
-save_model =  f'exp/exp_second_round/gaussian_number_exame/{n_components}gaussian/'
-save_image =  f'exp/exp_second_round/gaussian_number_exame/{n_components}gaussian/'
+save_model =  f'exp/exp_second_round/gaussian_weight_exame/flexibleweights/'
+save_image =  f'exp/exp_second_round/gaussian_weight_exame/flexibleweights/'
 lr = 0.0005
 min_random_sample_num = 8
 
 # define the encoder
 chw = (1, random_sample_num,  97)
 para_dim = n_components*2
-hidden_d = 96
+hidden_d = 48
 out_d = 96
 n_heads = 4
-mlp_ratio = 12
+mlp_ratio = 6
 n_blocks = 4
 encoder = gmm_model.ViT_encodernopara(chw, hidden_d, out_d, n_heads, mlp_ratio, n_blocks).to(device)
 _model_scale = sum(p.numel() for p in encoder.parameters() if p.requires_grad)
 print('number of parameters: ', _model_scale)
 
 # Define a gmm embedding layer
-embedding_para = torch.nn.Embedding(n_components*2, 1).to(device)
+embedding_para = torch.nn.Embedding(n_components*2 +1, 1).to(device) # +1 for gmm component withgts embedding of empty token
 emb_empty_token = torch.nn.Embedding(1, chw[2]).to(device)
 
 # define the optimizer and loss function and cyclic learning rate scheduler
 optimizer = optim.AdamW(list(encoder.parameters()), lr=lr, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0001, amsgrad=False)
 scheduler = optim.lr_scheduler.CyclicLR(optimizer, base_lr=5e-5, max_lr=1e-3, step_size_up=sub_epoch*2, mode='triangular', cycle_momentum=False)
 
-# log number of parameters of encoder and decoder
-wandb.init(project=f'transformer_n_components-{n_components}_nomerge')
+# # log number of parameters of encoder and decoder
+wandb.init(project=f'transformer_{n_components}_nomerge_weights')
 wandb.log({'num_parameters_encoder': _model_scale})
 
 # train the model2
@@ -73,14 +73,14 @@ for epoch in range(num_epochs):
     encoder.train()
     
     # _loss, _new_para, _param, train_sample[:, :, :-1], _train_sample_part[:, n_components*2:, :-1], var, (_train_min, _train_max) 
-    _loss, _random_num, _new_para, _param, r_samples, r_samples_part, _mm = gmm_train_tool.get_loss_le(dataset, encoder,
+    _loss, _random_num, _new_para, _param, r_samples, r_samples_part, _mm = gmm_train_tool.get_loss_parametertuning(dataset, encoder,
                                                                             random_sample_num, min_random_sample_num, n_components, 
                                                                             embedding_para, emb_empty_token, 'True', device)
     optimizer.zero_grad()
     _loss.backward()
     optimizer.step()
     scheduler.step()
-    
+    # break
     print('epoch: ', epoch, 'loss_test: ', _loss.item(), 'random_num: ', _random_num)
     wandb.log({'loss_test': _loss.item(), 'random_num': _random_num, 'epoch':epoch})
     
