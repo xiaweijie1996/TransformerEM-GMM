@@ -36,8 +36,8 @@ n_components = 4
 random_sample_num = 40
 num_epochs = int(400000)
 sub_epoch = int(dataset.__len__()*split_ratio[0]/batch_size)
-save_model =  f'exp/exp_second_round/gaussian_weight_exame/fixedweights_same/'
-save_image =  f'exp/exp_second_round/gaussian_weight_exame/fixedweights_same/'
+save_model =  f'exp/exp_second_round/gaussian_variance_exame/r2'
+save_image =  f'exp/exp_second_round/gaussian_variance_exame/r2'
 lr = 0.0005
 min_random_sample_num = 8
 
@@ -56,7 +56,7 @@ _model_scale = sum(p.numel() for p in encoder.parameters() if p.requires_grad)
 print('number of parameters: ', _model_scale)
 
 # Define a gmm embedding layer
-embedding_para = torch.nn.Embedding(n_components*(rank_level+2), 1).to(device) # +1 for gmm component withgts embedding of empty token
+embedding_para = torch.nn.Embedding(n_components*(rank_level+1), 1).to(device) # +1 for gmm component withgts embedding of empty token
 emb_empty_token = torch.nn.Embedding(1, chw[2]).to(device)
 
 # define the optimizer and loss function and cyclic learning rate scheduler
@@ -64,8 +64,8 @@ optimizer = optim.AdamW(list(encoder.parameters()), lr=lr, betas=(0.9, 0.999), e
 scheduler = optim.lr_scheduler.CyclicLR(optimizer, base_lr=5e-5, max_lr=1e-3, step_size_up=sub_epoch*2, mode='triangular', cycle_momentum=False)
 
 # # # log number of parameters of encoder and decoder
-# wandb.init(project=f'transformer_{n_components}_nomerge_weights')
-# wandb.log({'num_parameters_encoder': _model_scale})
+wandb.init(project=f'transformer_{n_components}_nomerge_weights')
+wandb.log({'num_parameters_encoder': _model_scale})
 
 
 # save this weights for sampling evaluation as text
@@ -81,7 +81,7 @@ for epoch in range(num_epochs):
     _loss, _random_num, _new_para, _param, r_samples, r_samples_part, _mm = gmm_train_tool.get_loss_fullcov(dataset, encoder,
                                                                             random_sample_num, min_random_sample_num, n_components, rank_level, 
                                                                             embedding_para, emb_empty_token, 'True', device)
-    break
+
     optimizer.zero_grad()
     _loss.backward()
     optimizer.step()
@@ -99,7 +99,7 @@ for epoch in range(num_epochs):
 
     if epoch % 500 == 0:
         save_path = save_image+f'_{_model_scale}.png'
-        llk_e = pa.plot_samples(save_path, batch_size, n_components, _mm, _new_para, r_samples, r_samples_part, _param, figsize=(10, 15))
+        llk_e = pa.plot_samples_fullcov(save_path, batch_size, n_components, _mm, _new_para, r_samples, r_samples_part, _param, figsize=(10, 15))
 
-        
+
         

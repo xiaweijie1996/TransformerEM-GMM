@@ -122,10 +122,9 @@ def vec_to_martrix(vec: torch.Tensor) -> torch.Tensor:
 def le_loss_rank_iso(
     X: torch.Tensor,               # (b, N, d)
     n_components: int,             # K
-    _para: torch.Tensor,           # (b, K*d + K*d*r + K) -> [means, U_flat, lambda_raw]
+    _para: torch.Tensor,           # (b, K*d + K*d*r) -> [means, U_flat, lambda_raw]
     r: int,                        # rank
-    weights: torch.Tensor = None,  # optional (b, K) logits or probs
-    jitter: float = 1e-6,
+    scaler: float = 0.1,
     eps: float = 1e-9,
 ) -> torch.Tensor:
     """
@@ -150,14 +149,13 @@ def le_loss_rank_iso(
     # ---- Unpack parameters ----------------------------------------------------
     sz_means = K * d
     sz_U     = K * d * r
-    sz_lam   = K
-    expected = sz_means + sz_U + sz_lam
+    expected = sz_means + sz_U 
     assert _para.shape[1] == expected, f"_para has { _para.shape[1] }, expected { expected }"
 
     means     = _para[:, :sz_means].view(b, K, d)                  # (b, K, d)
     U_flat    = _para[:, sz_means:sz_means+sz_U].view(b, K, d, r)  # (b, K, d, r)
-    lambda_rw = _para[:, sz_means+sz_U:]                           # (b, K)
-    lam       = F.softplus(lambda_rw) + jitter                      # (b, K), strictly > 0
+    lambda_rw = torch.ones(b, K).to(X.device)   #_para[:, sz_means+sz_U:]                           # (b, K)
+    lam       = lambda_rw *scaler                  # (b, K), strictly > 0
 
     # ---- Small r×r system: M = I + (1/λ) U^T U -------------------------------
     # Compute per (b,K): S = U^T U  (d×r -> r×r)
@@ -206,11 +204,8 @@ def le_loss_rank_iso(
     mahal = rDinvr - correction                                    # (b, N, K)
 
     # ---- Mixture weights ------------------------------------------------------
-    if weights is None:
-        log_w = torch.full((b, 1, K), -math.log(K), device=device, dtype=dtype)
-    else:
-        w = torch.softmax(weights, dim=-1)
-        log_w = torch.log(w.clamp_min(eps)).unsqueeze(1)           # (b, 1, K)
+    w = torch.linspace(1/K, 1.0, K, device=device)
+    log_w = torch.log(w / w.sum()).unsqueeze(0).unsqueeze(1)  # (1,1,K) → broadcast
 
     # ---- Log-likelihood and reduction ----------------------------------------
     const = -0.5 * d * math.log(2.0 * math.pi)
@@ -223,17 +218,12 @@ def le_loss_rank_iso(
   
 if __name__ == "__main__":
     # simple test
-    b, N, d = 2, 4, 3
-    K = 2
-    r = 1
-    X = torch.randn(b, N, d)
-    means = torch.randn(b, K, d)
-    U = torch.randn(b, K, d, r)
-    lam_raw = torch.randn(b, K)
-    _para = torch.cat((
-        means.view(b, K*d),
-        U.view(b, K*d*r),
-        lam_raw
-    ), dim=1)
-    loss = le_loss_rank_iso(X, K, _para, r)
-    print("Loss:", loss.item())
+   b, N, d = 2, 4, 3
+   K = 5
+   r = 2
+   X = torch.randn(b, N, d)
+   means = torch.randn(b, K, d)
+   U = torch.randn(b, K, d, r)
+   _para = torch.cat([means.view(b, K*d), U.view(b, K*d*r)], dim=1)
+   loss = le_loss_rank_iso(X, K, _para, r)
+   print('loss: ', loss)

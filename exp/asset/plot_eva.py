@@ -11,8 +11,55 @@ from scipy.stats import entropy
 from sklearn.neighbors import KernelDensity
 from scipy.stats import ks_2samp
 import wandb
+import math
 
 from scipy.stats import entropy
+
+
+def unpack_rank_iso(_para, K, d, r, lam_scalar, device):
+    b = _para.shape[0]
+    sz_means = K * d
+    sz_U     = K * d * r
+    expected = sz_means + sz_U
+    assert _para.shape[1] == expected, \
+        f"_para has {_para.shape[1]}, expected {expected} (=K*d*(1+r))."
+    means = _para[:, :sz_means].view(b, K, d)
+    U     = _para[:, sz_means:sz_means+sz_U].view(b, K, d, r)
+    lam   = torch.full((b, K), float(lam_scalar), device=device, dtype=_para.dtype)
+    return means, U, lam
+
+def cov_from_rank_iso(U, lam):
+    # U: (b,K,d,r), lam: (b,K)
+    b, K, d, r = U.shape
+    I = torch.eye(d, device=U.device, dtype=U.dtype).view(1,1,d,d)
+    covs = U @ U.transpose(-1,-2) + lam.unsqueeze(-1).unsqueeze(-1) * I  # (b,K,d,d)
+    return covs
+
+def sample_rank_iso(means, U, lam, n_samples, weights=None, rng=None):
+    """
+    means: (b,K,d), U: (b,K,d,r), lam: (b,K)
+    Returns numpy samples for plotting for batch item 0.
+    """
+    b, K, d = means.shape
+    r = U.shape[-1]
+    if rng is None:
+        rng = np.random.default_rng(0)
+    if weights is None:
+        weights = np.full(K, 1.0/K)
+    else:
+        weights = (weights / weights.sum()).cpu().numpy()
+    # choose components
+    comp = rng.choice(K, size=n_samples, p=weights)
+    x = np.zeros((n_samples, d), dtype=np.float64)
+    for i, k in enumerate(comp):
+        mu = means[0, k].detach().cpu().numpy()
+        Uk = U[0, k].detach().cpu().numpy()           # (d,r)
+        lk = lam[0, k].item()
+        z  = rng.standard_normal(size=r) if r>0 else np.zeros(0)
+        eps = rng.standard_normal(size=d)
+        x[i] = mu + (Uk @ z) + math.sqrt(lk) * eps
+    return x
+
 
 def kl_divergence(x1: np.ndarray,
                   x2: np.ndarray,
@@ -154,6 +201,83 @@ def plot_samples(save_path, batch_size, n_components, _mm, _new_para, r_samples,
     plt.close()
     
     # Save using wandb
+    wandb.log({"generated_samples": [wandb.Image(save_path)]})
+
+
+
+def plot_samples_fullcov(save_path, batch_size, n_components, _mm, _new_para,
+                         r_samples, r_samples_part, _param, figsize=(10, 15), _weights=None):
+    fig, axs = plt.subplots(6, 1, figsize=figsize)
+
+    device = _new_para.device
+
+    # ----- Dimensions & batch index -----
+    _num = 0
+    r_samples_est = r_samples[_num].clone().cpu().detach()
+    N, d = r_samples_est.shape
+    K = n_components
+
+    # Infer r from _new_para shape: L = K*d*(1+r)
+    L = _new_para.shape[1]
+    assert (L % (K * d)) == 0, f"Cannot factor _new_para.shape[1]={L} into K*d*(1+r)"
+    r = L // (K * d) - 1
+    assert r >= 0, f"Bad rank r={r}"
+
+    # Scale mins/maxs
+    _min = _mm[0][_num].cpu().detach().numpy()
+    _max = _mm[1][_num].cpu().detach().numpy()
+
+    # ----- Rank-iso sampling aligned with loss -----
+    scaler = 0.1  # same λ as in your loss
+    means_u, U_u, lam_u = unpack_rank_iso(_new_para, K, d, r, scaler, device=device)
+
+    # Use 1-D weights of length K (uniform)
+    weights_1d = torch.full((K,), 1.0 / K, device=device)
+    samples = sample_rank_iso(means_u, U_u, lam_u, n_samples=300, weights=weights_1d)
+
+    # Plot generated samples (scaled back)
+    t_samples = samples * (_max - _min) + _min
+    axs[1].plot(t_samples.T, c='b', alpha=0.1)
+    axs[1].set_title('Generated Samples by transformer (rank-iso)')
+
+    # ----- Real samples -----
+    r_samples_scale_back = r_samples_est * (_max - _min) + _min
+    axs[2].plot(r_samples_scale_back.numpy().T, c='r', alpha=0.1)
+    axs[2].set_title('Real Samples (data)')
+
+    # ----- Fit a GMM to real data & compare params (optional) -----
+    try:
+        gmm = ep_module.GMM_Simplified_PyTorch(K, d)
+        gmm.fit(r_samples_est, 300)
+        _samples = gmm.sample(300)
+        _samples = _samples * (_max - _min) + _min
+        axs[3].plot(_samples.T, c='b', alpha=0.1)
+        axs[3].set_title('Fit GMM to all real sample')
+
+        gmm_param = torch.concat((gmm.means.view(-1), gmm.covariances.view(-1)))
+        axs[0].plot(_new_para[_num].cpu().detach().numpy(), c='b', alpha=0.5)
+        axs[0].plot(gmm_param.cpu().detach().numpy(), c='r', alpha=0.5)
+        axs[0].plot(_param[_num].view(-1).cpu().detach().numpy(), c='g', alpha=0.5)
+        axs[0].legend(['Predicted', 'GMM_fit', 'EM_embedding'])
+        axs[0].set_title('Predicted vs GMM_fit vs EM_embedding')
+    except Exception as e:
+        print("GMM fit/compare skipped:", e)
+
+    # ----- Random subset & sklearn GMM baseline -----
+    r_samples_part_gmm = r_samples_part[_num].cpu().detach()
+    r_samples_part_gmm_scaled = r_samples_part_gmm * (_max - _min) + _min
+    axs[4].plot(r_samples_part_gmm_scaled.T, c='r', alpha=0.1)
+    axs[4].set_title('Random sample data')
+
+    gmm_sklearn = GaussianMixture(n_components=K, random_state=0).fit(r_samples_part_gmm)
+    gmm_sample, _ = gmm_sklearn.sample(300)
+    gmm_sample = gmm_sample * (_max - _min) + _min
+    axs[5].plot(gmm_sample.T, c='r', alpha=0.1)
+    axs[5].set_title('GMM generated random sample data')
+
+    plt.tight_layout()
+    plt.savefig(save_path)
+    plt.close()
     wandb.log({"generated_samples": [wandb.Image(save_path)]})
 
 # n_components, _new_para, r_samples, r_samples_part

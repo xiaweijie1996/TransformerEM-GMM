@@ -31,8 +31,10 @@ def concatenate_and_embed_params(ms, covs, n_components, embedding_layer, device
     # concatenate the mean and variance to have (b, n_components*2, 25)
     param = torch.cat((ms, covs), dim=1)
     
+    _rank_level = covs.shape[1] // n_components + 1
+    # print('rank level: ', _rank_level)
     # create indices for embedding and move to the appropriate device
-    embed_indices = torch.tensor([list(range(n_components * 2))], dtype=torch.long).to(device)
+    embed_indices = torch.tensor([list(range(n_components * _rank_level))], dtype=torch.long).to(device)
     
     # get the embeddings
     embed = embedding_layer(embed_indices)
@@ -44,6 +46,7 @@ def concatenate_and_embed_params(ms, covs, n_components, embedding_layer, device
     param_emb = torch.cat((param, embed), dim=2)
     
     return param_emb,  param
+
 
 def get_loss_le(dataset, encoder, random_sample_num, min_random_sample_num, n_components, embedding, emb_empty_token, train='True', device='cpu'):
     if train == 'True':
@@ -89,7 +92,6 @@ def get_loss_le(dataset, encoder, random_sample_num, min_random_sample_num, n_co
     _loss = le.le_loss(train_sample[:,:, :-1], n_components, _new_para)
     
     return _loss, _random_num, _new_para, _param, train_sample[:, :, :-1], _train_sample_part[:, :, :-1], (_train_min, _train_max) 
-
 
 
 
@@ -224,7 +226,7 @@ def get_loss_fullcov(dataset, encoder, random_sample_num, min_random_sample_num,
     
     # assume _ms and _covs are obtained from the GMM aer zero
     _ms = torch.zeros(_train_sample_part.shape[0], n_components, 96).to(device)
-    _covs = torch.ones(_train_sample_part.shape[0], n_components * rank_level, 96).to(device) # 96 * 97 /2
+    _covs = torch.ones(_train_sample_part.shape[0], n_components * (rank_level), 96).to(device) # 96 * 97 /2
     
     # log _ms and _covs
     # wandb.log({'_ms': _ms.mean().item(), '_covs': _covs.mean().item()})
@@ -236,9 +238,9 @@ def get_loss_fullcov(dataset, encoder, random_sample_num, min_random_sample_num,
     _train_sample_part_emb = torch.cat((_param_emb, _train_sample_part_emb), dim=1)
     encoder_out = encoder(_train_sample_part_emb)
     
-    _new_para = encoder_out[:, :n_components*(rank_level+2), :]
+    _new_para = encoder_out[:, :n_components*(rank_level+1), :]
     _new_para = encoder.output_adding_layer(_new_para, _param)
-    _loss = le.le_loss_fullcov_cholesky(train_sample[:,:, :-1], n_components, _new_para, rank_level)
+    _loss = le.le_loss_rank_iso(train_sample[:,:, :-1], n_components, _new_para, rank_level, scaler=0.1)
     
     return _loss, _random_num, _new_para, _param, train_sample[:, :, :-1], _train_sample_part[:, :, :-1], (_train_min, _train_max) 
 
