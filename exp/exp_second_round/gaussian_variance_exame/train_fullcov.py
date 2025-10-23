@@ -34,10 +34,11 @@ print(device)
 # define the hyperparameters
 n_components = 4
 random_sample_num = 40
+rank_level = 10
 num_epochs = int(400000)
 sub_epoch = int(dataset.__len__()*split_ratio[0]/batch_size)
-save_model =  f'exp/exp_second_round/gaussian_variance_exame/r2'
-save_image =  f'exp/exp_second_round/gaussian_variance_exame/r2'
+save_model =  f'exp/exp_second_round/gaussian_variance_exame/r{rank_level}/'
+save_image =  f'exp/exp_second_round/gaussian_variance_exame/r{rank_level}/'
 lr = 0.0005
 min_random_sample_num = 8
 
@@ -49,7 +50,6 @@ out_d = 96
 n_heads = 4
 mlp_ratio = 6
 n_blocks = 4
-rank_level = 2
 encoder = gmm_model.ViT_encodernopara(chw, hidden_d, out_d, n_heads, mlp_ratio, n_blocks).to(device)
 _model_scale = sum(p.numel() for p in encoder.parameters() if p.requires_grad)
 

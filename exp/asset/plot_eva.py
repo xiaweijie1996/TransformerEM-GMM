@@ -228,7 +228,7 @@ def plot_samples_fullcov(save_path, batch_size, n_components, _mm, _new_para,
     _max = _mm[1][_num].cpu().detach().numpy()
 
     # ----- Rank-iso sampling aligned with loss -----
-    scaler = 0.1  # same λ as in your loss
+    scaler = 0.01  # same λ as in your loss
     means_u, U_u, lam_u = unpack_rank_iso(_new_para, K, d, r, scaler, device=device)
 
     # Use 1-D weights of length K (uniform)

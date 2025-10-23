@@ -240,7 +240,7 @@ def get_loss_fullcov(dataset, encoder, random_sample_num, min_random_sample_num,
     
     _new_para = encoder_out[:, :n_components*(rank_level+1), :]
     _new_para = encoder.output_adding_layer(_new_para, _param)
-    _loss = le.le_loss_rank_iso(train_sample[:,:, :-1], n_components, _new_para, rank_level, scaler=0.1)
+    _loss = le.le_loss_rank_iso(train_sample[:,:, :-1], n_components, _new_para, rank_level, scaler=0.01)
     
     return _loss, _random_num, _new_para, _param, train_sample[:, :, :-1], _train_sample_part[:, :, :-1], (_train_min, _train_max) 
 
