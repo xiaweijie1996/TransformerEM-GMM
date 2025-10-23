@@ -6,6 +6,7 @@ import torch
 import math
 import torch.nn.functional as F
 
+
 def le_loss(X: torch.Tensor,
             n_components: int,
             _para: torch.Tensor,
@@ -63,7 +64,6 @@ def le_loss(X: torch.Tensor,
     # return mean negative log-likelihood
     return -ll.mean()
   
- 
 def le_loss_flexibleweights(
     X: torch.Tensor,               # (b, N, d)
     n_components: int,             # K
@@ -117,7 +117,6 @@ def vec_to_martrix(vec: torch.Tensor) -> torch.Tensor:
       mat (B, N, d, d) where
   """
   return vec.unsqueeze(-1) * vec.unsqueeze(-2)
-
 
 def le_loss_rank_iso(
     X: torch.Tensor,               # (b, N, d)
@@ -215,7 +214,99 @@ def le_loss_rank_iso(
 
     return -ll.mean()
   
-  
+
+def gmm_nll_fullcov(
+    X: torch.Tensor,             # (b, N, d)
+    means: torch.Tensor,         # (b, K, d) or (K, d)
+    covs: torch.Tensor,          # (b, K, d, d) or (K, d, d)
+    weights: torch.Tensor = None,# optional (b, K) or (K,) as probs or logits
+    jitter: float = 1e-6,
+    eps: float = 1e-12,
+    reduction: str = "mean",     # "mean" | "sum" | "none"
+) -> torch.Tensor:
+    """
+    Negative log-likelihood for a Gaussian Mixture with full covariances.
+
+    p(x_n) = sum_k w_k * N(x_n | mu_k, Sigma_k)
+
+    Shapes:
+      X      : (b, N, d)
+      means  : (b, K, d) or (K, d)       (will broadcast over batch if needed)
+      covs   : (b, K, d, d) or (K, d, d) (will broadcast over batch if needed)
+      weights: (b, K) or (K,) or None (uniform)
+
+    Returns:
+      NLL with shape:
+        - scalar if reduction == "mean" or "sum"
+        - (b, N) if reduction == "none"
+    """
+    device = X.device
+    dtype  = X.dtype
+    b, N, d = X.shape
+
+    # --- Ensure batch dimension on means/covs ---
+    if means.dim() == 2:   # (K, d) -> (1, K, d)
+        means = means.unsqueeze(0)
+    if covs.dim() == 3:    # (K, d, d) -> (1, K, d, d)
+        covs = covs.unsqueeze(0)
+
+    # Broadcast to batch if needed
+    if means.shape[0] == 1 and b > 1:
+        means = means.expand(b, -1, -1)
+    if covs.shape[0] == 1 and b > 1:
+        covs = covs.expand(b, -1, -1, -1)
+
+    assert means.shape[0] == b and covs.shape[0] == b, "Batch mismatch"
+    K = means.shape[1]
+    assert covs.shape[1:] == (K, d, d), "Cov shape must be (b,K,d,d)"
+
+    # --- Mixture weights ---
+    w = torch.linspace(1/K, 1.0, K, device=device)
+    log_w = torch.log(w / w.sum()).unsqueeze(0).unsqueeze(1)  # (1,1,K) → broadcast
+
+    # --- Stabilize covariances & Cholesky ---
+    # Add jitter to the diagonal for numerical stability
+    eye = torch.eye(d, device=device, dtype=dtype).view(1,1,d,d)
+    covs = covs + jitter * eye
+
+    # Cholesky factor L s.t. Sigma = L L^T
+    # torch.linalg.cholesky supports batch; will raise if not PD
+    L = torch.linalg.cholesky(covs)                        # (b,K,d,d)
+
+    # log |Sigma| = 2 * sum log diag(L)
+    logdet = 2.0 * torch.sum(torch.log(torch.diagonal(L, dim1=-2, dim2=-1).clamp_min(eps)), dim=-1)  # (b,K)
+
+    # --- Mahalanobis using solves with L ---
+    # diff = x - mu
+    diff = X.unsqueeze(2) - means.unsqueeze(1)             # (b,N,K,d)
+
+    # Solve L z = diff  => z = L^{-1} diff
+    # We need to permute to (b,K,d,N) for triangular solve, then back
+    diff_T = diff.permute(0,2,3,1)                         # (b,K,d,N)
+    z = torch.linalg.solve_triangular(L, diff_T, upper=False)              # (b,K,d,N)
+    # Now solve L^T y = z  => y = (L^{-T}) z = Sigma^{-1/2} diff, but for mahal we just need ||z||^2
+    # Actually, mahalanobis = ||z||^2 because z = L^{-1}(x-mu)
+    # z currently is (b,K,d,N); square-norm over d, then permute back
+    mahal = torch.sum(z**2, dim=2).permute(0,2,1)          # (b,N,K)
+
+    # --- Component log-likelihoods ---
+    const = d * math.log(2.0 * math.pi)
+    log_comp = -0.5 * (const + logdet.unsqueeze(1) + mahal) + log_w  # (b,N,K)
+
+    # --- Log-sum-exp over components ---
+    ll = torch.logsumexp(log_comp, dim=2)                  # (b,N)
+
+    nll = -ll
+    if reduction == "mean":
+        return nll.mean()
+    elif reduction == "sum":
+        return nll.sum()
+    elif reduction == "none":
+        return nll
+    else:
+        raise ValueError("reduction must be 'mean', 'sum', or 'none'")
+
+
 if __name__ == "__main__":
     # simple test
    b, N, d = 2, 4, 3
