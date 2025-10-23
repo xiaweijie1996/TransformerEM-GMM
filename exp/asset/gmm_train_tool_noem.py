@@ -303,8 +303,6 @@ def get_loss_fullcov2(dataset, encoder, random_sample_num, min_random_sample_num
     # Scatter flattened entries into lower-triangular positions
     L[:, :, idx[0], idx[1]] = _covs
 
-
-
     
     _loss = le.le_loss_rank_iso(train_sample[:,:, :-1], n_components, _new_para, rank_level, scaler=0.01)
     
