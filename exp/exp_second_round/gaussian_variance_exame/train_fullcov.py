@@ -34,8 +34,8 @@ print(device)
 # define the hyperparameters
 n_components = 4
 random_sample_num = 40
-rank_level = 5
-num_epochs = int(400000)
+rank_level = 10
+num_epochs = int(40000)
 sub_epoch = int(dataset.__len__()*split_ratio[0]/batch_size)
 save_model =  f'exp/exp_second_round/gaussian_variance_exame/r{rank_level}/'
 save_image =  f'exp/exp_second_round/gaussian_variance_exame/r{rank_level}/'
