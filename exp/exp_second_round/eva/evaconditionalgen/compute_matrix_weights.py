@@ -24,7 +24,7 @@ torch.set_default_dtype(torch.float64)
 
 # -----------------------------------Load model and data-----------------------------------
 # import the dataloader
-batch_size = 30
+batch_size = 20
 split_ratio = (0.8,0.1,0.5)
 data_path =  'exp/data_process_for_data_collection_all/new_data_15minute_grid_nomerge.pkl'
 dataset = Dataloader_nolabel(data_path,  batch_size=batch_size
@@ -233,7 +233,7 @@ for random_sample_num_vae in [4, 8, 16, 32]:
     ws_flex = 0
     msem_flex = 0 
 
-    for i in tqdm(range(2)): # range(len(test_sample))
+    for i in tqdm(range(len(test_sample))): # range(len(test_sample))
         # samples scaled
         samples_real = test_sample[i]
         
