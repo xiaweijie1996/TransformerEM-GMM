@@ -86,6 +86,7 @@ for epoch in range(num_epochs):
     _loss.backward()
     optimizer.step()
     scheduler.step()
+    
     # break
     print('epoch: ', epoch, 'loss_test: ', _loss.item(), 'random_num: ', _random_num)
     wandb.log({'loss_test': _loss.item(), 'random_num': _random_num, 'epoch':epoch})

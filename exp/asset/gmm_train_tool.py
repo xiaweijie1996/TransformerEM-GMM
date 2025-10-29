@@ -41,6 +41,7 @@ def concatenate_and_embed_params(ms, covs, n_components, embedding_layer, device
     embed = embed.repeat(param.shape[0], 1, 1)
     
     # concatenate the parameters and the embeddings
+    print('param shape, embed shape: ', param.shape, embed.shape)
     param_emb = torch.cat((param, embed), dim=2)
     
     return param_emb,  param

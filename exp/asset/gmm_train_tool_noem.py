@@ -34,9 +34,12 @@ def concatenate_and_embed_params(ms, covs, n_components, embedding_layer, device
     _rank_level = covs.shape[1] // n_components + 1
     # print('rank level: ', _rank_level)
     # create indices for embedding and move to the appropriate device
+    print('n_components and rank level: ', n_components, _rank_level)
     embed_indices = torch.tensor([list(range(n_components * _rank_level))], dtype=torch.long).to(device)
     
     # get the embeddings
+    print('embed indices shape: ', embed_indices.shape)
+    print('embedding layer weight shape: ', embedding_layer)
     embed = embedding_layer(embed_indices)
     
     # repeat the embedding to match the batch size

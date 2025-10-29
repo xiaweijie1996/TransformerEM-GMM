@@ -34,7 +34,7 @@ print(device)
 # define the hyperparameters
 n_components = 4
 random_sample_num = 40
-rank_level = 1
+rank_level = 3
 num_epochs = int(40000)
 sub_epoch = int(dataset.__len__()*split_ratio[0]/batch_size)
 save_model =  f'exp/exp_second_round/gaussian_variance_exame/r{rank_level}/'
@@ -101,11 +101,11 @@ for epoch in range(num_epochs):
     wandb.log({'loss_test': _loss.item(), 'random_num': _random_num, 'epoch':epoch})
     
     # save the model and embeding
-    if _loss.item() < mid_loss:
-        mid_loss = _loss.item()
-        torch.save(encoder.state_dict(), save_model + f'transformer_encoder_{random_sample_num}_{_model_scale}.pth')
-        torch.save(embedding_para, save_model + f'transformer_embedding_{random_sample_num}_{_model_scale}.pth')
-        torch.save(emb_empty_token, save_model + f'transformer_emb_empty_token_{random_sample_num}_{_model_scale}.pth')
+    # if _loss.item() < mid_loss:
+    #     mid_loss = _loss.item()
+    #     torch.save(encoder.state_dict(), save_model + f'transformer_encoder_{random_sample_num}_{_model_scale}.pth')
+    #     torch.save(embedding_para, save_model + f'transformer_embedding_{random_sample_num}_{_model_scale}.pth')
+    #     torch.save(emb_empty_token, save_model + f'transformer_emb_empty_token_{random_sample_num}_{_model_scale}.pth')
 
     if epoch % 500 == 0:
         save_path = save_image+f'_{_model_scale}.png'
