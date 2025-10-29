@@ -34,7 +34,7 @@ print(device)
 # define the hyperparameters
 n_components = 4
 random_sample_num = 40
-rank_level = 10
+rank_level = 1
 num_epochs = int(40000)
 sub_epoch = int(dataset.__len__()*split_ratio[0]/batch_size)
 save_model =  f'exp/exp_second_round/gaussian_variance_exame/r{rank_level}/'
@@ -64,14 +64,14 @@ optimizer = optim.AdamW(list(encoder.parameters()), lr=lr, betas=(0.9, 0.999), e
 scheduler = optim.lr_scheduler.CyclicLR(optimizer, base_lr=5e-5, max_lr=1e-3, step_size_up=sub_epoch*2, mode='triangular', cycle_momentum=False)
 
 # load model and embedding if needed
-path_encoder = f'exp/exp_second_round/gaussian_variance_exame/r{rank_level}/transformer_encoder_{random_sample_num}_{_model_scale}.pth'
-path_embedding = f'exp/exp_second_round/gaussian_variance_exame/r{rank_level}/transformer_embedding_{random_sample_num}_{_model_scale}.pth'
-path_emb_empty_token = f'exp/exp_second_round/gaussian_variance_exame/r{rank_level}/transformer_emb_empty_token_{random_sample_num}_{_model_scale}.pth'
-if os.path.exists(path_encoder):
-    encoder.load_state_dict(torch.load(path_encoder, map_location=device))
-    embedding_para = torch.load(path_embedding, map_location=device)
-    emb_empty_token = torch.load(path_emb_empty_token, map_location=device)
-    print('model and embedding loaded from ', path_encoder)
+# path_encoder = f'exp/exp_second_round/gaussian_variance_exame/r{rank_level}/transformer_encoder_{random_sample_num}_{_model_scale}.pth'
+# path_embedding = f'exp/exp_second_round/gaussian_variance_exame/r{rank_level}/transformer_embedding_{random_sample_num}_{_model_scale}.pth'
+# path_emb_empty_token = f'exp/exp_second_round/gaussian_variance_exame/r{rank_level}/transformer_emb_empty_token_{random_sample_num}_{_model_scale}.pth'
+# if os.path.exists(path_encoder):
+#     encoder.load_state_dict(torch.load(path_encoder, map_location=device))
+#     embedding_para = torch.load(path_embedding, map_location=device)
+#     emb_empty_token = torch.load(path_emb_empty_token, map_location=device)
+#     print('model and embedding loaded from ', path_encoder)
 
 # # # log number of parameters of encoder and decoder
 wandb.init(project=f'parameter_scale_gmm_fullcov_r{rank_level}_noem')  # replace 'your_entity_name' with your actual wandb entity name
