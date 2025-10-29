@@ -24,8 +24,8 @@ torch.set_default_dtype(torch.float64)
 
 # -----------------------------------Load model and data-----------------------------------
 # import the dataloader
-batch_size = 2
-split_ratio = (0.8,0.1,0.5)
+batch_size = 32
+split_ratio = (0.1,0.1,0.8)
 data_path =  'exp/data_process_for_data_collection_all/new_data_15minute_grid_nomerge.pkl'
 dataset = Dataloader_nolabel(data_path,  batch_size=batch_size
                     , split_ratio=split_ratio)
@@ -38,7 +38,7 @@ device = 'cpu'
 
 # define the hyperparameters
 # random_sample_num_vae = 32
-for random_sample_num_vae in [4]: # 8, 16, 32
+for random_sample_num_vae in [4, 8, 16, 32]: # 8, 16, 32
     num_epochs = int(10000)
     input_shape=(250, 96)      # (C, L)
     latent_channels = 16
@@ -150,14 +150,14 @@ for random_sample_num_vae in [4]: # 8, 16, 32
     _new_para_r0 = encoder_out_r0[:, :n_components*2, :]
     _new_para_r0 = encoder_r0.output_adding_layer(_new_para_r0, _param_r0)
     # get the mean and covariance
-    samples_r0 = [ ]
+    samples_r0_coll = [ ]
     for _i in tqdm(range(len(_new_para_r0))):
         _sample_r0 , _ = plot_eva.sample_from_gmm(n_components, _new_para_r0, _num=_i)
         # Drop nan sample_r0, is numpy array
         _sample_r0 = _sample_r0[~np.isnan(_sample_r0).any(axis=1)]
-        samples_r0.append(_sample_r0)
+        samples_r0_coll.append(_sample_r0)
         
-    print(samples_r0[0].shape)
+    print(samples_r0_coll[0].shape)
     
     # ---------------gmm r1
     _test_sample_part_emb_r1 = gmm_train_tool.pad_and_embed(_test_sample_part, random_sample_num, random_sample_num_vae,
@@ -174,7 +174,7 @@ for random_sample_num_vae in [4]: # 8, 16, 32
     _new_para_r1 = encoder_out_r1[:, :n_components*2, :]
     _new_para_r1 = encoder_r1.output_adding_layer(_new_para_r1, _param_r1)
     # get the mean and covariance
-    samples_r1 = [ ]
+    samples_r1_coll = [ ]
     weights_1d = torch.full((n_components,), 1.0 / n_components, device=device)
     for _i in tqdm(range(len(_new_para_r1))):
         means_u, U_u, lam_u = plot_eva.unpack_rank_iso(_new_para_r1, n_components, 96, 1, 0.01, device=device)
@@ -182,9 +182,9 @@ for random_sample_num_vae in [4]: # 8, 16, 32
         # drop nan, _sample_r1 is numpy array
         _samples_r1 = _samples_r1[~np.isnan(_samples_r1).any(axis=1)]
         
-        samples_r1.append(_samples_r1)
+        samples_r1_coll.append(_samples_r1)
 
-    print(samples_r1[0].shape)
+    print(samples_r1_coll[0].shape)
     
     # ---------------gmm r3
     _test_sample_part_emb_r3 = gmm_train_tool.pad_and_embed(_test_sample_part, random_sample_num, random_sample_num_vae,
@@ -202,15 +202,15 @@ for random_sample_num_vae in [4]: # 8, 16, 32
     print(_new_para_r3.shape, _param_r3.shape)
     _new_para_r3 = encoder_r3.output_adding_layer(_new_para_r3, _param_r3)
     # get the mean and covariance
-    samples_r3 = [ ]
+    samples_r3_coll = [ ]
     weights_1d = torch.full((n_components,), 1.0 / n_components, device=device)
     for _i in tqdm(range(len(_new_para_r3))):
         means_u, U_u, lam_u = plot_eva.unpack_rank_iso(_new_para_r3, n_components, 96, 3, 0.01, device=device)
         _samples_r3 = plot_eva.sample_rank_iso(means_u, U_u, lam_u, n_samples=250, weights=weights_1d)
         # drop nan
         _samples_r3 = _samples_r3[~np.isnan(_samples_r3).any(axis=1)]
-        samples_r3.append(_samples_r3)  
-    print(samples_r3[0].shape)
+        samples_r3_coll.append(_samples_r3)  
+    print(samples_r3_coll[0].shape)
     
     # ---------------gmm r5
     _test_sample_part_emb_r5 = gmm_train_tool.pad_and_embed(_test_sample_part, random_sample_num, random_sample_num_vae,
@@ -225,15 +225,15 @@ for random_sample_num_vae in [4]: # 8, 16, 32
     _new_para_r5 = encoder_out_r5[:, :n_components*6, :]
     _new_para_r5 = encoder_r5.output_adding_layer(_new_para_r5, _param_r5)
     # get the mean and covariance
-    samples_r5 = [ ]
+    samples_r5_coll = [ ]
     weights_1d = torch.full((n_components,), 1.0 / n_components, device=device)
     for _i in tqdm(range(len(_new_para_r5))):
         means_u, U_u, lam_u = plot_eva.unpack_rank_iso(_new_para_r5, n_components, 96, 5, 0.01, device=device)
         _samples_r5 = plot_eva.sample_rank_iso(means_u, U_u, lam_u, n_samples=250, weights=weights_1d)
         # drop nan
         _samples_r5 = _samples_r5[~np.isnan(_samples_r5).any(axis=1)]
-        samples_r5.append(_samples_r5)
-    print(samples_r5[0].shape)
+        samples_r5_coll.append(_samples_r5)
+    print(samples_r5_coll[1].shape)
     
     # ---------------gmm r10
     _test_sample_part_emb_r10 = gmm_train_tool.pad_and_embed(_test_sample_part, random_sample_num, random_sample_num_vae,
@@ -248,15 +248,16 @@ for random_sample_num_vae in [4]: # 8, 16, 32
     _new_para_r10 = encoder_out_r10[:, :n_components*11, :]
     _new_para_r10 = encoder_r10.output_adding_layer(_new_para_r10, _param_r10)
     # get the mean and covariance
-    samples_r10 = [ ]
+    samples_r10_coll = [ ]
     weights_1d = torch.full((n_components,), 1.0 / n_components, device=device)
     for _i in tqdm(range(len(_new_para_r10))):  
         means_u, U_u, lam_u = plot_eva.unpack_rank_iso(_new_para_r10, n_components, 96, 10, 0.01, device=device)
         _samples_r10 = plot_eva.sample_rank_iso(means_u, U_u, lam_u, n_samples=250, weights=weights_1d)
         # drop nan
         _samples_r10 = _samples_r10[~np.isnan(_samples_r10).any(axis=1)]
-        samples_r10.append(_samples_r10)
-    print(samples_r10[0].shape)
+        # print('_samples_r10 shape: ', _samples_r10.shape)
+        samples_r10_coll.append(_samples_r10)
+    print(samples_r10_coll[1].shape)
     
     # -----------------------------------Evaluation-----------------------------------
     mmd_r0 = 0
@@ -289,16 +290,16 @@ for random_sample_num_vae in [4]: # 8, 16, 32
     ws_r10 = 0
     msem_r10 = 0
 
-    for i in tqdm(range(2)): # range(len(test_sample))
+    for i in tqdm(range(len(test_sample))): # range(len(test_sample))
         # samples scaled
         samples_real = test_sample[i]
         
         # gmm samples
-        samples_r0 = torch.tensor(samples_r0[i])
-        samples_r1 = torch.tensor(samples_r1[i])
-        samples_r3 = torch.tensor(samples_r3[i])
-        samples_r5 = torch.tensor(samples_r5[i])
-        samples_r10 = torch.tensor(samples_r10[i])
+        samples_r0 = torch.tensor(samples_r0_coll[i])
+        samples_r1 = torch.tensor(samples_r1_coll[i])
+        samples_r3 = torch.tensor(samples_r3_coll[i])
+        samples_r5 = torch.tensor(samples_r5_coll[i])
+        samples_r10 = torch.tensor(samples_r10_coll[i])
         
         # recover the samples
         _max = _test_max[i][:,:-1]
@@ -310,6 +311,15 @@ for random_sample_num_vae in [4]: # 8, 16, 32
         samples_r5 = samples_r5 *  (_max - _min) + _min
         samples_r10 = samples_r10 *  (_max - _min) + _min
         
+        # check if any nan in samples
+        assert not torch.isnan(samples_real).any(), 'nan in real samples'
+        assert not torch.isnan(samples_r0).any(), 'nan in r0 samples'
+        assert not torch.isnan(samples_r1).any(), 'nan in r1 samples'
+        assert not torch.isnan(samples_r3).any(), 'nan in r3 samples'
+        assert not torch.isnan(samples_r5).any(), 'nan in r5 samples'
+        assert not torch.isnan(samples_r10).any(), 'nan in r10 samples'
+        # check the shape of the sampel 
+        print('shape of samples: ', samples_real.shape, samples_r0.shape, samples_r1.shape, samples_r3.shape, samples_r5.shape, samples_r10.shape)
         # gmm r0
         mmd_r0 += plot_eva.compute_mmd(samples_real.detach().numpy(), samples_r0.detach().numpy())
         kl_r0 += plot_eva.compute_kl_divergence(samples_real.detach().numpy(), samples_r0.detach().numpy())

@@ -372,11 +372,11 @@ def calculate_autocorrelation_mse(dataset1, dataset2):
     correlation_matrix2 = kendalltau_corr(dataset2)
     # check if nan in the matrix replace with mean
     correlation_matrix2 = np.nan_to_num(correlation_matrix2, nan=np.nanmean(correlation_matrix2))
-    
-    #np.corrcoef(dataset2, rowvar=False) 
-    # correlation_matrix1 = np.corrcoef(dataset1, rowvar=False)
-    # correlation_matrix2 = np.corrcoef(dataset2, rowvar=False)
-    
+    # print('correlation_matrix1:', dataset2)
+    # print('correlation_matrix2:', correlation_matrix2)
+    # Check if nan in either correlation matrix
+    if np.isnan(correlation_matrix1).any() or np.isnan(correlation_matrix2).any():
+        raise ValueError("NaN values found in correlation matrices.")
     # compute the mean square error
     mse = mean_squared_error(correlation_matrix1, correlation_matrix2)
     return mse
