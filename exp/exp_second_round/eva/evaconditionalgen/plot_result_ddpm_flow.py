@@ -34,7 +34,7 @@ print('lenthg of test data: ', dataset.__len__()*split_ratio[1])
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
 # define the hyperparameters
-random_sample_num = 4
+random_sample_num = 32
 num_epochs = int(10000)
 input_shape=(250, 96)      # (C, L)
 hidden_dims= [32, 128, 256, 568]
@@ -50,11 +50,11 @@ ddpm = ddpmmodel.FFD_NL(in_channels=1,
 if random_sample_num == 4:
     path = 'exp/exp_second_round/conditional_generativemodels/4shot/ddpm_703801_4shot.pt'
 elif random_sample_num == 8:
-    path = 'exp/exp_second_round/conditional_generativemodels/8shot/ddpm_720250_16shot.pt'
+    path = 'exp/exp_second_round/conditional_generativemodels/8shot/ddpm_707881_8shot.pt'
 elif random_sample_num == 16:
-    path = 'exp/exp_second_round/conditional_generativemodels/16shot/ddpm_720250_16shot.pt'
+    path = 'exp/exp_second_round/conditional_generativemodels/16shot/ddpm_716041_16shot.pt'
 elif random_sample_num ==32:
-    path = 'exp/exp_second_round/conditional_generativemodels/32shot/ddpm_720250_16shot.pt'
+    path = 'exp/exp_second_round/conditional_generativemodels/32shot/ddpm_732361_32shot.pt'
     
 ddpm.load_state_dict(torch.load(path, map_location=device))
 
@@ -69,15 +69,15 @@ flow = nfmodel.CNicemModel(input_c=1,
 if random_sample_num == 4:
     path = 'exp/exp_second_round/conditional_generativemodels/4shot/flow_748734_4shot.pt'
 elif random_sample_num == 8:
-    path = 'exp/exp_second_round/conditional_generativemodels/8shot/flow_882414_8shot.pt'
+    path = 'exp/exp_second_round/conditional_generativemodels/8shot/flow_777246_8shot.pt'
 elif random_sample_num == 16:
-    path = 'exp/exp_second_round/conditional_generativemodels/16shot/flow_882414_16shot.pt'
+    path = 'exp/exp_second_round/conditional_generativemodels/16shot/flow_834270_16shot.pt'
 elif random_sample_num ==32:
-    path = 'exp/exp_second_round/conditional_generativemodels/32shot/flow_882414_32shot.pt'
+    path = 'exp/exp_second_round/conditional_generativemodels/32shot/flow_948318_32shot.pt'
 flow.load_state_dict(torch.load(path, map_location=device))
 
 # load data
-_sample_indx=[17, 23]
+_sample_indx=[15, 45]
 test_sample = dataset.load_test_data(batch_size, _sample_indx)  # (B,N,L)
 print('test sample shape: ', test_sample.shape)
 # Use 5 and 6 th sample for testing
@@ -127,7 +127,7 @@ ddpm_sample_list = []
 for i in range(len(_sample_indx)):
     print('Processing sample: ', i/len(_sample_indx))
     # samples scaled
-    samples_ddpm = recon[250*i:250*(i+1),0, :]
+    samples_ddpm = recon[250*i:250*(i+1),0, :] * 0.3
     samples_partial = _test_sample_part[250*i,:,:]
     samples_real = test_sample[250*i:250*(i+1),0, :]
     samples_flow = recon_flow[250*i:250*(i+1), 0, :]
